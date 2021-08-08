@@ -14,6 +14,8 @@ const config: InitialOptionsTsJest = {
       compiler: 'ttypescript',
     },
   },
+  verbose: true,
+  collectCoverage: true,
 };
 
 export default config;
