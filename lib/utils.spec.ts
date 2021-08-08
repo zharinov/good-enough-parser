@@ -1,6 +1,6 @@
 import { test } from '/utils';
 
-describe(nameof(test), () => {
+describe('lib/utils.ts', () => {
   it('works', () => {
     expect(test()).toBeTruthy();
   });

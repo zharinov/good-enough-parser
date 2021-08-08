@@ -14,7 +14,7 @@
     "logError": true
   },
   "compilerOptions": {
-    "rootDirs": ["src", "./.ts-node"],
+    "rootDirs": ["lib", "./.ts-node"],
     "module": "commonjs",
     "plugins": [
       // https://github.com/dsherret/ts-nameof

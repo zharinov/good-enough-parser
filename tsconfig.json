@@ -23,7 +23,7 @@
     "noErrorTruncation": true,
     "baseUrl": "./",
     "paths": {
-      "/*": ["./src/lib/*"]
+      "/*": ["./lib/*"]
     },
     // Other
     // Only enable this for applications.
@@ -46,7 +46,7 @@
       }
     ]
   },
-  "include": ["src"],
+  "include": ["lib"],
   // Prevent unwanted things like auto-import from built modules
   "exclude": ["dist-*"],
   "plugins": [

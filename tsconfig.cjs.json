@@ -5,7 +5,7 @@
     "outDir": "dist-cjs",
     "module": "commonjs",
     "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo.cjs",
-    "rootDir": "src"
+    "rootDir": "lib"
   },
   "exclude": ["./**/*.spec.ts"]
 }
