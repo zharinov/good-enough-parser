@@ -46,7 +46,7 @@
       }
     ]
   },
-  "include": ["lib"],
+  "include": ["lib", "test"],
   // Prevent unwanted things like auto-import from built modules
   "exclude": ["dist-*"],
   "plugins": [

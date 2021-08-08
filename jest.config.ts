@@ -16,6 +16,7 @@ const config: InitialOptionsTsJest = {
   },
   verbose: true,
   collectCoverage: true,
+  coveragePathIgnorePatterns: ['test-utils'],
 };
 
 export default config;

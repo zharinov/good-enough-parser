@@ -7,5 +7,5 @@
     "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo.cjs",
     "rootDir": "lib"
   },
-  "exclude": ["./**/*.spec.ts"]
+  "exclude": ["test"]
 }

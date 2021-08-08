@@ -7,5 +7,5 @@
     "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo.esm",
     "rootDir": "lib"
   },
-  "exclude": ["tests", "./**/*.spec.ts"]
+  "exclude": ["test"]
 }
