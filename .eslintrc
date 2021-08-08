@@ -23,7 +23,10 @@
     // Same approach used by TypeScript noUnusedLocals
     "@typescript-eslint/no-unused-vars": [
       "warn",
-      { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_"
+      }
     ]
   }
 }
