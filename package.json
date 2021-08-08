@@ -35,6 +35,7 @@
     "release:pr": "dripip pr",
     "release:canary": "dripip preview",
     "release:stable": "dripip stable",
+    "prepare:husky": "husky install",
     "prepublishOnly": "yarn -s build"
   },
   "dependencies": {
@@ -53,6 +54,7 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-only-warn": "1.0.3",
     "format-imports": "2.4.1",
+    "husky": "^7.0.1",
     "jest": "27.0.6",
     "jest-watch-select-projects": "2.0.0",
     "jest-watch-suspend": "1.1.2",
