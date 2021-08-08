@@ -1,4 +1,4 @@
-import type { InitialOptionsTsJest } from 'ts-jest/dist/types'
+import type { InitialOptionsTsJest } from 'ts-jest/dist/types';
 
 const config: InitialOptionsTsJest = {
   preset: 'ts-jest',
@@ -14,6 +14,6 @@ const config: InitialOptionsTsJest = {
       compiler: 'ttypescript',
     },
   },
-}
+};
 
-export default config
+export default config;

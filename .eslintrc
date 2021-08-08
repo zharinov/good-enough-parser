@@ -21,6 +21,9 @@
     // just disable ESLint around usage of nameof in codebase.
     "@typescript-eslint/no-unsafe-call": "off",
     // Same approach used by TypeScript noUnusedLocals
-    "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }]
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }
+    ]
   }
 }

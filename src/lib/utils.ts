@@ -6,9 +6,9 @@
  *   const a = foobar({
  *     a: 1,
  *     b: 2,
- *   })
+ *   });
  *
  */
 export function todo(): void {
-  console.log(nameof(todo))
+  console.log(nameof(todo));
 }
