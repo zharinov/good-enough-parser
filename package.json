@@ -45,9 +45,7 @@
     "prepare:husky": "husky install",
     "prepublishOnly": "yarn -s build"
   },
-  "dependencies": {
-    "tslib": "2.3.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@homer0/prettier-plugin-jsdoc": "4.0.1",
     "@types/jest": "26.0.24",
