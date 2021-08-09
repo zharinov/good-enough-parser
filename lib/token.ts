@@ -1,5 +1,10 @@
 import type { Token as MooToken } from 'moo';
-import type { Token } from './types';
+
+export interface Token {
+  type: string | null;
+  value: string;
+  offset: number;
+}
 
 export function coerceToken({ type, value, offset }: MooToken): Token {
   return {
