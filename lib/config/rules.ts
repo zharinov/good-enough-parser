@@ -1,8 +1,10 @@
 import {
   fallback as mooFallback,
-  FallbackRule as FallbackRule,
+  FallbackRule,
   Rule as MooTokenRule,
 } from 'moo';
+
+export type { FallbackRule } from 'moo';
 
 export const fallbackRule: FallbackRule = mooFallback;
 
