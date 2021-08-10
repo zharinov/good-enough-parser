@@ -1,4 +1,4 @@
-import { coerceToken } from '/token';
+import { coerceToken } from '/lexer/token';
 import type { Token as MooToken } from 'moo';
 
 describe(nameof(coerceToken), () => {

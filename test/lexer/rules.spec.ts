@@ -3,9 +3,9 @@ import {
   isTokenRule,
   sortStateRules,
   StateDefinition,
-} from '/config/rules';
+} from '/lexer/rules';
 
-describe('/config/rules', () => {
+describe('/lexer/rules', () => {
   describe('sortStateRules', () => {
     it('returns same array for empty rule set', () => {
       expect(sortStateRules({})).toEqual({});
