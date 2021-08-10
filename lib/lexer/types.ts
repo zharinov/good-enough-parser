@@ -1,5 +1,3 @@
-export type OneOrMany<T> = T | T[];
-
-export interface SortableOption {
+export interface OptionBase {
   startsWith: string;
 }

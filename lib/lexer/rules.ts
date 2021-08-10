@@ -1,31 +1,41 @@
-import {
-  fallback as mooFallback,
-  FallbackRule,
-  Rule as MooTokenRule,
-} from 'moo';
+import { fallback as mooFallback } from 'moo';
 
-export type { FallbackRule } from 'moo';
-
-export const fallbackRule: FallbackRule = mooFallback;
-
-export interface TokenRule extends MooTokenRule {
+export interface StringRule {
+  t: 'string';
   match: string;
+  push?: string;
+  pop?: number;
+  next?: string;
 }
 
-type LexerRule = TokenRule | FallbackRule;
-
-export function isTokenRule(input: LexerRule): input is TokenRule {
-  return input !== fallbackRule;
+export interface RegexRule {
+  t: 'regex';
+  match: RegExp;
+  push?: string;
+  pop?: number;
+  next?: string;
 }
+
+export interface FallbackRule {
+  t: 'fallback';
+  fallback: true;
+  next?: string;
+}
+
+export type LexerRule = StringRule | RegexRule | FallbackRule;
+
+export const fallbackRule: FallbackRule = { t: 'fallback', ...mooFallback };
 
 export type TokenName = string;
 export type StateDefinition = Record<TokenName, LexerRule>;
 
-export type StateName = string;
-export type StatesMap = Record<StateName, StateDefinition>;
+export interface StatesMap {
+  $: StateDefinition;
+  [k: string]: StateDefinition;
+}
 
 function compareLexerRules(x: LexerRule, y: LexerRule): -1 | 0 | 1 {
-  if (isTokenRule(x) && isTokenRule(y)) {
+  if (x.t === 'string' && y.t === 'string') {
     const xMatch = x.match;
     const yMatch = y.match;
     if (yMatch.startsWith(xMatch)) {
@@ -37,10 +47,6 @@ function compareLexerRules(x: LexerRule, y: LexerRule): -1 | 0 | 1 {
     } else if (xMatch < yMatch) {
       return 1;
     }
-  } else if (x === fallbackRule && y !== fallbackRule) {
-    return 1;
-  } else if (x !== fallbackRule && y === fallbackRule) {
-    return -1;
   }
   return 0;
 }
@@ -50,6 +56,26 @@ export function sortStateRules(state: StateDefinition): StateDefinition {
   if (entries.length < 2) {
     return state;
   }
-  const sortedEntries = entries.sort(([, x], [, y]) => compareLexerRules(x, y));
-  return Object.fromEntries(sortedEntries);
+
+  const stringEntries = entries
+    .filter(([, { t }]) => t === 'string')
+    .sort(([, x], [, y]) => compareLexerRules(x, y));
+
+  const regexEntries = entries.filter(([, { t }]) => t === 'regex');
+
+  const fallbackEntries = entries.filter(([, { t }]) => t === 'fallback');
+
+  return Object.fromEntries([
+    ...stringEntries,
+    ...regexEntries,
+    ...fallbackEntries,
+  ]);
+}
+
+export function sortStatesMap(statesMap: StatesMap): StatesMap {
+  const result: StatesMap = { ...statesMap };
+  Object.entries(result).forEach(([key, val]) => {
+    result[key] = sortStateRules(val);
+  });
+  return result;
 }

@@ -1,9 +1,17 @@
 import {
   fallbackRule,
-  isTokenRule,
+  LexerRule,
   sortStateRules,
   StateDefinition,
 } from '/lexer/rules';
+
+function strRule(match: string): LexerRule {
+  return { t: 'string', match };
+}
+
+function regexRule(match: RegExp): LexerRule {
+  return { t: 'regex', match };
+}
 
 describe('/lexer/rules', () => {
   describe('sortStateRules', () => {
@@ -12,32 +20,32 @@ describe('/lexer/rules', () => {
     });
 
     it('returns same array for single rule', () => {
-      const state: StateDefinition = { foo: { match: 'a' } };
+      const state: StateDefinition = { foo: { t: 'string', match: 'a' } };
       expect(sortStateRules(state)).toEqual(state);
     });
 
     it('reorders rules to avoid tokenizer ambiguity', () => {
       const state: StateDefinition = {
         x: fallbackRule,
-        '01': { match: 'a' },
-        '02': { match: '[[' },
-        '03': { match: 'b' },
-        '04': { match: '[[[' },
-        '05': { match: 'c' },
+        '01': strRule('a'),
+        '02': strRule('[['),
+        '03': strRule('b'),
+        '04': strRule('[[['),
+        '05': strRule('c'),
         y: fallbackRule,
-        '06': { match: '[' },
-        '07': { match: 'd' },
-        '08': { match: 'aa' },
-        '09': { match: 'bb' },
-        '10': { match: 'cc' },
-        '11': { match: 'dd' },
-        '12': { match: 'aaa' },
+        '06': strRule('['),
+        '07': strRule('d'),
+        '08': strRule('aa'),
+        '09': strRule('bb'),
+        '10': strRule('cc'),
+        '11': strRule('dd'),
+        '12': strRule('aaa'),
         z: fallbackRule,
       };
       const res = sortStateRules(state);
       const rules = Object.values(res);
       const matches = rules.map((rule) =>
-        isTokenRule(rule) ? rule.match : null
+        rule.t !== 'fallback' ? rule.match : null
       );
       expect(matches).toEqual([
         'cc',
@@ -55,6 +63,26 @@ describe('/lexer/rules', () => {
         null,
         null,
         null,
+      ]);
+    });
+
+    it('sorts regex', () => {
+      const state: StateDefinition = {
+        '01': fallbackRule,
+        '02': strRule('a'),
+        '03': regexRule(/[a-z]/),
+        '04': strRule('aa'),
+        '05': regexRule(/[0-9]/),
+        '06': fallbackRule,
+      };
+      const res = sortStateRules(state);
+      expect(Object.values(res)).toMatchObject([
+        { t: 'string' },
+        { t: 'string' },
+        { t: 'regex' },
+        { t: 'regex' },
+        { t: 'fallback' },
+        { t: 'fallback' },
       ]);
     });
   });
