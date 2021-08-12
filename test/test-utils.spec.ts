@@ -8,20 +8,20 @@ import {
 
 describe('test-utils', () => {
   it('loadInputTxt', () => {
-    const x = loadInputTxt('sample.in.txt');
-    expect(x).toBeTruthy();
+    const x = loadInputTxt('sample');
+    expect(x).toEqual('foobar');
   });
 
   it('loadInputJson', () => {
-    const x = loadInputJson<string>('sample.out.json');
-    expect(x).toBeTruthy();
+    const x = loadInputJson<string>('sample');
+    expect(x).toEqual('foobar');
   });
 
   it('loadOutputJson', () => {
-    const inputName = 'sample.in.txt';
-    const outputName = 'sample.out.json';
-    const outputFile = getSamplePath(outputName);
+    const sampleName = 'sample';
+    const sampleFile = 'sample.out.json';
 
+    const outputFile = getSamplePath(sampleFile);
     try {
       rmSync(outputFile);
     } catch (err) {
@@ -30,8 +30,8 @@ describe('test-utils', () => {
       expect(existsSync(outputFile)).toBeFalsy();
     }
 
-    const input = loadInputTxt(inputName);
-    const output = loadOutputJson<string>(outputName, input);
+    const input = loadInputTxt(sampleName);
+    const output = loadOutputJson<string>(sampleName, input);
     expect(existsSync(outputFile)).toBeTruthy();
     expect(input).toBe(output);
   });

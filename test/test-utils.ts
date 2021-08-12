@@ -1,5 +1,8 @@
+import * as moo from 'moo';
 import { readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'upath';
+import { StatesMap } from '/lexer/rules';
+import { coerceToken, Token } from '/lexer/token';
 
 function getCallerFileName(): string {
   let result = null;
@@ -48,27 +51,38 @@ export function getSamplePath(sampleFile: string, sampleRoot = '.'): string {
   return join(callerDir, sampleRoot, '__samples__', sampleFile);
 }
 
-export function loadInputTxt(sampleFile: string, sampleRoot = '.'): string {
-  const sampleAbsFile = getSamplePath(sampleFile, sampleRoot);
+export function loadSampleFile(fileName: string, sampleRoot = '.'): string {
+  const sampleAbsFile = getSamplePath(fileName, sampleRoot);
   return readFileSync(sampleAbsFile, { encoding: 'utf8' });
 }
 
-export function loadInputJson<T>(sampleFile: string, sampleRoot = '.'): T {
-  const rawSample = loadInputTxt(sampleFile, sampleRoot);
+export function loadInputTxt(sampleName: string, sampleRoot = '.'): string {
+  return loadSampleFile(`${sampleName}.in.txt`, sampleRoot);
+}
+
+export function loadInputJson<T>(sampleName: string, sampleRoot = '.'): T {
+  const rawSample = loadSampleFile(`${sampleName}.in.json`, sampleRoot);
   return JSON.parse(rawSample) as T;
 }
 
 export function loadOutputJson<T>(
-  sampleFile: string,
+  sampleName: string,
   currentOutput: T,
   sampleRoot = '.'
 ): T {
+  const sampleFile = `${sampleName}.out.json`;
   try {
-    return loadInputJson<T>(sampleFile, sampleRoot);
+    const existingOutput = loadSampleFile(sampleFile, sampleRoot);
+    return JSON.parse(existingOutput) as T;
   } catch (err) {
     const path = getSamplePath(sampleFile, sampleRoot);
-    const newOutput = JSON.stringify(currentOutput, null, 2);
+    const newOutput = JSON.stringify(currentOutput, null, 2) + '\n';
     writeFileSync(path, newOutput);
     return currentOutput;
   }
+}
+
+export function tokenize(states: StatesMap, input: string): Token[] {
+  const lexer = moo.states(states);
+  return [...lexer.reset(input)].map(coerceToken);
 }
