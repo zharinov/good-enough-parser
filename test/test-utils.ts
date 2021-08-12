@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'upath';
 
 function getCallerFileName(): string {
@@ -48,12 +48,27 @@ export function getSamplePath(sampleFile: string, sampleRoot = '.'): string {
   return join(callerDir, sampleRoot, '__samples__', sampleFile);
 }
 
-export function loadSampleTxt(sampleFile: string, sampleRoot = '.'): string {
+export function loadInputTxt(sampleFile: string, sampleRoot = '.'): string {
   const sampleAbsFile = getSamplePath(sampleFile, sampleRoot);
   return readFileSync(sampleAbsFile, { encoding: 'utf8' });
 }
 
-export function loadSampleJson<T>(sampleFile: string, sampleRoot = '.'): T {
-  const rawsample = loadSampleTxt(sampleFile, sampleRoot);
-  return JSON.parse(rawsample) as T;
+export function loadInputJson<T>(sampleFile: string, sampleRoot = '.'): T {
+  const rawSample = loadInputTxt(sampleFile, sampleRoot);
+  return JSON.parse(rawSample) as T;
+}
+
+export function loadOutputJson<T>(
+  sampleFile: string,
+  currentOutput: T,
+  sampleRoot = '.'
+): T {
+  try {
+    return loadInputJson<T>(sampleFile, sampleRoot);
+  } catch (err) {
+    const path = getSamplePath(sampleFile, sampleRoot);
+    const newOutput = JSON.stringify(currentOutput, null, 2);
+    writeFileSync(path, newOutput);
+    return currentOutput;
+  }
 }
