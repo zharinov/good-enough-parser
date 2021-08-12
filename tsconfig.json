@@ -23,7 +23,8 @@
     "noErrorTruncation": true,
     "baseUrl": "./",
     "paths": {
-      "/*": ["./lib/*"]
+      "/*": ["./lib/*"],
+      "#*": ["./test/*"]
     },
     // Other
     // Only enable this for applications.
