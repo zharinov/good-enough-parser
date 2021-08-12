@@ -42,18 +42,18 @@ export function getName(): string {
     .replace(/\.spec\.ts$/, '');
 }
 
-export function getFixturePath(fixtureFile: string, fixtureRoot = '.'): string {
+export function getSamplePath(sampleFile: string, sampleRoot = '.'): string {
   const callerFile = getCallerFileName();
   const callerDir = dirname(callerFile);
-  return join(callerDir, fixtureRoot, '__fixtures__', fixtureFile);
+  return join(callerDir, sampleRoot, '__samples__', sampleFile);
 }
 
-export function loadFixture(fixtureFile: string, fixtureRoot = '.'): string {
-  const fixtureAbsFile = getFixturePath(fixtureFile, fixtureRoot);
-  return readFileSync(fixtureAbsFile, { encoding: 'utf8' });
+export function loadSampleTxt(sampleFile: string, sampleRoot = '.'): string {
+  const sampleAbsFile = getSamplePath(sampleFile, sampleRoot);
+  return readFileSync(sampleAbsFile, { encoding: 'utf8' });
 }
 
-export function loadJsonFixture<T>(fixtureFile: string, fixtureRoot = '.'): T {
-  const rawFixture = loadFixture(fixtureFile, fixtureRoot);
-  return JSON.parse(rawFixture) as T;
+export function loadSampleJson<T>(sampleFile: string, sampleRoot = '.'): T {
+  const rawsample = loadSampleTxt(sampleFile, sampleRoot);
+  return JSON.parse(rawsample) as T;
 }

@@ -1,8 +1,13 @@
-import { loadFixture } from './test-utils';
+import { loadSampleJson, loadSampleTxt } from './test-utils';
 
-describe(nameof(loadFixture), () => {
-  it('works', () => {
-    const x = loadFixture('empty.in.txt');
-    expect(x).toBeFalsy();
+describe('test-utils', () => {
+  it('loadSampleTxt', () => {
+    const x = loadSampleTxt('sample.in.txt');
+    expect(x).toBeTruthy();
+  });
+
+  it('loadSampleJson', () => {
+    const x = loadSampleJson('sample.in.json');
+    expect(x).toBeTruthy();
   });
 });
