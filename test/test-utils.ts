@@ -67,7 +67,7 @@ export function loadInputJson<T>(sampleName: string, sampleRoot = '.'): T {
 
 export function loadOutputJson<T>(
   sampleName: string,
-  currentOutput: T,
+  testOutput: T,
   sampleRoot = '.'
 ): T {
   const sampleFile = `${sampleName}.out.json`;
@@ -76,9 +76,9 @@ export function loadOutputJson<T>(
     return JSON.parse(existingOutput) as T;
   } catch (err) {
     const path = getSamplePath(sampleFile, sampleRoot);
-    const newOutput = JSON.stringify(currentOutput, null, 2) + '\n';
+    const newOutput = JSON.stringify(testOutput, null, 2) + '\n';
     writeFileSync(path, newOutput);
-    return currentOutput;
+    return testOutput;
   }
 }
 
