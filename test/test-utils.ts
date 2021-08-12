@@ -1,8 +1,8 @@
-import * as moo from 'moo';
-import { readFileSync, writeFileSync } from 'fs';
-import { dirname, join } from 'upath';
 import { StatesMap } from '/lexer/rules';
 import { coerceToken, Token } from '/lexer/token';
+import { readFileSync, writeFileSync } from 'fs';
+import * as moo from 'moo';
+import { dirname, join } from 'upath';
 
 function getCallerFileName(): string {
   let result = null;
