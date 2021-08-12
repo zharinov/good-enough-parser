@@ -3,6 +3,7 @@ import {
   sortStatesMap,
   StateDefinition,
   StatesMap,
+  StringRule,
 } from './rules';
 import type { OptionBase } from './types';
 
@@ -34,12 +35,16 @@ function exprTplState(
   { tplEndToken, tplEnd }: ExprTplStateInput
 ): StateDefinition {
   const result: StateDefinition = {};
+  const tplEndRule: StringRule = { t: 'string', match: tplEnd, pop: 1 };
   for (const [ruleName, rule] of Object.entries($)) {
     if (rule.t === 'string' && rule.match === tplEnd) {
-      result[tplEndToken] = { t: 'string', match: tplEnd, pop: 1 };
+      result[tplEndToken] = tplEndRule;
     } else {
       result[ruleName] = { ...rule };
     }
+  }
+  if (!result[tplEndToken]) {
+    result[tplEndToken] = tplEndRule;
   }
   return result;
 }

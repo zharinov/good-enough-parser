@@ -187,30 +187,50 @@ describe('/lexer/string', () => {
   });
 
   describe('tokenize', () => {
-    const states: StatesMap = {
-      $: {
-        unknown: fallbackRule,
-      },
-    };
-    const opts: StringOption[] = [
-      { startsWith: '"' },
-      { startsWith: "'" },
-      { startsWith: '"""' },
-      { startsWith: "'''" },
-    ];
-    const rules = configStrings(states, opts);
+    describe('simple strings', () => {
+      const states: StatesMap = {
+        $: {
+          unknown: fallbackRule,
+        },
+      };
+      const opts: StringOption[] = [
+        { startsWith: '"' },
+        { startsWith: "'" },
+        { startsWith: '"""' },
+        { startsWith: "'''" },
+      ];
+      const rules = configStrings(states, opts);
 
-    test.each`
-      sampleName
-      ${'double-quotes'}
-      ${'single-quotes'}
-      ${'triple-double-quotes'}
-      ${'triple-single-quotes'}
-    `('$sampleName', ({ sampleName }: { sampleName: string }) => {
-      const input = loadInputTxt(sampleName);
-      const res = tokenize(rules, input);
-      const expectedRes = loadOutputJson(sampleName, res);
-      expect(res).toEqual(expectedRes);
+      test.each`
+        sampleName
+        ${'double-quotes'}
+        ${'single-quotes'}
+        ${'triple-double-quotes'}
+        ${'triple-single-quotes'}
+      `('$sampleName', ({ sampleName }: { sampleName: string }) => {
+        const input = loadInputTxt(sampleName);
+        const res = tokenize(rules, input);
+        const expectedRes = loadOutputJson(sampleName, res);
+        expect(res).toEqual(expectedRes);
+      });
+    });
+
+    describe('templates', () => {
+      it('supports nested expression templates', () => {
+        const states: StatesMap = { $: {} };
+        const opts: StringOption[] = [
+          {
+            startsWith: '"',
+            templates: [{ type: 'expr', startsWith: '{', endsWith: '}' }],
+          },
+        ];
+        const rules = configStrings(states, opts);
+        const sampleName = 'expr-template';
+        const input = loadInputTxt(sampleName);
+        const res = tokenize(rules, input);
+        const expectedRes = loadOutputJson(sampleName, res);
+        expect(res).toEqual(expectedRes);
+      });
     });
   });
 });

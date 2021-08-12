@@ -1,27 +1,27 @@
 [
   {
     "type": "unknown",
-    "value": "foo",
+    "value": "a",
     "offset": 0
   },
   {
     "type": "str$3$start",
     "value": "'''",
-    "offset": 3
+    "offset": 1
   },
   {
     "type": "str$3$value",
-    "value": "bar",
-    "offset": 6
+    "value": "b",
+    "offset": 4
   },
   {
     "type": "str$3$end",
     "value": "'''",
-    "offset": 9
+    "offset": 5
   },
   {
     "type": "unknown",
-    "value": "baz",
-    "offset": 12
+    "value": "c",
+    "offset": 8
   }
 ]
