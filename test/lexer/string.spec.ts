@@ -180,7 +180,6 @@ describe('lexer/string', () => {
         },
         str$0$value: {
           fallback: true,
-          next: 'str$0$tpl$0$state',
         },
       },
     });
@@ -203,10 +202,10 @@ describe('lexer/string', () => {
 
       test.each`
         sampleName
-        ${'double-quotes'}
-        ${'single-quotes'}
-        ${'triple-double-quotes'}
-        ${'triple-single-quotes'}
+        ${'string/double-quotes'}
+        ${'string/single-quotes'}
+        ${'string/triple-double-quotes'}
+        ${'string/triple-single-quotes'}
       `('$sampleName', ({ sampleName }: { sampleName: string }) => {
         const input = loadInputTxt(sampleName);
         const res = tokenize(rules, input);
@@ -225,7 +224,7 @@ describe('lexer/string', () => {
           },
         ];
         const rules = configStrings(states, opts);
-        const sampleName = 'expr-template';
+        const sampleName = 'string/expr-template';
         const input = loadInputTxt(sampleName);
         const res = tokenize(rules, input);
         const expectedRes = loadOutputJson(sampleName, res);

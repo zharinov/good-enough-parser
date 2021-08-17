@@ -42,12 +42,16 @@ describe('lexer/rules', () => {
         '12': strRule('aaa'),
         z: fallbackRule,
       };
-      const res = sortStateRules(state);
-      const rules = Object.values(res);
-      const matches = rules.map((rule) =>
-        rule.t !== 'fallback' ? rule.match : null
-      );
-      expect(matches).toEqual([
+
+      const vectorize = (x: StateDefinition): (string | null)[] =>
+        Object.values(x).map((rule) =>
+          rule.t !== 'fallback' ? rule.match.toString() : null
+        );
+
+      const res1 = sortStateRules(state);
+      const res2 = sortStateRules(res1);
+
+      const expected = [
         'cc',
         'dd',
         'aaa',
@@ -63,7 +67,10 @@ describe('lexer/rules', () => {
         null,
         null,
         null,
-      ]);
+      ];
+
+      expect(vectorize(res1)).toEqual(expected);
+      expect(vectorize(res2)).toEqual(expected);
     });
 
     it('sorts regex', () => {

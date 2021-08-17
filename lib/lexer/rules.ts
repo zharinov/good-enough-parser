@@ -14,6 +14,7 @@ export interface RegexRule {
   push?: string;
   pop?: number;
   next?: string;
+  lineBreaks?: true;
 }
 
 export interface FallbackRule {
