@@ -19,7 +19,6 @@ export interface RegexRule {
 export interface FallbackRule {
   t: 'fallback';
   fallback: true;
-  next?: string;
 }
 
 export type LexerRule = StringRule | RegexRule | FallbackRule;

@@ -72,7 +72,7 @@ function varTplState(
         result[key] = { ...val };
       }
     } else {
-      result[key] = { ...val, next: tplStateName };
+      result[key] = { ...val };
     }
   });
 
