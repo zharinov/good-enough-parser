@@ -32,11 +32,6 @@
     // "esModuleInterop": true,
     // Transformer Plugins made possible by https://github.com/cevek/ttypescript
     "plugins": [
-      // https://github.com/dsherret/ts-nameof
-      {
-        "transform": "ts-nameof",
-        "type": "raw"
-      },
       // https://github.com/LeDDGroup/typescript-transform-paths
       {
         "transform": "typescript-transform-paths"

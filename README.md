@@ -25,7 +25,6 @@ Project template for TypeScript libraries
    1. `.tsbuildinfo` cache setup, output discretely into `node_modules/.cache`
    1. Base `tsconfig.json` shared across `tests`, `src`, and `ts-node`.
    1. [`ttypescript`](https://github.com/cevek/ttypescript) setup for enhanced language features:
-      1. [`ts-nameof`](https://github.com/dsherret/ts-nameof) for pulling the names of identifier down into your runtime!
       1. [`typescript-transform-paths`](https://github.com/LeDDGroup/typescript-transform-paths) for a **_working_** [tsconfig `paths` config](https://www.typescriptlang.org/tsconfig#paths)!
       1. Tricky `ts-node` configuration taken care of.
 

@@ -17,8 +17,6 @@
     "rootDirs": ["lib", "./.ts-node"],
     "module": "commonjs",
     "plugins": [
-      // https://github.com/dsherret/ts-nameof
-      { "transform": "ts-nameof", "type": "raw" },
       // https://github.com/LeDDGroup/typescript-transform-paths
       { "transform": "typescript-transform-paths", "useRootDirs": true }
     ]
