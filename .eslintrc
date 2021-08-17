@@ -4,7 +4,7 @@
   "parserOptions": {
     "project": ["tsconfig.json"]
   },
-  "plugins": ["@typescript-eslint", "only-warn"],
+  "plugins": ["@typescript-eslint", "@renovate"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -27,6 +27,8 @@
         "varsIgnorePattern": "^_",
         "argsIgnorePattern": "^_"
       }
-    ]
+    ],
+
+    "@renovate/jest-root-describe": 2
   }
 }

@@ -748,6 +748,10 @@
   dependencies:
     "@octokit/openapi-types" "^9.4.0"
 
+"@renovate/eslint-plugin@https://github.com/renovatebot/eslint-plugin#main":
+  version "0.0.1"
+  resolved "https://github.com/renovatebot/eslint-plugin#1ebc0b11bd7170ccd6e36c2c836dd710ccc0fb5e"
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.3.tgz#3802ddd21a50a949b6721ddd72da36e67e7f1b2d"

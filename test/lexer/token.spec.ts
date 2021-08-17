@@ -1,7 +1,7 @@
 import { coerceToken } from '/lexer/token';
 import type { Token as MooToken } from 'moo';
 
-describe(nameof(coerceToken), () => {
+describe('lexer/token', () => {
   it('pre-defined type', () => {
     const mooToken = {
       type: 'symbol',

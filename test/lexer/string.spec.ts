@@ -2,7 +2,7 @@ import { loadInputTxt, loadOutputJson, tokenize } from '#test-utils';
 import { fallbackRule, StatesMap } from '/lexer/rules';
 import { configStrings, StringOption } from '/lexer/string';
 
-describe('/lexer/string', () => {
+describe('lexer/string', () => {
   describe('configuration', () => {
     it('handles empty options list', () => {
       const states: StatesMap = { $: { foo: { t: 'string', match: 'bar' } } };

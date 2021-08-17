@@ -13,7 +13,7 @@ function regexRule(match: RegExp): LexerRule {
   return { t: 'regex', match };
 }
 
-describe('/lexer/rules', () => {
+describe('lexer/rules', () => {
   describe('sortStateRules', () => {
     it('returns same array for empty rule set', () => {
       expect(sortStateRules({})).toEqual({});
