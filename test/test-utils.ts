@@ -71,15 +71,27 @@ export function loadOutputJson<T>(
   sampleRoot = '.'
 ): T {
   const sampleFile = `${sampleName}.out.json`;
-  try {
-    const existingOutput = loadSampleFile(sampleFile, sampleRoot);
-    return JSON.parse(existingOutput) as T;
-  } catch (err) {
+
+  let result: T = testOutput;
+
+  const writeSamples = () => {
     const path = getSamplePath(sampleFile, sampleRoot);
     const newOutput = JSON.stringify(testOutput, null, 2) + '\n';
     writeFileSync(path, newOutput);
-    return testOutput;
+  };
+
+  if (process.env.REWRITE_SAMPLES === 'true') {
+    writeSamples();
+  } else {
+    try {
+      const existingOutput = loadSampleFile(sampleFile, sampleRoot);
+      result = JSON.parse(existingOutput) as T;
+    } catch (err) {
+      writeSamples();
+    }
   }
+
+  return result;
 }
 
 export function tokenize(states: StatesMap, input: string): Token[] {
