@@ -38,13 +38,6 @@ function getCallerFileName(): string {
   return result;
 }
 
-export function getName(): string {
-  return getCallerFileName()
-    .replace(/\\/g, '/')
-    .replace(/^test\//, '')
-    .replace(/\.spec\.ts$/, '');
-}
-
 export function getSamplePath(sampleFile: string, sampleRoot = '.'): string {
   const callerFile = getCallerFileName();
   const callerDir = dirname(callerFile);
