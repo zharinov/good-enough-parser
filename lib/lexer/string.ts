@@ -1,10 +1,5 @@
-import {
-  fallbackRule,
-  sortStatesMap,
-  StateDefinition,
-  StatesMap,
-  StringRule,
-} from './rules';
+import type { StateDefinition, StatesMap, StringRule } from './rules';
+import { fallbackRule, sortStatesMap } from './rules';
 import type { OptionBase } from './types';
 
 export interface VariableTemplateOption extends OptionBase {

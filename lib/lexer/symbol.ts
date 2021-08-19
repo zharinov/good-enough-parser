@@ -1,4 +1,5 @@
-import { sortStateRules, StatesMap } from './rules';
+import type { StatesMap } from './rules';
+import { sortStateRules } from './rules';
 
 export interface SymbolOption {
   match: RegExp;

@@ -1,5 +1,6 @@
-import { RegexRule, sortStateRules, StateDefinition, StatesMap } from './rules';
-import { OptionBase } from './types';
+import type { RegexRule, StateDefinition, StatesMap } from './rules';
+import { sortStateRules } from './rules';
+import type { OptionBase } from './types';
 
 export interface LineCommentOption extends OptionBase {
   t: 'line-comment';
