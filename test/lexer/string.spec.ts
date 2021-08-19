@@ -206,7 +206,7 @@ describe('lexer/string', () => {
         ${'string/single-quotes'}
         ${'string/triple-double-quotes'}
         ${'string/triple-single-quotes'}
-      `('$sampleName', ({ sampleName }: { sampleName: string }) => {
+      `('$sampleName', ({ sampleName }) => {
         const input = loadInputTxt(sampleName);
         const res = tokenize(rules, input);
         const expectedRes = loadOutputJson(sampleName, res);
@@ -215,16 +215,32 @@ describe('lexer/string', () => {
     });
 
     describe('templates', () => {
-      it('supports nested expression templates', () => {
-        const states: StatesMap = { $: {} };
-        const opts: StringOption[] = [
-          {
-            startsWith: '"',
-            templates: [{ type: 'expr', startsWith: '{', endsWith: '}' }],
-          },
-        ];
-        const rules = configStrings(states, opts);
-        const sampleName = 'string/expr-template';
+      const states: StatesMap = {
+        $: {
+          bracket$1$left: { t: 'string', match: '{{{' },
+          bracket$1$right: { t: 'string', match: '}}}' },
+          bracket$0$left: { t: 'string', match: '{' },
+          bracket$0$right: { t: 'string', match: '}' },
+        },
+      };
+      const opts: StringOption[] = [
+        {
+          startsWith: '"',
+          templates: [
+            { type: 'expr', startsWith: '{', endsWith: '}' },
+            { type: 'expr', startsWith: '{{{', endsWith: '}}}' },
+          ],
+        },
+      ];
+      const rules = configStrings(states, opts);
+
+      test.each`
+        sampleName
+        ${'string/expr-template'}
+        ${'string/expr-template-blocks-1'}
+        ${'string/expr-template-blocks-2'}
+        ${'string/expr-template-blocks-3'}
+      `('$sampleName', ({ sampleName }) => {
         const input = loadInputTxt(sampleName);
         const res = tokenize(rules, input);
         const expectedRes = loadOutputJson(sampleName, res);

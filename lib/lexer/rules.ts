@@ -79,3 +79,11 @@ export function sortStatesMap(statesMap: StatesMap): StatesMap {
   });
   return result;
 }
+
+export function copyStateDefinition(state: StateDefinition): StateDefinition {
+  const result = { ...state };
+  Object.entries(result).forEach(([key, val]) => {
+    result[key] = { ...val };
+  });
+  return result;
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "type": "str$0$start",
+    "value": "\"",
+    "offset": 0
+  },
+  {
+    "type": "str$0$value",
+    "value": "a",
+    "offset": 1
+  },
+  {
+    "type": "str$0$tpl$0$start",
+    "value": "{",
+    "offset": 2
+  },
+  {
+    "type": "bracket$0$left",
+    "value": "{",
+    "offset": 3
+  },
+  {
+    "type": "str$0$start",
+    "value": "\"",
+    "offset": 4
+  },
+  {
+    "type": "str$0$value",
+    "value": "b",
+    "offset": 5
+  },
+  {
+    "type": "str$0$end",
+    "value": "\"",
+    "offset": 6
+  },
+  {
+    "type": "bracket$0$right",
+    "value": "}",
+    "offset": 7
+  },
+  {
+    "type": "str$0$tpl$0$end",
+    "value": "}",
+    "offset": 8
+  },
+  {
+    "type": "str$0$value",
+    "value": "c",
+    "offset": 9
+  },
+  {
+    "type": "str$0$end",
+    "value": "\"",
+    "offset": 10
+  }
+]

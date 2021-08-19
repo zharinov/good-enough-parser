@@ -1,5 +1,6 @@
+import { getCounterpartBracketKey, isBracketKey, isRightKey } from './bracket';
 import type { StateDefinition, StatesMap, StringRule } from './rules';
-import { fallbackRule, sortStatesMap } from './rules';
+import { copyStateDefinition, fallbackRule, sortStatesMap } from './rules';
 import type { OptionBase } from './types';
 
 export interface VariableTemplateOption extends OptionBase {
@@ -25,23 +26,47 @@ interface ExprTplStateInput {
   tplStateName: string;
 }
 
-function exprTplState(
+interface ExprTplStateOutput {
+  $: StateDefinition;
+  tplState: StateDefinition;
+}
+
+function exprTplStatesMap(
   $: StateDefinition,
   { tplEndToken, tplEnd }: ExprTplStateInput
-): StateDefinition {
-  const result: StateDefinition = {};
-  const tplEndRule: StringRule = { t: 'string', match: tplEnd, pop: 1 };
-  for (const [ruleName, rule] of Object.entries($)) {
-    if (rule.t === 'string' && rule.match === tplEnd) {
-      result[tplEndToken] = tplEndRule;
-    } else {
-      result[ruleName] = { ...rule };
+): ExprTplStateOutput {
+  const rootState: StateDefinition = {};
+  const tplState: StateDefinition = copyStateDefinition($);
+
+  for (const [bracketKey, bracketRule] of Object.entries(tplState)) {
+    if (
+      bracketRule.t === 'string' &&
+      isBracketKey(bracketKey) &&
+      isRightKey(bracketKey) &&
+      (bracketRule.match.startsWith(tplEnd) ||
+        tplEnd.startsWith(bracketRule.match))
+    ) {
+      const counterpartKey = getCounterpartBracketKey(bracketKey);
+      if (!counterpartKey) {
+        throw new Error('String template definition conflicts with brackets');
+      }
+
+      const counterpartRule = tplState[counterpartKey];
+      if (!counterpartRule || counterpartRule.t !== 'string') {
+        throw new Error('String template definition conflicts with brackets');
+      }
+
+      delete tplState[bracketKey];
+      counterpartRule.push = '$';
+      rootState[counterpartKey] = { ...counterpartRule };
+      rootState[bracketKey] = { ...bracketRule, pop: 1 };
     }
   }
-  if (!result[tplEndToken]) {
-    result[tplEndToken] = tplEndRule;
-  }
-  return result;
+
+  const tplEndRule: StringRule = { t: 'string', match: tplEnd, pop: 1 };
+  tplState[tplEndToken] = tplEndRule;
+
+  return { $: rootState, tplState };
 }
 
 interface VarTplStateInput {
@@ -93,7 +118,7 @@ export function configStrings(
     return states;
   }
 
-  const $ = { ...states.$ };
+  const $ = copyStateDefinition(states.$);
 
   const strStates: Record<string, StateDefinition> = {};
 
@@ -158,7 +183,9 @@ export function configStrings(
   const tplStates: Record<string, StateDefinition> = {};
   for (const exprTplStateInput of exprTplPreStates) {
     const { tplStateName } = exprTplStateInput;
-    tplStates[tplStateName] = exprTplState($, exprTplStateInput);
+    const exprTplStates = exprTplStatesMap($, exprTplStateInput);
+    Object.assign($, exprTplStates.$);
+    tplStates[tplStateName] = exprTplStates.tplState;
   }
   for (const varTplStateInput of varTplPreStates) {
     const { tplStateName, strStateName } = varTplStateInput;
