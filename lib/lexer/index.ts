@@ -1,4 +1,3 @@
-import type { Token as MooToken } from 'moo';
 import { states as mooStates } from 'moo';
 import type { BracketOption } from './bracket';
 import { configBrackets } from './bracket';
