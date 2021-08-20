@@ -1,16 +1,16 @@
 [
   {
-    "type": "unknown",
+    "type": "_",
     "value": "foo ",
     "offset": 0
   },
   {
-    "type": "comment$0",
+    "type": "comment",
     "value": "// bar",
     "offset": 4
   },
   {
-    "type": "unknown",
+    "type": "_",
     "value": "\nbaz",
     "offset": 10
   }

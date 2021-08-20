@@ -1,86 +1,86 @@
 [
   {
-    "type": "str$0$start",
+    "type": "string-start",
     "value": "\"",
     "offset": 0
   },
   {
-    "type": "str$0$value",
+    "type": "string-value",
     "value": "a",
     "offset": 1
   },
   {
-    "type": "str$0$tpl$0$start",
+    "type": "template-start",
     "value": "{",
     "offset": 2
   },
   {
-    "type": "str$0$start",
+    "type": "string-start",
     "value": "\"",
     "offset": 3
   },
   {
-    "type": "str$0$value",
+    "type": "string-value",
     "value": "b",
     "offset": 4
   },
   {
-    "type": "str$0$end",
+    "type": "string-end",
     "value": "\"",
     "offset": 5
   },
   {
-    "type": "bracket$1$left",
+    "type": "bracket-left",
     "value": "{{{",
     "offset": 6
   },
   {
-    "type": "str$0$start",
+    "type": "string-start",
     "value": "\"",
     "offset": 9
   },
   {
-    "type": "str$0$value",
+    "type": "string-value",
     "value": "c",
     "offset": 10
   },
   {
-    "type": "str$0$end",
+    "type": "string-end",
     "value": "\"",
     "offset": 11
   },
   {
-    "type": "bracket$1$right",
+    "type": "bracket-right",
     "value": "}}}",
     "offset": 12
   },
   {
-    "type": "str$0$start",
+    "type": "string-start",
     "value": "\"",
     "offset": 15
   },
   {
-    "type": "str$0$value",
+    "type": "string-value",
     "value": "d",
     "offset": 16
   },
   {
-    "type": "str$0$end",
+    "type": "string-end",
     "value": "\"",
     "offset": 17
   },
   {
-    "type": "str$0$tpl$0$end",
+    "type": "template-end",
     "value": "}",
     "offset": 18
   },
   {
-    "type": "str$0$value",
+    "type": "string-value",
     "value": "e",
     "offset": 19
   },
   {
-    "type": "str$0$end",
+    "type": "string-end",
     "value": "\"",
     "offset": 20
   }

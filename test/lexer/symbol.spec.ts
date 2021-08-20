@@ -10,9 +10,9 @@ describe('lexer/symbol', () => {
     const input = 'foo+bar';
     const res = tokenize(rules, input);
     expect(res).toMatchObject([
-      { type: 'symbol' },
-      { type: 'unknown' },
-      { type: 'symbol' },
+      { type: 'symbol', value: 'foo' },
+      { type: '_' },
+      { type: 'symbol', value: 'bar' },
     ]);
   });
 });

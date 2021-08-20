@@ -12,9 +12,9 @@ describe('lexer/operator', () => {
     const input = '2+2';
     const res = tokenize(rules, input);
     expect(res).toMatchObject([
-      { type: 'unknown' },
-      { type: 'op$0' },
-      { type: 'unknown' },
+      { type: '_' },
+      { type: 'operator' },
+      { type: '_' },
     ]);
   });
 });

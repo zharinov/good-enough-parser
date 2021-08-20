@@ -1,26 +1,26 @@
 [
   {
-    "type": "unknown",
+    "type": "_",
     "value": "a",
     "offset": 0
   },
   {
-    "type": "str$0$start",
+    "type": "string-start",
     "value": "\"",
     "offset": 1
   },
   {
-    "type": "str$0$value",
+    "type": "string-value",
     "value": "b",
     "offset": 2
   },
   {
-    "type": "str$0$end",
+    "type": "string-end",
     "value": "\"",
     "offset": 3
   },
   {
-    "type": "unknown",
+    "type": "_",
     "value": "c",
     "offset": 4
   }

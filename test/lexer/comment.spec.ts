@@ -1,6 +1,8 @@
 import { loadInputTxt, loadOutputJson, tokenize } from '#test-utils';
-import { CommentOption, configComments } from '/lexer/comment';
-import { fallbackRule, StatesMap } from '/lexer/rules';
+import type { CommentOption } from '/lexer/comment';
+import { configComments } from '/lexer/comment';
+import type { StatesMap } from '/lexer/rules';
+import { fallbackRule } from '/lexer/rules';
 
 describe('lexer/comment', () => {
   const states: StatesMap = {
@@ -10,8 +12,8 @@ describe('lexer/comment', () => {
   };
 
   const opts: CommentOption[] = [
-    { t: 'line-comment', startsWith: '//' },
-    { t: 'multiline-comment', startsWith: '/*', endsWith: '*/' },
+    { type: 'line-comment', startsWith: '//' },
+    { type: 'multiline-comment', startsWith: '/*', endsWith: '*/' },
   ];
 
   test.each`

@@ -16,12 +16,12 @@ describe('lexer/bracket', () => {
     const input = '{[()]}';
     const res = tokenize(rules, input);
     expect(res).toMatchObject([
-      { type: 'bracket$0$left' },
-      { type: 'bracket$1$left' },
-      { type: 'bracket$2$left' },
-      { type: 'bracket$2$right' },
-      { type: 'bracket$1$right' },
-      { type: 'bracket$0$right' },
+      { type: 'bracket-left', value: '{' },
+      { type: 'bracket-left', value: '[' },
+      { type: 'bracket-left', value: '(' },
+      { type: 'bracket-right', value: ')' },
+      { type: 'bracket-right', value: ']' },
+      { type: 'bracket-right', value: '}' },
     ]);
   });
 });

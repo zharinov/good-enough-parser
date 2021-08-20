@@ -3,11 +3,11 @@ import { sortStateRules } from './rules';
 import type { OptionBase } from './types';
 
 export interface LineCommentOption extends OptionBase {
-  t: 'line-comment';
+  type: 'line-comment';
 }
 
 export interface MultilineCommentOption extends OptionBase {
-  t: 'multiline-comment';
+  type: 'multiline-comment';
   endsWith: string;
 }
 
@@ -25,14 +25,14 @@ export function configComments(
   opts.forEach((option, idx) => {
     const tokenName = `comment$${idx}`;
     const start = esc(option.startsWith);
-    if (option.t === 'line-comment') {
+    if (option.type === 'line-comment') {
       const anyChars = '.*?';
       const rule: RegexRule = {
         t: 'regex',
         match: new RegExp(`${start}${anyChars}$`),
       };
       commentRules[tokenName] = rule;
-    } else if (option.t === 'multiline-comment') {
+    } else if (option.type === 'multiline-comment') {
       const anyChars = '[^]*?';
       const end = esc(option.endsWith);
       const rule: RegexRule = {

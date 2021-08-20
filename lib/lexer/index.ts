@@ -10,9 +10,10 @@ import { fallbackRule } from './rules';
 import type { StringOption } from './string';
 import { configStrings } from './string';
 import { configSymbols } from './symbol';
-import { coerceToken, Token } from './token';
+import type { Token } from './token';
+import { coerceToken } from './token';
 
-interface LexerConfig {
+export interface LexerConfig {
   comments: CommentOption[];
   symbols: RegExp;
   operators: OperatorOption[];

@@ -1,56 +1,56 @@
 [
   {
-    "type": "str$0$start",
+    "type": "string-start",
     "value": "\"",
     "offset": 0
   },
   {
-    "type": "str$0$value",
+    "type": "string-value",
     "value": "a",
     "offset": 1
   },
   {
-    "type": "str$0$tpl$0$start",
+    "type": "template-start",
     "value": "{",
     "offset": 2
   },
   {
-    "type": "bracket$0$left",
+    "type": "bracket-left",
     "value": "{",
     "offset": 3
   },
   {
-    "type": "str$0$start",
+    "type": "string-start",
     "value": "\"",
     "offset": 4
   },
   {
-    "type": "str$0$value",
+    "type": "string-value",
     "value": "b",
     "offset": 5
   },
   {
-    "type": "str$0$end",
+    "type": "string-end",
     "value": "\"",
     "offset": 6
   },
   {
-    "type": "bracket$0$right",
+    "type": "bracket-right",
     "value": "}",
     "offset": 7
   },
   {
-    "type": "str$0$tpl$0$end",
+    "type": "template-end",
     "value": "}",
     "offset": 8
   },
   {
-    "type": "str$0$value",
+    "type": "string-value",
     "value": "c",
     "offset": 9
   },
   {
-    "type": "str$0$end",
+    "type": "string-end",
     "value": "\"",
     "offset": 10
   }
