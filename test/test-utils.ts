@@ -1,5 +1,5 @@
-import { StatesMap } from '/lexer/rules';
-import { coerceToken, Token } from '/lexer/token';
+import { coerceToken } from '/lexer/token';
+import { StatesMap, Token } from '/lexer/types';
 import { readFileSync, writeFileSync } from 'fs';
 import * as moo from 'moo';
 import { dirname, join } from 'upath';

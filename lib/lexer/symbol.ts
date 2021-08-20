@@ -1,9 +1,5 @@
-import type { StatesMap } from './rules';
 import { sortStateRules } from './rules';
-
-export interface SymbolOption {
-  match: RegExp;
-}
+import type { StatesMap, SymbolOption } from './types';
 
 export function configSymbols(
   states: StatesMap,

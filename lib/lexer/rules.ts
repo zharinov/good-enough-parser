@@ -1,38 +1,7 @@
 import { fallback as mooFallback } from 'moo';
-
-export interface StringRule {
-  t: 'string';
-  match: string;
-  push?: string;
-  pop?: number;
-  next?: string;
-}
-
-export interface RegexRule {
-  t: 'regex';
-  match: RegExp;
-  push?: string;
-  pop?: number;
-  next?: string;
-  lineBreaks?: true;
-}
-
-export interface FallbackRule {
-  t: 'fallback';
-  fallback: true;
-}
-
-export type LexerRule = StringRule | RegexRule | FallbackRule;
+import { FallbackRule, LexerRule, StateDefinition, StatesMap } from './types';
 
 export const fallbackRule: FallbackRule = { t: 'fallback', ...mooFallback };
-
-export type TokenName = string;
-export type StateDefinition = Record<TokenName, LexerRule>;
-
-export interface StatesMap {
-  $: StateDefinition;
-  [k: string]: StateDefinition;
-}
 
 function compareLexerRules(x: LexerRule, y: LexerRule): -1 | 0 | 1 {
   if (x.t === 'string' && y.t === 'string') {

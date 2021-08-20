@@ -1,10 +1,10 @@
-import type { StateDefinition, StatesMap, StringRule } from './rules';
 import { sortStateRules } from './rules';
-import type { OptionBase } from './types';
-
-export interface BracketOption extends OptionBase {
-  endsWith: string;
-}
+import type {
+  BracketOption,
+  StateDefinition,
+  StatesMap,
+  StringRule,
+} from './types';
 
 export function isBracketKey(key: string): boolean {
   return key.startsWith('bracket$');

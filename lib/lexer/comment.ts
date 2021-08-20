@@ -1,17 +1,10 @@
-import type { RegexRule, StateDefinition, StatesMap } from './rules';
 import { sortStateRules } from './rules';
-import type { OptionBase } from './types';
-
-export interface LineCommentOption extends OptionBase {
-  type: 'line-comment';
-}
-
-export interface MultilineCommentOption extends OptionBase {
-  type: 'multiline-comment';
-  endsWith: string;
-}
-
-export type CommentOption = LineCommentOption | MultilineCommentOption;
+import type {
+  CommentOption,
+  RegexRule,
+  StateDefinition,
+  StatesMap,
+} from './types';
 
 export function esc(input: string): string {
   return input.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');

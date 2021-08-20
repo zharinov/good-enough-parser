@@ -1,7 +1,10 @@
-import type { StateDefinition, StatesMap, StringRule } from './rules';
 import { sortStateRules } from './rules';
-
-export type OperatorOption = string;
+import type {
+  OperatorOption,
+  StateDefinition,
+  StatesMap,
+  StringRule,
+} from './types';
 
 export function configOperators(
   states: StatesMap,

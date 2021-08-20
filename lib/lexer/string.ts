@@ -1,24 +1,11 @@
 import { getCounterpartBracketKey, isBracketKey, isRightKey } from './bracket';
-import type { StateDefinition, StatesMap, StringRule } from './rules';
 import { copyStateDefinition, fallbackRule, sortStatesMap } from './rules';
-import type { OptionBase } from './types';
-
-export interface VariableTemplateOption extends OptionBase {
-  type: 'var';
-  allowedTokens: string[];
-}
-
-export interface ExpressionTemplateOption extends OptionBase {
-  type: 'expr';
-  endsWith: string;
-}
-
-export type TemplateOption = VariableTemplateOption | ExpressionTemplateOption;
-
-export interface StringOption extends OptionBase {
-  endsWith?: string;
-  templates?: TemplateOption[];
-}
+import type {
+  StateDefinition,
+  StatesMap,
+  StringOption,
+  StringRule,
+} from './types';
 
 interface ExprTplStateInput {
   tplEndToken: string;

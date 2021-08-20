@@ -1,25 +1,12 @@
 import { states as mooStates } from 'moo';
-import type { BracketOption } from './bracket';
 import { configBrackets } from './bracket';
-import type { CommentOption } from './comment';
 import { configComments } from './comment';
-import type { OperatorOption } from './operator';
 import { configOperators } from './operator';
-import type { StatesMap } from './rules';
 import { fallbackRule } from './rules';
-import type { StringOption } from './string';
 import { configStrings } from './string';
 import { configSymbols } from './symbol';
-import type { Token } from './token';
 import { coerceToken } from './token';
-
-export interface LexerConfig {
-  comments: CommentOption[];
-  symbols: RegExp;
-  operators: OperatorOption[];
-  brackets: BracketOption[];
-  strings: StringOption[];
-}
+import type { Lexer, LexerConfig, StatesMap, Token } from './types';
 
 export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
   let result: StatesMap = {
@@ -36,11 +23,6 @@ export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
   result = configBrackets(result, brackets);
   result = configStrings(result, strings);
   return result;
-}
-
-export interface Lexer {
-  reset(input?: string): Lexer;
-  [Symbol.iterator](): Iterator<Token, null>;
 }
 
 export function createLexer(options: LexerConfig): Lexer {
