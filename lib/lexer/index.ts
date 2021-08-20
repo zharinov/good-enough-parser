@@ -25,7 +25,7 @@ export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
     $: {
       newline: { t: 'regex', match: /\r?\n/, lineBreaks: true },
       whitespace: { t: 'regex', match: /[ \t\r]+/ },
-      ___: fallbackRule,
+      _: fallbackRule,
     },
   };
   const { comments, symbols, operators, brackets, strings } = lexerConfig;

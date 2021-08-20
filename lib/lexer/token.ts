@@ -8,7 +8,7 @@ export interface Token {
 
 export function coerceToken({ type, value, offset }: MooToken): Token {
   return {
-    type: type ?? '___',
+    type: type ?? '_',
     value,
     offset,
   };
