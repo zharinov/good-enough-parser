@@ -26,10 +26,7 @@
       "/*": ["./lib/*"],
       "#*": ["./test/*"]
     },
-    // Other
-    // Only enable this for applications.
-    // Packages doing this force their consumers to.
-    // "esModuleInterop": true,
+
     // Transformer Plugins made possible by https://github.com/cevek/ttypescript
     "plugins": [
       // https://github.com/LeDDGroup/typescript-transform-paths
