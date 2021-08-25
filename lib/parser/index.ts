@@ -1,6 +1,6 @@
-import type { Tree } from './types';
 import { nextOffset } from '/lexer/token';
 import type { Lexer } from '/lexer/types';
+import type { Tree } from './types';
 
 export function preprocessTree(lexer: Lexer): Tree {
   const stack: Tree[] = [];
