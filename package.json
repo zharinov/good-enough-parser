@@ -24,13 +24,10 @@
     "lint": "run-s lint:*",
     "lint:types": "tsc --noEmit",
     "lint:eslint": "eslint . --ext .ts,.tsx --max-warnings 0",
-    "lint:imports": "format-imports --check lib test",
     "lint:prettier": "prettier --check .",
-    "fix": "run-s fix:format fix:eslint",
-    "fix:format": "run-s fix:prettier fix:imports",
-    "fix:imports": "format-imports lib && format-imports test",
-    "fix:prettier": "prettier --write .",
+    "fix": "run-s fix:*",
     "fix:eslint": "eslint . --ext .ts,.tsx --fix",
+    "fix:prettier": "prettier --write .",
     "dev": "run-p dev:*",
     "dev:coverage": "http-server ./coverage/lcov-report",
     "build": "run-s clean build:*",
@@ -59,8 +56,8 @@
     "dripip": "0.10.0",
     "eslint": "7.31.0",
     "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.24.2",
     "eslint-plugin-only-warn": "1.0.3",
-    "format-imports": "2.4.1",
     "http-server": "13.0.0",
     "husky": "7.0.1",
     "jest": "27.0.6",
@@ -77,10 +74,6 @@
     "typescript-snapshots-plugin": "1.7.0",
     "typescript-transform-paths": "3.1.0",
     "upath": "2.0.1"
-  },
-  "importSorter": {
-    "emptyLinesBetweenGroups": 0,
-    "wrappingStyle": "prettier"
   },
   "resolutions": {
     "comment-parser": "1.1.5"
