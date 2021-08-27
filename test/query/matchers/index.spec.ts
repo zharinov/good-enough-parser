@@ -1,86 +1,62 @@
 import { lexerConfig as pythonConfig } from '/lang/python';
 import { createLexer } from '/lexer';
 import { preprocessTree } from '../../../lib/parser/tree';
-import {
-  ManyMatcher,
-  OpMatcher,
-  SeqMatcher,
-  SymMatcher,
-} from '/query/matchers';
 import { createCursor } from '/query/zipper';
+import * as q from '/query/builder';
+import type { Checkpoint } from '/query/types/checkpoint';
+import type { Token } from '/lexer/types';
 
 const lexer = createLexer(pythonConfig);
 
-function startCursor(input: string) {
+type Ctx = string[];
+
+function getInitialCheckpoint(input: string): Checkpoint<Ctx> {
   lexer.reset(input);
   const tree = preprocessTree(lexer);
   const cursor = createCursor(tree).next;
-  return cursor;
+  return { cursor, context: [] };
 }
 
+const handler = (ctx: Ctx, token: Token) => [...ctx, token.value];
+
 describe('query/matchers/index', () => {
-  const handler = (x: number) => x + 1;
+  describe('Sequential matching', () => {
+    it('handles sequences', () => {
+      const input = 'foo.bar';
+      const prevCheckpoint = getInitialCheckpoint(input);
+      const seqMatcher = q.sym<Ctx>(handler).op(handler).sym(handler).build();
 
-  it('SeqMatcher', () => {
-    const cursor = startCursor('foo.bar');
-    const matcher = new SeqMatcher({
-      matchers: [
-        new SymMatcher({ matcher: /.*/, handler }),
-        new OpMatcher({ matcher: '.', handler }),
-        new SymMatcher({ matcher: /.*/, handler }),
-      ],
+      const nextCheckpoint = seqMatcher.match(prevCheckpoint);
+
+      const { cursor, context } = { ...nextCheckpoint };
+      expect(context).toEqual(['foo', '.', 'bar']);
+      expect(cursor).toBeUndefined();
     });
-    const { cursor: newCursor, context } =
-      matcher.match({
-        cursor,
-        context: 0,
-      }) ?? {};
-    expect(context).toEqual(3);
-    expect(newCursor).toBeUndefined();
   });
 
-  it('ManyMatcher', () => {
-    const cursor = startCursor('...');
-    const matcher = new ManyMatcher({
-      min: 0,
-      max: null,
-      matcher: new OpMatcher({ matcher: '.', handler }),
+  describe('Repetitions matching', () => {
+    it('handles many occurrences', () => {
+      const input = '+-+';
+      const prevCheckpoint = getInitialCheckpoint(input);
+      const manyMatcher = q.many<Ctx>(q.op(handler)).build();
+
+      const nextCheckpoint = manyMatcher.match(prevCheckpoint);
+
+      const { cursor, context } = { ...nextCheckpoint };
+      expect(context).toEqual(['+', '-', '+']);
+      expect(cursor).toBeUndefined();
     });
 
-    const checkpoint = matcher.match({
-      cursor,
-      context: 0,
-    });
-    expect(checkpoint).not.toBeNull();
-    expect(checkpoint?.context).toEqual(3);
-    expect(checkpoint?.cursor).toBeUndefined();
-  });
+    it('supportsy backtracking', () => {
+      const prevCheckpoint = getInitialCheckpoint('---x');
+      const matcher = q.many<Ctx>(q.op('-', handler)).op('-').sym('x').build();
 
-  it('backtracking', () => {
-    const cursor = startCursor('...baz');
-    const matcher = new SeqMatcher({
-      matchers: [
-        new ManyMatcher({
-          min: 0,
-          max: null,
-          matcher: new OpMatcher({ matcher: '.', handler }),
-        }),
-        new SeqMatcher({
-          matchers: [
-            new OpMatcher({ matcher: '.' }),
-            new SymMatcher<number>({
-              matcher: 'baz',
-            }),
-          ],
-        }),
-      ],
+      const nextCheckpoint = matcher.match(prevCheckpoint);
+
+      const { cursor, context } = { ...nextCheckpoint };
+      expect(context).toHaveLength(2);
+      expect(context).toEqual(['-', '-']);
+      expect(cursor).toBeUndefined();
     });
-    const checkpoint = matcher.match({
-      cursor,
-      context: 0,
-    });
-    expect(checkpoint).not.toBeNull();
-    expect(checkpoint?.context).toEqual(2);
-    expect(checkpoint?.cursor).toBeUndefined();
   });
 });

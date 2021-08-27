@@ -1,28 +1,32 @@
 import type { Checkpoint } from '../types/checkpoint';
-import type { SymMatcherOption } from '../types/matcher';
 import { AbstractMatcher } from './abstract-matcher';
-import type { SymbolToken } from '/lexer/types';
+import type {
+  SymMatcherHandler,
+  SymMatcherOptions,
+  SymMatcherValue,
+} from './types';
 
 export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
-  private matcher: string | RegExp;
+  readonly sym: SymMatcherValue;
+  readonly handler: SymMatcherHandler<Ctx> | null;
 
-  handler?: (ctx: Ctx, token: SymbolToken) => Ctx;
-
-  constructor({ matcher, handler }: SymMatcherOption<Ctx>) {
+  constructor({ value, handler }: SymMatcherOptions<Ctx>) {
     super();
-    this.matcher = matcher;
-    this.handler = handler;
+    this.sym = value;
+    this.handler = handler ?? null;
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const { cursor, context } = checkpoint;
     const node = cursor?.node;
     if (node?.type === 'symbol') {
-      if (
-        typeof this.matcher === 'string'
-          ? this.matcher === node.value
-          : this.matcher.test(node.value)
-      ) {
+      let isMatched = true;
+      if (typeof this.sym === 'string') {
+        isMatched = this.sym === node.value;
+      } else if (this.sym instanceof RegExp) {
+        isMatched = this.sym.test(node.value);
+      }
+      if (isMatched) {
         const nextCursor = cursor?.right;
         const nextContext = this.handler
           ? this.handler(context, node)

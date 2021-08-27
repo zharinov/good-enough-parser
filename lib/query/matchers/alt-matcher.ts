@@ -1,17 +1,16 @@
 import type { Checkpoint } from '../types/checkpoint';
-import type { AltMatcherOption, Matcher } from '../types/matcher';
 import { AbstractMatcher } from './abstract-matcher';
+import type { AltMatcherOptions, Matcher } from './types';
 
 export class AltMatcher<Ctx> extends AbstractMatcher<Ctx> {
-  private matchers: Matcher<Ctx>[];
-  private idx: number;
-  private checkpoint: Checkpoint<Ctx> | null;
+  readonly alts: Matcher<Ctx>[];
 
-  constructor({ matchers }: AltMatcherOption<Ctx>) {
+  private idx = -1;
+  private checkpoint: Checkpoint<Ctx> | null = null;
+
+  constructor({ matchers }: AltMatcherOptions<Ctx>) {
     super();
-    this.matchers = matchers;
-    this.idx = -1;
-    this.checkpoint = null;
+    this.alts = matchers;
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
@@ -23,7 +22,7 @@ export class AltMatcher<Ctx> extends AbstractMatcher<Ctx> {
   override nextMatch(): Checkpoint<Ctx> | null {
     if (this.checkpoint) {
       this.idx += 1;
-      let matcher = this.matchers[this.idx];
+      let matcher = this.alts[this.idx];
       while (matcher) {
         const checkpoint = matcher.match(this.checkpoint);
         if (checkpoint) {
@@ -31,7 +30,7 @@ export class AltMatcher<Ctx> extends AbstractMatcher<Ctx> {
         }
 
         this.idx += 1;
-        matcher = this.matchers[this.idx];
+        matcher = this.alts[this.idx];
       }
     }
 

@@ -1,32 +1,28 @@
 import type { Checkpoint } from '../types/checkpoint';
-import type { Matcher, SeqMatcherOptions } from '../types/matcher';
 import { AbstractMatcher } from './abstract-matcher';
+import type { Matcher, SeqMatcherOptions } from './types';
 
 export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
-  private readonly matchers: Matcher<Ctx>[];
+  readonly seq: Matcher<Ctx>[];
+  readonly length: number;
 
-  private readonly length: number;
-
-  private currentCheckpoint: Checkpoint<Ctx> | null;
-
-  private idx: number;
+  private currentCheckpoint: Checkpoint<Ctx> | null = null;
+  private idx = 0;
 
   constructor({ matchers }: SeqMatcherOptions<Ctx>) {
     super();
-    this.matchers = matchers;
-    this.length = this.matchers.length;
-    this.currentCheckpoint = null;
-    this.idx = 0;
+    this.seq = matchers;
+    this.length = this.seq.length;
   }
 
-  private isMatchComplete(): boolean {
+  private isMatchingComplete(): boolean {
     return this.idx === this.length;
   }
 
   private matchForward(): Checkpoint<Ctx> | null {
     if (this.currentCheckpoint) {
       while (this.idx < this.length) {
-        const matcher = this.matchers[this.idx] as Matcher<Ctx>;
+        const matcher = this.seq[this.idx] as Matcher<Ctx>;
         const newCheckpoint = matcher.match(this.currentCheckpoint);
         if (!newCheckpoint) {
           break;
@@ -35,7 +31,7 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
         this.idx += 1;
       }
 
-      if (this.isMatchComplete()) {
+      if (this.isMatchingComplete()) {
         return this.currentCheckpoint;
       }
     }
@@ -46,7 +42,7 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
   private backtrack(): Checkpoint<Ctx> | null {
     while (this.idx > 0) {
       this.idx -= 1;
-      const matcher = this.matchers[this.idx] as Matcher<Ctx>;
+      const matcher = this.seq[this.idx] as Matcher<Ctx>;
       const match = matcher.nextMatch();
       if (match) {
         this.currentCheckpoint = match;
@@ -61,7 +57,7 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     this.idx = 0;
     this.currentCheckpoint = checkpoint;
-    while (!this.isMatchComplete()) {
+    while (!this.isMatchingComplete()) {
       const forwardMatch = this.matchForward();
       if (!forwardMatch) {
         const backwardMatch = this.backtrack();
@@ -79,7 +75,7 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
       return null;
     }
 
-    while (!this.isMatchComplete()) {
+    while (!this.isMatchingComplete()) {
       const forwardMatch = this.matchForward();
       if (!forwardMatch) {
         const backwardMatch = this.backtrack();

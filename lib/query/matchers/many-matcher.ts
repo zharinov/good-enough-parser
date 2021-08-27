@@ -1,26 +1,17 @@
 import type { Checkpoint } from '../types/checkpoint';
-import type { ManyMatcherOptions, Matcher } from '../types/matcher';
 import { AbstractMatcher } from './abstract-matcher';
+import type { ManyMatcherOptions, Matcher } from './types';
 
 export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
-  private matcher: Matcher<Ctx>;
+  readonly manyOf: Matcher<Ctx>;
+  readonly min: number;
+  readonly max: number | null;
 
-  private min: number;
-
-  private max: number | null;
-
-  private idx: number;
-
+  private idx = 0;
   private matches: Checkpoint<Ctx>[] = [];
 
   constructor({ matcher, min, max }: ManyMatcherOptions<Ctx>) {
     super();
-
-    this.matcher = matcher;
-    this.min = min;
-    this.max = max;
-
-    this.idx = 0;
 
     if (min < 0) {
       throw new Error(`Invalid minimal bound: ${min}`);
@@ -29,18 +20,22 @@ export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
     if (max !== null && min > max) {
       throw new Error(`Invalid boundaries: ${min} > ${max}`);
     }
+
+    this.manyOf = matcher;
+    this.min = min;
+    this.max = max;
   }
 
   private nextRound(checkpoints: Checkpoint<Ctx>[]): Checkpoint<Ctx>[] {
     const results: Checkpoint<Ctx>[] = [];
     checkpoints.forEach((checkpoint) => {
-      const match = this.matcher.match(checkpoint);
+      const match = this.manyOf.match(checkpoint);
       if (match) {
         const matchResults: Checkpoint<Ctx>[] = [match];
-        let nextResult = this.matcher.nextMatch();
+        let nextResult = this.manyOf.nextMatch();
         while (nextResult) {
           matchResults.push(nextResult);
-          nextResult = this.matcher.nextMatch();
+          nextResult = this.manyOf.nextMatch();
         }
         results.unshift(...matchResults);
       }

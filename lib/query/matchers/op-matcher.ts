@@ -1,28 +1,32 @@
 import type { Checkpoint } from '../types/checkpoint';
-import type { OpMatcherOption } from '../types/matcher';
 import { AbstractMatcher } from './abstract-matcher';
-import type { OperatorToken } from '/lexer/types';
+import type {
+  OpMatcherHandler,
+  OpMatcherOptions,
+  OpMatcherValue,
+} from './types';
 
 export class OpMatcher<Ctx> extends AbstractMatcher<Ctx> {
-  private matcher: string | RegExp;
+  readonly op: OpMatcherValue;
+  readonly handler: OpMatcherHandler<Ctx> | null;
 
-  handler?: (ctx: Ctx, token: OperatorToken) => Ctx;
-
-  constructor({ matcher, handler }: OpMatcherOption<Ctx>) {
+  constructor({ value, handler }: OpMatcherOptions<Ctx>) {
     super();
-    this.matcher = matcher;
-    this.handler = handler;
+    this.op = value;
+    this.handler = handler ?? null;
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const { cursor, context } = checkpoint;
     const node = cursor?.node;
     if (node?.type === 'operator') {
-      if (
-        typeof this.matcher === 'string'
-          ? this.matcher === node.value
-          : this.matcher.test(node.value)
-      ) {
+      let isMatched = true;
+      if (typeof this.op === 'string') {
+        isMatched = this.op === node.value;
+      } else if (this.op instanceof RegExp) {
+        isMatched = this.op.test(node.value);
+      }
+      if (isMatched) {
         const nextCursor = cursor?.right;
         const nextContext = this.handler
           ? this.handler(context, node)
