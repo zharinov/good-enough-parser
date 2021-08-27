@@ -13,7 +13,7 @@ type Ctx = string[];
 function getInitialCheckpoint(input: string): Checkpoint<Ctx> {
   lexer.reset(input);
   const tree = preprocessTree(lexer);
-  const cursor = createCursor(tree).next;
+  const cursor = createCursor(tree).down;
   return { cursor, context: [] };
 }
 
