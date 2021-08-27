@@ -47,7 +47,7 @@ describe('query/matchers/index', () => {
       expect(cursor).toBeUndefined();
     });
 
-    it('supportsy backtracking', () => {
+    it('supports backtracking', () => {
       const prevCheckpoint = getInitialCheckpoint('---x');
       const matcher = q.many<Ctx>(q.op('-', handler)).op('-').sym('x').build();
 
