@@ -24,7 +24,7 @@ describe('query/matchers/index', () => {
     it('handles sequences', () => {
       const input = 'foo.bar';
       const prevCheckpoint = getInitialCheckpoint(input);
-      const seqMatcher = q.sym<Ctx>(handler).op(handler).sym(handler).build();
+      const seqMatcher = q.sym(handler).op(handler).sym(handler).build();
 
       const nextCheckpoint = seqMatcher.match(prevCheckpoint);
 
@@ -38,7 +38,7 @@ describe('query/matchers/index', () => {
     it('handles many occurrences', () => {
       const input = '+-+';
       const prevCheckpoint = getInitialCheckpoint(input);
-      const manyMatcher = q.many<Ctx>(q.op(handler)).build();
+      const manyMatcher = q.many(q.op(handler)).build();
 
       const nextCheckpoint = manyMatcher.match(prevCheckpoint);
 
@@ -49,7 +49,7 @@ describe('query/matchers/index', () => {
 
     it('supports backtracking', () => {
       const prevCheckpoint = getInitialCheckpoint('---x');
-      const matcher = q.many<Ctx>(q.op('-', handler)).op('-').sym('x').build();
+      const matcher = q.many(q.op('-', handler)).op('-').sym('x').build();
 
       const nextCheckpoint = matcher.match(prevCheckpoint);
 
