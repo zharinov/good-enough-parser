@@ -5,8 +5,12 @@ import {
   SeqMatcher,
   SymMatcher,
 } from './matchers';
+import { NumMatcher } from './matchers/num-matcher';
 import type {
   Matcher,
+  NumMatcherHandler,
+  NumMatcherOptions,
+  NumMatcherValue,
   OpMatcherHandler,
   OpMatcherOptions,
   OpMatcherValue,
@@ -43,6 +47,20 @@ abstract class AbstractBuilder<Ctx> {
   ): SeqBuilder<Ctx> {
     const opts = coerceOpOptions(arg1, arg2);
     const builder = new OpBuilder<Ctx>(opts);
+    return new SeqBuilder<Ctx>(this, builder);
+  }
+
+  num(): SeqBuilder<Ctx>;
+  num(value: NumMatcherValue): SeqBuilder<Ctx>;
+  num(handler: NumMatcherHandler<Ctx>): SeqBuilder<Ctx>;
+  num(value: NumMatcherValue, handler: NumMatcherHandler<Ctx>): SeqBuilder<Ctx>;
+  num(opts: NumMatcherOptions<Ctx>): SeqBuilder<Ctx>;
+  num(
+    arg1?: NumMatcherValue | NumMatcherOptions<Ctx> | NumMatcherHandler<Ctx>,
+    arg2?: NumMatcherHandler<Ctx>
+  ): SeqBuilder<Ctx> {
+    const opts = coerceNumOptions<Ctx>(arg1, arg2);
+    const builder = new NumBuilder<Ctx>(opts);
     return new SeqBuilder<Ctx>(this, builder);
   }
 
@@ -195,6 +213,59 @@ export function op<Ctx>(
 ): OpBuilder<Ctx> {
   const opts = coerceOpOptions<Ctx>(arg1, arg2);
   return new OpBuilder<Ctx>(opts);
+}
+
+// Numbers
+
+export class NumBuilder<Ctx> extends AbstractBuilder<Ctx> {
+  constructor(private opts: NumMatcherOptions<Ctx>) {
+    super();
+  }
+
+  build(): NumMatcher<Ctx> {
+    return new NumMatcher<Ctx>(this.opts);
+  }
+}
+
+function coerceNumOptions<Ctx>(
+  arg1?: NumMatcherValue | NumMatcherOptions<Ctx> | NumMatcherHandler<Ctx>,
+  arg2?: NumMatcherHandler<Ctx>
+): NumMatcherOptions<Ctx> {
+  if (typeof arg1 === 'string' || arg1 instanceof RegExp) {
+    return {
+      value: arg1,
+      handler: arg2 ?? null,
+    };
+  }
+
+  if (typeof arg1 === 'function') {
+    return {
+      value: null,
+      handler: arg1,
+    };
+  }
+
+  if (arg1 !== null && typeof arg1 === 'object') {
+    return arg1;
+  }
+
+  return { value: null, handler: null };
+}
+
+export function num<Ctx>(): NumBuilder<Ctx>;
+export function num<Ctx>(value: NumMatcherValue): NumBuilder<Ctx>;
+export function num<Ctx>(handler: NumMatcherHandler<Ctx>): NumBuilder<Ctx>;
+export function num<Ctx>(
+  value: NumMatcherValue,
+  handler: NumMatcherHandler<Ctx>
+): NumBuilder<Ctx>;
+export function num<Ctx>(opts: NumMatcherOptions<Ctx>): NumBuilder<Ctx>;
+export function num<Ctx>(
+  arg1?: NumMatcherValue | NumMatcherOptions<Ctx> | NumMatcherHandler<Ctx>,
+  arg2?: NumMatcherHandler<Ctx>
+): NumBuilder<Ctx> {
+  const opts = coerceNumOptions<Ctx>(arg1, arg2);
+  return new NumBuilder<Ctx>(opts);
 }
 
 // Repetitive patterns

@@ -37,6 +37,8 @@ export function coerceToken({ type, value, offset }: MooToken): Token {
       }
     } else if (p1 === 'symbol') {
       return { type: 'symbol', ...base };
+    } else if (p1 === 'number') {
+      return { type: 'number', ...base };
     }
   }
 

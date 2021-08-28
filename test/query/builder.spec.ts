@@ -38,6 +38,41 @@ describe('query/builder', () => {
     });
   });
 
+  describe('Number builder', () => {
+    const handler = (x: unknown) => x;
+
+    test.each`
+      arg1                        | arg2         | num        | handler
+      ${undefined}                | ${undefined} | ${null}    | ${null}
+      ${'42'}                     | ${undefined} | ${'42'}    | ${null}
+      ${{ value: '42' }}          | ${undefined} | ${'42'}    | ${null}
+      ${/[1-9]/}                  | ${undefined} | ${/[1-9]/} | ${null}
+      ${{ value: /[1-9]/ }}       | ${undefined} | ${/[1-9]/} | ${null}
+      ${'42'}                     | ${handler}   | ${'42'}    | ${expect.any(Function) as never}
+      ${{ value: '42', handler }} | ${undefined} | ${'42'}    | ${expect.any(Function) as never}
+      ${handler}                  | ${undefined} | ${null}    | ${expect.any(Function) as never}
+    `('sym($arg1, $arg2)', ({ arg1, arg2, num, handler }) => {
+      let b1;
+      let b2;
+
+      if (arg2) {
+        b1 = builder.num(arg1, arg2);
+        b2 = b1.num(arg1, arg2);
+      } else if (arg1) {
+        b1 = builder.num(arg1);
+        b2 = b1.num(arg1);
+      } else {
+        b1 = builder.num();
+        b2 = b1.num();
+      }
+
+      const expected = { num, handler };
+
+      expect(b1.build()).toEqual(expected);
+      expect(b2.build()).toMatchObject({ seq: [expected, expected] });
+    });
+  });
+
   describe('Operator builder', () => {
     const handler = (x: unknown) => x;
 

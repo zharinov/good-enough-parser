@@ -40,9 +40,14 @@ export interface SymbolOption {
   match: RegExp;
 }
 
+export interface NumberOption {
+  match: RegExp;
+}
+
 export interface LexerConfig {
   comments: CommentOption[];
   symbols: RegExp;
+  numbers: RegExp;
   operators: OperatorOption[];
   brackets: BracketOption[];
   strings: StringOption[];
@@ -138,6 +143,10 @@ export interface SymbolToken extends TokenBase {
   type: 'symbol';
 }
 
+export interface NumberToken extends TokenBase {
+  type: 'number';
+}
+
 export interface UnknownToken extends TokenBase {
   type: '_';
 }
@@ -155,4 +164,5 @@ export type Token =
   | TemplateStartToken
   | TemplateEndToken
   | SymbolToken
+  | NumberToken
   | UnknownToken;

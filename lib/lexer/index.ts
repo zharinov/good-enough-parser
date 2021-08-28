@@ -1,6 +1,7 @@
 import { states as mooStates } from 'moo';
 import { configBrackets } from './bracket';
 import { configComments } from './comment';
+import { configNumbers } from './number';
 import { configOperators } from './operator';
 import { fallbackRule } from './rules';
 import { configStrings } from './string';
@@ -16,9 +17,11 @@ export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
       _: fallbackRule,
     },
   };
-  const { comments, symbols, operators, brackets, strings } = lexerConfig;
+  const { comments, symbols, operators, brackets, strings, numbers } =
+    lexerConfig;
   result = configComments(result, comments);
   result = configSymbols(result, { match: symbols });
+  result = configNumbers(result, { match: numbers });
   result = configOperators(result, operators);
   result = configBrackets(result, brackets);
   result = configStrings(result, strings);
