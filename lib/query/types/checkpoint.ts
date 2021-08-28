@@ -1,6 +1,7 @@
 import type { Cursor } from './cursor';
 
 export interface Checkpoint<Ctx> {
-  cursor: Cursor | undefined;
+  cursor: Cursor;
   context: Ctx;
+  endOfLevel?: true;
 }

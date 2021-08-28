@@ -1,6 +1,7 @@
 import type { Checkpoint } from '../types/checkpoint';
 import { AbstractMatcher } from './abstract-matcher';
 import type { ManyMatcherOptions, Matcher } from './types';
+import { skipSpaces } from './util';
 
 export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly manyOf: Matcher<Ctx>;
@@ -28,18 +29,29 @@ export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
   private nextRound(checkpoints: Checkpoint<Ctx>[]): Checkpoint<Ctx>[] {
     const results: Checkpoint<Ctx>[] = [];
-    checkpoints.forEach((checkpoint) => {
-      const match = this.manyOf.match(checkpoint);
-      if (match) {
-        const matchResults: Checkpoint<Ctx>[] = [match];
-        let nextResult = this.manyOf.nextMatch();
-        while (nextResult) {
-          matchResults.push(nextResult);
-          nextResult = this.manyOf.nextMatch();
-        }
-        results.unshift(...matchResults);
+    for (const checkpoint of checkpoints) {
+      if (checkpoint.endOfLevel) {
+        continue;
       }
-    }, []);
+
+      const oldCheckpoint = skipSpaces(checkpoint);
+      if (!oldCheckpoint) {
+        continue;
+      }
+
+      const newCheckpoint = this.manyOf.match(oldCheckpoint);
+      if (!newCheckpoint) {
+        continue;
+      }
+
+      const matchResults: Checkpoint<Ctx>[] = [newCheckpoint];
+      let nextResult = this.manyOf.nextMatch();
+      while (nextResult) {
+        matchResults.push(nextResult);
+        nextResult = this.manyOf.nextMatch();
+      }
+      results.unshift(...matchResults);
+    }
     return results;
   }
 

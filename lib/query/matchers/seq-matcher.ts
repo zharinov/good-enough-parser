@@ -1,6 +1,7 @@
 import type { Checkpoint } from '../types/checkpoint';
 import { AbstractMatcher } from './abstract-matcher';
 import type { Matcher, SeqMatcherOptions } from './types';
+import { skipSpaces } from './util';
 
 export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly seq: Matcher<Ctx>[];
@@ -22,11 +23,22 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
   private matchForward(): Checkpoint<Ctx> | null {
     if (this.currentCheckpoint) {
       while (this.idx < this.length) {
+        if (this.currentCheckpoint.endOfLevel) {
+          break;
+        }
+
+        const oldCheckpoint = skipSpaces(this.currentCheckpoint);
+        if (!oldCheckpoint) {
+          break;
+        }
+
         const matcher = this.seq[this.idx] as Matcher<Ctx>;
-        const newCheckpoint = matcher.match(this.currentCheckpoint);
+
+        const newCheckpoint = matcher.match(oldCheckpoint);
         if (!newCheckpoint) {
           break;
         }
+
         this.currentCheckpoint = newCheckpoint;
         this.idx += 1;
       }

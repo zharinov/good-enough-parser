@@ -13,7 +13,7 @@ type Ctx = string[];
 function getInitialCheckpoint(input: string): Checkpoint<Ctx> {
   lexer.reset(input);
   const tree = preprocessTree(lexer);
-  const cursor = createCursor(tree).down;
+  const cursor: never = createCursor(tree).down as never;
   return { cursor, context: [] };
 }
 
@@ -28,9 +28,29 @@ describe('query/matchers/index', () => {
 
       const nextCheckpoint = seqMatcher.match(prevCheckpoint);
 
-      const { cursor, context } = { ...nextCheckpoint };
-      expect(context).toEqual(['foo', '.', 'bar']);
-      expect(cursor).toBeUndefined();
+      expect(nextCheckpoint).toMatchObject({
+        context: ['foo', '.', 'bar'],
+        endOfLevel: true,
+      });
+    });
+
+    it('skips spaces', () => {
+      const input = 'foo .\tbar\n.   baz';
+      const prevCheckpoint = getInitialCheckpoint(input);
+      const seqMatcher = q
+        .sym(handler)
+        .op(handler)
+        .sym(handler)
+        .op(handler)
+        .sym(handler)
+        .build();
+
+      const nextCheckpoint = seqMatcher.match(prevCheckpoint);
+
+      expect(nextCheckpoint).toMatchObject({
+        context: ['foo', '.', 'bar', '.', 'baz'],
+        endOfLevel: true,
+      });
     });
   });
 
@@ -42,9 +62,23 @@ describe('query/matchers/index', () => {
 
       const nextCheckpoint = manyMatcher.match(prevCheckpoint);
 
-      const { cursor, context } = { ...nextCheckpoint };
-      expect(context).toEqual(['+', '-', '+']);
-      expect(cursor).toBeUndefined();
+      expect(nextCheckpoint).toMatchObject({
+        context: ['+', '-', '+'],
+        endOfLevel: true,
+      });
+    });
+
+    it('handles spaces', () => {
+      const input = '\t \n+    -\t\t+\n\n- \t\n+';
+      const prevCheckpoint = getInitialCheckpoint(input);
+      const manyMatcher = q.many(q.op(handler)).build();
+
+      const nextCheckpoint = manyMatcher.match(prevCheckpoint);
+
+      expect(nextCheckpoint).toMatchObject({
+        context: ['+', '-', '+', '-', '+'],
+        endOfLevel: true,
+      });
     });
 
     it('supports backtracking', () => {
@@ -53,10 +87,10 @@ describe('query/matchers/index', () => {
 
       const nextCheckpoint = matcher.match(prevCheckpoint);
 
-      const { cursor, context } = { ...nextCheckpoint };
-      expect(context).toHaveLength(2);
-      expect(context).toEqual(['-', '-']);
-      expect(cursor).toBeUndefined();
+      expect(nextCheckpoint).toMatchObject({
+        context: ['-', '-'],
+        endOfLevel: true,
+      });
     });
   });
 });

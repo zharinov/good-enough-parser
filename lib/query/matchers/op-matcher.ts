@@ -27,15 +27,13 @@ export class OpMatcher<Ctx> extends AbstractMatcher<Ctx> {
         isMatched = this.op.test(node.value);
       }
       if (isMatched) {
-        const nextCursor = cursor?.right;
         const nextContext = this.handler
           ? this.handler(context, node)
           : context;
-
-        return {
-          cursor: nextCursor,
-          context: nextContext,
-        };
+        const nextCursor = cursor.right;
+        return nextCursor
+          ? { context: nextContext, cursor: nextCursor }
+          : { context: nextContext, cursor, endOfLevel: true };
       }
     }
 
