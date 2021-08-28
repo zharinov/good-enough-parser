@@ -1,6 +1,6 @@
-import { lang as pythonLang } from '/lang/python';
-import { loadInputTxt, loadOutputJson } from '#test-utils';
-import { createLang } from '/lang';
+import { createLang } from '../../../lib/lang';
+import { lang as pythonLang } from '../../../lib/lang/python';
+import { loadInputTxt, loadOutputJson } from '../../test-utils';
 
 describe('lang/python/index', () => {
   it('parses tree', () => {

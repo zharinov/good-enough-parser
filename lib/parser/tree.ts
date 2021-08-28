@@ -1,5 +1,5 @@
-import { nextOffset } from '/lexer';
-import type { Lexer } from '/lexer/types';
+import { nextOffset } from '../lexer';
+import type { Lexer } from '../lexer/types';
 import type { ParserConfig, RootTree, Tree } from './types';
 
 export function createTree(lexer: Lexer, _config: ParserConfig): RootTree {

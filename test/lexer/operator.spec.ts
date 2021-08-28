@@ -1,7 +1,7 @@
-import { tokenize } from '#test-utils';
-import { configOperators } from '/lexer/operator';
-import { fallbackRule } from '/lexer/rules';
-import type { OperatorOption, StatesMap } from '/lexer/types';
+import { configOperators } from '../../lib/lexer/operator';
+import { fallbackRule } from '../../lib/lexer/rules';
+import type { OperatorOption, StatesMap } from '../../lib/lexer/types';
+import { tokenize } from '../test-utils';
 
 describe('lexer/operator', () => {
   it('works', () => {

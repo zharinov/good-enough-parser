@@ -1,7 +1,7 @@
-import { tokenize } from '#test-utils';
-import { configBrackets } from '/lexer/bracket';
-import { fallbackRule } from '/lexer/rules';
-import type { BracketOption, StatesMap } from '/lexer/types';
+import { configBrackets } from '../../lib/lexer/bracket';
+import { fallbackRule } from '../../lib/lexer/rules';
+import type { BracketOption, StatesMap } from '../../lib/lexer/types';
+import { tokenize } from '../test-utils';
 
 describe('lexer/bracket', () => {
   it('works', () => {

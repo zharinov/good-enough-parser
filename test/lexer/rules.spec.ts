@@ -1,5 +1,5 @@
-import { fallbackRule, sortStateRules } from '/lexer/rules';
-import type { LexerRule, StateDefinition } from '/lexer/types';
+import { fallbackRule, sortStateRules } from '../../lib/lexer/rules';
+import type { LexerRule, StateDefinition } from '../../lib/lexer/types';
 
 function strRule(match: string): LexerRule {
   return { t: 'string', match };

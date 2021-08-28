@@ -1,8 +1,8 @@
-import { lang as pythonLang } from '/lang/python';
-import * as q from '/query/builder';
-import type { Checkpoint } from '/query/types';
-import type { Token } from '/lexer/types';
-import { createLang } from '/lang';
+import { createLang } from '../../../lib/lang';
+import { lang as pythonLang } from '../../../lib/lang/python';
+import type { Token } from '../../../lib/lexer/types';
+import * as q from '../../../lib/query/builder';
+import type { Checkpoint } from '../../../lib/query/types';
 
 const lang = createLang(pythonLang);
 

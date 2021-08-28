@@ -1,7 +1,7 @@
-import { loadInputTxt, loadOutputJson, tokenize } from '#test-utils';
-import { fallbackRule } from '/lexer/rules';
-import { configStrings } from '/lexer/string';
-import type { StatesMap, StringOption } from '/lexer/types';
+import { fallbackRule } from '../../lib/lexer/rules';
+import { configStrings } from '../../lib/lexer/string';
+import type { StatesMap, StringOption } from '../../lib/lexer/types';
+import { loadInputTxt, loadOutputJson, tokenize } from '../test-utils';
 
 describe('lexer/string', () => {
   describe('configuration', () => {

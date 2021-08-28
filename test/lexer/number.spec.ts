@@ -1,7 +1,7 @@
-import { tokenize } from '#test-utils';
-import { configNumbers } from '/lexer/number';
-import { fallbackRule } from '/lexer/rules';
-import type { NumberOption, StatesMap } from '/lexer/types';
+import { configNumbers } from '../../lib/lexer/number';
+import { fallbackRule } from '../../lib/lexer/rules';
+import type { NumberOption, StatesMap } from '../../lib/lexer/types';
+import { tokenize } from '../test-utils';
 
 describe('lexer/number', () => {
   it('works', () => {

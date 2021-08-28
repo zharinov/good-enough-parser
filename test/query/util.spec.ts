@@ -1,4 +1,4 @@
-import { clone, freeze } from '/query/util';
+import { clone, freeze } from '../../lib/query/util';
 
 describe('query/util', () => {
   const input = { foo: { bar: 0 } };

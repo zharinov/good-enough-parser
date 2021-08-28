@@ -1,6 +1,6 @@
+import type { LexerConfig } from '../lexer/types';
+import type { ParserConfig } from '../parser/types';
 import type { LanguageConfig } from './types';
-import type { LexerConfig } from '/lexer/types';
-import type { ParserConfig } from '/parser/types';
 
 /**
  * @see https://docs.python.org/3/reference/lexical_analysis.html#operators

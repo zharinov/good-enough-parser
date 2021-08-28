@@ -1,5 +1,5 @@
-import { NumberToken, OperatorToken, SymbolToken } from '/lexer/types';
-import type { Cursor } from '/parser/types';
+import type { NumberToken, OperatorToken, SymbolToken } from '../lexer/types';
+import type { Cursor } from '../parser/types';
 
 export interface Checkpoint<Ctx> {
   cursor: Cursor;

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import * as builder from '/query/builder';
-import { SeqMatcher } from '/query/matchers';
+import * as builder from '../../lib/query/builder';
+import { SeqMatcher } from '../../lib/query/matchers';
 
 describe('query/builder', () => {
   describe('Symbol builder', () => {

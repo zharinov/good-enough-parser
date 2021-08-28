@@ -1,2 +1,2 @@
-export * from '/lang';
-export * from '/query';
+export * from './lang';
+export * from './query';

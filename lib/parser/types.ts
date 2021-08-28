@@ -7,7 +7,7 @@ import type {
   TemplateEndToken,
   TemplateStartToken,
   Token,
-} from '/lexer/types';
+} from '../lexer/types';
 
 export interface TreeBase {
   children: Node[];

@@ -1,8 +1,8 @@
+import { createLexer } from '../lexer';
+import type { Lexer } from '../lexer/types';
+import { createCursor, createTree } from '../parser';
+import type { Cursor } from '../parser/types';
 import type { LanguageConfig } from './types';
-import { createLexer } from '/lexer';
-import type { Lexer } from '/lexer/types';
-import { createCursor, createTree } from '/parser';
-import type { Cursor } from '/parser/types';
 
 export class Language {
   private lexer: Lexer;
