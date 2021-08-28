@@ -1,7 +1,7 @@
 import { fallbackRule } from '../../lib/lexer/rules';
 import { configSymbols } from '../../lib/lexer/symbol';
 import type { StatesMap, SymbolOption } from '../../lib/lexer/types';
-import { tokenize } from '../test-utils';
+import { tokenize } from '../../test/test-utils';
 
 describe('lexer/symbol', () => {
   it('works', () => {

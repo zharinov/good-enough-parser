@@ -1,7 +1,7 @@
-import { configComments } from '../../lib/lexer/comment';
-import { fallbackRule } from '../../lib/lexer/rules';
-import type { CommentOption, StatesMap } from '../../lib/lexer/types';
-import { loadInputTxt, loadOutputJson, tokenize } from '../test-utils';
+import { loadInputTxt, loadOutputJson, tokenize } from '../../test/test-utils';
+import { configComments } from './comment';
+import { fallbackRule } from './rules';
+import type { CommentOption, StatesMap } from './types';
 
 describe('lexer/comment', () => {
   const states: StatesMap = {
