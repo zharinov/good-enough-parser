@@ -1,6 +1,5 @@
-import type { Checkpoint } from '../types/checkpoint';
+import type { Checkpoint, Matcher, SeqMatcherOptions } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
-import type { Matcher, SeqMatcherOptions } from './types';
 import { skipSpaces } from './util';
 
 export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {

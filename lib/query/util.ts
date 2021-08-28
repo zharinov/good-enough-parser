@@ -1,6 +1,6 @@
 import deepFreeze from 'deep-freeze-es6';
 import * as rfdc from 'rfdc';
-import { Checkpoint } from './types/checkpoint';
+import { Checkpoint } from './types';
 
 export function freeze<T>(input: T): T {
   return deepFreeze<T>(input);
@@ -8,12 +8,11 @@ export function freeze<T>(input: T): T {
 
 export const clone = rfdc({ proto: false, circles: true });
 
-export function freezeCheckpoint<Ctx>({
-  cursor,
-  context,
-}: Checkpoint<Ctx>): Checkpoint<Ctx> {
+export function freezeCheckpoint<Ctx>(
+  checkpoint: Checkpoint<Ctx>
+): Checkpoint<Ctx> {
   return freeze<Checkpoint<Ctx>>({
-    cursor,
-    context: freeze(context),
+    ...checkpoint,
+    context: freeze<Ctx>(checkpoint.context),
   });
 }

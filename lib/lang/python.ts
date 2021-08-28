@@ -1,4 +1,6 @@
+import type { LanguageConfig } from './types';
 import type { LexerConfig } from '/lexer/types';
+import type { ParserConfig } from '/parser/types';
 
 /**
  * @see https://docs.python.org/3/reference/lexical_analysis.html#operators
@@ -40,7 +42,7 @@ const floatnumber = `(?:${pointfloat}|${exponentfloat})`;
 
 const numbers = new RegExp(`(?:${integer}|${floatnumber})`);
 
-export const lexerConfig: LexerConfig = {
+export const lexer: LexerConfig = {
   comments: [{ type: 'line-comment', startsWith: '#' }],
   symbols: /[_a-zA-Z][_a-zA-Z0-9]*/,
   numbers,
@@ -69,3 +71,9 @@ export const lexerConfig: LexerConfig = {
     { startsWith: 'r"', endsWith: '"' },
   ],
 };
+
+export const parser: ParserConfig = {
+  indentedBlocks: true,
+};
+
+export const lang: LanguageConfig = { lexer, parser };

@@ -1,3 +1,4 @@
+import type { Location as ZipperLocation } from '@thi.ng/zipper';
 import type {
   BracketLeftToken,
   BracketRightToken,
@@ -37,3 +38,9 @@ export interface TemplateTree extends TreeBase {
 export type Tree = RootTree | WrappedTree | StringTree | TemplateTree;
 
 export type Node = Tree | Token;
+
+export type Cursor = ZipperLocation<Node>;
+
+export interface ParserConfig {
+  indentedBlocks: boolean;
+}

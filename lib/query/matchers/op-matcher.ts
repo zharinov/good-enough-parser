@@ -1,10 +1,10 @@
-import type { Checkpoint } from '../types/checkpoint';
-import { AbstractMatcher } from './abstract-matcher';
 import type {
+  Checkpoint,
   OpMatcherHandler,
   OpMatcherOptions,
   OpMatcherValue,
-} from './types';
+} from '../types';
+import { AbstractMatcher } from './abstract-matcher';
 
 export class OpMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly op: OpMatcherValue;

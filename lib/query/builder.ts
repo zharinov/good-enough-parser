@@ -17,7 +17,7 @@ import type {
   SymMatcherHandler,
   SymMatcherOptions,
   SymMatcherValue,
-} from './matchers/types';
+} from './types';
 
 abstract class AbstractBuilder<Ctx> {
   abstract build(): Matcher<Ctx>;

@@ -1,5 +1,11 @@
-import type { Checkpoint } from '../types/checkpoint';
 import { NumberToken, OperatorToken, SymbolToken } from '/lexer/types';
+import type { Cursor } from '/parser/types';
+
+export interface Checkpoint<Ctx> {
+  cursor: Cursor;
+  context: Ctx;
+  endOfLevel?: true;
+}
 
 export type SymMatcherValue = string | RegExp | null;
 export type SymMatcherHandler<Ctx> = (ctx: Ctx, token: SymbolToken) => Ctx;

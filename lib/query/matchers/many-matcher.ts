@@ -1,6 +1,5 @@
-import type { Checkpoint } from '../types/checkpoint';
+import type { Checkpoint, ManyMatcherOptions, Matcher } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
-import type { ManyMatcherOptions, Matcher } from './types';
 import { skipSpaces } from './util';
 
 export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {

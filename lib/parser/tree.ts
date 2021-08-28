@@ -1,8 +1,8 @@
-import type { Tree } from './types';
-import { nextOffset } from '/lexer/token';
+import { nextOffset } from '/lexer';
 import type { Lexer } from '/lexer/types';
+import type { ParserConfig, RootTree, Tree } from './types';
 
-export function preprocessTree(lexer: Lexer): Tree {
+export function createTree(lexer: Lexer, _config: ParserConfig): RootTree {
   const stack: Tree[] = [];
   let currentTree: Tree = { type: 'root-tree', children: [] };
 
@@ -66,6 +66,10 @@ export function preprocessTree(lexer: Lexer): Tree {
     } else {
       currentTree.children.push(token);
     }
+  }
+
+  if (currentTree.type !== 'root-tree') {
+    throw new Error('Parsing error');
   }
 
   return currentTree;

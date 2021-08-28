@@ -1,10 +1,10 @@
-import type { Checkpoint } from '../types/checkpoint';
-import { AbstractMatcher } from './abstract-matcher';
 import type {
+  Checkpoint,
   SymMatcherHandler,
   SymMatcherOptions,
   SymMatcherValue,
-} from './types';
+} from '../types';
+import { AbstractMatcher } from './abstract-matcher';
 
 export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly sym: SymMatcherValue;

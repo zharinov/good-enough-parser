@@ -1,5 +1,5 @@
-import type { Checkpoint } from '../types/checkpoint';
-import { Cursor } from '../types/cursor';
+import type { Checkpoint } from '../types';
+import type { Cursor } from '/parser/types';
 
 export function skipSpaces<Ctx>(
   checkpoint: Checkpoint<Ctx>

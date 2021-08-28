@@ -1,6 +1,5 @@
-import type { Checkpoint } from '../types/checkpoint';
+import type { AltMatcherOptions, Checkpoint, Matcher } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
-import type { AltMatcherOptions, Matcher } from './types';
 
 export class AltMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly alts: Matcher<Ctx>[];

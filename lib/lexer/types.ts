@@ -44,15 +44,6 @@ export interface NumberOption {
   match: RegExp;
 }
 
-export interface LexerConfig {
-  comments: CommentOption[];
-  symbols: RegExp;
-  numbers: RegExp;
-  operators: OperatorOption[];
-  brackets: BracketOption[];
-  strings: StringOption[];
-}
-
 export interface StringRule {
   t: 'string';
   match: string;
@@ -166,3 +157,12 @@ export type Token =
   | SymbolToken
   | NumberToken
   | UnknownToken;
+
+export interface LexerConfig {
+  comments: CommentOption[];
+  symbols: RegExp;
+  numbers: RegExp;
+  operators: OperatorOption[];
+  brackets: BracketOption[];
+  strings: StringOption[];
+}

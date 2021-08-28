@@ -1,19 +1,15 @@
-import { lexerConfig as pythonConfig } from '/lang/python';
-import { createLexer } from '/lexer';
-import { preprocessTree } from '../../../lib/parser/tree';
-import { createCursor } from '/query/zipper';
+import { lang as pythonLang } from '/lang/python';
 import * as q from '/query/builder';
-import type { Checkpoint } from '/query/types/checkpoint';
+import type { Checkpoint } from '/query/types';
 import type { Token } from '/lexer/types';
+import { createLang } from '/lang';
 
-const lexer = createLexer(pythonConfig);
+const lang = createLang(pythonLang);
 
 type Ctx = string[];
 
 function getInitialCheckpoint(input: string): Checkpoint<Ctx> {
-  lexer.reset(input);
-  const tree = preprocessTree(lexer);
-  const cursor: never = createCursor(tree).down as never;
+  const cursor = lang.parse(input).down as never;
   return { cursor, context: [] };
 }
 

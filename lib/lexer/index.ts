@@ -9,6 +9,8 @@ import { configSymbols } from './symbol';
 import { coerceToken } from './token';
 import type { Lexer, LexerConfig, StatesMap, Token } from './types';
 
+export * from './token';
+
 export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
   let result: StatesMap = {
     $: {

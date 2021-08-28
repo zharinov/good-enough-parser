@@ -1,10 +1,10 @@
-import type { Checkpoint } from '../types/checkpoint';
-import { AbstractMatcher } from './abstract-matcher';
 import type {
+  Checkpoint,
   NumMatcherHandler,
   NumMatcherOptions,
   NumMatcherValue,
-} from './types';
+} from '../types';
+import { AbstractMatcher } from './abstract-matcher';
 
 export class NumMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly num: NumMatcherValue;

@@ -1,6 +1,5 @@
 import { zipper } from '@thi.ng/zipper';
-import type { Node, Tree } from '../parser/types';
-import type { Cursor } from './types/cursor';
+import type { Cursor, Node, Tree } from './types';
 
 export function createCursor(tree: Node): Cursor {
   return zipper<Node>(
