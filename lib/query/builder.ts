@@ -12,7 +12,7 @@ import {
   TreeAllChildrenMatcher,
   TreeAllDescendantsMatcher,
   TreeNodeMatcher,
-  TreeOneChildMatcher,
+  TreeAnyChildMatcher,
   TreeOneDescendantMatcher,
 } from './matchers/tree-macher';
 import type {
@@ -362,9 +362,9 @@ export interface TreeNodeBuilderOptions<Ctx> {
   postHandler?: TreeNodeMatcherHandler<Ctx>;
 }
 
-export interface TreeOneChildBuilderOptions<Ctx>
+export interface TreeAnyChildBuilderOptions<Ctx>
   extends TreeNodeBuilderOptions<Ctx> {
-  oneChild: AbstractBuilder<Ctx>;
+  anyChild: AbstractBuilder<Ctx>;
 }
 
 export interface TreeAllChildrenBuilderOptions<Ctx>
@@ -384,15 +384,15 @@ export interface TreeAllDescendantsBuilderOptions<Ctx>
 
 export type TreeBuilderOptions<Ctx> =
   | TreeNodeBuilderOptions<Ctx>
-  | TreeOneChildBuilderOptions<Ctx>
+  | TreeAnyChildBuilderOptions<Ctx>
   | TreeAllChildrenBuilderOptions<Ctx>
   | TreeOneDescendantBuilderOptions<Ctx>
   | TreeAllDescendantsBuilderOptions<Ctx>;
 
-function isOneChildTree<Ctx>(
+function isAnyChildTree<Ctx>(
   opts: TreeBuilderOptions<Ctx>
-): opts is TreeOneChildBuilderOptions<Ctx> {
-  return !!(opts as TreeOneChildBuilderOptions<Ctx>)?.oneChild;
+): opts is TreeAnyChildBuilderOptions<Ctx> {
+  return !!(opts as TreeAnyChildBuilderOptions<Ctx>)?.anyChild;
 }
 
 function isAllChildrenTree<Ctx>(
@@ -419,9 +419,9 @@ export class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
   }
 
   build(): AbstractTreeMatcher<Ctx> {
-    if (isOneChildTree<Ctx>(this.opts)) {
-      const matcher = this.opts.oneChild.build();
-      return new TreeOneChildMatcher<Ctx>({ matcher, ...this.opts });
+    if (isAnyChildTree<Ctx>(this.opts)) {
+      const matcher = this.opts.anyChild.build();
+      return new TreeAnyChildMatcher<Ctx>({ matcher, ...this.opts });
     } else if (isAllChildrenTree<Ctx>(this.opts)) {
       const matcher = this.opts.allChildren.build();
       return new TreeAllChildrenMatcher<Ctx>({ matcher, ...this.opts });

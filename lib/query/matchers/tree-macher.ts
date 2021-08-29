@@ -26,7 +26,7 @@ export class TreeNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 }
 
-export class TreeOneChildMatcher<Ctx> extends TreeNodeMatcher<Ctx> {}
+export class TreeAnyChildMatcher<Ctx> extends TreeNodeMatcher<Ctx> {}
 export class TreeAllChildrenMatcher<Ctx> extends TreeNodeMatcher<Ctx> {}
 
 export class TreeOneDescendantMatcher<Ctx> extends TreeNodeMatcher<Ctx> {}
