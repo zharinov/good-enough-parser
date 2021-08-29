@@ -182,9 +182,9 @@ describe('query/builder', () => {
       ${{ type: 'root-tree' }}    | ${'root-tree'} | ${null}    | ${null}     | ${null}
       ${{ preHandler: handler }}  | ${null}        | ${anyFn}   | ${null}     | ${null}
       ${{ postHandler: handler }} | ${null}        | ${null}    | ${anyFn}    | ${null}
-      ${{ anyChild: foo }}        | ${null}        | ${null}    | ${null}     | ${expect.any(SymMatcher)}
+      ${{ firstChild: foo }}      | ${null}        | ${null}    | ${null}     | ${expect.any(SymMatcher)}
       ${{ allChildren: foo }}     | ${null}        | ${null}    | ${null}     | ${expect.any(SymMatcher)}
-      ${{ oneDescendant: foo }}   | ${null}        | ${null}    | ${null}     | ${expect.any(SymMatcher)}
+      ${{ firstDescendant: foo }} | ${null}        | ${null}    | ${null}     | ${expect.any(SymMatcher)}
       ${{ allDescendants: foo }}  | ${null}        | ${null}    | ${null}     | ${expect.any(SymMatcher)}
     `('tree($arg1)', ({ arg1, type, preHandler, postHandler, matcher }) => {
       const treeSeq = arg1
