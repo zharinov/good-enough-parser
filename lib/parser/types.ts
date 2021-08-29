@@ -35,6 +35,12 @@ export interface TemplateTree extends TreeBase {
   endsWith: TemplateEndToken;
 }
 
+export type TreeType =
+  | 'root-tree'
+  | 'wrapped-tree'
+  | 'string-tree'
+  | 'template-tree';
+
 export type Tree = RootTree | WrappedTree | StringTree | TemplateTree;
 
 export type Node = Tree | Token;

@@ -1,5 +1,5 @@
 import type { NumberToken, OperatorToken, SymbolToken } from '../lexer/types';
-import type { Cursor } from '../parser/types';
+import type { Cursor, Tree, TreeType } from '../parser/types';
 
 export interface Checkpoint<Ctx> {
   cursor: Cursor;
@@ -30,6 +30,15 @@ export interface NumMatcherOptions<Ctx> {
 
 export interface SeqMatcherOptions<Ctx> {
   matchers: Matcher<Ctx>[];
+}
+
+export type TreeNodeMatcherType = TreeType | null;
+export type TreeNodeMatcherHandler<Ctx> = (ctx: Ctx, tree: Tree) => Ctx;
+export interface TreeNodeMatcherOptions<Ctx> {
+  matcher?: Matcher<Ctx>;
+  type?: TreeNodeMatcherType;
+  preHandler?: TreeNodeMatcherHandler<Ctx>;
+  postHandler?: TreeNodeMatcherHandler<Ctx>;
 }
 
 export interface Matcher<Ctx> {

@@ -1,3 +1,4 @@
+import type { TreeType } from '../parser/types';
 import {
   AltMatcher,
   ManyMatcher,
@@ -5,7 +6,15 @@ import {
   SeqMatcher,
   SymMatcher,
 } from './matchers';
+import { AbstractTreeMatcher } from './matchers/abstract-tree-matcher';
 import { NumMatcher } from './matchers/num-matcher';
+import {
+  TreeAllChildrenMatcher,
+  TreeAllDescendantsMatcher,
+  TreeNodeMatcher,
+  TreeOneChildMatcher,
+  TreeOneDescendantMatcher,
+} from './matchers/tree-macher';
 import type {
   Matcher,
   NumMatcherHandler,
@@ -17,6 +26,8 @@ import type {
   SymMatcherHandler,
   SymMatcherOptions,
   SymMatcherValue,
+  TreeNodeMatcherHandler,
+  TreeNodeMatcherType,
 } from './types';
 
 abstract class AbstractBuilder<Ctx> {
@@ -88,6 +99,14 @@ abstract class AbstractBuilder<Ctx> {
 
   alt(...alts: AbstractBuilder<Ctx>[]): SeqBuilder<Ctx> {
     const builder = new AltBuilder<Ctx>(alts);
+    return new SeqBuilder<Ctx>(this, builder);
+  }
+
+  tree(): SeqBuilder<Ctx>;
+  tree(type: TreeType): SeqBuilder<Ctx>;
+  tree(arg1?: TreeBuilderOptions<Ctx> | TreeType): SeqBuilder<Ctx> {
+    const opts = coerceTreeOptions(arg1);
+    const builder = new TreeBuilder(opts);
     return new SeqBuilder<Ctx>(this, builder);
   }
 }
@@ -333,4 +352,108 @@ export class AltBuilder<Ctx> extends AbstractBuilder<Ctx> {
 
 export function alt<Ctx>(...builders: AbstractBuilder<Ctx>[]): AltBuilder<Ctx> {
   return new AltBuilder<Ctx>(builders);
+}
+
+// Trees
+
+export interface TreeNodeBuilderOptions<Ctx> {
+  type: TreeNodeMatcherType;
+  preHandler?: TreeNodeMatcherHandler<Ctx>;
+  postHandler?: TreeNodeMatcherHandler<Ctx>;
+}
+
+export interface TreeOneChildBuilderOptions<Ctx>
+  extends TreeNodeBuilderOptions<Ctx> {
+  oneChild: AbstractBuilder<Ctx>;
+}
+
+export interface TreeAllChildrenBuilderOptions<Ctx>
+  extends TreeNodeBuilderOptions<Ctx> {
+  allChildren: AbstractBuilder<Ctx>;
+}
+
+export interface TreeOneDescendantBuilderOptions<Ctx>
+  extends TreeNodeBuilderOptions<Ctx> {
+  oneDescendant: AbstractBuilder<Ctx>;
+}
+
+export interface TreeAllDescendantsBuilderOptions<Ctx>
+  extends TreeNodeBuilderOptions<Ctx> {
+  allDescendants: AbstractBuilder<Ctx>;
+}
+
+export type TreeBuilderOptions<Ctx> =
+  | TreeNodeBuilderOptions<Ctx>
+  | TreeOneChildBuilderOptions<Ctx>
+  | TreeAllChildrenBuilderOptions<Ctx>
+  | TreeOneDescendantBuilderOptions<Ctx>
+  | TreeAllDescendantsBuilderOptions<Ctx>;
+
+function isOneChildTree<Ctx>(
+  opts: TreeBuilderOptions<Ctx>
+): opts is TreeOneChildBuilderOptions<Ctx> {
+  return !!(opts as TreeOneChildBuilderOptions<Ctx>)?.oneChild;
+}
+
+function isAllChildrenTree<Ctx>(
+  opts: TreeBuilderOptions<Ctx>
+): opts is TreeAllChildrenBuilderOptions<Ctx> {
+  return !!(opts as TreeAllChildrenBuilderOptions<Ctx>)?.allChildren;
+}
+
+function isOneDescendantTree<Ctx>(
+  opts: TreeBuilderOptions<Ctx>
+): opts is TreeOneDescendantBuilderOptions<Ctx> {
+  return !!(opts as TreeOneDescendantBuilderOptions<Ctx>)?.oneDescendant;
+}
+
+function isAllDescendantsTree<Ctx>(
+  opts: TreeBuilderOptions<Ctx>
+): opts is TreeAllDescendantsBuilderOptions<Ctx> {
+  return !!(opts as TreeAllDescendantsBuilderOptions<Ctx>)?.allDescendants;
+}
+
+export class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
+  constructor(private opts: TreeBuilderOptions<Ctx>) {
+    super();
+  }
+
+  build(): AbstractTreeMatcher<Ctx> {
+    if (isOneChildTree<Ctx>(this.opts)) {
+      const matcher = this.opts.oneChild.build();
+      return new TreeOneChildMatcher<Ctx>({ matcher, ...this.opts });
+    } else if (isAllChildrenTree<Ctx>(this.opts)) {
+      const matcher = this.opts.allChildren.build();
+      return new TreeAllChildrenMatcher<Ctx>({ matcher, ...this.opts });
+    } else if (isOneDescendantTree<Ctx>(this.opts)) {
+      const matcher = this.opts.oneDescendant.build();
+      return new TreeOneDescendantMatcher<Ctx>({ matcher, ...this.opts });
+    } else if (isAllDescendantsTree<Ctx>(this.opts)) {
+      const matcher = this.opts.allDescendants.build();
+      return new TreeAllDescendantsMatcher<Ctx>({ matcher, ...this.opts });
+    } else {
+      return new TreeNodeMatcher(this.opts);
+    }
+  }
+}
+
+function coerceTreeOptions<Ctx>(
+  arg1: TreeBuilderOptions<Ctx> | TreeType | undefined
+): TreeBuilderOptions<Ctx> {
+  if (typeof arg1 === 'string') {
+    return { type: arg1 };
+  } else if (!arg1) {
+    return { type: null };
+  } else {
+    return arg1;
+  }
+}
+
+export function tree<Ctx>(): TreeBuilder<Ctx>;
+export function tree<Ctx>(type: TreeType): TreeBuilder<Ctx>;
+export function tree<Ctx>(
+  arg1?: TreeBuilderOptions<Ctx> | TreeType
+): TreeBuilder<Ctx> {
+  const opts = coerceTreeOptions(arg1);
+  return new TreeBuilder(opts);
 }

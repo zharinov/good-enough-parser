@@ -15,41 +15,7 @@ function getInitialCheckpoint(input: string): Checkpoint<Ctx> {
 
 const handler = (ctx: Ctx, token: Token) => [...ctx, token.value];
 
-describe('query/matchers/index', () => {
-  describe('Sequential matching', () => {
-    it('handles sequences', () => {
-      const input = 'foo.bar';
-      const prevCheckpoint = getInitialCheckpoint(input);
-      const seqMatcher = q.sym(handler).op(handler).sym(handler).build();
-
-      const nextCheckpoint = seqMatcher.match(prevCheckpoint);
-
-      expect(nextCheckpoint).toMatchObject({
-        context: ['foo', '.', 'bar'],
-        endOfLevel: true,
-      });
-    });
-
-    it('skips spaces', () => {
-      const input = 'foo .\tbar\n.   baz';
-      const prevCheckpoint = getInitialCheckpoint(input);
-      const seqMatcher = q
-        .sym(handler)
-        .op(handler)
-        .sym(handler)
-        .op(handler)
-        .sym(handler)
-        .build();
-
-      const nextCheckpoint = seqMatcher.match(prevCheckpoint);
-
-      expect(nextCheckpoint).toMatchObject({
-        context: ['foo', '.', 'bar', '.', 'baz'],
-        endOfLevel: true,
-      });
-    });
-  });
-
+describe('query/matchers/many-matcher', () => {
   describe('Repetitions matching', () => {
     it('handles many occurrences', () => {
       const input = '+-+';

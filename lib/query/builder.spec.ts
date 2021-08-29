@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import * as builder from '../../lib/query/builder';
-import { SeqMatcher } from '../../lib/query/matchers';
+import { SeqMatcher, SymMatcher } from '../../lib/query/matchers';
 
 describe('query/builder', () => {
-  describe('Symbol builder', () => {
-    const handler = (x: unknown) => x;
+  const anyFn = expect.any(Function) as never;
 
+  const handler = (x: unknown) => x;
+
+  describe('Symbol builder', () => {
     test.each`
       arg1                         | arg2         | sym      | handler
       ${undefined}                 | ${undefined} | ${null}  | ${null}
@@ -13,9 +15,9 @@ describe('query/builder', () => {
       ${{ value: 'foo' }}          | ${undefined} | ${'foo'} | ${null}
       ${/abc/}                     | ${undefined} | ${/abc/} | ${null}
       ${{ value: /abc/ }}          | ${undefined} | ${/abc/} | ${null}
-      ${'foo'}                     | ${handler}   | ${'foo'} | ${expect.any(Function) as never}
-      ${{ value: 'foo', handler }} | ${undefined} | ${'foo'} | ${expect.any(Function) as never}
-      ${handler}                   | ${undefined} | ${null}  | ${expect.any(Function) as never}
+      ${'foo'}                     | ${handler}   | ${'foo'} | ${anyFn}
+      ${{ value: 'foo', handler }} | ${undefined} | ${'foo'} | ${anyFn}
+      ${handler}                   | ${undefined} | ${null}  | ${anyFn}
     `('sym($arg1, $arg2)', ({ arg1, arg2, sym, handler }) => {
       let b1;
       let b2;
@@ -39,8 +41,6 @@ describe('query/builder', () => {
   });
 
   describe('Number builder', () => {
-    const handler = (x: unknown) => x;
-
     test.each`
       arg1                        | arg2         | num        | handler
       ${undefined}                | ${undefined} | ${null}    | ${null}
@@ -48,9 +48,9 @@ describe('query/builder', () => {
       ${{ value: '42' }}          | ${undefined} | ${'42'}    | ${null}
       ${/[1-9]/}                  | ${undefined} | ${/[1-9]/} | ${null}
       ${{ value: /[1-9]/ }}       | ${undefined} | ${/[1-9]/} | ${null}
-      ${'42'}                     | ${handler}   | ${'42'}    | ${expect.any(Function) as never}
-      ${{ value: '42', handler }} | ${undefined} | ${'42'}    | ${expect.any(Function) as never}
-      ${handler}                  | ${undefined} | ${null}    | ${expect.any(Function) as never}
+      ${'42'}                     | ${handler}   | ${'42'}    | ${anyFn}
+      ${{ value: '42', handler }} | ${undefined} | ${'42'}    | ${anyFn}
+      ${handler}                  | ${undefined} | ${null}    | ${anyFn}
     `('sym($arg1, $arg2)', ({ arg1, arg2, num, handler }) => {
       let b1;
       let b2;
@@ -74,8 +74,6 @@ describe('query/builder', () => {
   });
 
   describe('Operator builder', () => {
-    const handler = (x: unknown) => x;
-
     test.each`
       arg1                        | arg2         | op        | handler
       ${undefined}                | ${undefined} | ${null}   | ${null}
@@ -171,6 +169,26 @@ describe('query/builder', () => {
           { alts: [{ sym: 'baz' }, { sym: 'qux' }] },
         ],
       });
+    });
+  });
+
+  describe('Trees builder', () => {
+    const foo = builder.sym('foo');
+
+    test.each`
+      arg1                        | type           | preHandler | postHandler | matcher
+      ${undefined}                | ${null}        | ${null}    | ${null}     | ${null}
+      ${'root-tree'}              | ${'root-tree'} | ${null}    | ${null}     | ${null}
+      ${{ type: 'root-tree' }}    | ${'root-tree'} | ${null}    | ${null}     | ${null}
+      ${{ preHandler: handler }}  | ${null}        | ${anyFn}   | ${null}     | ${null}
+      ${{ postHandler: handler }} | ${null}        | ${null}    | ${anyFn}    | ${null}
+      ${{ oneChild: foo }}        | ${null}        | ${null}    | ${null}     | ${expect.any(SymMatcher)}
+    `('tree($arg1)', ({ arg1, type, preHandler, postHandler, matcher }) => {
+      const treeSeq = arg1
+        ? builder.tree(arg1).tree(arg1)
+        : builder.tree().tree();
+      const expected = { type, preHandler, postHandler, matcher };
+      expect(treeSeq.build()).toMatchObject({ seq: [expected, expected] });
     });
   });
 });
