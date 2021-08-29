@@ -11,8 +11,8 @@ import { NumMatcher } from './matchers/num-matcher';
 import {
   TreeAllChildrenMatcher,
   TreeAllDescendantsMatcher,
-  TreeNodeMatcher,
   TreeAnyChildMatcher,
+  TreeNodeMatcher,
   TreeOneDescendantMatcher,
 } from './matchers/tree-macher';
 import type {
