@@ -35,9 +35,13 @@ export interface SeqMatcherOptions<Ctx> {
 export type TreeNodeMatcherType = TreeType | null;
 export type TreeNodeMatcherHandler<Ctx> = (ctx: Ctx, tree: Tree) => Ctx;
 export interface TreeNodeMatcherOptions<Ctx> {
-  matcher?: Matcher<Ctx>;
   type?: TreeNodeMatcherType;
   preHandler?: TreeNodeMatcherHandler<Ctx>;
+}
+
+export interface TreeNodeWalkingMatcherOptions<Ctx>
+  extends TreeNodeMatcherOptions<Ctx> {
+  matcher: Matcher<Ctx>;
   postHandler?: TreeNodeMatcherHandler<Ctx>;
 }
 

@@ -1,6 +1,6 @@
 import type { Checkpoint, Matcher, SeqMatcherOptions } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
-import { skipSpaces } from './util';
+import { skipMinorTokens } from './util';
 
 export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly seq: Matcher<Ctx>[];
@@ -26,7 +26,7 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
           break;
         }
 
-        const oldCheckpoint = skipSpaces(this.currentCheckpoint);
+        const oldCheckpoint = skipMinorTokens(this.currentCheckpoint);
         if (!oldCheckpoint) {
           break;
         }

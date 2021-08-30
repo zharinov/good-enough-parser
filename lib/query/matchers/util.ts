@@ -1,21 +1,18 @@
-import { Cursor } from '../../parser/types';
+import { isMinorToken } from '../../parser';
 import type { Checkpoint } from '../types';
 
-export function skipSpaces<Ctx>(
+export function skipMinorTokens<Ctx>(
   checkpoint: Checkpoint<Ctx>
 ): Checkpoint<Ctx> | null {
-  let cursor: Cursor | undefined = checkpoint.cursor;
+  let cursor = checkpoint.cursor;
   let node = cursor.node;
-  while (
-    node.type === 'newline' ||
-    node.type === 'whitespace' ||
-    node.type === 'comment'
-  ) {
-    cursor = cursor.right;
-    if (!cursor) {
+  while (isMinorToken(node)) {
+    const nextCursor = cursor.right;
+    if (!nextCursor) {
       return null;
     }
-    node = cursor.node;
+    node = nextCursor.node;
+    cursor = nextCursor;
   }
   return { ...checkpoint, cursor };
 }

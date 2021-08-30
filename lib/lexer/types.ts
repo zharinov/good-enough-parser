@@ -158,6 +158,8 @@ export type Token =
   | NumberToken
   | UnknownToken;
 
+export type MinorToken = NewlineToken | WhitespaceToken | CommentToken;
+
 export interface LexerConfig {
   comments: CommentOption[];
   symbols: RegExp;

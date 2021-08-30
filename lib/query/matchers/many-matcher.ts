@@ -1,6 +1,6 @@
 import type { Checkpoint, ManyMatcherOptions, Matcher } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
-import { skipSpaces } from './util';
+import { skipMinorTokens } from './util';
 
 export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly manyOf: Matcher<Ctx>;
@@ -33,7 +33,7 @@ export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
         continue;
       }
 
-      const oldCheckpoint = skipSpaces(checkpoint);
+      const oldCheckpoint = skipMinorTokens(checkpoint);
       if (!oldCheckpoint) {
         continue;
       }

@@ -18,8 +18,8 @@ export class NumMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const { cursor, context } = checkpoint;
-    const node = cursor?.node;
-    if (node?.type === 'number') {
+    const node = cursor.node;
+    if (node.type === 'number') {
       let isMatched = true;
       if (typeof this.num === 'string') {
         isMatched = this.num === node.value;

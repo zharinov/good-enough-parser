@@ -1,6 +1,6 @@
 import { nextOffset } from '../lexer';
 import type { Lexer } from '../lexer/types';
-import type { ParserConfig, RootTree, Tree } from './types';
+import type { Node, ParserConfig, RootTree, Tree } from './types';
 
 export function createTree(lexer: Lexer, _config: ParserConfig): RootTree {
   const stack: Tree[] = [];
@@ -73,4 +73,10 @@ export function createTree(lexer: Lexer, _config: ParserConfig): RootTree {
   }
 
   return currentTree;
+}
+
+export function isTree(node: Node): node is Tree {
+  return ['root-tree', 'wrapped-tree', 'string-tree', 'template-tree'].includes(
+    node.type
+  );
 }

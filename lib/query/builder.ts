@@ -104,6 +104,7 @@ abstract class AbstractBuilder<Ctx> {
 
   tree(): SeqBuilder<Ctx>;
   tree(type: TreeType): SeqBuilder<Ctx>;
+  tree(opts: TreeBuilderOptions<Ctx>): SeqBuilder<Ctx>;
   tree(arg1?: TreeBuilderOptions<Ctx> | TreeType): SeqBuilder<Ctx> {
     const opts = coerceTreeOptions(arg1);
     const builder = new TreeBuilder(opts);
@@ -357,28 +358,32 @@ export function alt<Ctx>(...builders: AbstractBuilder<Ctx>[]): AltBuilder<Ctx> {
 // Trees
 
 export interface TreeNodeBuilderOptions<Ctx> {
-  type: TreeNodeMatcherType;
+  type?: TreeNodeMatcherType;
   preHandler?: TreeNodeMatcherHandler<Ctx>;
+}
+
+interface TreeNodeWalkingBuilderOptions<Ctx>
+  extends TreeNodeBuilderOptions<Ctx> {
   postHandler?: TreeNodeMatcherHandler<Ctx>;
 }
 
 export interface TreeFirstChildBuilderOptions<Ctx>
-  extends TreeNodeBuilderOptions<Ctx> {
+  extends TreeNodeWalkingBuilderOptions<Ctx> {
   firstChild: AbstractBuilder<Ctx>;
 }
 
 export interface TreeAllChildrenBuilderOptions<Ctx>
-  extends TreeNodeBuilderOptions<Ctx> {
+  extends TreeNodeWalkingBuilderOptions<Ctx> {
   allChildren: AbstractBuilder<Ctx>;
 }
 
 export interface TreeFirstDescendantBuilderOptions<Ctx>
-  extends TreeNodeBuilderOptions<Ctx> {
+  extends TreeNodeWalkingBuilderOptions<Ctx> {
   firstDescendant: AbstractBuilder<Ctx>;
 }
 
 export interface TreeAllDescendantsBuilderOptions<Ctx>
-  extends TreeNodeBuilderOptions<Ctx> {
+  extends TreeNodeWalkingBuilderOptions<Ctx> {
   allDescendants: AbstractBuilder<Ctx>;
 }
 
@@ -451,6 +456,7 @@ function coerceTreeOptions<Ctx>(
 
 export function tree<Ctx>(): TreeBuilder<Ctx>;
 export function tree<Ctx>(type: TreeType): TreeBuilder<Ctx>;
+export function tree<Ctx>(opts: TreeBuilderOptions<Ctx>): TreeBuilder<Ctx>;
 export function tree<Ctx>(
   arg1?: TreeBuilderOptions<Ctx> | TreeType
 ): TreeBuilder<Ctx> {
