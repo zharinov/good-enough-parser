@@ -13,4 +13,19 @@ describe('lang/python', () => {
     const expected = loadOutputJson('setup.py', res);
     expect(res).toEqual(expected);
   });
+
+  it('supports line joins', () => {
+    const input = loadInputTxt('line-join');
+    const lang = createLang(pythonLang);
+
+    const res = lang.parse(input)?.node;
+
+    expect(res).toMatchObject({
+      children: [
+        { type: 'symbol' },
+        { type: 'whitespace' },
+        { type: 'symbol' },
+      ],
+    });
+  });
 });

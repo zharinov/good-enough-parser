@@ -43,6 +43,7 @@ const floatnumber = `(?:${pointfloat}|${exponentfloat})`;
 const numbers = new RegExp(`(?:${integer}|${floatnumber})`);
 
 export const lexer: LexerConfig = {
+  joinLines: '\\',
   comments: [{ type: 'line-comment', startsWith: '#' }],
   symbols: /[_a-zA-Z][_a-zA-Z0-9]*/,
   numbers,

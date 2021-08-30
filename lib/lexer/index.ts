@@ -12,13 +12,18 @@ import type { Lexer, LexerConfig, StatesMap, Token } from './types';
 export * from './token';
 
 export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
+  const whitespaceMatch = lexerConfig.joinLines
+    ? new RegExp(`(?:${lexerConfig.joinLines}\\r?\\n|[ \\t\\r])+`)
+    : /[ \t\r]+/;
+
   let result: StatesMap = {
     $: {
+      whitespace: { t: 'regex', match: whitespaceMatch },
       newline: { t: 'regex', match: /\r?\n/, lineBreaks: true },
-      whitespace: { t: 'regex', match: /[ \t\r]+/ },
       _: fallbackRule,
     },
   };
+
   const { comments, symbols, operators, brackets, strings, numbers } =
     lexerConfig;
   result = configComments(result, comments);

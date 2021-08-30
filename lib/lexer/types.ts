@@ -161,6 +161,7 @@ export type Token =
 export type MinorToken = NewlineToken | WhitespaceToken | CommentToken;
 
 export interface LexerConfig {
+  joinLines: string | null;
   comments: CommentOption[];
   symbols: RegExp;
   numbers: RegExp;
