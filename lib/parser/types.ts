@@ -35,18 +35,28 @@ export interface TemplateTree extends TreeBase {
   endsWith: TemplateEndToken;
 }
 
+export interface BlockTree extends TreeBase {
+  type: 'block-tree';
+}
+
 export type TreeType =
   | 'root-tree'
   | 'wrapped-tree'
   | 'string-tree'
-  | 'template-tree';
+  | 'template-tree'
+  | 'block-tree';
 
-export type Tree = RootTree | WrappedTree | StringTree | TemplateTree;
+export type Tree =
+  | RootTree
+  | WrappedTree
+  | StringTree
+  | TemplateTree
+  | BlockTree;
 
 export type Node = Tree | Token;
 
 export type Cursor = ZipperLocation<Node>;
 
 export interface ParserConfig {
-  indentedBlocks: boolean;
+  useIndentBlocks: boolean;
 }

@@ -74,7 +74,7 @@ export const lexer: LexerConfig = {
 };
 
 export const parser: ParserConfig = {
-  indentedBlocks: true,
+  useIndentBlocks: true,
 };
 
 export const lang: LanguageConfig = { lexer, parser };

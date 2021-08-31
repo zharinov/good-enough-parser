@@ -1,0 +1,150 @@
+{
+  "type": "root-tree",
+  "children": [
+    {
+      "type": "symbol",
+      "value": "if",
+      "offset": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 2
+    },
+    {
+      "type": "symbol",
+      "value": "True",
+      "offset": 3
+    },
+    {
+      "type": "operator",
+      "value": ":",
+      "offset": 7
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 8
+    },
+    {
+      "type": "block-tree",
+      "children": [
+        {
+          "type": "whitespace",
+          "value": "  ",
+          "offset": 9
+        },
+        {
+          "type": "symbol",
+          "value": "if",
+          "offset": 11
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 13
+        },
+        {
+          "type": "symbol",
+          "value": "True",
+          "offset": 14
+        },
+        {
+          "type": "operator",
+          "value": ":",
+          "offset": 18
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 19
+        },
+        {
+          "type": "block-tree",
+          "children": [
+            {
+              "type": "whitespace",
+              "value": "    ",
+              "offset": 20
+            },
+            {
+              "type": "symbol",
+              "value": "if",
+              "offset": 24
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 26
+            },
+            {
+              "type": "symbol",
+              "value": "True",
+              "offset": 27
+            },
+            {
+              "type": "operator",
+              "value": ":",
+              "offset": 31
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 32
+            },
+            {
+              "type": "block-tree",
+              "children": [
+                {
+                  "type": "whitespace",
+                  "value": "      ",
+                  "offset": 33
+                },
+                {
+                  "type": "symbol",
+                  "value": "if",
+                  "offset": 39
+                },
+                {
+                  "type": "whitespace",
+                  "value": " ",
+                  "offset": 41
+                },
+                {
+                  "type": "symbol",
+                  "value": "True",
+                  "offset": 42
+                },
+                {
+                  "type": "operator",
+                  "value": ":",
+                  "offset": 46
+                },
+                {
+                  "type": "newline",
+                  "value": "\n",
+                  "offset": 47
+                },
+                {
+                  "type": "block-tree",
+                  "children": [
+                    {
+                      "type": "whitespace",
+                      "value": "        ",
+                      "offset": 48
+                    },
+                    {
+                      "type": "number",
+                      "value": "1",
+                      "offset": 56
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

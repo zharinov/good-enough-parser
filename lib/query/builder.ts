@@ -6,7 +6,6 @@ import {
   SeqMatcher,
   SymMatcher,
 } from './matchers';
-import { AbstractTreeMatcher } from './matchers/abstract-tree-matcher';
 import { NumMatcher } from './matchers/num-matcher';
 import {
   TreeAllChildrenMatcher,
@@ -423,7 +422,7 @@ export class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
     super();
   }
 
-  build(): AbstractTreeMatcher<Ctx> {
+  build(): TreeNodeMatcher<Ctx> {
     if (isFirstChildTree<Ctx>(this.opts)) {
       const matcher = this.opts.firstChild.build();
       return new TreeFirstChildMatcher<Ctx>({ matcher, ...this.opts });

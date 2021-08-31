@@ -1,0 +1,225 @@
+{
+  "type": "root-tree",
+  "children": [
+    {
+      "type": "symbol",
+      "value": "if",
+      "offset": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 2
+    },
+    {
+      "type": "symbol",
+      "value": "True",
+      "offset": 3
+    },
+    {
+      "type": "operator",
+      "value": ":",
+      "offset": 7
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 8
+    },
+    {
+      "type": "block-tree",
+      "children": [
+        {
+          "type": "whitespace",
+          "value": "  ",
+          "offset": 9
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "[",
+            "offset": 11
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": "]",
+            "offset": 33
+          },
+          "children": [
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 12
+            },
+            {
+              "type": "number",
+              "value": "1",
+              "offset": 13
+            },
+            {
+              "type": "operator",
+              "value": ",",
+              "offset": 14
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 15
+            },
+            {
+              "type": "whitespace",
+              "value": "  ",
+              "offset": 16
+            },
+            {
+              "type": "number",
+              "value": "2",
+              "offset": 18
+            },
+            {
+              "type": "operator",
+              "value": ",",
+              "offset": 19
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 20
+            },
+            {
+              "type": "whitespace",
+              "value": "    ",
+              "offset": 21
+            },
+            {
+              "type": "number",
+              "value": "3",
+              "offset": 25
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 26
+            },
+            {
+              "type": "whitespace",
+              "value": "      ",
+              "offset": 27
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 34
+        }
+      ]
+    },
+    {
+      "type": "symbol",
+      "value": "else",
+      "offset": 35
+    },
+    {
+      "type": "operator",
+      "value": ":",
+      "offset": 39
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 40
+    },
+    {
+      "type": "wrapped-tree",
+      "startsWith": {
+        "type": "bracket-left",
+        "value": "[",
+        "offset": 41
+      },
+      "endsWith": {
+        "type": "bracket-right",
+        "value": "]",
+        "offset": 84
+      },
+      "children": [
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 42
+        },
+        {
+          "type": "whitespace",
+          "value": "        ",
+          "offset": 43
+        },
+        {
+          "type": "number",
+          "value": "3",
+          "offset": 51
+        },
+        {
+          "type": "operator",
+          "value": ",",
+          "offset": 52
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 53
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 54
+        },
+        {
+          "type": "whitespace",
+          "value": "          ",
+          "offset": 55
+        },
+        {
+          "type": "number",
+          "value": "2",
+          "offset": 65
+        },
+        {
+          "type": "operator",
+          "value": ",",
+          "offset": 66
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 67
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 68
+        },
+        {
+          "type": "whitespace",
+          "value": "            ",
+          "offset": 69
+        },
+        {
+          "type": "number",
+          "value": "1",
+          "offset": 81
+        },
+        {
+          "type": "operator",
+          "value": ",",
+          "offset": 82
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 83
+        }
+      ]
+    }
+  ]
+}

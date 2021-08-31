@@ -22,49 +22,54 @@
       "offset": 5
     },
     {
-      "type": "whitespace",
-      "value": "    ",
-      "offset": 6
-    },
-    {
-      "type": "symbol",
-      "value": "from",
-      "offset": 10
-    },
-    {
-      "type": "whitespace",
-      "value": " ",
-      "offset": 14
-    },
-    {
-      "type": "symbol",
-      "value": "setuptools",
-      "offset": 15
-    },
-    {
-      "type": "whitespace",
-      "value": " ",
-      "offset": 25
-    },
-    {
-      "type": "symbol",
-      "value": "import",
-      "offset": 26
-    },
-    {
-      "type": "whitespace",
-      "value": " ",
-      "offset": 32
-    },
-    {
-      "type": "symbol",
-      "value": "setup",
-      "offset": 33
-    },
-    {
-      "type": "newline",
-      "value": "\n",
-      "offset": 38
+      "type": "block-tree",
+      "children": [
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 6
+        },
+        {
+          "type": "symbol",
+          "value": "from",
+          "offset": 10
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 14
+        },
+        {
+          "type": "symbol",
+          "value": "setuptools",
+          "offset": 15
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 25
+        },
+        {
+          "type": "symbol",
+          "value": "import",
+          "offset": 26
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 32
+        },
+        {
+          "type": "symbol",
+          "value": "setup",
+          "offset": 33
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 38
+        }
+      ]
     },
     {
       "type": "symbol",
@@ -92,64 +97,69 @@
       "offset": 58
     },
     {
-      "type": "whitespace",
-      "value": "    ",
-      "offset": 59
-    },
-    {
-      "type": "symbol",
-      "value": "from",
-      "offset": 63
-    },
-    {
-      "type": "whitespace",
-      "value": " ",
-      "offset": 67
-    },
-    {
-      "type": "symbol",
-      "value": "distutils",
-      "offset": 68
-    },
-    {
-      "type": "operator",
-      "value": ".",
-      "offset": 77
-    },
-    {
-      "type": "symbol",
-      "value": "core",
-      "offset": 78
-    },
-    {
-      "type": "whitespace",
-      "value": " ",
-      "offset": 82
-    },
-    {
-      "type": "symbol",
-      "value": "import",
-      "offset": 83
-    },
-    {
-      "type": "whitespace",
-      "value": " ",
-      "offset": 89
-    },
-    {
-      "type": "symbol",
-      "value": "setup",
-      "offset": 90
-    },
-    {
-      "type": "newline",
-      "value": "\n",
-      "offset": 95
-    },
-    {
-      "type": "newline",
-      "value": "\n",
-      "offset": 96
+      "type": "block-tree",
+      "children": [
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 59
+        },
+        {
+          "type": "symbol",
+          "value": "from",
+          "offset": 63
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 67
+        },
+        {
+          "type": "symbol",
+          "value": "distutils",
+          "offset": 68
+        },
+        {
+          "type": "operator",
+          "value": ".",
+          "offset": 77
+        },
+        {
+          "type": "symbol",
+          "value": "core",
+          "offset": 78
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 82
+        },
+        {
+          "type": "symbol",
+          "value": "import",
+          "offset": 83
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 89
+        },
+        {
+          "type": "symbol",
+          "value": "setup",
+          "offset": 90
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 95
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 96
+        }
+      ]
     },
     {
       "type": "symbol",

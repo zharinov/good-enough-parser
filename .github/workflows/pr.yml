@@ -4,39 +4,6 @@ on:
   - pull_request
 
 jobs:
-  format-imports:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
-      - name: Install Dependencies
-        run: yarn --frozen-lockfile
-      - run: yarn -s format:check:imports
-
-  prettier:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
-      - name: Install Dependencies
-        run: yarn --frozen-lockfile
-      - run: yarn -s format:check:prettier
-
-  eslint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
-      - name: Install Dependencies
-        run: yarn --frozen-lockfile
-      - run: yarn -s lint:check
-
   test:
     strategy:
       matrix:
@@ -46,9 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.4.0
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn --frozen-lockfile
+          cache: 'yarn'
+      - name: Install Dependencies
+        run: yarn --frozen-lockfile
       - run: yarn -s build
       - run: yarn -s test

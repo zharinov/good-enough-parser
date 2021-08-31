@@ -14,32 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.4.0
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
       - name: Install Dependencies
         run: yarn --frozen-lockfile
       - run: yarn -s build
       - run: yarn -s test
-
-  # todo uncomment me
-  #
-  # release-canary:
-  #   needs: [test]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 16.x
-  #     - name: Install Dependencies
-  #       run: yarn --frozen-lockfile
-  #     - name: Release Canary
-  #       env:
-  #         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-  #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  #       run: |
-  #         yarn -s dripip preview --json > result.json
-  #         jq '.' < result.json
