@@ -23,7 +23,7 @@ describe('query/matchers/tree-matcher', () => {
       const treeMatcher = q
         .tree<string[]>({
           type: 'root-tree',
-          firstChild: q.sym(handler),
+          anyChild: q.sym(handler),
         })
         .build();
 
@@ -38,7 +38,7 @@ describe('query/matchers/tree-matcher', () => {
       const treeMatcher = q
         .tree<string[]>({
           type: 'root-tree',
-          firstChild: q.sym(handler),
+          anyChild: q.sym(handler),
         })
         .build();
 
@@ -53,7 +53,7 @@ describe('query/matchers/tree-matcher', () => {
       const treeMatcher = q
         .tree<string[]>({
           type: 'root-tree',
-          firstChild: q.sym(handler),
+          anyChild: q.sym(handler),
         })
         .build();
 

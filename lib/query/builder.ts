@@ -9,9 +9,7 @@ import {
 import { NumMatcher } from './matchers/num-matcher';
 import {
   TreeAllChildrenMatcher,
-  TreeAllDescendantsMatcher,
-  TreeFirstChildMatcher,
-  TreeFirstDescendantMatcher,
+  TreeAnyChildMatcher,
   TreeNodeMatcher,
 } from './matchers/tree-macher';
 import type {
@@ -366,9 +364,9 @@ interface TreeNodeWalkingBuilderOptions<Ctx>
   postHandler?: TreeNodeMatcherHandler<Ctx>;
 }
 
-export interface TreeFirstChildBuilderOptions<Ctx>
+export interface TreeAnyChildBuilderOptions<Ctx>
   extends TreeNodeWalkingBuilderOptions<Ctx> {
-  firstChild: AbstractBuilder<Ctx>;
+  anyChild: AbstractBuilder<Ctx>;
 }
 
 export interface TreeAllChildrenBuilderOptions<Ctx>
@@ -388,15 +386,13 @@ export interface TreeAllDescendantsBuilderOptions<Ctx>
 
 export type TreeBuilderOptions<Ctx> =
   | TreeNodeBuilderOptions<Ctx>
-  | TreeFirstChildBuilderOptions<Ctx>
-  | TreeAllChildrenBuilderOptions<Ctx>
-  | TreeFirstDescendantBuilderOptions<Ctx>
-  | TreeAllDescendantsBuilderOptions<Ctx>;
+  | TreeAnyChildBuilderOptions<Ctx>
+  | TreeAllChildrenBuilderOptions<Ctx>;
 
-function isFirstChildTree<Ctx>(
+function isAnyChildTree<Ctx>(
   opts: TreeBuilderOptions<Ctx>
-): opts is TreeFirstChildBuilderOptions<Ctx> {
-  return !!(opts as TreeFirstChildBuilderOptions<Ctx>)?.firstChild;
+): opts is TreeAnyChildBuilderOptions<Ctx> {
+  return !!(opts as TreeAnyChildBuilderOptions<Ctx>)?.anyChild;
 }
 
 function isAllChildrenTree<Ctx>(
@@ -405,36 +401,18 @@ function isAllChildrenTree<Ctx>(
   return !!(opts as TreeAllChildrenBuilderOptions<Ctx>)?.allChildren;
 }
 
-function isFirstDescendantTree<Ctx>(
-  opts: TreeBuilderOptions<Ctx>
-): opts is TreeFirstDescendantBuilderOptions<Ctx> {
-  return !!(opts as TreeFirstDescendantBuilderOptions<Ctx>)?.firstDescendant;
-}
-
-function isAllDescendantsTree<Ctx>(
-  opts: TreeBuilderOptions<Ctx>
-): opts is TreeAllDescendantsBuilderOptions<Ctx> {
-  return !!(opts as TreeAllDescendantsBuilderOptions<Ctx>)?.allDescendants;
-}
-
 export class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: TreeBuilderOptions<Ctx>) {
     super();
   }
 
   build(): TreeNodeMatcher<Ctx> {
-    if (isFirstChildTree<Ctx>(this.opts)) {
-      const matcher = this.opts.firstChild.build();
-      return new TreeFirstChildMatcher<Ctx>({ matcher, ...this.opts });
+    if (isAnyChildTree<Ctx>(this.opts)) {
+      const matcher = this.opts.anyChild.build();
+      return new TreeAnyChildMatcher<Ctx>({ matcher, ...this.opts });
     } else if (isAllChildrenTree<Ctx>(this.opts)) {
       const matcher = this.opts.allChildren.build();
       return new TreeAllChildrenMatcher<Ctx>({ matcher, ...this.opts });
-    } else if (isFirstDescendantTree<Ctx>(this.opts)) {
-      const matcher = this.opts.firstDescendant.build();
-      return new TreeFirstDescendantMatcher<Ctx>({ matcher, ...this.opts });
-    } else if (isAllDescendantsTree<Ctx>(this.opts)) {
-      const matcher = this.opts.allDescendants.build();
-      return new TreeAllDescendantsMatcher<Ctx>({ matcher, ...this.opts });
     } else {
       return new TreeNodeMatcher(this.opts);
     }
