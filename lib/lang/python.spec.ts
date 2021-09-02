@@ -13,18 +13,6 @@ describe('lang/python', () => {
 
   test.each`
     name
-    ${'setup.py'}
-  `('WIP: $name', ({ name }) => {
-    const input = loadInputTxt(name);
-    const lang = createLang(pythonLang);
-    const res = lang.parse(input).node;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const expected = loadOutputJson(name, res);
-    expect(res).toEqual(expected);
-  });
-
-  test.each`
-    name
     ${'blocks-01.py'}
     ${'blocks-02.py'}
     ${'blocks-03.py'}
