@@ -850,7 +850,7 @@
     "@thi.ng/checks" "^2.9.10"
     "@thi.ng/hex" "^1.0.4"
 
-"@thi.ng/zipper@false1.0.2":
+"@thi.ng/zipper@1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@thi.ng/zipper/-/zipper-1.0.2.tgz#3fd9861bcab6f62860b09466ba9cfed28ba8eeec"
   integrity sha512-UsIIvhGSpBgziYGMxC7vei1e712Z8hin5Nun0hRJdOcpzF2N+4G2uzm4opDe7B7p2WHLfJN8EcbpGJhqe1Ae6Q==
