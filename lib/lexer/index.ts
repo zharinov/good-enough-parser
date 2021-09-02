@@ -28,10 +28,10 @@ export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
     lexerConfig;
   result = configComments(result, comments);
   result = configSymbols(result, { match: symbols });
-  result = configNumbers(result, { match: numbers });
   result = configOperators(result, operators);
   result = configBrackets(result, brackets);
   result = configStrings(result, strings);
+  result = configNumbers(result, { match: numbers });
   return result;
 }
 

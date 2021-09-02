@@ -2,7 +2,15 @@ import { loadInputTxt, loadOutputJson } from '../../test/test-utils';
 import { lang as pythonLang } from './python';
 import { createLang } from '.';
 
+const lang = createLang(pythonLang);
+
 describe('lang/python', () => {
+  it('does not confuse operator and number literal', () => {
+    const value = '.42';
+    const res = lang.parse(value).down?.node;
+    expect(res).toMatchObject({ type: 'number', value });
+  });
+
   test.each`
     name
     ${'setup.py'}
@@ -24,8 +32,9 @@ describe('lang/python', () => {
     ${'setup.py'}
   `('$name', ({ name }) => {
     const input = loadInputTxt(name);
-    const lang = createLang(pythonLang);
+
     const res = lang.parse(input).node;
+
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const expected = loadOutputJson(name, res);
     expect(res).toEqual(expected);
@@ -33,7 +42,6 @@ describe('lang/python', () => {
 
   it('supports line joins', () => {
     const input = loadInputTxt('line-join');
-    const lang = createLang(pythonLang);
 
     const res = lang.parse(input)?.node;
 

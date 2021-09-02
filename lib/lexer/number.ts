@@ -1,4 +1,3 @@
-import { sortStateRules } from './rules';
 import type { NumberOption, StatesMap } from './types';
 
 export function configNumbers(
@@ -7,9 +6,9 @@ export function configNumbers(
 ): StatesMap {
   return {
     ...states,
-    $: sortStateRules({
-      ...states.$,
+    $: {
       number: { t: 'regex', match },
-    }),
+      ...states.$,
+    },
   };
 }
