@@ -111,7 +111,7 @@ abstract class AbstractBuilder<Ctx> {
 
 // Sequence
 
-export class SeqBuilder<Ctx> extends AbstractBuilder<Ctx> {
+class SeqBuilder<Ctx> extends AbstractBuilder<Ctx> {
   private readonly builders: AbstractBuilder<Ctx>[];
 
   constructor(prev: AbstractBuilder<Ctx>, next: AbstractBuilder<Ctx>) {
@@ -128,7 +128,7 @@ export class SeqBuilder<Ctx> extends AbstractBuilder<Ctx> {
 
 // Symbols
 
-export class SymBuilder<Ctx> extends AbstractBuilder<Ctx> {
+class SymBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: SymMatcherOptions<Ctx>) {
     super();
   }
@@ -181,7 +181,7 @@ export function sym<Ctx>(
 
 // Operators
 
-export class OpBuilder<Ctx> extends AbstractBuilder<Ctx> {
+class OpBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: OpMatcherOptions<Ctx>) {
     super();
   }
@@ -234,7 +234,7 @@ export function op<Ctx>(
 
 // Numbers
 
-export class NumBuilder<Ctx> extends AbstractBuilder<Ctx> {
+class NumBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: NumMatcherOptions<Ctx>) {
     super();
   }
@@ -293,7 +293,7 @@ export interface ManyBuilderOpts<Ctx> {
   max: number | null;
 }
 
-export class ManyBuilder<Ctx> extends AbstractBuilder<Ctx> {
+class ManyBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: ManyBuilderOpts<Ctx>) {
     super();
   }
@@ -337,7 +337,7 @@ export function opt<Ctx>(builder: AbstractBuilder<Ctx>): ManyBuilder<Ctx> {
 
 // Alternatives
 
-export class AltBuilder<Ctx> extends AbstractBuilder<Ctx> {
+class AltBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private builders: AbstractBuilder<Ctx>[]) {
     super();
   }
@@ -401,7 +401,7 @@ function isAllChildrenTree<Ctx>(
   return !!(opts as TreeAllChildrenBuilderOptions<Ctx>)?.allChildren;
 }
 
-export class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
+class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: TreeBuilderOptions<Ctx>) {
     super();
   }

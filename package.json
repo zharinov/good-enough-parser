@@ -8,17 +8,28 @@
   ],
   "license": "MIT",
   "files": [
-    "dist-cjs",
-    "dist-esm"
+    "dist"
   ],
   "exports": {
-    ".": {
-      "require": "./dist-cjs/index.js",
-      "import": "./dist-esm/index.js"
+    "lang": {
+      "require": "./dist/cjs/lang/index.js",
+      "import": "./dist/esm/lang/index.js"
+    },
+    "lexer": {
+      "require": "./dist/cjs/lexer/index.js",
+      "import": "./dist/esm/lexer/index.js"
+    },
+    "parser": {
+      "require": "./dist/cjs/parser/index.js",
+      "import": "./dist/esm/parser/index.js"
+    },
+    "query": {
+      "require": "./dist/cjs/query/index.js",
+      "import": "./dist/esm/query/index.js"
     }
   },
-  "main": "./dist-cjs/index.js",
-  "module": "./dist-esm/index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "scripts": {
     "ts-node": "ts-node --project tsconfig.ts-node.json",
     "lint": "run-s lint:*",
@@ -35,7 +46,7 @@
     "build:esm": "ttsc --project tsconfig.esm.json",
     "test": "run-s lint test:*",
     "test:unit": "jest",
-    "clean": "rm -rf dist-cjs dist-esm node_modules/.cache coverage",
+    "clean": "rm -rf dist node_modules/.cache coverage",
     "release:pr": "dripip pr",
     "release:canary": "dripip preview",
     "release:stable": "dripip stable",

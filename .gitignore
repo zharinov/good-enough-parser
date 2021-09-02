@@ -104,5 +104,4 @@ dist
 .tern-port
 
 # This library
-dist-esm
-dist-cjs
+dist
