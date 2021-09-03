@@ -59,3 +59,10 @@ export interface ManyMatcherOptions<Ctx> {
 export interface AltMatcherOptions<Ctx> {
   matchers: Matcher<Ctx>[];
 }
+
+export type StrMatcherValue<Ctx> = string | RegExp | Matcher<Ctx>;
+export interface StrMatcherOptions<Ctx> {
+  matchers: StrMatcherValue<Ctx>[] | null;
+  preHandler: TreeNodeMatcherHandler<Ctx> | null;
+  postHandler: TreeNodeMatcherHandler<Ctx> | null;
+}

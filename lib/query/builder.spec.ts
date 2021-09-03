@@ -198,4 +198,27 @@ describe('query/builder', () => {
       expect(treeSeq.build()).toMatchObject({ seq: [expected, expected] });
     });
   });
+
+  describe('String builder', () => {
+    const foo = builder.sym('foo');
+
+    test.each`
+      arg1                       | arg2         | preHandler | postHandler | matchers
+      ${undefined}               | ${undefined} | ${null}    | ${null}     | ${null}
+      ${'foobar'}                | ${undefined} | ${null}    | ${null}     | ${['foobar']}
+      ${'foobar'}                | ${handler}   | ${null}    | ${null}     | ${['foobar']}
+      ${/foobar/}                | ${undefined} | ${null}    | ${null}     | ${[/foobar/]}
+      ${/foobar/}                | ${handler}   | ${null}    | ${null}     | ${[/foobar/]}
+      ${{ match: [foo, 'bar'] }} | ${undefined} | ${null}    | ${null}     | ${[expect.any(SymMatcher), 'bar']}
+    `('str($arg1, $arg2)', ({ arg1, preHandler, postHandler, matchers }) => {
+      const treeSeq = arg1 ? builder.str(arg1).str(arg1) : builder.str().str();
+      const expected = {
+        type: 'string-tree',
+        preHandler,
+        postHandler,
+        matchers,
+      };
+      expect(treeSeq.build()).toMatchObject({ seq: [expected, expected] });
+    });
+  });
 });

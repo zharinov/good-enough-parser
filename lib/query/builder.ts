@@ -7,6 +7,7 @@ import {
   SymMatcher,
 } from './matchers';
 import { NumMatcher } from './matchers/num-matcher';
+import { StrMatcher } from './matchers/str-matcher';
 import {
   TreeAnyChildMatcher,
   TreeManyChildrenMatcher,
@@ -105,6 +106,19 @@ abstract class AbstractBuilder<Ctx> {
   tree(arg1?: TreeBuilderOptions<Ctx> | TreeType): SeqBuilder<Ctx> {
     const opts = coerceTreeOptions(arg1);
     const builder = new TreeBuilder(opts);
+    return new SeqBuilder<Ctx>(this, builder);
+  }
+
+  str(): SeqBuilder<Ctx>;
+  str(exact: string, handler?: TreeNodeMatcherHandler<Ctx>): SeqBuilder<Ctx>;
+  str(pattern: RegExp, handler?: TreeNodeMatcherHandler<Ctx>): SeqBuilder<Ctx>;
+  str(opts: StrBuilderOptions<Ctx>): SeqBuilder<Ctx>;
+  str(
+    arg1?: string | RegExp | StrBuilderOptions<Ctx>,
+    arg2?: TreeNodeMatcherHandler<Ctx>
+  ): SeqBuilder<Ctx> {
+    const opts = coerceStrOptions<Ctx>(arg1, arg2);
+    const builder = new StrBuilder<Ctx>(opts);
     return new SeqBuilder<Ctx>(this, builder);
   }
 }
@@ -435,4 +449,65 @@ export function tree<Ctx>(
 ): TreeBuilder<Ctx> {
   const opts = coerceTreeOptions(arg1);
   return new TreeBuilder(opts);
+}
+
+// Strings
+
+export type StrMatchValue<Ctx> = string | RegExp | AbstractBuilder<Ctx>;
+export interface StrBuilderOptions<Ctx> {
+  match?: StrMatchValue<Ctx>[];
+  preHandler?: TreeNodeMatcherHandler<Ctx>;
+  postHandler?: TreeNodeMatcherHandler<Ctx>;
+}
+
+class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
+  constructor(private opts: StrBuilderOptions<Ctx>) {
+    super();
+  }
+
+  build(): TreeNodeMatcher<Ctx> {
+    const matchers =
+      this.opts.match?.map((m) =>
+        m instanceof AbstractBuilder ? m.build() : m
+      ) ?? null;
+    return new StrMatcher({
+      preHandler: this.opts.preHandler ?? null,
+      postHandler: this.opts.postHandler ?? null,
+      matchers,
+    });
+  }
+}
+
+function coerceStrOptions<Ctx>(
+  arg1: string | RegExp | StrBuilderOptions<Ctx> | undefined,
+  arg2: TreeNodeMatcherHandler<Ctx> | undefined
+): StrBuilderOptions<Ctx> {
+  const result: StrBuilderOptions<Ctx> = {};
+  if (typeof arg1 === 'string' || arg1 instanceof RegExp) {
+    result.match = [arg1];
+    if (arg2) {
+      result.postHandler = arg2;
+    }
+  } else if (arg1) {
+    return arg1;
+  }
+  return result;
+}
+
+export function str<Ctx>(): StrBuilder<Ctx>;
+export function str<Ctx>(
+  exact: string,
+  handler?: TreeNodeMatcherHandler<Ctx>
+): StrBuilder<Ctx>;
+export function str<Ctx>(
+  pattern: RegExp,
+  handler?: TreeNodeMatcherHandler<Ctx>
+): StrBuilder<Ctx>;
+export function str<Ctx>(opts: StrBuilderOptions<Ctx>): StrBuilder<Ctx>;
+export function str<Ctx>(
+  arg1?: string | RegExp | StrBuilderOptions<Ctx>,
+  arg2?: TreeNodeMatcherHandler<Ctx>
+): StrBuilder<Ctx> {
+  const opts = coerceStrOptions<Ctx>(arg1, arg2);
+  return new StrBuilder<Ctx>(opts);
 }
