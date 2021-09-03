@@ -8,8 +8,8 @@ import {
 } from './matchers';
 import { NumMatcher } from './matchers/num-matcher';
 import {
-  TreeAllChildrenMatcher,
   TreeAnyChildMatcher,
+  TreeManyChildrenMatcher,
   TreeNodeMatcher,
 } from './matchers/tree-macher';
 import type {
@@ -369,25 +369,15 @@ export interface TreeAnyChildBuilderOptions<Ctx>
   anyChild: AbstractBuilder<Ctx>;
 }
 
-export interface TreeAllChildrenBuilderOptions<Ctx>
+export interface TreeManyChildrenBuilderOptions<Ctx>
   extends TreeNodeWalkingBuilderOptions<Ctx> {
-  allChildren: AbstractBuilder<Ctx>;
-}
-
-export interface TreeFirstDescendantBuilderOptions<Ctx>
-  extends TreeNodeWalkingBuilderOptions<Ctx> {
-  firstDescendant: AbstractBuilder<Ctx>;
-}
-
-export interface TreeAllDescendantsBuilderOptions<Ctx>
-  extends TreeNodeWalkingBuilderOptions<Ctx> {
-  allDescendants: AbstractBuilder<Ctx>;
+  manyChildren: AbstractBuilder<Ctx>;
 }
 
 export type TreeBuilderOptions<Ctx> =
   | TreeNodeBuilderOptions<Ctx>
   | TreeAnyChildBuilderOptions<Ctx>
-  | TreeAllChildrenBuilderOptions<Ctx>;
+  | TreeManyChildrenBuilderOptions<Ctx>;
 
 function isAnyChildTree<Ctx>(
   opts: TreeBuilderOptions<Ctx>
@@ -395,10 +385,10 @@ function isAnyChildTree<Ctx>(
   return !!(opts as TreeAnyChildBuilderOptions<Ctx>)?.anyChild;
 }
 
-function isAllChildrenTree<Ctx>(
+function isManyChildrenTree<Ctx>(
   opts: TreeBuilderOptions<Ctx>
-): opts is TreeAllChildrenBuilderOptions<Ctx> {
-  return !!(opts as TreeAllChildrenBuilderOptions<Ctx>)?.allChildren;
+): opts is TreeManyChildrenBuilderOptions<Ctx> {
+  return !!(opts as TreeManyChildrenBuilderOptions<Ctx>)?.manyChildren;
 }
 
 class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
@@ -410,9 +400,9 @@ class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
     if (isAnyChildTree<Ctx>(this.opts)) {
       const matcher = this.opts.anyChild.build();
       return new TreeAnyChildMatcher<Ctx>({ matcher, ...this.opts });
-    } else if (isAllChildrenTree<Ctx>(this.opts)) {
-      const matcher = this.opts.allChildren.build();
-      return new TreeAllChildrenMatcher<Ctx>({ matcher, ...this.opts });
+    } else if (isManyChildrenTree<Ctx>(this.opts)) {
+      const matcher = this.opts.manyChildren.build();
+      return new TreeManyChildrenMatcher<Ctx>({ matcher, ...this.opts });
     } else {
       return new TreeNodeMatcher(this.opts);
     }
