@@ -397,14 +397,20 @@ class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
   }
 
   build(): TreeNodeMatcher<Ctx> {
+    const opts = {
+      type: null,
+      preHandler: null,
+      postHandler: null,
+      ...this.opts,
+    };
     if (isAnyChildTree<Ctx>(this.opts)) {
       const matcher = this.opts.anyChild.build();
-      return new TreeAnyChildMatcher<Ctx>({ matcher, ...this.opts });
+      return new TreeAnyChildMatcher<Ctx>({ ...opts, matcher });
     } else if (isManyChildrenTree<Ctx>(this.opts)) {
       const matcher = this.opts.manyChildren.build();
-      return new TreeManyChildrenMatcher<Ctx>({ matcher, ...this.opts });
+      return new TreeManyChildrenMatcher<Ctx>({ ...opts, matcher });
     } else {
-      return new TreeNodeMatcher(this.opts);
+      return new TreeNodeMatcher(opts);
     }
   }
 }
