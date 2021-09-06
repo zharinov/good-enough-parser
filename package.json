@@ -54,7 +54,7 @@
     "prepublishOnly": "yarn -s build"
   },
   "dependencies": {
-    "@thi.ng/zipper": "1.0.2",
+    "@thi.ng/zipper": "1.0.3",
     "@types/moo": "0.5.5",
     "deep-freeze-es6": "1.4.1",
     "moo": "0.5.1",
