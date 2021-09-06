@@ -1,6 +1,27 @@
-closes #...
+<!-- Make sure the `Allow edits and access to secrets by maintainers` checkbox is checked on this pull request. -->
 
-#### TODO
+## Changes:
 
-- [ ] docs
-- [ ] tests
+<!-- Describe what behavior is changed by this PR. -->
+
+## Context:
+
+<!-- Describe why you're making these changes if it's not already explained in a corresponding issue. -->
+<!-- If you're closing an existing issue with this pull request, use the keyword Closes #issue_number -->
+
+## Documentation (please check one with an [x])
+
+- [ ] I have updated the documentation, or
+- [ ] No documentation update is required
+
+## How I've tested my work (please tick one)
+
+I have verified these changes via:
+
+- [ ] Code inspection only, or
+- [ ] Newly added/modified unit tests
+
+<!-- Do you have any suggestions about this PR template? Edit it here: https://github.com/renovatebot/parser-utils/blob/main/.github/PULL_REQUEST_TEMPLATE.md -->
+
+<!-- Please do not force push to your PR's branch after you have created your PR, as doing so forces us to review the whole PR again. This makes it harder for us to review your work because we don't know what has changed. -->
+<!-- PRs will always be squashed by us when we merge your work. Commit as many times as you need in this branch. -->
