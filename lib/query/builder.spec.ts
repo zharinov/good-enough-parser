@@ -200,20 +200,34 @@ describe('query/builder', () => {
   });
 
   describe('String builder', () => {
-    const foo = builder.sym('foo');
+    it('handles empty argument list', () => {
+      const matcher = builder.str().build();
+      expect(matcher).toEqual({
+        matchers: null,
+        preHandler: null,
+        postHandler: null,
+      });
+    });
+
+    it('handles exact string parameter', () => {
+      const matcher = builder.str('foobar').build();
+      expect(matcher).toEqual({
+        matchers: [{ content: 'foobar', handler: null }],
+        preHandler: null,
+        postHandler: null,
+      });
+    });
 
     test.each`
-      arg1                       | arg2         | preHandler | postHandler | matchers
-      ${undefined}               | ${undefined} | ${null}    | ${null}     | ${null}
-      ${'foobar'}                | ${undefined} | ${null}    | ${null}     | ${['foobar']}
-      ${'foobar'}                | ${handler}   | ${null}    | ${null}     | ${['foobar']}
-      ${/foobar/}                | ${undefined} | ${null}    | ${null}     | ${[/foobar/]}
-      ${/foobar/}                | ${handler}   | ${null}    | ${null}     | ${[/foobar/]}
-      ${{ match: [foo, 'bar'] }} | ${undefined} | ${null}    | ${null}     | ${[expect.any(SymMatcher), 'bar']}
+      arg1         | arg2         | preHandler | postHandler | matchers
+      ${undefined} | ${undefined} | ${null}    | ${null}     | ${null}
+      ${'foobar'}  | ${undefined} | ${null}    | ${null}     | ${[{ content: 'foobar' }]}
+      ${'foobar'}  | ${handler}   | ${null}    | ${null}     | ${[{ content: 'foobar' }]}
+      ${/foobar/}  | ${undefined} | ${null}    | ${null}     | ${[{ content: /foobar/ }]}
+      ${/foobar/}  | ${handler}   | ${null}    | ${null}     | ${[{ content: /foobar/ }]}
     `('str($arg1, $arg2)', ({ arg1, preHandler, postHandler, matchers }) => {
       const treeSeq = arg1 ? builder.str(arg1).str(arg1) : builder.str().str();
       const expected = {
-        type: 'string-tree',
         preHandler,
         postHandler,
         matchers,

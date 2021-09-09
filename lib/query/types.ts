@@ -33,16 +33,16 @@ export interface SeqMatcherOptions<Ctx> {
 }
 
 export type TreeNodeMatcherType = TreeType | null;
-export type TreeNodeMatcherHandler<Ctx> = (ctx: Ctx, tree: Tree) => Ctx;
-export interface TreeNodeMatcherOptions<Ctx> {
+export type TreeNodeMatcherHandler<Ctx, T = Tree> = (ctx: Ctx, tree: T) => Ctx;
+export interface TreeNodeMatcherOptions<Ctx, T = Tree> {
   type: TreeNodeMatcherType;
-  preHandler: TreeNodeMatcherHandler<Ctx> | null;
+  preHandler: TreeNodeMatcherHandler<Ctx, T> | null;
 }
 
-export interface TreeNodeWalkingMatcherOptions<Ctx>
-  extends TreeNodeMatcherOptions<Ctx> {
+export interface TreeNodeWalkingMatcherOptions<Ctx, T = Tree>
+  extends TreeNodeMatcherOptions<Ctx, T> {
   matcher: Matcher<Ctx>;
-  postHandler: TreeNodeMatcherHandler<Ctx> | null;
+  postHandler: TreeNodeMatcherHandler<Ctx, T> | null;
 }
 
 export interface Matcher<Ctx> {
@@ -58,11 +58,4 @@ export interface ManyMatcherOptions<Ctx> {
 
 export interface AltMatcherOptions<Ctx> {
   matchers: Matcher<Ctx>[];
-}
-
-export type StrMatcherValue<Ctx> = string | RegExp | Matcher<Ctx>;
-export interface StrMatcherOptions<Ctx> {
-  matchers: StrMatcherValue<Ctx>[] | null;
-  preHandler: TreeNodeMatcherHandler<Ctx> | null;
-  postHandler: TreeNodeMatcherHandler<Ctx> | null;
 }

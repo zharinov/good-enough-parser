@@ -1,4 +1,5 @@
 import { isTree } from '../../parser';
+import type { Node, Tree } from '../../parser/types';
 import type {
   Checkpoint,
   Matcher,
@@ -10,20 +11,27 @@ import type {
 import { AbstractMatcher } from './abstract-matcher';
 import { skipMinorTokens } from './util';
 
-export class TreeNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
+export class TreeNodeMatcher<
+  Ctx,
+  T extends Tree = Tree
+> extends AbstractMatcher<Ctx> {
   public readonly type: TreeNodeMatcherType;
-  public readonly preHandler: TreeNodeMatcherHandler<Ctx> | null;
+  public readonly preHandler: TreeNodeMatcherHandler<Ctx, T> | null;
 
-  constructor(config: TreeNodeMatcherOptions<Ctx>) {
+  constructor(config: TreeNodeMatcherOptions<Ctx, T>) {
     super();
     this.type = config.type ?? null;
     this.preHandler = config.preHandler ?? null;
   }
 
+  isTree(node: Node): node is T {
+    return isTree(node);
+  }
+
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const { cursor, context } = checkpoint;
     const node = cursor.node;
-    if (isTree(node)) {
+    if (this.isTree(node)) {
       const isMatched = this.type ? node.type === this.type : true;
       if (isMatched) {
         const nextContext = this.preHandler
@@ -39,7 +47,10 @@ export class TreeNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 }
 
-class TreeNodeWalkingMatcher<Ctx> extends TreeNodeMatcher<Ctx> {
+export class TreeNodeWalkingMatcher<
+  Ctx,
+  T extends Tree
+> extends TreeNodeMatcher<Ctx, T> {
   public readonly matcher: Matcher<Ctx>;
   public readonly postHandler: TreeNodeMatcherHandler<Ctx> | null;
 
@@ -70,7 +81,10 @@ class TreeNodeWalkingMatcher<Ctx> extends TreeNodeMatcher<Ctx> {
   }
 }
 
-export class TreeAnyChildMatcher<Ctx> extends TreeNodeWalkingMatcher<Ctx> {
+export class TreeAnyChildMatcher<Ctx> extends TreeNodeWalkingMatcher<
+  Ctx,
+  Tree
+> {
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const treeMatch = super.match(checkpoint);
     if (treeMatch) {
@@ -87,7 +101,10 @@ export class TreeAnyChildMatcher<Ctx> extends TreeNodeWalkingMatcher<Ctx> {
   }
 }
 
-export class TreeManyChildrenMatcher<Ctx> extends TreeNodeWalkingMatcher<Ctx> {
+export class TreeManyChildrenMatcher<Ctx> extends TreeNodeWalkingMatcher<
+  Ctx,
+  Tree
+> {
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const treeMatch = super.match(checkpoint);
     if (treeMatch) {

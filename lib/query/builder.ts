@@ -7,7 +7,12 @@ import {
   SymMatcher,
 } from './matchers';
 import { NumMatcher } from './matchers/num-matcher';
-import { StrMatcher } from './matchers/str-matcher';
+import {
+  StrContentMatcher,
+  StrNodeChildMatcher,
+  StrNodeMatcher,
+  StrTplMatcher,
+} from './matchers/str-matcher';
 import {
   TreeAnyChildMatcher,
   TreeManyChildrenMatcher,
@@ -465,15 +470,38 @@ class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
     super();
   }
 
-  build(): TreeNodeMatcher<Ctx> {
-    const matchers =
-      this.opts.match?.map((m) =>
-        m instanceof AbstractBuilder ? m.build() : m
-      ) ?? null;
-    return new StrMatcher({
+  build(): StrNodeMatcher<Ctx> {
+    const matchers: StrNodeChildMatcher<Ctx>[] = [];
+
+    this.opts.match?.forEach((m) => {
+      if (typeof m === 'string' || m instanceof RegExp) {
+        const contentMatcher = new StrContentMatcher<Ctx>({
+          value: m,
+          handler: null,
+        });
+        matchers.push(contentMatcher);
+      } else if (m instanceof StrBuilder) {
+        const childStrMatcher = m.build() as StrNodeMatcher<Ctx>;
+        if (childStrMatcher.matchers) {
+          matchers.push(...childStrMatcher.matchers);
+        }
+      } else if (m instanceof StrTplMatcher) {
+        matchers.push(m);
+      } else {
+        const tplMatcher = new StrTplMatcher<Ctx>({
+          type: 'template-tree',
+          matcher: m.build(),
+          preHandler: null,
+          postHandler: null,
+        });
+        matchers.push(tplMatcher);
+      }
+    });
+
+    return new StrNodeMatcher<Ctx>({
       preHandler: this.opts.preHandler ?? null,
       postHandler: this.opts.postHandler ?? null,
-      matchers,
+      matchers: matchers.length ? matchers : null,
     });
   }
 }
