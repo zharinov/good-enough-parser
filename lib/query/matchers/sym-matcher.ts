@@ -4,16 +4,17 @@ import type {
   SymMatcherOptions,
   SymMatcherValue,
 } from '../types';
+import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 
 export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly sym: SymMatcherValue;
-  readonly handler: SymMatcherHandler<Ctx> | null;
+  readonly handler: SymMatcherHandler<Ctx>;
 
   constructor({ value, handler }: SymMatcherOptions<Ctx>) {
     super();
     this.sym = value;
-    this.handler = handler ?? null;
+    this.handler = coerceHandler(handler);
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
@@ -27,9 +28,7 @@ export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
         isMatched = this.sym.test(node.value);
       }
       if (isMatched) {
-        const nextContext = this.handler
-          ? this.handler(context, node)
-          : context;
+        const nextContext = this.handler(context, node);
         const nextCursor = cursor.right;
         return nextCursor
           ? { context: nextContext, cursor: nextCursor }

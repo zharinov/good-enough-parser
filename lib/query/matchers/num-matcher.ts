@@ -4,16 +4,17 @@ import type {
   NumMatcherOptions,
   NumMatcherValue,
 } from '../types';
+import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 
 export class NumMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly num: NumMatcherValue;
-  readonly handler: NumMatcherHandler<Ctx> | null;
+  readonly handler: NumMatcherHandler<Ctx>;
 
   constructor({ value, handler }: NumMatcherOptions<Ctx>) {
     super();
     this.num = value;
-    this.handler = handler ?? null;
+    this.handler = coerceHandler(handler);
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
@@ -27,9 +28,7 @@ export class NumMatcher<Ctx> extends AbstractMatcher<Ctx> {
         isMatched = this.num.test(node.value);
       }
       if (isMatched) {
-        const nextContext = this.handler
-          ? this.handler(context, node)
-          : context;
+        const nextContext = this.handler(context, node);
         const nextCursor = cursor.right;
         return nextCursor
           ? { context: nextContext, cursor: nextCursor }

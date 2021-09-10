@@ -8,6 +8,7 @@ import type {
   TreeNodeMatcherType,
   TreeNodeWalkingMatcherOptions,
 } from '../types';
+import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 import { skipMinorTokens } from './util';
 
@@ -16,12 +17,12 @@ export class TreeNodeMatcher<
   T extends Tree = Tree
 > extends AbstractMatcher<Ctx> {
   public readonly type: TreeNodeMatcherType;
-  public readonly preHandler: TreeNodeMatcherHandler<Ctx, T> | null;
+  public readonly preHandler: TreeNodeMatcherHandler<Ctx, T>;
 
   constructor(config: TreeNodeMatcherOptions<Ctx, T>) {
     super();
     this.type = config.type ?? null;
-    this.preHandler = config.preHandler ?? null;
+    this.preHandler = coerceHandler<Ctx, T>(config.preHandler);
   }
 
   isTree(node: Node): node is T {
@@ -34,9 +35,7 @@ export class TreeNodeMatcher<
     if (this.isTree(node)) {
       const isMatched = this.type ? node.type === this.type : true;
       if (isMatched) {
-        const nextContext = this.preHandler
-          ? this.preHandler(context, node)
-          : context;
+        const nextContext = this.preHandler(context, node);
         const nextCursor = cursor.right;
         return nextCursor
           ? { context: nextContext, cursor: nextCursor }
@@ -52,12 +51,12 @@ export class TreeNodeWalkingMatcher<
   T extends Tree
 > extends TreeNodeMatcher<Ctx, T> {
   public readonly matcher: Matcher<Ctx>;
-  public readonly postHandler: TreeNodeMatcherHandler<Ctx> | null;
+  public readonly postHandler: TreeNodeMatcherHandler<Ctx>;
 
   constructor(config: TreeNodeWalkingMatcherOptions<Ctx>) {
     super(config);
     this.matcher = config.matcher;
-    this.postHandler = config.postHandler ?? null;
+    this.postHandler = coerceHandler<Ctx, Tree>(config.postHandler);
   }
 
   seekNextChild(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {

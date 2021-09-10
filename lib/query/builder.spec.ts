@@ -1,23 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import * as builder from '../../lib/query/builder';
 import { SeqMatcher, SymMatcher } from '../../lib/query/matchers';
+import * as _util from './util';
+
+jest.mock('./util');
+const util = _util as jest.Mocked<typeof _util>;
+const defaultHandler = (x: unknown) => x;
+const someHandler = (x: unknown) => (x ? x : x);
+util.coerceHandler.mockImplementation((fn) => (fn ? fn : defaultHandler));
 
 describe('query/builder', () => {
-  const anyFn = expect.any(Function) as never;
-
-  const handler = (x: unknown) => x;
-
   describe('Symbol builder', () => {
     test.each`
-      arg1                         | arg2         | sym      | handler
-      ${undefined}                 | ${undefined} | ${null}  | ${null}
-      ${'foo'}                     | ${undefined} | ${'foo'} | ${null}
-      ${{ value: 'foo' }}          | ${undefined} | ${'foo'} | ${null}
-      ${/abc/}                     | ${undefined} | ${/abc/} | ${null}
-      ${{ value: /abc/ }}          | ${undefined} | ${/abc/} | ${null}
-      ${'foo'}                     | ${handler}   | ${'foo'} | ${anyFn}
-      ${{ value: 'foo', handler }} | ${undefined} | ${'foo'} | ${anyFn}
-      ${handler}                   | ${undefined} | ${null}  | ${anyFn}
+      arg1                                      | arg2           | sym      | handler
+      ${undefined}                              | ${undefined}   | ${null}  | ${defaultHandler}
+      ${'foo'}                                  | ${undefined}   | ${'foo'} | ${defaultHandler}
+      ${{ value: 'foo' }}                       | ${undefined}   | ${'foo'} | ${defaultHandler}
+      ${/abc/}                                  | ${undefined}   | ${/abc/} | ${defaultHandler}
+      ${{ value: /abc/ }}                       | ${undefined}   | ${/abc/} | ${defaultHandler}
+      ${'foo'}                                  | ${someHandler} | ${'foo'} | ${someHandler}
+      ${{ value: 'foo', handler: someHandler }} | ${undefined}   | ${'foo'} | ${someHandler}
+      ${someHandler}                            | ${undefined}   | ${null}  | ${someHandler}
     `('sym($arg1, $arg2)', ({ arg1, arg2, sym, handler }) => {
       let b1;
       let b2;
@@ -42,15 +45,15 @@ describe('query/builder', () => {
 
   describe('Number builder', () => {
     test.each`
-      arg1                        | arg2         | num        | handler
-      ${undefined}                | ${undefined} | ${null}    | ${null}
-      ${'42'}                     | ${undefined} | ${'42'}    | ${null}
-      ${{ value: '42' }}          | ${undefined} | ${'42'}    | ${null}
-      ${/[1-9]/}                  | ${undefined} | ${/[1-9]/} | ${null}
-      ${{ value: /[1-9]/ }}       | ${undefined} | ${/[1-9]/} | ${null}
-      ${'42'}                     | ${handler}   | ${'42'}    | ${anyFn}
-      ${{ value: '42', handler }} | ${undefined} | ${'42'}    | ${anyFn}
-      ${handler}                  | ${undefined} | ${null}    | ${anyFn}
+      arg1                                     | arg2           | num        | handler
+      ${undefined}                             | ${undefined}   | ${null}    | ${defaultHandler}
+      ${'42'}                                  | ${undefined}   | ${'42'}    | ${defaultHandler}
+      ${{ value: '42' }}                       | ${undefined}   | ${'42'}    | ${defaultHandler}
+      ${/[1-9]/}                               | ${undefined}   | ${/[1-9]/} | ${defaultHandler}
+      ${{ value: /[1-9]/ }}                    | ${undefined}   | ${/[1-9]/} | ${defaultHandler}
+      ${'42'}                                  | ${someHandler} | ${'42'}    | ${someHandler}
+      ${{ value: '42', handler: someHandler }} | ${undefined}   | ${'42'}    | ${someHandler}
+      ${someHandler}                           | ${undefined}   | ${null}    | ${someHandler}
     `('sym($arg1, $arg2)', ({ arg1, arg2, num, handler }) => {
       let b1;
       let b2;
@@ -75,15 +78,15 @@ describe('query/builder', () => {
 
   describe('Operator builder', () => {
     test.each`
-      arg1                        | arg2         | op        | handler
-      ${undefined}                | ${undefined} | ${null}   | ${null}
-      ${'++'}                     | ${undefined} | ${'++'}   | ${null}
-      ${{ value: '++' }}          | ${undefined} | ${'++'}   | ${null}
-      ${/===?/}                   | ${undefined} | ${/===?/} | ${null}
-      ${{ value: /===?/ }}        | ${undefined} | ${/===?/} | ${null}
-      ${'++'}                     | ${handler}   | ${'++'}   | ${expect.any(Function) as never}
-      ${{ value: '++', handler }} | ${undefined} | ${'++'}   | ${expect.any(Function) as never}
-      ${handler}                  | ${undefined} | ${null}   | ${expect.any(Function) as never}
+      arg1                                     | arg2           | op        | handler
+      ${undefined}                             | ${undefined}   | ${null}   | ${defaultHandler}
+      ${'++'}                                  | ${undefined}   | ${'++'}   | ${defaultHandler}
+      ${{ value: '++' }}                       | ${undefined}   | ${'++'}   | ${defaultHandler}
+      ${/===?/}                                | ${undefined}   | ${/===?/} | ${defaultHandler}
+      ${{ value: /===?/ }}                     | ${undefined}   | ${/===?/} | ${defaultHandler}
+      ${'++'}                                  | ${someHandler} | ${'++'}   | ${someHandler}
+      ${{ value: '++', handler: someHandler }} | ${undefined}   | ${'++'}   | ${someHandler}
+      ${someHandler}                           | ${undefined}   | ${null}   | ${someHandler}
     `('op($arg1, $arg2)', ({ arg1, arg2, op, handler }) => {
       let b1;
       let b2;
@@ -176,15 +179,15 @@ describe('query/builder', () => {
     const foo = builder.sym('foo');
 
     test.each`
-      arg1                                           | type           | preHandler | postHandler | matcher
-      ${undefined}                                   | ${null}        | ${null}    | ${null}     | ${null}
-      ${'root-tree'}                                 | ${'root-tree'} | ${null}    | ${null}     | ${null}
-      ${{ type: 'root-tree' }}                       | ${'root-tree'} | ${null}    | ${null}     | ${null}
-      ${{ preHandler: handler }}                     | ${null}        | ${anyFn}   | ${null}     | ${null}
-      ${{ anyChild: foo }}                           | ${null}        | ${null}    | ${null}     | ${expect.any(SymMatcher)}
-      ${{ anyChild: foo, postHandler: handler }}     | ${null}        | ${null}    | ${anyFn}    | ${null}
-      ${{ manyChildren: foo }}                       | ${null}        | ${null}    | ${null}     | ${expect.any(SymMatcher)}
-      ${{ manyChildren: foo, postHandler: handler }} | ${null}        | ${null}    | ${anyFn}    | ${expect.any(SymMatcher)}
+      arg1                                               | type           | preHandler        | postHandler       | matcher
+      ${undefined}                                       | ${null}        | ${defaultHandler} | ${undefined}      | ${null}
+      ${'root-tree'}                                     | ${'root-tree'} | ${defaultHandler} | ${undefined}      | ${null}
+      ${{ type: 'root-tree' }}                           | ${'root-tree'} | ${defaultHandler} | ${undefined}      | ${null}
+      ${{ preHandler: someHandler }}                     | ${null}        | ${someHandler}    | ${undefined}      | ${null}
+      ${{ anyChild: foo }}                               | ${null}        | ${defaultHandler} | ${defaultHandler} | ${expect.any(SymMatcher)}
+      ${{ anyChild: foo, postHandler: someHandler }}     | ${null}        | ${defaultHandler} | ${someHandler}    | ${null}
+      ${{ manyChildren: foo }}                           | ${null}        | ${defaultHandler} | ${defaultHandler} | ${expect.any(SymMatcher)}
+      ${{ manyChildren: foo, postHandler: someHandler }} | ${null}        | ${defaultHandler} | ${someHandler}    | ${expect.any(SymMatcher)}
     `('tree($arg1)', ({ arg1, type, preHandler, postHandler, matcher }) => {
       const treeSeq = arg1
         ? builder.tree(arg1).tree(arg1)
@@ -204,46 +207,42 @@ describe('query/builder', () => {
       const matcher = builder.str().build();
       expect(matcher).toEqual({
         matchers: null,
-        preHandler: null,
-        postHandler: null,
+        preHandler: defaultHandler,
+        postHandler: defaultHandler,
       });
     });
 
     it('handles exact string parameter', () => {
       const matcher = builder.str('foobar').build();
-      expect(matcher).toEqual({
-        matchers: [{ content: 'foobar', handler: null }],
-        preHandler: null,
-        postHandler: null,
+      expect(matcher).toMatchObject({
+        matchers: [{ content: 'foobar' }],
       });
     });
 
     it('handles exact string with handler', () => {
-      const matcher = builder.str('foobar', handler).build();
+      const matcher = builder.str('foobar', someHandler).build();
       expect(matcher).toEqual({
-        matchers: [{ content: 'foobar', handler: null }],
-        preHandler: null,
-        postHandler: handler,
+        matchers: [{ content: 'foobar', handler: defaultHandler }],
+        preHandler: defaultHandler,
+        postHandler: someHandler,
       });
     });
 
     it('handles single regex parameter', () => {
       const pattern = /foobar/;
       const matcher = builder.str(pattern).build();
-      expect(matcher).toEqual({
-        matchers: [{ content: pattern, handler: null }],
-        preHandler: null,
-        postHandler: null,
+      expect(matcher).toMatchObject({
+        matchers: [{ content: pattern }],
       });
     });
 
     it('handles regex parameter with handler', () => {
       const pattern = /foobar/;
-      const matcher = builder.str(pattern, handler).build();
+      const matcher = builder.str(pattern, someHandler).build();
       expect(matcher).toEqual({
-        matchers: [{ content: pattern, handler: null }],
-        preHandler: null,
-        postHandler: handler,
+        matchers: [{ content: pattern, handler: defaultHandler }],
+        preHandler: defaultHandler,
+        postHandler: someHandler,
       });
     });
 
@@ -256,15 +255,15 @@ describe('query/builder', () => {
     });
 
     it('configures pre-handler', () => {
-      const config = { preHandler: handler };
+      const config = { preHandler: someHandler };
       const matcher = builder.str(config).build();
-      expect(matcher).toMatchObject({ preHandler: handler });
+      expect(matcher).toMatchObject({ preHandler: someHandler });
     });
 
     it('configures post-handler', () => {
-      const config = { postHandler: handler };
+      const config = { postHandler: someHandler };
       const matcher = builder.str(config).build();
-      expect(matcher).toMatchObject({ postHandler: handler });
+      expect(matcher).toMatchObject({ postHandler: someHandler });
     });
 
     it('handles templates', () => {
