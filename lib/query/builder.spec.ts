@@ -218,21 +218,80 @@ describe('query/builder', () => {
       });
     });
 
-    test.each`
-      arg1         | arg2         | preHandler | postHandler | matchers
-      ${undefined} | ${undefined} | ${null}    | ${null}     | ${null}
-      ${'foobar'}  | ${undefined} | ${null}    | ${null}     | ${[{ content: 'foobar' }]}
-      ${'foobar'}  | ${handler}   | ${null}    | ${null}     | ${[{ content: 'foobar' }]}
-      ${/foobar/}  | ${undefined} | ${null}    | ${null}     | ${[{ content: /foobar/ }]}
-      ${/foobar/}  | ${handler}   | ${null}    | ${null}     | ${[{ content: /foobar/ }]}
-    `('str($arg1, $arg2)', ({ arg1, preHandler, postHandler, matchers }) => {
-      const treeSeq = arg1 ? builder.str(arg1).str(arg1) : builder.str().str();
-      const expected = {
-        preHandler,
-        postHandler,
-        matchers,
-      };
-      expect(treeSeq.build()).toMatchObject({ seq: [expected, expected] });
+    it('handles exact string with handler', () => {
+      const matcher = builder.str('foobar', handler).build();
+      expect(matcher).toEqual({
+        matchers: [{ content: 'foobar', handler: null }],
+        preHandler: null,
+        postHandler: handler,
+      });
+    });
+
+    it('handles single regex parameter', () => {
+      const pattern = /foobar/;
+      const matcher = builder.str(pattern).build();
+      expect(matcher).toEqual({
+        matchers: [{ content: pattern, handler: null }],
+        preHandler: null,
+        postHandler: null,
+      });
+    });
+
+    it('handles regex parameter with handler', () => {
+      const pattern = /foobar/;
+      const matcher = builder.str(pattern, handler).build();
+      expect(matcher).toEqual({
+        matchers: [{ content: pattern, handler: null }],
+        preHandler: null,
+        postHandler: handler,
+      });
+    });
+
+    it('handles multiple substrings', () => {
+      const config = { match: ['foo', 'bar', 'baz'] };
+      const matcher = builder.str(config).build();
+      expect(matcher).toMatchObject({
+        matchers: [{ content: 'foo' }, { content: 'bar' }, { content: 'baz' }],
+      });
+    });
+
+    it('configures pre-handler', () => {
+      const config = { preHandler: handler };
+      const matcher = builder.str(config).build();
+      expect(matcher).toMatchObject({ preHandler: handler });
+    });
+
+    it('configures post-handler', () => {
+      const config = { postHandler: handler };
+      const matcher = builder.str(config).build();
+      expect(matcher).toMatchObject({ postHandler: handler });
+    });
+
+    it('handles templates', () => {
+      const config = { match: ['foo', builder.sym('bar'), 'baz'] };
+      const matcher = builder.str(config).build();
+      expect(matcher).toMatchObject({
+        matchers: [
+          { content: 'foo' },
+          {
+            type: 'template-tree',
+            matcher: { sym: 'bar' },
+          },
+          { content: 'baz' },
+        ],
+      });
+    });
+
+    it('unwraps nested strings', () => {
+      const foo = builder.str('foo');
+      const bar = builder.str('bar');
+      const config = { match: [foo, bar] };
+
+      const matcher = builder.str(config).build();
+
+      expect(matcher).toMatchObject({
+        matchers: [{ content: 'foo' }, { content: 'bar' }],
+      });
     });
   });
 });
