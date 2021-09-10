@@ -9,6 +9,7 @@ import {
 import { NumMatcher } from './matchers/num-matcher';
 import {
   StrContentMatcher,
+  StrContentMatcherHandler,
   StrNodeChildMatcher,
   StrNodeMatcher,
   StrTplMatcher,
@@ -115,12 +116,20 @@ abstract class AbstractBuilder<Ctx> {
   }
 
   str(): SeqBuilder<Ctx>;
-  str(exact: string, handler?: TreeNodeMatcherHandler<Ctx>): SeqBuilder<Ctx>;
-  str(pattern: RegExp, handler?: TreeNodeMatcherHandler<Ctx>): SeqBuilder<Ctx>;
-  str(opts: StrBuilderOptions<Ctx>): SeqBuilder<Ctx>;
+  str(handler: StrContentMatcherHandler<Ctx>): SeqBuilder<Ctx>;
+  str(exact: string, handler?: StrContentMatcherHandler<Ctx>): SeqBuilder<Ctx>;
   str(
-    arg1?: string | RegExp | StrBuilderOptions<Ctx>,
-    arg2?: TreeNodeMatcherHandler<Ctx>
+    pattern: RegExp,
+    handler?: StrContentMatcherHandler<Ctx>
+  ): SeqBuilder<Ctx>;
+  str(opts: StrTreeBuilderOptions<Ctx>): SeqBuilder<Ctx>;
+  str(
+    arg1?:
+      | string
+      | RegExp
+      | StrTreeBuilderOptions<Ctx>
+      | StrContentMatcherHandler<Ctx>,
+    arg2?: StrContentMatcherHandler<Ctx>
   ): SeqBuilder<Ctx> {
     const opts = coerceStrOptions<Ctx>(arg1, arg2);
     const builder = new StrBuilder<Ctx>(opts);
@@ -458,12 +467,30 @@ export function tree<Ctx>(
 
 // Strings
 
-export type StrMatchValue<Ctx> = string | RegExp | AbstractBuilder<Ctx>;
-export interface StrBuilderOptions<Ctx> {
-  match?: StrMatchValue<Ctx>[];
-  preHandler?: TreeNodeMatcherHandler<Ctx>;
-  postHandler?: TreeNodeMatcherHandler<Ctx>;
+export interface StrContentBuilderOptionsBase<Ctx> {
+  match?: string | RegExp | null;
+  handler?: StrContentMatcherHandler<Ctx> | null;
 }
+export interface StrTreeBuilderOptionsBase<Ctx> {
+  match?: (string | RegExp | AbstractBuilder<Ctx>)[] | null;
+  preHandler?: TreeNodeMatcherHandler<Ctx> | null;
+  postHandler?: TreeNodeMatcherHandler<Ctx> | null;
+}
+export type StrBuilderOptionsBase<Ctx> =
+  | StrContentBuilderOptionsBase<Ctx>
+  | StrTreeBuilderOptionsBase<Ctx>;
+
+export interface StrContentBuilderOptions<Ctx>
+  extends StrContentBuilderOptionsBase<Ctx> {
+  type: 'str-content';
+}
+export interface StrTreeBuilderOptions<Ctx>
+  extends StrTreeBuilderOptionsBase<Ctx> {
+  type: 'str-tree';
+}
+export type StrBuilderOptions<Ctx> =
+  | StrContentBuilderOptions<Ctx>
+  | StrTreeBuilderOptions<Ctx>;
 
 class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: StrBuilderOptions<Ctx>) {
@@ -471,70 +498,129 @@ class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
   }
 
   build(): StrNodeMatcher<Ctx> {
-    const matchers: StrNodeChildMatcher<Ctx>[] = [];
+    if (this.opts.type === 'str-content') {
+      return new StrNodeMatcher<Ctx>({
+        matchers: [
+          new StrContentMatcher<Ctx>({
+            value: this.opts.match ?? null,
+            handler: this.opts.handler ?? null,
+          }),
+        ],
+        preHandler: null,
+        postHandler: null,
+      });
+    }
 
-    this.opts.match?.forEach((m) => {
-      if (typeof m === 'string' || m instanceof RegExp) {
-        const contentMatcher = new StrContentMatcher<Ctx>({
-          value: m,
-          handler: null,
-        });
-        matchers.push(contentMatcher);
-      } else if (m instanceof StrBuilder) {
-        const childStrMatcher = m.build() as StrNodeMatcher<Ctx>;
-        if (childStrMatcher.matchers) {
-          matchers.push(...childStrMatcher.matchers);
+    if (this.opts.match) {
+      const matchers: StrNodeChildMatcher<Ctx>[] = [];
+      this.opts.match.forEach((m) => {
+        if (typeof m === 'string' || m instanceof RegExp) {
+          const contentMatcher = new StrContentMatcher<Ctx>({
+            value: m,
+            handler: null,
+          });
+          matchers.push(contentMatcher);
+        } else if (m instanceof StrBuilder) {
+          const childStrMatcher = m.build() as StrNodeMatcher<Ctx>;
+          if (childStrMatcher.matchers) {
+            matchers.push(...childStrMatcher.matchers);
+          }
+        } else if (m instanceof StrTplMatcher) {
+          matchers.push(m);
+        } else {
+          const tplMatcher = new StrTplMatcher<Ctx>({
+            type: 'template-tree',
+            matcher: m.build(),
+            preHandler: null,
+            postHandler: null,
+          });
+          matchers.push(tplMatcher);
         }
-      } else if (m instanceof StrTplMatcher) {
-        matchers.push(m);
-      } else {
-        const tplMatcher = new StrTplMatcher<Ctx>({
-          type: 'template-tree',
-          matcher: m.build(),
-          preHandler: null,
-          postHandler: null,
-        });
-        matchers.push(tplMatcher);
-      }
-    });
+      });
+
+      return new StrNodeMatcher<Ctx>({
+        ...this.opts,
+        preHandler: this.opts.preHandler ?? null,
+        postHandler: this.opts.postHandler ?? null,
+        matchers: matchers.length ? matchers : null,
+      });
+    }
 
     return new StrNodeMatcher<Ctx>({
       preHandler: this.opts.preHandler ?? null,
       postHandler: this.opts.postHandler ?? null,
-      matchers: matchers.length ? matchers : null,
+      matchers: null,
     });
   }
 }
 
 function coerceStrOptions<Ctx>(
-  arg1: string | RegExp | StrBuilderOptions<Ctx> | undefined,
-  arg2: TreeNodeMatcherHandler<Ctx> | undefined
+  arg1:
+    | string
+    | RegExp
+    | StrContentMatcherHandler<Ctx>
+    | StrBuilderOptionsBase<Ctx>
+    | undefined,
+  arg2: StrContentMatcherHandler<Ctx> | undefined
 ): StrBuilderOptions<Ctx> {
-  const result: StrBuilderOptions<Ctx> = {};
   if (typeof arg1 === 'string' || arg1 instanceof RegExp) {
-    result.match = [arg1];
-    if (arg2) {
-      result.postHandler = arg2;
-    }
+    return {
+      type: 'str-content',
+      match: arg1,
+      handler: arg2 ?? null,
+    };
+  } else if (typeof arg1 === 'function') {
+    return {
+      type: 'str-content',
+      match: null,
+      handler: arg1,
+    };
   } else if (arg1) {
-    return arg1;
+    if (
+      (arg1 as never)['handler'] ||
+      typeof arg1.match === 'string' ||
+      arg1.match instanceof RegExp
+    ) {
+      return {
+        type: 'str-content',
+        ...arg1,
+      } as StrContentBuilderOptions<Ctx>;
+    }
+
+    return {
+      type: 'str-tree',
+      ...arg1,
+    } as StrTreeBuilderOptions<Ctx>;
   }
-  return result;
+
+  return {
+    type: 'str-tree',
+    match: null,
+    preHandler: null,
+    postHandler: null,
+  };
 }
 
 export function str<Ctx>(): StrBuilder<Ctx>;
 export function str<Ctx>(
+  handler: StrContentMatcherHandler<Ctx>
+): StrBuilder<Ctx>;
+export function str<Ctx>(
   exact: string,
-  handler?: TreeNodeMatcherHandler<Ctx>
+  handler?: StrContentMatcherHandler<Ctx>
 ): StrBuilder<Ctx>;
 export function str<Ctx>(
   pattern: RegExp,
-  handler?: TreeNodeMatcherHandler<Ctx>
+  handler?: StrContentMatcherHandler<Ctx>
 ): StrBuilder<Ctx>;
-export function str<Ctx>(opts: StrBuilderOptions<Ctx>): StrBuilder<Ctx>;
+export function str<Ctx>(opts: StrTreeBuilderOptionsBase<Ctx>): StrBuilder<Ctx>;
 export function str<Ctx>(
-  arg1?: string | RegExp | StrBuilderOptions<Ctx>,
-  arg2?: TreeNodeMatcherHandler<Ctx>
+  arg1?:
+    | string
+    | RegExp
+    | StrTreeBuilderOptionsBase<Ctx>
+    | StrContentMatcherHandler<Ctx>,
+  arg2?: StrContentMatcherHandler<Ctx>
 ): StrBuilder<Ctx> {
   const opts = coerceStrOptions<Ctx>(arg1, arg2);
   return new StrBuilder<Ctx>(opts);

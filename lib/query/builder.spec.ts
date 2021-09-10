@@ -221,10 +221,8 @@ describe('query/builder', () => {
 
     it('handles exact string with handler', () => {
       const matcher = builder.str('foobar', someHandler).build();
-      expect(matcher).toEqual({
-        matchers: [{ content: 'foobar', handler: defaultHandler }],
-        preHandler: defaultHandler,
-        postHandler: someHandler,
+      expect(matcher).toMatchObject({
+        matchers: [{ content: 'foobar', handler: someHandler }],
       });
     });
 
@@ -239,10 +237,8 @@ describe('query/builder', () => {
     it('handles regex parameter with handler', () => {
       const pattern = /foobar/;
       const matcher = builder.str(pattern, someHandler).build();
-      expect(matcher).toEqual({
-        matchers: [{ content: pattern, handler: defaultHandler }],
-        preHandler: defaultHandler,
-        postHandler: someHandler,
+      expect(matcher).toMatchObject({
+        matchers: [{ content: pattern, handler: someHandler }],
       });
     });
 
