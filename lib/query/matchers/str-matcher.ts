@@ -33,7 +33,7 @@ export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor({ value, handler }: StrContentMatcherOptions<Ctx>) {
     super();
     this.content = value ?? null;
-    this.handler = coerceHandler(handler);
+    this.handler = coerceHandler<Ctx, StringValueToken>(handler);
   }
 
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
@@ -97,8 +97,8 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor(opts: StrMatcherOptions<Ctx>) {
     super();
     this.matchers = opts.matchers ?? null;
-    this.preHandler = coerceHandler(opts.preHandler);
-    this.postHandler = coerceHandler(opts.postHandler);
+    this.preHandler = coerceHandler<Ctx, StringTree>(opts.preHandler);
+    this.postHandler = coerceHandler<Ctx, StringTree>(opts.postHandler);
   }
 
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {

@@ -1,3 +1,4 @@
+import { SymbolToken } from '../../lexer/types';
 import type {
   Checkpoint,
   SymMatcherHandler,
@@ -14,7 +15,7 @@ export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor({ value, handler }: SymMatcherOptions<Ctx>) {
     super();
     this.sym = value;
-    this.handler = coerceHandler(handler);
+    this.handler = coerceHandler<Ctx, SymbolToken>(handler);
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {

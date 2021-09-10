@@ -1,3 +1,4 @@
+import { NumberToken } from '../../lexer/types';
 import type {
   Checkpoint,
   NumMatcherHandler,
@@ -14,7 +15,7 @@ export class NumMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor({ value, handler }: NumMatcherOptions<Ctx>) {
     super();
     this.num = value;
-    this.handler = coerceHandler(handler);
+    this.handler = coerceHandler<Ctx, NumberToken>(handler);
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {

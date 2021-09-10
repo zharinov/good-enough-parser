@@ -1,3 +1,4 @@
+import { OperatorToken } from '../../lexer/types';
 import type {
   Checkpoint,
   OpMatcherHandler,
@@ -14,7 +15,7 @@ export class OpMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor({ value, handler }: OpMatcherOptions<Ctx>) {
     super();
     this.op = value;
-    this.handler = coerceHandler(handler);
+    this.handler = coerceHandler<Ctx, OperatorToken>(handler);
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
