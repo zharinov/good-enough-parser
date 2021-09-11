@@ -179,15 +179,15 @@ describe('query/builder', () => {
     const foo = builder.sym('foo');
 
     test.each`
-      arg1                                               | type           | preHandler        | postHandler       | matcher
-      ${undefined}                                       | ${null}        | ${defaultHandler} | ${undefined}      | ${null}
-      ${'root-tree'}                                     | ${'root-tree'} | ${defaultHandler} | ${undefined}      | ${null}
-      ${{ type: 'root-tree' }}                           | ${'root-tree'} | ${defaultHandler} | ${undefined}      | ${null}
-      ${{ preHandler: someHandler }}                     | ${null}        | ${someHandler}    | ${undefined}      | ${null}
-      ${{ anyChild: foo }}                               | ${null}        | ${defaultHandler} | ${defaultHandler} | ${expect.any(SymMatcher)}
-      ${{ anyChild: foo, postHandler: someHandler }}     | ${null}        | ${defaultHandler} | ${someHandler}    | ${null}
-      ${{ manyChildren: foo }}                           | ${null}        | ${defaultHandler} | ${defaultHandler} | ${expect.any(SymMatcher)}
-      ${{ manyChildren: foo, postHandler: someHandler }} | ${null}        | ${defaultHandler} | ${someHandler}    | ${expect.any(SymMatcher)}
+      arg1                                           | type           | preHandler        | postHandler       | matcher
+      ${undefined}                                   | ${null}        | ${defaultHandler} | ${undefined}      | ${null}
+      ${'root-tree'}                                 | ${'root-tree'} | ${defaultHandler} | ${undefined}      | ${null}
+      ${{ type: 'root-tree' }}                       | ${'root-tree'} | ${defaultHandler} | ${undefined}      | ${null}
+      ${{ preHandler: someHandler }}                 | ${null}        | ${someHandler}    | ${undefined}      | ${null}
+      ${{ child: foo }}                              | ${null}        | ${defaultHandler} | ${defaultHandler} | ${expect.any(SymMatcher)}
+      ${{ child: foo, postHandler: someHandler }}    | ${null}        | ${defaultHandler} | ${someHandler}    | ${null}
+      ${{ children: foo }}                           | ${null}        | ${defaultHandler} | ${defaultHandler} | ${expect.any(SymMatcher)}
+      ${{ children: foo, postHandler: someHandler }} | ${null}        | ${defaultHandler} | ${someHandler}    | ${expect.any(SymMatcher)}
     `('tree($arg1)', ({ arg1, type, preHandler, postHandler, matcher }) => {
       const treeSeq = arg1
         ? builder.tree(arg1).tree(arg1)

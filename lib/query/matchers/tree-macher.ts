@@ -80,10 +80,7 @@ export class TreeNodeWalkingMatcher<
   }
 }
 
-export class TreeAnyChildMatcher<Ctx> extends TreeNodeWalkingMatcher<
-  Ctx,
-  Tree
-> {
+export class TreeChildMatcher<Ctx> extends TreeNodeWalkingMatcher<Ctx, Tree> {
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const treeMatch = super.match(checkpoint);
     if (treeMatch) {
@@ -100,7 +97,7 @@ export class TreeAnyChildMatcher<Ctx> extends TreeNodeWalkingMatcher<
   }
 }
 
-export class TreeManyChildrenMatcher<Ctx> extends TreeNodeWalkingMatcher<
+export class TreeChildrenMatcher<Ctx> extends TreeNodeWalkingMatcher<
   Ctx,
   Tree
 > {

@@ -20,7 +20,7 @@ describe('query/matchers/str-matcher', () => {
     const prevCheckpoint = getInitialCheckpoint(input);
 
     const ctx = q
-      .tree({ manyChildren: q.str<Ctx>(handler) })
+      .tree({ children: q.str<Ctx>(handler) })
       .build()
       .match(prevCheckpoint)?.context;
 
@@ -32,7 +32,7 @@ describe('query/matchers/str-matcher', () => {
     const prevCheckpoint = getInitialCheckpoint(input);
 
     const ctx = q
-      .tree({ manyChildren: q.str<Ctx>('foobar', handler) })
+      .tree({ children: q.str<Ctx>('foobar', handler) })
       .build()
       .match(prevCheckpoint)?.context;
 
@@ -44,7 +44,7 @@ describe('query/matchers/str-matcher', () => {
     const prevCheckpoint = getInitialCheckpoint(input);
 
     const ctx = q
-      .tree({ manyChildren: q.str<Ctx>(/bar/, handler) })
+      .tree({ children: q.str<Ctx>(/bar/, handler) })
       .build()
       .match(prevCheckpoint)?.context;
 
@@ -56,7 +56,7 @@ describe('query/matchers/str-matcher', () => {
     const prevCheckpoint = getInitialCheckpoint(input);
 
     const ctx = q
-      .tree({ anyChild: q.str<Ctx>('', handler) })
+      .tree({ child: q.str<Ctx>('', handler) })
       .build()
       .match(prevCheckpoint)?.context;
 
@@ -69,7 +69,7 @@ describe('query/matchers/str-matcher', () => {
 
     const ctx = q
       .tree({
-        anyChild: q.str<Ctx>({
+        child: q.str<Ctx>({
           match: [],
           postHandler: (ctx) => [...ctx, 'it works'],
         }),
@@ -86,7 +86,7 @@ describe('query/matchers/str-matcher', () => {
 
     const ctx = q
       .tree({
-        manyChildren: q.str({
+        children: q.str({
           match: [
             q.str<Ctx>(handler),
             q.sym<Ctx>(handler),
