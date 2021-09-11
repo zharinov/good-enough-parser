@@ -219,6 +219,23 @@ describe('query/builder', () => {
       });
     });
 
+    it('handles empty string parameter', () => {
+      const matcher = builder.str('').build();
+      expect(matcher).toMatchObject({
+        matchers: [],
+      });
+    });
+
+    it('handles empty string with wrapped handler', () => {
+      const matcher = builder.str('', someHandler).build();
+      expect(matcher).toMatchObject({
+        matchers: [],
+        preHandler: defaultHandler,
+        postHandler: expect.any(Function),
+      });
+      expect(matcher.postHandler).not.toBe(defaultHandler);
+    });
+
     it('handles exact string with handler', () => {
       const matcher = builder.str('foobar', someHandler).build();
       expect(matcher).toMatchObject({

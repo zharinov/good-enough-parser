@@ -22,8 +22,8 @@ export type StrNodeChildMatcher<Ctx> =
 
 export interface StrMatcherOptions<Ctx> {
   matchers: StrNodeChildMatcher<Ctx>[] | null;
-  preHandler: TreeNodeMatcherHandler<Ctx> | null;
-  postHandler: TreeNodeMatcherHandler<Ctx> | null;
+  preHandler: TreeNodeMatcherHandler<Ctx, StringTree> | null;
+  postHandler: TreeNodeMatcherHandler<Ctx, StringTree> | null;
 }
 
 export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
@@ -39,7 +39,7 @@ export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const { cursor, context } = checkpoint;
     const node = cursor.node;
-    if (node.type === 'string-value') {
+    if (node?.type === 'string-value') {
       let isMatched = true;
       if (typeof this.content === 'string') {
         isMatched = this.content === node.value;
@@ -67,7 +67,7 @@ export class StrTplMatcher<Ctx> extends TreeNodeWalkingMatcher<
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const { cursor: rootCursor, context: rootContext } = checkpoint;
     const rootNode = rootCursor.node;
-    if (rootNode.type === 'template-tree') {
+    if (rootNode?.type === 'template-tree') {
       const cursor = checkpoint.cursor.down;
       if (cursor && cursor.node) {
         const childMatch = this.seekNextChild({
@@ -103,27 +103,29 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const node = checkpoint.cursor.node;
-    if (node.type === 'string-tree') {
+    if (node?.type === 'string-tree') {
       let context = this.preHandler(checkpoint.context, node);
 
       if (this.matchers) {
         let cursor = checkpoint.cursor.down;
-        for (const matcher of this.matchers) {
-          if (!cursor) {
-            return null;
+        if (cursor?.node || this.matchers.length !== 0) {
+          for (const matcher of this.matchers) {
+            if (!cursor) {
+              return null;
+            }
+
+            const match = matcher.match({ context, cursor });
+            if (!match) {
+              return null;
+            }
+
+            context = match.context;
+            cursor = match.endOfLevel ? undefined : match.cursor;
           }
 
-          const match = matcher.match({ context, cursor });
-          if (!match) {
+          if (cursor) {
             return null;
           }
-
-          context = match.context;
-          cursor = match.endOfLevel ? undefined : match.cursor;
-        }
-
-        if (cursor) {
-          return null;
         }
       }
 

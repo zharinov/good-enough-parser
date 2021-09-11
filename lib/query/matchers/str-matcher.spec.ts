@@ -1,5 +1,6 @@
 import { createLang } from '../../lang';
 import { lang as pythonLang } from '../../lang/python';
+import { Token } from '../../lexer/types';
 import * as q from '../builder';
 import type { Checkpoint } from '../types';
 
@@ -12,17 +13,90 @@ function getInitialCheckpoint(input: string): Checkpoint<Ctx> {
 }
 
 describe('query/matchers/str-matcher', () => {
+  const handler = (ctx: Ctx, node: Token) => [...ctx, node.value];
+
   it('handles simple string', () => {
     const input = '"foo" + "bar" + "baz"';
     const prevCheckpoint = getInitialCheckpoint(input);
-    const str = q.str<Ctx>((ctx, node) => [...ctx, node.value]);
-    const rootMatcher = q.tree({ manyChildren: str }).build();
 
-    const nextCheckpoint = rootMatcher.match(prevCheckpoint);
+    const ctx = q
+      .tree({ manyChildren: q.str<Ctx>(handler) })
+      .build()
+      .match(prevCheckpoint)?.context;
 
-    expect(nextCheckpoint).toMatchObject({
-      context: ['foo', 'bar', 'baz'],
-      endOfLevel: true,
-    });
+    expect(ctx).toEqual(['foo', 'bar', 'baz']);
+  });
+
+  it('handles exact match', () => {
+    const input = '"foobar"';
+    const prevCheckpoint = getInitialCheckpoint(input);
+
+    const ctx = q
+      .tree({ manyChildren: q.str<Ctx>('foobar', handler) })
+      .build()
+      .match(prevCheckpoint)?.context;
+
+    expect(ctx).toEqual(['foobar']);
+  });
+
+  it('handles regex match', () => {
+    const input = '"foobarbaz"';
+    const prevCheckpoint = getInitialCheckpoint(input);
+
+    const ctx = q
+      .tree({ manyChildren: q.str<Ctx>(/bar/, handler) })
+      .build()
+      .match(prevCheckpoint)?.context;
+
+    expect(ctx).toEqual(['foobarbaz']);
+  });
+
+  it('handles empty string match', () => {
+    const input = '""';
+    const prevCheckpoint = getInitialCheckpoint(input);
+
+    const ctx = q
+      .tree({ anyChild: q.str<Ctx>('', handler) })
+      .build()
+      .match(prevCheckpoint)?.context;
+
+    expect(ctx).toEqual(['']);
+  });
+
+  it('handles empty match list', () => {
+    const input = '""';
+    const prevCheckpoint = getInitialCheckpoint(input);
+
+    const ctx = q
+      .tree({
+        anyChild: q.str<Ctx>({
+          match: [],
+          postHandler: (ctx) => [...ctx, 'it works'],
+        }),
+      })
+      .build()
+      .match(prevCheckpoint)?.context;
+
+    expect(ctx).toEqual(['it works']);
+  });
+
+  it('handles template strings', () => {
+    const input = 'f"foo{ bar }baz"';
+    const checkpoint = getInitialCheckpoint(input);
+
+    const ctx = q
+      .tree({
+        manyChildren: q.str({
+          match: [
+            q.str<Ctx>(handler),
+            q.sym<Ctx>(handler),
+            q.str<Ctx>(handler),
+          ],
+        }),
+      })
+      .build()
+      .match(checkpoint)?.context;
+
+    expect(ctx).toEqual(['foo', 'bar', 'baz']);
   });
 });

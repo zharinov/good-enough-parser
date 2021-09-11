@@ -1,4 +1,4 @@
-import type { TreeType } from '../parser/types';
+import type { StringTree, TreeType } from '../parser/types';
 import {
   AltMatcher,
   ManyMatcher,
@@ -473,8 +473,8 @@ export interface StrContentBuilderOptionsBase<Ctx> {
 }
 export interface StrTreeBuilderOptionsBase<Ctx> {
   match?: (string | RegExp | AbstractBuilder<Ctx>)[] | null;
-  preHandler?: TreeNodeMatcherHandler<Ctx> | null;
-  postHandler?: TreeNodeMatcherHandler<Ctx> | null;
+  preHandler?: TreeNodeMatcherHandler<Ctx, StringTree> | null;
+  postHandler?: TreeNodeMatcherHandler<Ctx, StringTree> | null;
 }
 export type StrBuilderOptionsBase<Ctx> =
   | StrContentBuilderOptionsBase<Ctx>
@@ -539,17 +539,16 @@ class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
       });
 
       return new StrNodeMatcher<Ctx>({
-        ...this.opts,
+        matchers: matchers,
         preHandler: this.opts.preHandler ?? null,
         postHandler: this.opts.postHandler ?? null,
-        matchers: matchers.length ? matchers : null,
       });
     }
 
     return new StrNodeMatcher<Ctx>({
+      matchers: null,
       preHandler: this.opts.preHandler ?? null,
       postHandler: this.opts.postHandler ?? null,
-      matchers: null,
     });
   }
 }
@@ -564,6 +563,21 @@ function coerceStrOptions<Ctx>(
   arg2: StrContentMatcherHandler<Ctx> | undefined
 ): StrBuilderOptions<Ctx> {
   if (typeof arg1 === 'string' || arg1 instanceof RegExp) {
+    if (arg1 === '') {
+      return {
+        type: 'str-tree',
+        match: [],
+        postHandler: arg2
+          ? (ctx: Ctx, tree: StringTree) =>
+              arg2(ctx, {
+                type: 'string-value',
+                offset: tree.startsWith.offset,
+                value: '',
+              })
+          : null,
+      };
+    }
+
     return {
       type: 'str-content',
       match: arg1,
