@@ -26,7 +26,10 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
           break;
         }
 
-        const oldCheckpoint = skipMinorTokens(this.currentCheckpoint);
+        const cursor = skipMinorTokens(this.currentCheckpoint.cursor);
+        const oldCheckpoint = cursor
+          ? { ...this.currentCheckpoint, cursor }
+          : null;
         if (!oldCheckpoint) {
           break;
         }

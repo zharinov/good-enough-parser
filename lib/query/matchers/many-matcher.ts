@@ -33,7 +33,8 @@ export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
         continue;
       }
 
-      const oldCheckpoint = skipMinorTokens(checkpoint);
+      const cursor = skipMinorTokens(checkpoint.cursor);
+      const oldCheckpoint = cursor ? { ...checkpoint, cursor } : null;
       if (!oldCheckpoint) {
         continue;
       }

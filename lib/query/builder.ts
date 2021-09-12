@@ -14,13 +14,10 @@ import {
   StrNodeMatcher,
   StrTplMatcher,
 } from './matchers/str-matcher';
-import {
-  TreeChildMatcher,
-  TreeChildrenMatcher,
-  TreeNodeMatcher,
-} from './matchers/tree-macher';
+import { TreeMatcher } from './matchers/tree-macher';
 import type {
   Matcher,
+  NodeHandler,
   NumMatcherHandler,
   NumMatcherOptions,
   NumMatcherValue,
@@ -30,8 +27,7 @@ import type {
   SymMatcherHandler,
   SymMatcherOptions,
   SymMatcherValue,
-  TreeNodeMatcherHandler,
-  TreeNodeMatcherType,
+  TreeOptionsBase,
 } from './types';
 
 abstract class AbstractBuilder<Ctx> {
@@ -382,41 +378,8 @@ export function alt<Ctx>(...builders: AbstractBuilder<Ctx>[]): AltBuilder<Ctx> {
 
 // Trees
 
-export interface TreeNodeBuilderOptions<Ctx> {
-  type?: TreeNodeMatcherType;
-  preHandler?: TreeNodeMatcherHandler<Ctx>;
-}
-
-interface TreeNodeWalkingBuilderOptions<Ctx>
-  extends TreeNodeBuilderOptions<Ctx> {
-  postHandler?: TreeNodeMatcherHandler<Ctx>;
-}
-
-export interface TreeChildBuilderOptions<Ctx>
-  extends TreeNodeWalkingBuilderOptions<Ctx> {
-  child: AbstractBuilder<Ctx>;
-}
-
-export interface TreeChildrenBuilderOptions<Ctx>
-  extends TreeNodeWalkingBuilderOptions<Ctx> {
-  children: AbstractBuilder<Ctx>;
-}
-
-export type TreeBuilderOptions<Ctx> =
-  | TreeNodeBuilderOptions<Ctx>
-  | TreeChildBuilderOptions<Ctx>
-  | TreeChildrenBuilderOptions<Ctx>;
-
-function isChildTree<Ctx>(
-  opts: TreeBuilderOptions<Ctx>
-): opts is TreeChildBuilderOptions<Ctx> {
-  return !!(opts as TreeChildBuilderOptions<Ctx>)?.child;
-}
-
-function isChildrenTree<Ctx>(
-  opts: TreeBuilderOptions<Ctx>
-): opts is TreeChildrenBuilderOptions<Ctx> {
-  return !!(opts as TreeChildrenBuilderOptions<Ctx>)?.children;
+export interface TreeBuilderOptions<Ctx> extends TreeOptionsBase<Ctx> {
+  search?: AbstractBuilder<Ctx> | null;
 }
 
 class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
@@ -424,22 +387,11 @@ class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
     super();
   }
 
-  build(): TreeNodeMatcher<Ctx> {
-    const opts = {
-      type: null,
-      preHandler: null,
-      postHandler: null,
-      ...this.opts,
-    };
-    if (isChildTree<Ctx>(this.opts)) {
-      const matcher = this.opts.child.build();
-      return new TreeChildMatcher<Ctx>({ ...opts, matcher });
-    } else if (isChildrenTree<Ctx>(this.opts)) {
-      const matcher = this.opts.children.build();
-      return new TreeChildrenMatcher<Ctx>({ ...opts, matcher });
-    } else {
-      return new TreeNodeMatcher(opts);
-    }
+  build(): TreeMatcher<Ctx> {
+    const builderOpts = this.opts;
+    const matcher = builderOpts.search ? builderOpts.search.build() : null;
+    const matcherOpts = { ...builderOpts, matcher } as never;
+    return new TreeMatcher<Ctx>(matcherOpts);
   }
 }
 
@@ -473,8 +425,8 @@ export interface StrContentBuilderOptionsBase<Ctx> {
 }
 export interface StrTreeBuilderOptionsBase<Ctx> {
   match?: (string | RegExp | AbstractBuilder<Ctx>)[] | null;
-  preHandler?: TreeNodeMatcherHandler<Ctx, StringTree> | null;
-  postHandler?: TreeNodeMatcherHandler<Ctx, StringTree> | null;
+  preHandler?: NodeHandler<Ctx, StringTree> | null;
+  postHandler?: NodeHandler<Ctx, StringTree> | null;
 }
 export type StrBuilderOptionsBase<Ctx> =
   | StrContentBuilderOptionsBase<Ctx>
@@ -529,7 +481,6 @@ class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
           matchers.push(m);
         } else {
           const tplMatcher = new StrTplMatcher<Ctx>({
-            type: 'template-tree',
             matcher: m.build(),
             preHandler: null,
             postHandler: null,

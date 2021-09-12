@@ -17,28 +17,94 @@ const handler = (ctx: Ctx, token: Token) => [...ctx, token.value];
 
 describe('query/matchers/tree-matcher', () => {
   describe('Children search', () => {
-    it('finds first child', () => {
+    it('matches empty tree node', () => {
       const input = 'foo + bar + baz';
       const prevCheckpoint = getInitialCheckpoint(input);
       const treeMatcher = q
         .tree<string[]>({
           type: 'root-tree',
-          child: q.sym(handler),
+          postHandler: (ctx) => [...ctx, 'it works'],
         })
         .build();
 
       const checkpoint = treeMatcher.match(prevCheckpoint);
 
-      expect(checkpoint).toMatchObject({ context: ['foo'] });
+      expect(checkpoint).toMatchObject({ context: ['it works'] });
     });
 
-    it('handles empty string', () => {
+    it('matches single child', () => {
+      const input = 'foobar';
+      const prevCheckpoint = getInitialCheckpoint(input);
+      const treeMatcher = q.tree({ search: q.sym<Ctx>(handler) }).build();
+
+      const checkpoint = treeMatcher.match(prevCheckpoint);
+
+      expect(checkpoint).toMatchObject({ context: ['foobar'] });
+    });
+
+    it('matches deeply nested child', () => {
+      const input = '[({foobar})]';
+      const prevCheckpoint = getInitialCheckpoint(input);
+      const treeMatcher = q.tree({ search: q.sym<Ctx>(handler) }).build();
+
+      const checkpoint = treeMatcher.match(prevCheckpoint);
+
+      expect(checkpoint).toMatchObject({ context: ['foobar'] });
+    });
+
+    describe('Limits', () => {
+      const input = '(foo + [bar + { baz }])';
+
+      test.each`
+        maxMatches   | found
+        ${1}         | ${['foo']}
+        ${2}         | ${['foo', 'bar']}
+        ${3}         | ${['foo', 'bar', 'baz']}
+        ${4}         | ${['foo', 'bar', 'baz']}
+        ${0}         | ${['foo', 'bar', 'baz']}
+        ${undefined} | ${['foo', 'bar', 'baz']}
+      `(
+        'maxMatches = $maxMatches',
+        ({ maxMatches, found }: { maxMatches?: number; found: string[] }) => {
+          const prevCheckpoint = getInitialCheckpoint(input);
+          const treeMatcher = q
+            .tree<string[]>({ search: q.sym(handler), maxMatches })
+            .build();
+
+          const { context } = treeMatcher.match(prevCheckpoint) ?? {};
+
+          expect(context).toEqual(found);
+        }
+      );
+
+      test.each`
+        maxDepth | found
+        ${1}     | ${['foo']}
+        ${2}     | ${['foo', 'bar']}
+        ${3}     | ${['foo', 'bar', 'baz']}
+        ${0}     | ${['foo', 'bar', 'baz']}
+      `(
+        'maxDepth = $maxDepth',
+        ({ maxDepth, found }: { maxDepth: number; found: string[] }) => {
+          const prevCheckpoint = getInitialCheckpoint(input);
+          const treeMatcher = q
+            .tree<string[]>({ search: q.sym(handler), maxDepth })
+            .build();
+
+          const { context } = treeMatcher.match(prevCheckpoint) ?? {};
+
+          expect(context).toEqual(found);
+        }
+      );
+    });
+
+    it('handles empty input', () => {
       const input = '';
       const prevCheckpoint = getInitialCheckpoint(input);
       const treeMatcher = q
         .tree<string[]>({
           type: 'root-tree',
-          child: q.sym(handler),
+          search: q.sym(handler),
         })
         .build();
 
@@ -47,49 +113,19 @@ describe('query/matchers/tree-matcher', () => {
       expect(checkpoint).toBeNull();
     });
 
-    it('handles search failure', () => {
+    it('handles failed search', () => {
       const input = '...';
       const prevCheckpoint = getInitialCheckpoint(input);
       const treeMatcher = q
         .tree<string[]>({
           type: 'root-tree',
-          child: q.sym(handler),
+          search: q.sym(handler),
         })
         .build();
 
       const checkpoint = treeMatcher.match(prevCheckpoint);
 
       expect(checkpoint).toBeNull();
-    });
-
-    it('finds all children', () => {
-      const input = 'foo + bar + baz';
-      const prevCheckpoint = getInitialCheckpoint(input);
-      const treeMatcher = q
-        .tree<string[]>({
-          type: 'root-tree',
-          children: q.sym(handler),
-        })
-        .build();
-
-      const checkpoint = treeMatcher.match(prevCheckpoint);
-
-      expect(checkpoint).toMatchObject({ context: ['foo', 'bar', 'baz'] });
-    });
-
-    it('ignores grandchildren', () => {
-      const input = 'foo + (bar + baz) + qux';
-      const prevCheckpoint = getInitialCheckpoint(input);
-      const treeMatcher = q
-        .tree<string[]>({
-          type: 'root-tree',
-          children: q.sym(handler),
-        })
-        .build();
-
-      const checkpoint = treeMatcher.match(prevCheckpoint);
-
-      expect(checkpoint).toMatchObject({ context: ['foo', 'qux'] });
     });
   });
 });

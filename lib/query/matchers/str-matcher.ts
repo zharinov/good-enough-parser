@@ -1,9 +1,15 @@
 import { StringValueToken } from '../../lexer/types';
 import { StringTree, TemplateTree } from '../../parser/types';
-import type { Checkpoint, TreeNodeMatcherHandler } from '../types';
+import type {
+  Checkpoint,
+  Matcher,
+  NodeHandler,
+  StrTplOptionsBase,
+  StrTreeHandler,
+  StrTreeOptionsBase,
+} from '../types';
 import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
-import { TreeNodeWalkingMatcher } from './tree-macher';
 import { skipMinorTokens } from './util';
 
 export type StrContentMatcherValue = string | RegExp | null;
@@ -14,16 +20,6 @@ export type StrContentMatcherHandler<Ctx> = (
 export interface StrContentMatcherOptions<Ctx> {
   value: StrContentMatcherValue;
   handler: StrContentMatcherHandler<Ctx> | null;
-}
-
-export type StrNodeChildMatcher<Ctx> =
-  | StrContentMatcher<Ctx>
-  | StrTplMatcher<Ctx>;
-
-export interface StrMatcherOptions<Ctx> {
-  matchers: StrNodeChildMatcher<Ctx>[] | null;
-  preHandler: TreeNodeMatcherHandler<Ctx, StringTree> | null;
-  postHandler: TreeNodeMatcherHandler<Ctx, StringTree> | null;
 }
 
 export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
@@ -60,10 +56,43 @@ export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 }
 
-export class StrTplMatcher<Ctx> extends TreeNodeWalkingMatcher<
-  Ctx,
-  TemplateTree
-> {
+interface StrTplMatcherOptions<Ctx> extends StrTplOptionsBase<Ctx> {
+  matcher: Matcher<Ctx>;
+}
+
+export class StrTplMatcher<Ctx> extends AbstractMatcher<Ctx> {
+  public readonly matcher: Matcher<Ctx>;
+  public readonly preHandler: NodeHandler<Ctx, TemplateTree>;
+  public readonly postHandler: NodeHandler<Ctx, TemplateTree>;
+
+  constructor(config: StrTplMatcherOptions<Ctx>) {
+    super();
+    this.matcher = config.matcher;
+    this.preHandler = coerceHandler<Ctx, TemplateTree>(config.preHandler);
+    this.postHandler = coerceHandler<Ctx, TemplateTree>(config.postHandler);
+  }
+
+  seekNextChild(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
+    const cursor = skipMinorTokens(checkpoint.cursor);
+    let nextCheckpoint = cursor ? { ...checkpoint, cursor } : null;
+    while (nextCheckpoint) {
+      const checkpoint = this.matcher.match(nextCheckpoint);
+      if (checkpoint) {
+        return checkpoint;
+      }
+
+      const nextCursor = skipMinorTokens(nextCheckpoint?.cursor?.right);
+      nextCheckpoint = nextCursor
+        ? {
+            cursor: nextCursor,
+            context: nextCheckpoint.context,
+          }
+        : null;
+    }
+
+    return null;
+  }
+
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const { cursor: rootCursor, context: rootContext } = checkpoint;
     const rootNode = rootCursor.node;
@@ -75,7 +104,7 @@ export class StrTplMatcher<Ctx> extends TreeNodeWalkingMatcher<
           cursor,
         });
 
-        if (childMatch && !skipMinorTokens(childMatch)) {
+        if (childMatch && !skipMinorTokens(childMatch.cursor)) {
           const cursor = rootCursor.right;
           const context = this.postHandler(childMatch.context, rootNode);
           return cursor
@@ -89,10 +118,17 @@ export class StrTplMatcher<Ctx> extends TreeNodeWalkingMatcher<
   }
 }
 
+export type StrNodeChildMatcher<Ctx> =
+  | StrContentMatcher<Ctx>
+  | StrTplMatcher<Ctx>;
+export interface StrMatcherOptions<Ctx> extends StrTreeOptionsBase<Ctx> {
+  matchers: StrNodeChildMatcher<Ctx>[] | null;
+}
+
 export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   public matchers: StrNodeChildMatcher<Ctx>[] | null;
-  public readonly preHandler: TreeNodeMatcherHandler<Ctx, StringTree>;
-  public readonly postHandler: TreeNodeMatcherHandler<Ctx, StringTree>;
+  public readonly preHandler: StrTreeHandler<Ctx>;
+  public readonly postHandler: StrTreeHandler<Ctx>;
 
   constructor(opts: StrMatcherOptions<Ctx>) {
     super();

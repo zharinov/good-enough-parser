@@ -21,7 +21,7 @@ export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const { cursor, context } = checkpoint;
     const node = cursor.node;
-    if (node.type === 'symbol') {
+    if (node?.type === 'symbol') {
       let isMatched = true;
       if (typeof this.sym === 'string') {
         isMatched = this.sym === node.value;

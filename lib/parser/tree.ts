@@ -159,5 +159,5 @@ export function isTree(node: Node): node is Tree {
     'string-tree',
     'template-tree',
     'block-tree',
-  ].includes(node.type);
+  ].includes(node?.type);
 }

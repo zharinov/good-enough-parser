@@ -21,7 +21,7 @@ export class OpMatcher<Ctx> extends AbstractMatcher<Ctx> {
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const { cursor, context } = checkpoint;
     const node = cursor.node;
-    if (node.type === 'operator') {
+    if (node?.type === 'operator') {
       let isMatched = true;
       if (typeof this.op === 'string') {
         isMatched = this.op === node.value;
