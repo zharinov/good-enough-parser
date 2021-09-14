@@ -1,13 +1,12 @@
 import deepFreeze from 'deep-freeze-es6';
-import * as rfdc from 'rfdc';
 import { Node } from '../parser/types';
 import { Checkpoint } from './types';
+
+export { klona as clone } from 'klona/json';
 
 export function freeze<T>(input: T): T {
   return deepFreeze<T>(input);
 }
-
-export const clone = rfdc({ proto: false, circles: true });
 
 export function freezeCheckpoint<Ctx>(
   checkpoint: Checkpoint<Ctx>
