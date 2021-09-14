@@ -1,6 +1,7 @@
 {
   "name": "@renovate/parser-utils",
-  "version": "0.0.0-dripip",
+  "description": "Parse and query computer programs",
+  "version": "0.0.0",
   "repository": "git@github.com:renovatebot/parser-utils.git",
   "author": "Sergei Zharinov",
   "contributors": [
@@ -47,9 +48,6 @@
     "test": "run-s lint test:*",
     "test:unit": "jest",
     "clean": "rm -rf dist node_modules/.cache coverage",
-    "release:pr": "dripip pr",
-    "release:canary": "dripip preview",
-    "release:stable": "dripip stable",
     "prepare:husky": "husky install",
     "prepublishOnly": "yarn -s build"
   },
@@ -67,7 +65,6 @@
     "@types/node": "16.4.7",
     "@typescript-eslint/eslint-plugin": "4.31.1",
     "@typescript-eslint/parser": "4.31.1",
-    "dripip": "0.10.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "2.24.2",
@@ -81,6 +78,7 @@
     "npm-run-all": "4.1.5",
     "prettier": "2.4.0",
     "pretty-quick": "3.1.1",
+    "release-it": "14.11.5",
     "ts-jest": "27.0.5",
     "ts-node": "10.2.1",
     "ttypescript": "1.5.12",
