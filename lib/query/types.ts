@@ -77,3 +77,7 @@ export interface StrTplOptionsBase<Ctx> {
   preHandler?: StrTplHandler<Ctx> | null;
   postHandler?: StrTplHandler<Ctx> | null;
 }
+
+export interface QueryBuilder<Ctx> {
+  build(): Matcher<Ctx>;
+}

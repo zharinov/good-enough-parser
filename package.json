@@ -11,24 +11,6 @@
   "files": [
     "dist"
   ],
-  "exports": {
-    "lang": {
-      "require": "./dist/cjs/lang/index.js",
-      "import": "./dist/esm/lang/index.js"
-    },
-    "lexer": {
-      "require": "./dist/cjs/lexer/index.js",
-      "import": "./dist/esm/lexer/index.js"
-    },
-    "parser": {
-      "require": "./dist/cjs/parser/index.js",
-      "import": "./dist/esm/parser/index.js"
-    },
-    "query": {
-      "require": "./dist/cjs/query/index.js",
-      "import": "./dist/esm/query/index.js"
-    }
-  },
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "scripts": {

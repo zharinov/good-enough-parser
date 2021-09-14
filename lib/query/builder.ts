@@ -24,13 +24,14 @@ import type {
   OpMatcherHandler,
   OpMatcherOptions,
   OpMatcherValue,
+  QueryBuilder,
   SymMatcherHandler,
   SymMatcherOptions,
   SymMatcherValue,
   TreeOptionsBase,
 } from './types';
 
-abstract class AbstractBuilder<Ctx> {
+abstract class AbstractBuilder<Ctx> implements QueryBuilder<Ctx> {
   abstract build(): Matcher<Ctx>;
 
   sym(): SeqBuilder<Ctx>;
@@ -589,4 +590,11 @@ export function str<Ctx>(
 ): StrBuilder<Ctx> {
   const opts = coerceStrOptions<Ctx>(arg1, arg2);
   return new StrBuilder<Ctx>(opts);
+}
+
+export function buildRoot<Ctx>(builder: QueryBuilder<Ctx>): Matcher<Ctx> {
+  const matcher = builder.build();
+  return matcher instanceof TreeMatcher && matcher.type === 'root-tree'
+    ? matcher
+    : new TreeMatcher({ matcher, type: 'root-tree' });
 }
