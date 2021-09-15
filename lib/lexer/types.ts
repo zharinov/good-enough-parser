@@ -84,6 +84,8 @@ export interface Lexer {
 export interface TokenBase {
   value: string;
   offset: number;
+  line: number;
+  col: number;
 }
 
 export interface NewlineToken extends TokenBase {

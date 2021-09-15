@@ -4,27 +4,37 @@
     {
       "type": "symbol",
       "value": "if",
-      "offset": 0
+      "offset": 0,
+      "line": 1,
+      "col": 1
     },
     {
       "type": "whitespace",
       "value": " ",
-      "offset": 2
+      "offset": 2,
+      "line": 1,
+      "col": 3
     },
     {
       "type": "symbol",
       "value": "True",
-      "offset": 3
+      "offset": 3,
+      "line": 1,
+      "col": 4
     },
     {
       "type": "operator",
       "value": ":",
-      "offset": 7
+      "offset": 7,
+      "line": 1,
+      "col": 8
     },
     {
       "type": "newline",
       "value": "\n",
-      "offset": 8
+      "offset": 8,
+      "line": 1,
+      "col": 9
     },
     {
       "type": "block-tree",
@@ -32,192 +42,264 @@
         {
           "type": "whitespace",
           "value": "  ",
-          "offset": 9
+          "offset": 9,
+          "line": 2,
+          "col": 1
         },
         {
           "type": "wrapped-tree",
           "startsWith": {
             "type": "bracket-left",
             "value": "[",
-            "offset": 11
+            "offset": 11,
+            "line": 2,
+            "col": 3
           },
           "endsWith": {
             "type": "bracket-right",
             "value": "]",
-            "offset": 33
+            "offset": 33,
+            "line": 6,
+            "col": 7
           },
           "children": [
             {
               "type": "newline",
               "value": "\n",
-              "offset": 12
+              "offset": 12,
+              "line": 2,
+              "col": 4
             },
             {
               "type": "number",
               "value": "1",
-              "offset": 13
+              "offset": 13,
+              "line": 3,
+              "col": 1
             },
             {
               "type": "operator",
               "value": ",",
-              "offset": 14
+              "offset": 14,
+              "line": 3,
+              "col": 2
             },
             {
               "type": "newline",
               "value": "\n",
-              "offset": 15
+              "offset": 15,
+              "line": 3,
+              "col": 3
             },
             {
               "type": "whitespace",
               "value": "  ",
-              "offset": 16
+              "offset": 16,
+              "line": 4,
+              "col": 1
             },
             {
               "type": "number",
               "value": "2",
-              "offset": 18
+              "offset": 18,
+              "line": 4,
+              "col": 3
             },
             {
               "type": "operator",
               "value": ",",
-              "offset": 19
+              "offset": 19,
+              "line": 4,
+              "col": 4
             },
             {
               "type": "newline",
               "value": "\n",
-              "offset": 20
+              "offset": 20,
+              "line": 4,
+              "col": 5
             },
             {
               "type": "whitespace",
               "value": "    ",
-              "offset": 21
+              "offset": 21,
+              "line": 5,
+              "col": 1
             },
             {
               "type": "number",
               "value": "3",
-              "offset": 25
+              "offset": 25,
+              "line": 5,
+              "col": 5
             },
             {
               "type": "newline",
               "value": "\n",
-              "offset": 26
+              "offset": 26,
+              "line": 5,
+              "col": 6
             },
             {
               "type": "whitespace",
               "value": "      ",
-              "offset": 27
+              "offset": 27,
+              "line": 6,
+              "col": 1
             }
           ]
         },
         {
           "type": "newline",
           "value": "\n",
-          "offset": 34
+          "offset": 34,
+          "line": 6,
+          "col": 8
         }
       ]
     },
     {
       "type": "symbol",
       "value": "else",
-      "offset": 35
+      "offset": 35,
+      "line": 7,
+      "col": 1
     },
     {
       "type": "operator",
       "value": ":",
-      "offset": 39
+      "offset": 39,
+      "line": 7,
+      "col": 5
     },
     {
       "type": "whitespace",
       "value": " ",
-      "offset": 40
+      "offset": 40,
+      "line": 7,
+      "col": 6
     },
     {
       "type": "wrapped-tree",
       "startsWith": {
         "type": "bracket-left",
         "value": "[",
-        "offset": 41
+        "offset": 41,
+        "line": 7,
+        "col": 7
       },
       "endsWith": {
         "type": "bracket-right",
         "value": "]",
-        "offset": 84
+        "offset": 84,
+        "line": 11,
+        "col": 1
       },
       "children": [
         {
           "type": "newline",
           "value": "\n",
-          "offset": 42
+          "offset": 42,
+          "line": 7,
+          "col": 8
         },
         {
           "type": "whitespace",
           "value": "        ",
-          "offset": 43
+          "offset": 43,
+          "line": 8,
+          "col": 1
         },
         {
           "type": "number",
           "value": "3",
-          "offset": 51
+          "offset": 51,
+          "line": 8,
+          "col": 9
         },
         {
           "type": "operator",
           "value": ",",
-          "offset": 52
+          "offset": 52,
+          "line": 8,
+          "col": 10
         },
         {
           "type": "whitespace",
           "value": " ",
-          "offset": 53
+          "offset": 53,
+          "line": 8,
+          "col": 11
         },
         {
           "type": "newline",
           "value": "\n",
-          "offset": 54
+          "offset": 54,
+          "line": 8,
+          "col": 12
         },
         {
           "type": "whitespace",
           "value": "          ",
-          "offset": 55
+          "offset": 55,
+          "line": 9,
+          "col": 1
         },
         {
           "type": "number",
           "value": "2",
-          "offset": 65
+          "offset": 65,
+          "line": 9,
+          "col": 11
         },
         {
           "type": "operator",
           "value": ",",
-          "offset": 66
+          "offset": 66,
+          "line": 9,
+          "col": 12
         },
         {
           "type": "whitespace",
           "value": " ",
-          "offset": 67
+          "offset": 67,
+          "line": 9,
+          "col": 13
         },
         {
           "type": "newline",
           "value": "\n",
-          "offset": 68
+          "offset": 68,
+          "line": 9,
+          "col": 14
         },
         {
           "type": "whitespace",
           "value": "            ",
-          "offset": 69
+          "offset": 69,
+          "line": 10,
+          "col": 1
         },
         {
           "type": "number",
           "value": "1",
-          "offset": 81
+          "offset": 81,
+          "line": 10,
+          "col": 13
         },
         {
           "type": "operator",
           "value": ",",
-          "offset": 82
+          "offset": 82,
+          "line": 10,
+          "col": 14
         },
         {
           "type": "newline",
           "value": "\n",
-          "offset": 83
+          "offset": 83,
+          "line": 10,
+          "col": 15
         }
       ]
     }

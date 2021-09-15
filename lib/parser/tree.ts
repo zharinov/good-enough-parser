@@ -1,4 +1,3 @@
-import { nextOffset } from '../lexer';
 import type { Lexer, WhitespaceToken } from '../lexer/types';
 import type { Node, ParserConfig, RootTree, Tree } from './types';
 
@@ -67,11 +66,7 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
       currentTree = {
         type: 'wrapped-tree',
         startsWith: token,
-        endsWith: {
-          type: 'bracket-right',
-          offset: nextOffset(token),
-          value: '',
-        },
+        endsWith: { ...token, type: 'bracket-right' },
         children: [],
       };
       nestingCounter += 1;
@@ -91,11 +86,7 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
       currentTree = {
         type: 'string-tree',
         startsWith: token,
-        endsWith: {
-          type: 'string-end',
-          offset: nextOffset(token),
-          value: '',
-        },
+        endsWith: { ...token, type: 'string-end' },
         children: [],
       };
       nestingCounter += 1;
@@ -115,11 +106,7 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
       currentTree = {
         type: 'template-tree',
         startsWith: token,
-        endsWith: {
-          type: 'template-end',
-          offset: nextOffset(token),
-          value: '',
-        },
+        endsWith: { ...token, type: 'template-end' },
         children: [],
       };
       nestingCounter += 1;

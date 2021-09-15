@@ -1,8 +1,14 @@
 import type { Token as MooToken } from 'moo';
 import { Token, TokenBase } from './types';
 
-export function coerceToken({ type, value, offset }: MooToken): Token {
-  const base: TokenBase = { value, offset };
+export function coerceToken({
+  type,
+  value,
+  offset,
+  line,
+  col,
+}: MooToken): Token {
+  const base: TokenBase = { value, offset, line, col };
 
   if (typeof type === 'string') {
     const [p1, , p3, , p5] = type.split('$');
@@ -43,8 +49,4 @@ export function coerceToken({ type, value, offset }: MooToken): Token {
   }
 
   return { type: '_', ...base };
-}
-
-export function nextOffset(token: Token): number {
-  return token.offset + token.value.length;
 }

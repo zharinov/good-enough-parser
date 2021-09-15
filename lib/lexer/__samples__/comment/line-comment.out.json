@@ -2,16 +2,22 @@
   {
     "type": "_",
     "value": "foo ",
-    "offset": 0
+    "offset": 0,
+    "line": 1,
+    "col": 1
   },
   {
     "type": "comment",
     "value": "// bar",
-    "offset": 4
+    "offset": 4,
+    "line": 1,
+    "col": 5
   },
   {
     "type": "_",
     "value": "\nbaz",
-    "offset": 10
+    "offset": 10,
+    "line": 1,
+    "col": 11
   }
 ]

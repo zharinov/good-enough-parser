@@ -522,9 +522,9 @@ function coerceStrOptions<Ctx>(
         postHandler: arg2
           ? (ctx: Ctx, tree: StringTree) =>
               arg2(ctx, {
+                ...tree.startsWith,
                 type: 'string-value',
-                offset: tree.startsWith.offset,
-                value: '',
+                value: arg1,
               })
           : null,
       };

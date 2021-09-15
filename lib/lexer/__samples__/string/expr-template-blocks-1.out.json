@@ -2,56 +2,78 @@
   {
     "type": "string-start",
     "value": "\"",
-    "offset": 0
+    "offset": 0,
+    "line": 1,
+    "col": 1
   },
   {
     "type": "string-value",
     "value": "a",
-    "offset": 1
+    "offset": 1,
+    "line": 1,
+    "col": 2
   },
   {
     "type": "template-start",
     "value": "{",
-    "offset": 2
+    "offset": 2,
+    "line": 1,
+    "col": 3
   },
   {
     "type": "bracket-left",
     "value": "{",
-    "offset": 3
+    "offset": 3,
+    "line": 1,
+    "col": 4
   },
   {
     "type": "string-start",
     "value": "\"",
-    "offset": 4
+    "offset": 4,
+    "line": 1,
+    "col": 5
   },
   {
     "type": "string-value",
     "value": "b",
-    "offset": 5
+    "offset": 5,
+    "line": 1,
+    "col": 6
   },
   {
     "type": "string-end",
     "value": "\"",
-    "offset": 6
+    "offset": 6,
+    "line": 1,
+    "col": 7
   },
   {
     "type": "bracket-right",
     "value": "}",
-    "offset": 7
+    "offset": 7,
+    "line": 1,
+    "col": 8
   },
   {
     "type": "template-end",
     "value": "}",
-    "offset": 8
+    "offset": 8,
+    "line": 1,
+    "col": 9
   },
   {
     "type": "string-value",
     "value": "c",
-    "offset": 9
+    "offset": 9,
+    "line": 1,
+    "col": 10
   },
   {
     "type": "string-end",
     "value": "\"",
-    "offset": 10
+    "offset": 10,
+    "line": 1,
+    "col": 11
   }
 ]
