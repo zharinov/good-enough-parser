@@ -17,7 +17,7 @@ interface TreeMatcherOptions<Ctx> extends TreeOptionsBase<Ctx> {
 
 export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   public readonly type: TreeMatcherType | null;
-  public readonly matcher: AbstractMatcher<Ctx> | null;
+  public readonly matcher: Matcher<Ctx> | null;
   public readonly maxDepth: number;
   public readonly maxMatches: number;
   public readonly preHandler: TreeMatcherHandler<Ctx>;
@@ -51,7 +51,7 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       }
     }
 
-    const rightCursor = skipMinorTokens(cursor.right);
+    const rightCursor = skipMinorTokens(cursor.right, this.matcher?.minorToken);
     if (rightCursor) {
       return rightCursor;
     }
@@ -61,7 +61,10 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
     while (upperCursor && this.walkDepth > 0) {
       if (upperCursor) {
         if (upperCursor.right) {
-          const upperRightCursor = skipMinorTokens(upperCursor.right);
+          const upperRightCursor = skipMinorTokens(
+            upperCursor.right,
+            this.matcher?.minorToken
+          );
           if (upperRightCursor) {
             upperCursor = upperRightCursor;
             break;

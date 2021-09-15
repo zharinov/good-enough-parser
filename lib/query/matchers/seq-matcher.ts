@@ -26,15 +26,18 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
           break;
         }
 
-        const cursor = skipMinorTokens(this.currentCheckpoint.cursor);
+        const matcher = this.seq[this.idx] as Matcher<Ctx>;
+
+        const cursor = skipMinorTokens(
+          this.currentCheckpoint.cursor,
+          matcher.minorToken
+        );
         const oldCheckpoint = cursor
           ? { ...this.currentCheckpoint, cursor }
           : null;
         if (!oldCheckpoint) {
           break;
         }
-
-        const matcher = this.seq[this.idx] as Matcher<Ctx>;
 
         const newCheckpoint = matcher.match(oldCheckpoint);
         if (!newCheckpoint) {

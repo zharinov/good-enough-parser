@@ -6,6 +6,7 @@ import {
   SeqMatcher,
   SymMatcher,
 } from './matchers';
+import { CommentMatcher } from './matchers/comment-matcher';
 import { NumMatcher } from './matchers/num-matcher';
 import {
   StrContentMatcher,
@@ -16,6 +17,9 @@ import {
 } from './matchers/str-matcher';
 import { TreeMatcher } from './matchers/tree-macher';
 import type {
+  CommentMatcherHandler,
+  CommentMatcherOptions,
+  CommentMatcherValue,
   Matcher,
   NodeHandler,
   NumMatcherHandler,
@@ -59,6 +63,26 @@ abstract class AbstractBuilder<Ctx> implements QueryBuilder<Ctx> {
   ): SeqBuilder<Ctx> {
     const opts = coerceOpOptions(arg1, arg2);
     const builder = new OpBuilder<Ctx>(opts);
+    return new SeqBuilder<Ctx>(this, builder);
+  }
+
+  comment(): SeqBuilder<Ctx>;
+  comment(value: CommentMatcherValue): SeqBuilder<Ctx>;
+  comment(handler: CommentMatcherHandler<Ctx>): SeqBuilder<Ctx>;
+  comment(
+    value: CommentMatcherValue,
+    handler: CommentMatcherHandler<Ctx>
+  ): SeqBuilder<Ctx>;
+  comment(opts: CommentMatcherOptions<Ctx>): SeqBuilder<Ctx>;
+  comment(
+    arg1?:
+      | CommentMatcherValue
+      | CommentMatcherOptions<Ctx>
+      | CommentMatcherHandler<Ctx>,
+    arg2?: CommentMatcherHandler<Ctx>
+  ): SeqBuilder<Ctx> {
+    const opts = coerceCommentOptions<Ctx>(arg1, arg2);
+    const builder = new CommentBuilder<Ctx>(opts);
     return new SeqBuilder<Ctx>(this, builder);
   }
 
@@ -255,6 +279,69 @@ export function op<Ctx>(
 ): OpBuilder<Ctx> {
   const opts = coerceOpOptions<Ctx>(arg1, arg2);
   return new OpBuilder<Ctx>(opts);
+}
+
+// Comments
+
+class CommentBuilder<Ctx> extends AbstractBuilder<Ctx> {
+  constructor(private opts: CommentMatcherOptions<Ctx>) {
+    super();
+  }
+
+  build(): CommentMatcher<Ctx> {
+    return new CommentMatcher<Ctx>(this.opts);
+  }
+}
+
+function coerceCommentOptions<Ctx>(
+  arg1?:
+    | CommentMatcherValue
+    | CommentMatcherOptions<Ctx>
+    | CommentMatcherHandler<Ctx>,
+  arg2?: CommentMatcherHandler<Ctx>
+): CommentMatcherOptions<Ctx> {
+  if (typeof arg1 === 'string' || arg1 instanceof RegExp) {
+    return {
+      value: arg1,
+      handler: arg2 ?? null,
+    };
+  }
+
+  if (typeof arg1 === 'function') {
+    return {
+      value: null,
+      handler: arg1,
+    };
+  }
+
+  if (arg1 !== null && typeof arg1 === 'object') {
+    return arg1;
+  }
+
+  return { value: null, handler: null };
+}
+
+export function comment<Ctx>(): CommentBuilder<Ctx>;
+export function comment<Ctx>(value: CommentMatcherValue): CommentBuilder<Ctx>;
+export function comment<Ctx>(
+  handler: CommentMatcherHandler<Ctx>
+): CommentBuilder<Ctx>;
+export function comment<Ctx>(
+  value: CommentMatcherValue,
+  handler: CommentMatcherHandler<Ctx>
+): CommentBuilder<Ctx>;
+export function comment<Ctx>(
+  opts: CommentMatcherOptions<Ctx>
+): CommentBuilder<Ctx>;
+export function comment<Ctx>(
+  arg1?:
+    | CommentMatcherValue
+    | CommentMatcherOptions<Ctx>
+    | CommentMatcherHandler<Ctx>,
+  arg2?: CommentMatcherHandler<Ctx>
+): CommentBuilder<Ctx> {
+  const opts = coerceCommentOptions<Ctx>(arg1, arg2);
+  return new CommentBuilder<Ctx>(opts);
 }
 
 // Numbers

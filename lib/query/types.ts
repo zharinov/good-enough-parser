@@ -1,4 +1,10 @@
-import type { NumberToken, OperatorToken, SymbolToken } from '../lexer/types';
+import type {
+  CommentToken,
+  MinorToken,
+  NumberToken,
+  OperatorToken,
+  SymbolToken,
+} from '../lexer/types';
 import type {
   Cursor,
   Node,
@@ -30,6 +36,13 @@ export interface OpMatcherOptions<Ctx> {
   handler: OpMatcherHandler<Ctx> | null;
 }
 
+export type CommentMatcherValue = string | RegExp | null;
+export type CommentMatcherHandler<Ctx> = NodeHandler<Ctx, CommentToken>;
+export interface CommentMatcherOptions<Ctx> {
+  value: CommentMatcherValue;
+  handler: CommentMatcherHandler<Ctx> | null;
+}
+
 export type NumMatcherValue = string | RegExp | null;
 export type NumMatcherHandler<Ctx> = NodeHandler<Ctx, NumberToken>;
 export interface NumMatcherOptions<Ctx> {
@@ -54,6 +67,7 @@ export interface TreeOptionsBase<Ctx> {
 export interface Matcher<Ctx> {
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null;
   nextMatch(): Checkpoint<Ctx> | null;
+  readonly minorToken?: MinorToken['type'];
 }
 
 export interface ManyMatcherOptions<Ctx> {

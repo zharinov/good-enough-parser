@@ -73,7 +73,7 @@ export class StrTplMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 
   seekNextChild(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
-    const cursor = skipMinorTokens(checkpoint.cursor);
+    const cursor = skipMinorTokens(checkpoint.cursor, this.matcher.minorToken);
     let nextCheckpoint = cursor ? { ...checkpoint, cursor } : null;
     while (nextCheckpoint) {
       const checkpoint = this.matcher.match(nextCheckpoint);
@@ -81,7 +81,10 @@ export class StrTplMatcher<Ctx> extends AbstractMatcher<Ctx> {
         return checkpoint;
       }
 
-      const nextCursor = skipMinorTokens(nextCheckpoint?.cursor?.right);
+      const nextCursor = skipMinorTokens(
+        nextCheckpoint?.cursor?.right,
+        this.matcher.minorToken
+      );
       nextCheckpoint = nextCursor
         ? {
             cursor: nextCursor,
@@ -104,7 +107,10 @@ export class StrTplMatcher<Ctx> extends AbstractMatcher<Ctx> {
           cursor,
         });
 
-        if (childMatch && !skipMinorTokens(childMatch.cursor)) {
+        if (
+          childMatch &&
+          !skipMinorTokens(childMatch.cursor, this.matcher.minorToken)
+        ) {
           const cursor = rootCursor.right;
           const context = this.postHandler(childMatch.context, rootNode);
           return cursor
