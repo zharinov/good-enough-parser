@@ -7,8 +7,9 @@ export function coerceToken({
   offset,
   line,
   col,
+  lineBreaks,
 }: MooToken): Token {
-  const base: TokenBase = { value, offset, line, col };
+  const base: TokenBase = { value, offset, line, col, lineBreaks };
 
   if (typeof type === 'string') {
     const [p1, , p3, , p5] = type.split('$');

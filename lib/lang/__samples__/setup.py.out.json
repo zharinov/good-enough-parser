@@ -6,28 +6,32 @@
       "value": "\n",
       "offset": 0,
       "line": 1,
-      "col": 1
+      "col": 1,
+      "lineBreaks": 1
     },
     {
       "type": "symbol",
       "value": "try",
       "offset": 1,
       "line": 2,
-      "col": 1
+      "col": 1,
+      "lineBreaks": 0
     },
     {
       "type": "operator",
       "value": ":",
       "offset": 4,
       "line": 2,
-      "col": 4
+      "col": 4,
+      "lineBreaks": 0
     },
     {
       "type": "newline",
       "value": "\n",
       "offset": 5,
       "line": 2,
-      "col": 5
+      "col": 5,
+      "lineBreaks": 1
     },
     {
       "type": "block-tree",
@@ -37,63 +41,72 @@
           "value": "    ",
           "offset": 6,
           "line": 3,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "from",
           "offset": 10,
           "line": 3,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "whitespace",
           "value": " ",
           "offset": 14,
           "line": 3,
-          "col": 9
+          "col": 9,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "setuptools",
           "offset": 15,
           "line": 3,
-          "col": 10
+          "col": 10,
+          "lineBreaks": 0
         },
         {
           "type": "whitespace",
           "value": " ",
           "offset": 25,
           "line": 3,
-          "col": 20
+          "col": 20,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "import",
           "offset": 26,
           "line": 3,
-          "col": 21
+          "col": 21,
+          "lineBreaks": 0
         },
         {
           "type": "whitespace",
           "value": " ",
           "offset": 32,
           "line": 3,
-          "col": 27
+          "col": 27,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "setup",
           "offset": 33,
           "line": 3,
-          "col": 28
+          "col": 28,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 38,
           "line": 3,
-          "col": 33
+          "col": 33,
+          "lineBreaks": 1
         }
       ]
     },
@@ -102,35 +115,40 @@
       "value": "except",
       "offset": 39,
       "line": 4,
-      "col": 1
+      "col": 1,
+      "lineBreaks": 0
     },
     {
       "type": "whitespace",
       "value": " ",
       "offset": 45,
       "line": 4,
-      "col": 7
+      "col": 7,
+      "lineBreaks": 0
     },
     {
       "type": "symbol",
       "value": "ImportError",
       "offset": 46,
       "line": 4,
-      "col": 8
+      "col": 8,
+      "lineBreaks": 0
     },
     {
       "type": "operator",
       "value": ":",
       "offset": 57,
       "line": 4,
-      "col": 19
+      "col": 19,
+      "lineBreaks": 0
     },
     {
       "type": "newline",
       "value": "\n",
       "offset": 58,
       "line": 4,
-      "col": 20
+      "col": 20,
+      "lineBreaks": 1
     },
     {
       "type": "block-tree",
@@ -140,84 +158,96 @@
           "value": "    ",
           "offset": 59,
           "line": 5,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "from",
           "offset": 63,
           "line": 5,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "whitespace",
           "value": " ",
           "offset": 67,
           "line": 5,
-          "col": 9
+          "col": 9,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "distutils",
           "offset": 68,
           "line": 5,
-          "col": 10
+          "col": 10,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": ".",
           "offset": 77,
           "line": 5,
-          "col": 19
+          "col": 19,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "core",
           "offset": 78,
           "line": 5,
-          "col": 20
+          "col": 20,
+          "lineBreaks": 0
         },
         {
           "type": "whitespace",
           "value": " ",
           "offset": 82,
           "line": 5,
-          "col": 24
+          "col": 24,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "import",
           "offset": 83,
           "line": 5,
-          "col": 25
+          "col": 25,
+          "lineBreaks": 0
         },
         {
           "type": "whitespace",
           "value": " ",
           "offset": 89,
           "line": 5,
-          "col": 31
+          "col": 31,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "setup",
           "offset": 90,
           "line": 5,
-          "col": 32
+          "col": 32,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 95,
           "line": 5,
-          "col": 37
+          "col": 37,
+          "lineBreaks": 1
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 96,
           "line": 6,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 1
         }
       ]
     },
@@ -226,7 +256,8 @@
       "value": "setup",
       "offset": 97,
       "line": 7,
-      "col": 1
+      "col": 1,
+      "lineBreaks": 0
     },
     {
       "type": "wrapped-tree",
@@ -235,14 +266,16 @@
         "value": "(",
         "offset": 102,
         "line": 7,
-        "col": 6
+        "col": 6,
+        "lineBreaks": 0
       },
       "endsWith": {
         "type": "bracket-right",
         "value": ")",
         "offset": 2400,
         "line": 81,
-        "col": 1
+        "col": 1,
+        "lineBreaks": 0
       },
       "children": [
         {
@@ -250,28 +283,32 @@
           "value": "\n",
           "offset": 103,
           "line": 7,
-          "col": 7
+          "col": 7,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 104,
           "line": 8,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "author",
           "offset": 108,
           "line": 8,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 114,
           "line": 8,
-          "col": 11
+          "col": 11,
+          "lineBreaks": 0
         },
         {
           "type": "string-tree",
@@ -280,14 +317,16 @@
             "value": "'",
             "offset": 115,
             "line": 8,
-            "col": 12
+            "col": 12,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "string-end",
             "value": "'",
             "offset": 126,
             "line": 8,
-            "col": 23
+            "col": 23,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -295,7 +334,8 @@
               "value": "Simon Davy",
               "offset": 116,
               "line": 8,
-              "col": 13
+              "col": 13,
+              "lineBreaks": 0
             }
           ]
         },
@@ -304,35 +344,40 @@
           "value": ",",
           "offset": 127,
           "line": 8,
-          "col": 24
+          "col": 24,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 128,
           "line": 8,
-          "col": 25
+          "col": 25,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 129,
           "line": 9,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "author_email",
           "offset": 133,
           "line": 9,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 145,
           "line": 9,
-          "col": 17
+          "col": 17,
+          "lineBreaks": 0
         },
         {
           "type": "string-tree",
@@ -341,14 +386,16 @@
             "value": "'",
             "offset": 146,
             "line": 9,
-            "col": 18
+            "col": 18,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "string-end",
             "value": "'",
             "offset": 171,
             "line": 9,
-            "col": 43
+            "col": 43,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -356,7 +403,8 @@
               "value": "simon.davy@canonical.com",
               "offset": 147,
               "line": 9,
-              "col": 19
+              "col": 19,
+              "lineBreaks": 0
             }
           ]
         },
@@ -365,35 +413,40 @@
           "value": ",",
           "offset": 172,
           "line": 9,
-          "col": 44
+          "col": 44,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 173,
           "line": 9,
-          "col": 45
+          "col": 45,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 174,
           "line": 10,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "classifiers",
           "offset": 178,
           "line": 10,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 189,
           "line": 10,
-          "col": 16
+          "col": 16,
+          "lineBreaks": 0
         },
         {
           "type": "wrapped-tree",
@@ -402,14 +455,16 @@
             "value": "[",
             "offset": 190,
             "line": 10,
-            "col": 17
+            "col": 17,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "bracket-right",
             "value": "]",
             "offset": 799,
             "line": 23,
-            "col": 5
+            "col": 5,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -417,14 +472,16 @@
               "value": "\n",
               "offset": 191,
               "line": 10,
-              "col": 18
+              "col": 18,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 192,
               "line": 11,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -433,14 +490,16 @@
                 "value": "'",
                 "offset": 200,
                 "line": 11,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 251,
                 "line": 11,
-                "col": 60
+                "col": 60,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -448,7 +507,8 @@
                   "value": "License :: OSI Approved :: Apache Software License",
                   "offset": 201,
                   "line": 11,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -457,21 +517,24 @@
               "value": ",",
               "offset": 252,
               "line": 11,
-              "col": 61
+              "col": 61,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 253,
               "line": 11,
-              "col": 62
+              "col": 62,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 254,
               "line": 12,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -480,14 +543,16 @@
                 "value": "'",
                 "offset": 262,
                 "line": 12,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 293,
                 "line": 12,
-                "col": 40
+                "col": 40,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -495,7 +560,8 @@
                   "value": "Development Status :: 4 - Beta",
                   "offset": 263,
                   "line": 12,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -504,21 +570,24 @@
               "value": ",",
               "offset": 294,
               "line": 12,
-              "col": 41
+              "col": 41,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 295,
               "line": 12,
-              "col": 42
+              "col": 42,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 296,
               "line": 13,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -527,14 +596,16 @@
                 "value": "'",
                 "offset": 304,
                 "line": 13,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 336,
                 "line": 13,
-                "col": 41
+                "col": 41,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -542,7 +613,8 @@
                   "value": "Intended Audience :: Developers",
                   "offset": 305,
                   "line": 13,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -551,21 +623,24 @@
               "value": ",",
               "offset": 337,
               "line": 13,
-              "col": 42
+              "col": 42,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 338,
               "line": 13,
-              "col": 43
+              "col": 43,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 339,
               "line": 14,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -574,14 +649,16 @@
                 "value": "'",
                 "offset": 347,
                 "line": 14,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 375,
                 "line": 14,
-                "col": 37
+                "col": 37,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -589,7 +666,8 @@
                   "value": "Natural Language :: English",
                   "offset": 348,
                   "line": 14,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -598,21 +676,24 @@
               "value": ",",
               "offset": 376,
               "line": 14,
-              "col": 38
+              "col": 38,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 377,
               "line": 14,
-              "col": 39
+              "col": 39,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 378,
               "line": 15,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -621,14 +702,16 @@
                 "value": "'",
                 "offset": 386,
                 "line": 15,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 424,
                 "line": 15,
-                "col": 47
+                "col": 47,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -636,7 +719,8 @@
                   "value": "Topic :: Internet :: WWW/HTTP :: WSGI",
                   "offset": 387,
                   "line": 15,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -645,21 +729,24 @@
               "value": ",",
               "offset": 425,
               "line": 15,
-              "col": 48
+              "col": 48,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 426,
               "line": 15,
-              "col": 49
+              "col": 49,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 427,
               "line": 16,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -668,14 +755,16 @@
                 "value": "'",
                 "offset": 435,
                 "line": 16,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 487,
                 "line": 16,
-                "col": 61
+                "col": 61,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -683,7 +772,8 @@
                   "value": "Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware",
                   "offset": 436,
                   "line": 16,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -692,21 +782,24 @@
               "value": ",",
               "offset": 488,
               "line": 16,
-              "col": 62
+              "col": 62,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 489,
               "line": 16,
-              "col": 63
+              "col": 63,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 490,
               "line": 17,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -715,14 +808,16 @@
                 "value": "'",
                 "offset": 498,
                 "line": 17,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 525,
                 "line": 17,
-                "col": 36
+                "col": 36,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -730,7 +825,8 @@
                   "value": "Topic :: System :: Logging",
                   "offset": 499,
                   "line": 17,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -739,21 +835,24 @@
               "value": ",",
               "offset": 526,
               "line": 17,
-              "col": 37
+              "col": 37,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 527,
               "line": 17,
-              "col": 38
+              "col": 38,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 528,
               "line": 18,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -762,14 +861,16 @@
                 "value": "'",
                 "offset": 536,
                 "line": 18,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 574,
                 "line": 18,
-                "col": 47
+                "col": 47,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -777,7 +878,8 @@
                   "value": "Programming Language :: Python :: 2.7",
                   "offset": 537,
                   "line": 18,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -786,21 +888,24 @@
               "value": ",",
               "offset": 575,
               "line": 18,
-              "col": 48
+              "col": 48,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 576,
               "line": 18,
-              "col": 49
+              "col": 49,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 577,
               "line": 19,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -809,14 +914,16 @@
                 "value": "'",
                 "offset": 585,
                 "line": 19,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 623,
                 "line": 19,
-                "col": 47
+                "col": 47,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -824,7 +931,8 @@
                   "value": "Programming Language :: Python :: 3.4",
                   "offset": 586,
                   "line": 19,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -833,21 +941,24 @@
               "value": ",",
               "offset": 624,
               "line": 19,
-              "col": 48
+              "col": 48,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 625,
               "line": 19,
-              "col": 49
+              "col": 49,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 626,
               "line": 20,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -856,14 +967,16 @@
                 "value": "'",
                 "offset": 634,
                 "line": 20,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 672,
                 "line": 20,
-                "col": 47
+                "col": 47,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -871,7 +984,8 @@
                   "value": "Programming Language :: Python :: 3.5",
                   "offset": 635,
                   "line": 20,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -880,21 +994,24 @@
               "value": ",",
               "offset": 673,
               "line": 20,
-              "col": 48
+              "col": 48,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 674,
               "line": 20,
-              "col": 49
+              "col": 49,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 675,
               "line": 21,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -903,14 +1020,16 @@
                 "value": "'",
                 "offset": 683,
                 "line": 21,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 721,
                 "line": 21,
-                "col": 47
+                "col": 47,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -918,7 +1037,8 @@
                   "value": "Programming Language :: Python :: 3.6",
                   "offset": 684,
                   "line": 21,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -927,21 +1047,24 @@
               "value": ",",
               "offset": 722,
               "line": 21,
-              "col": 48
+              "col": 48,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 723,
               "line": 21,
-              "col": 49
+              "col": 49,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 724,
               "line": 22,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -950,14 +1073,16 @@
                 "value": "'",
                 "offset": 732,
                 "line": 22,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 792,
                 "line": 22,
-                "col": 69
+                "col": 69,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -965,7 +1090,8 @@
                   "value": "Programming Language :: Python :: Implementation :: CPython",
                   "offset": 733,
                   "line": 22,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -974,21 +1100,24 @@
               "value": ",",
               "offset": 793,
               "line": 22,
-              "col": 70
+              "col": 70,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 794,
               "line": 22,
-              "col": 71
+              "col": 71,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "    ",
               "offset": 795,
               "line": 23,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             }
           ]
         },
@@ -997,35 +1126,40 @@
           "value": ",",
           "offset": 800,
           "line": 23,
-          "col": 6
+          "col": 6,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 801,
           "line": 23,
-          "col": 7
+          "col": 7,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 802,
           "line": 24,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "description",
           "offset": 806,
           "line": 24,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 817,
           "line": 24,
-          "col": 16
+          "col": 16,
+          "lineBreaks": 0
         },
         {
           "type": "string-tree",
@@ -1034,14 +1168,16 @@
             "value": "'",
             "offset": 818,
             "line": 24,
-            "col": 17
+            "col": 17,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "string-end",
             "value": "'",
             "offset": 838,
             "line": 24,
-            "col": 37
+            "col": 37,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -1049,7 +1185,8 @@
               "value": "A common WSGI stack",
               "offset": 819,
               "line": 24,
-              "col": 18
+              "col": 18,
+              "lineBreaks": 0
             }
           ]
         },
@@ -1058,42 +1195,48 @@
           "value": ",",
           "offset": 839,
           "line": 24,
-          "col": 38
+          "col": 38,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 840,
           "line": 24,
-          "col": 39
+          "col": 39,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 841,
           "line": 25,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "entry_points",
           "offset": 845,
           "line": 25,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 857,
           "line": 25,
-          "col": 17
+          "col": 17,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "dict",
           "offset": 858,
           "line": 25,
-          "col": 18
+          "col": 18,
+          "lineBreaks": 0
         },
         {
           "type": "wrapped-tree",
@@ -1102,14 +1245,16 @@
             "value": "(",
             "offset": 862,
             "line": 25,
-            "col": 22
+            "col": 22,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "bracket-right",
             "value": ")",
             "offset": 1240,
             "line": 34,
-            "col": 5
+            "col": 5,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -1117,28 +1262,32 @@
               "value": "\n",
               "offset": 863,
               "line": 25,
-              "col": 23
+              "col": 23,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 864,
               "line": 26,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "symbol",
               "value": "console_scripts",
               "offset": 872,
               "line": 26,
-              "col": 9
+              "col": 9,
+              "lineBreaks": 0
             },
             {
               "type": "operator",
               "value": "=",
               "offset": 887,
               "line": 26,
-              "col": 24
+              "col": 24,
+              "lineBreaks": 0
             },
             {
               "type": "wrapped-tree",
@@ -1147,14 +1296,16 @@
                 "value": "[",
                 "offset": 888,
                 "line": 26,
-                "col": 25
+                "col": 25,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "bracket-right",
                 "value": "]",
                 "offset": 1233,
                 "line": 33,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -1162,14 +1313,16 @@
                   "value": "\n",
                   "offset": 889,
                   "line": 26,
-                  "col": 26
+                  "col": 26,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 890,
                   "line": 27,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1178,14 +1331,16 @@
                     "value": "'",
                     "offset": 902,
                     "line": 27,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 933,
                     "line": 27,
-                    "col": 44
+                    "col": 44,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1193,7 +1348,8 @@
                       "value": "talisker=talisker:run_gunicorn",
                       "offset": 903,
                       "line": 27,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1202,21 +1358,24 @@
                   "value": ",",
                   "offset": 934,
                   "line": 27,
-                  "col": 45
+                  "col": 45,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 935,
                   "line": 27,
-                  "col": 46
+                  "col": 46,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 936,
                   "line": 28,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1225,14 +1384,16 @@
                     "value": "'",
                     "offset": 948,
                     "line": 28,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 974,
                     "line": 28,
-                    "col": 39
+                    "col": 39,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1240,7 +1401,8 @@
                       "value": "talisker.run=talisker:run",
                       "offset": 949,
                       "line": 28,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1249,21 +1411,24 @@
                   "value": ",",
                   "offset": 975,
                   "line": 28,
-                  "col": 40
+                  "col": 40,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 976,
                   "line": 28,
-                  "col": 41
+                  "col": 41,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 977,
                   "line": 29,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1272,14 +1437,16 @@
                     "value": "'",
                     "offset": 989,
                     "line": 29,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1029,
                     "line": 29,
-                    "col": 53
+                    "col": 53,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1287,7 +1454,8 @@
                       "value": "talisker.gunicorn=talisker:run_gunicorn",
                       "offset": 990,
                       "line": 29,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1296,21 +1464,24 @@
                   "value": ",",
                   "offset": 1030,
                   "line": 29,
-                  "col": 54
+                  "col": 54,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1031,
                   "line": 29,
-                  "col": 55
+                  "col": 55,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1032,
                   "line": 30,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1319,14 +1490,16 @@
                     "value": "'",
                     "offset": 1044,
                     "line": 30,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1102,
                     "line": 30,
-                    "col": 71
+                    "col": 71,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1334,7 +1507,8 @@
                       "value": "talisker.gunicorn.eventlet=talisker:run_gunicorn_eventlet",
                       "offset": 1045,
                       "line": 30,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1343,21 +1517,24 @@
                   "value": ",",
                   "offset": 1103,
                   "line": 30,
-                  "col": 72
+                  "col": 72,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1104,
                   "line": 30,
-                  "col": 73
+                  "col": 73,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1105,
                   "line": 31,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1366,14 +1543,16 @@
                     "value": "'",
                     "offset": 1117,
                     "line": 31,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1171,
                     "line": 31,
-                    "col": 67
+                    "col": 67,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1381,7 +1560,8 @@
                       "value": "talisker.gunicorn.gevent=talisker:run_gunicorn_gevent",
                       "offset": 1118,
                       "line": 31,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1390,21 +1570,24 @@
                   "value": ",",
                   "offset": 1172,
                   "line": 31,
-                  "col": 68
+                  "col": 68,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1173,
                   "line": 31,
-                  "col": 69
+                  "col": 69,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1174,
                   "line": 32,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1413,14 +1596,16 @@
                     "value": "'",
                     "offset": 1186,
                     "line": 32,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1222,
                     "line": 32,
-                    "col": 49
+                    "col": 49,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1428,7 +1613,8 @@
                       "value": "talisker.celery=talisker:run_celery",
                       "offset": 1187,
                       "line": 32,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1437,21 +1623,24 @@
                   "value": ",",
                   "offset": 1223,
                   "line": 32,
-                  "col": 50
+                  "col": 50,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1224,
                   "line": 32,
-                  "col": 51
+                  "col": 51,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "        ",
                   "offset": 1225,
                   "line": 33,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -1460,21 +1649,24 @@
               "value": ",",
               "offset": 1234,
               "line": 33,
-              "col": 10
+              "col": 10,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 1235,
               "line": 33,
-              "col": 11
+              "col": 11,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "    ",
               "offset": 1236,
               "line": 34,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             }
           ]
         },
@@ -1483,42 +1675,48 @@
           "value": ",",
           "offset": 1241,
           "line": 34,
-          "col": 6
+          "col": 6,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 1242,
           "line": 34,
-          "col": 7
+          "col": 7,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 1243,
           "line": 35,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "extras_require",
           "offset": 1247,
           "line": 35,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 1261,
           "line": 35,
-          "col": 19
+          "col": 19,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "dict",
           "offset": 1262,
           "line": 35,
-          "col": 20
+          "col": 20,
+          "lineBreaks": 0
         },
         {
           "type": "wrapped-tree",
@@ -1527,14 +1725,16 @@
             "value": "(",
             "offset": 1266,
             "line": 35,
-            "col": 24
+            "col": 24,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "bracket-right",
             "value": ")",
             "offset": 1808,
             "line": 59,
-            "col": 5
+            "col": 5,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -1542,28 +1742,32 @@
               "value": "\n",
               "offset": 1267,
               "line": 35,
-              "col": 25
+              "col": 25,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 1268,
               "line": 36,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "symbol",
               "value": "celery",
               "offset": 1276,
               "line": 36,
-              "col": 9
+              "col": 9,
+              "lineBreaks": 0
             },
             {
               "type": "operator",
               "value": "=",
               "offset": 1282,
               "line": 36,
-              "col": 15
+              "col": 15,
+              "lineBreaks": 0
             },
             {
               "type": "wrapped-tree",
@@ -1572,14 +1776,16 @@
                 "value": "[",
                 "offset": 1283,
                 "line": 36,
-                "col": 16
+                "col": 16,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "bracket-right",
                 "value": "]",
                 "offset": 1330,
                 "line": 38,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -1587,14 +1793,16 @@
                   "value": "\n",
                   "offset": 1284,
                   "line": 36,
-                  "col": 17
+                  "col": 17,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1285,
                   "line": 37,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1603,14 +1811,16 @@
                     "value": "'",
                     "offset": 1297,
                     "line": 37,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1319,
                     "line": 37,
-                    "col": 35
+                    "col": 35,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1618,7 +1828,8 @@
                       "value": "celery>=3.1.13.0,<5.0",
                       "offset": 1298,
                       "line": 37,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1627,21 +1838,24 @@
                   "value": ",",
                   "offset": 1320,
                   "line": 37,
-                  "col": 36
+                  "col": 36,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1321,
                   "line": 37,
-                  "col": 37
+                  "col": 37,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "        ",
                   "offset": 1322,
                   "line": 38,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -1650,35 +1864,40 @@
               "value": ",",
               "offset": 1331,
               "line": 38,
-              "col": 10
+              "col": 10,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 1332,
               "line": 38,
-              "col": 11
+              "col": 11,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 1333,
               "line": 39,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "symbol",
               "value": "dev",
               "offset": 1341,
               "line": 39,
-              "col": 9
+              "col": 9,
+              "lineBreaks": 0
             },
             {
               "type": "operator",
               "value": "=",
               "offset": 1344,
               "line": 39,
-              "col": 12
+              "col": 12,
+              "lineBreaks": 0
             },
             {
               "type": "wrapped-tree",
@@ -1687,14 +1906,16 @@
                 "value": "[",
                 "offset": 1345,
                 "line": 39,
-                "col": 13
+                "col": 13,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "bracket-right",
                 "value": "]",
                 "offset": 1473,
                 "line": 44,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -1702,14 +1923,16 @@
                   "value": "\n",
                   "offset": 1346,
                   "line": 39,
-                  "col": 14
+                  "col": 14,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1347,
                   "line": 40,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1718,14 +1941,16 @@
                     "value": "'",
                     "offset": 1359,
                     "line": 40,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1377,
                     "line": 40,
-                    "col": 31
+                    "col": 31,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1733,7 +1958,8 @@
                       "value": "logging_tree>=1.7",
                       "offset": 1360,
                       "line": 40,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1742,21 +1968,24 @@
                   "value": ",",
                   "offset": 1378,
                   "line": 40,
-                  "col": 32
+                  "col": 32,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1379,
                   "line": 40,
-                  "col": 33
+                  "col": 33,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1380,
                   "line": 41,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1765,14 +1994,16 @@
                     "value": "'",
                     "offset": 1392,
                     "line": 41,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1406,
                     "line": 41,
-                    "col": 27
+                    "col": 27,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1780,7 +2011,8 @@
                       "value": "pygments>=2.2",
                       "offset": 1393,
                       "line": 41,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1789,21 +2021,24 @@
                   "value": ",",
                   "offset": 1407,
                   "line": 41,
-                  "col": 28
+                  "col": 28,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1408,
                   "line": 41,
-                  "col": 29
+                  "col": 29,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1409,
                   "line": 42,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1812,14 +2047,16 @@
                     "value": "'",
                     "offset": 1421,
                     "line": 42,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1433,
                     "line": 42,
-                    "col": 25
+                    "col": 25,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1827,7 +2064,8 @@
                       "value": "psutil>=5.0",
                       "offset": 1422,
                       "line": 42,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1836,21 +2074,24 @@
                   "value": ",",
                   "offset": 1434,
                   "line": 42,
-                  "col": 26
+                  "col": 26,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1435,
                   "line": 42,
-                  "col": 27
+                  "col": 27,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1436,
                   "line": 43,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1859,14 +2100,16 @@
                     "value": "'",
                     "offset": 1448,
                     "line": 43,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1462,
                     "line": 43,
-                    "col": 27
+                    "col": 27,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1874,7 +2117,8 @@
                       "value": "objgraph>=3.0",
                       "offset": 1449,
                       "line": 43,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1883,21 +2127,24 @@
                   "value": ",",
                   "offset": 1463,
                   "line": 43,
-                  "col": 28
+                  "col": 28,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1464,
                   "line": 43,
-                  "col": 29
+                  "col": 29,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "        ",
                   "offset": 1465,
                   "line": 44,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -1906,35 +2153,40 @@
               "value": ",",
               "offset": 1474,
               "line": 44,
-              "col": 10
+              "col": 10,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 1475,
               "line": 44,
-              "col": 11
+              "col": 11,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 1476,
               "line": 45,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "symbol",
               "value": "django",
               "offset": 1484,
               "line": 45,
-              "col": 9
+              "col": 9,
+              "lineBreaks": 0
             },
             {
               "type": "operator",
               "value": "=",
               "offset": 1490,
               "line": 45,
-              "col": 15
+              "col": 15,
+              "lineBreaks": 0
             },
             {
               "type": "wrapped-tree",
@@ -1943,14 +2195,16 @@
                 "value": "[",
                 "offset": 1491,
                 "line": 45,
-                "col": 16
+                "col": 16,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "bracket-right",
                 "value": "]",
                 "offset": 1537,
                 "line": 47,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -1958,14 +2212,16 @@
                   "value": "\n",
                   "offset": 1492,
                   "line": 45,
-                  "col": 17
+                  "col": 17,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1493,
                   "line": 46,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -1974,14 +2230,16 @@
                     "value": "'",
                     "offset": 1505,
                     "line": 46,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1526,
                     "line": 46,
-                    "col": 34
+                    "col": 34,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -1989,7 +2247,8 @@
                       "value": "django>=1.11.23,<2.0",
                       "offset": 1506,
                       "line": 46,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -1998,21 +2257,24 @@
                   "value": ",",
                   "offset": 1527,
                   "line": 46,
-                  "col": 35
+                  "col": 35,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1528,
                   "line": 46,
-                  "col": 36
+                  "col": 36,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "        ",
                   "offset": 1529,
                   "line": 47,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2021,35 +2283,40 @@
               "value": ",",
               "offset": 1538,
               "line": 47,
-              "col": 10
+              "col": 10,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 1539,
               "line": 47,
-              "col": 11
+              "col": 11,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 1540,
               "line": 48,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "symbol",
               "value": "flask",
               "offset": 1548,
               "line": 48,
-              "col": 9
+              "col": 9,
+              "lineBreaks": 0
             },
             {
               "type": "operator",
               "value": "=",
               "offset": 1553,
               "line": 48,
-              "col": 14
+              "col": 14,
+              "lineBreaks": 0
             },
             {
               "type": "wrapped-tree",
@@ -2058,14 +2325,16 @@
                 "value": "[",
                 "offset": 1554,
                 "line": 48,
-                "col": 15
+                "col": 15,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "bracket-right",
                 "value": "]",
                 "offset": 1629,
                 "line": 51,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2073,14 +2342,16 @@
                   "value": "\n",
                   "offset": 1555,
                   "line": 48,
-                  "col": 16
+                  "col": 16,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1556,
                   "line": 49,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -2089,14 +2360,16 @@
                     "value": "'",
                     "offset": 1568,
                     "line": 49,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1585,
                     "line": 49,
-                    "col": 30
+                    "col": 30,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -2104,7 +2377,8 @@
                       "value": "flask>=0.11,<2.0",
                       "offset": 1569,
                       "line": 49,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -2113,21 +2387,24 @@
                   "value": ",",
                   "offset": 1586,
                   "line": 49,
-                  "col": 31
+                  "col": 31,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1587,
                   "line": 49,
-                  "col": 32
+                  "col": 32,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1588,
                   "line": 50,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -2136,14 +2413,16 @@
                     "value": "'",
                     "offset": 1600,
                     "line": 50,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1618,
                     "line": 50,
-                    "col": 31
+                    "col": 31,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -2151,7 +2430,8 @@
                       "value": "blinker>=1.4,<2.0",
                       "offset": 1601,
                       "line": 50,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -2160,21 +2440,24 @@
                   "value": ",",
                   "offset": 1619,
                   "line": 50,
-                  "col": 32
+                  "col": 32,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1620,
                   "line": 50,
-                  "col": 33
+                  "col": 33,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "        ",
                   "offset": 1621,
                   "line": 51,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2183,35 +2466,40 @@
               "value": ",",
               "offset": 1630,
               "line": 51,
-              "col": 10
+              "col": 10,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 1631,
               "line": 51,
-              "col": 11
+              "col": 11,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 1632,
               "line": 52,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "symbol",
               "value": "pg",
               "offset": 1640,
               "line": 52,
-              "col": 9
+              "col": 9,
+              "lineBreaks": 0
             },
             {
               "type": "operator",
               "value": "=",
               "offset": 1642,
               "line": 52,
-              "col": 11
+              "col": 11,
+              "lineBreaks": 0
             },
             {
               "type": "wrapped-tree",
@@ -2220,14 +2508,16 @@
                 "value": "[",
                 "offset": 1643,
                 "line": 52,
-                "col": 12
+                "col": 12,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "bracket-right",
                 "value": "]",
                 "offset": 1701,
                 "line": 55,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2235,14 +2525,16 @@
                   "value": "\n",
                   "offset": 1644,
                   "line": 52,
-                  "col": 13
+                  "col": 13,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1645,
                   "line": 53,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -2251,14 +2543,16 @@
                     "value": "'",
                     "offset": 1657,
                     "line": 53,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1666,
                     "line": 53,
-                    "col": 22
+                    "col": 22,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -2266,7 +2560,8 @@
                       "value": "sqlparse",
                       "offset": 1658,
                       "line": 53,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -2275,21 +2570,24 @@
                   "value": ",",
                   "offset": 1667,
                   "line": 53,
-                  "col": 23
+                  "col": 23,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1668,
                   "line": 53,
-                  "col": 24
+                  "col": 24,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1669,
                   "line": 54,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -2298,14 +2596,16 @@
                     "value": "'",
                     "offset": 1681,
                     "line": 54,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1690,
                     "line": 54,
-                    "col": 22
+                    "col": 22,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -2313,7 +2613,8 @@
                       "value": "psycopg2",
                       "offset": 1682,
                       "line": 54,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -2322,21 +2623,24 @@
                   "value": ",",
                   "offset": 1691,
                   "line": 54,
-                  "col": 23
+                  "col": 23,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1692,
                   "line": 54,
-                  "col": 24
+                  "col": 24,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "        ",
                   "offset": 1693,
                   "line": 55,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2345,35 +2649,40 @@
               "value": ",",
               "offset": 1702,
               "line": 55,
-              "col": 10
+              "col": 10,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 1703,
               "line": 55,
-              "col": 11
+              "col": 11,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 1704,
               "line": 56,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "symbol",
               "value": "prometheus",
               "offset": 1712,
               "line": 56,
-              "col": 9
+              "col": 9,
+              "lineBreaks": 0
             },
             {
               "type": "operator",
               "value": "=",
               "offset": 1722,
               "line": 56,
-              "col": 19
+              "col": 19,
+              "lineBreaks": 0
             },
             {
               "type": "wrapped-tree",
@@ -2382,14 +2691,16 @@
                 "value": "[",
                 "offset": 1723,
                 "line": 56,
-                "col": 20
+                "col": 20,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "bracket-right",
                 "value": "]",
                 "offset": 1801,
                 "line": 58,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2397,14 +2708,16 @@
                   "value": "\n",
                   "offset": 1724,
                   "line": 56,
-                  "col": 21
+                  "col": 21,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 1725,
                   "line": 57,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -2413,14 +2726,16 @@
                     "value": "'",
                     "offset": 1737,
                     "line": 57,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1769,
                     "line": 57,
-                    "col": 45
+                    "col": 45,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -2428,7 +2743,8 @@
                       "value": "prometheus-client>=0.2.0,<0.5.0",
                       "offset": 1738,
                       "line": 57,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -2437,21 +2753,24 @@
                   "value": " ",
                   "offset": 1770,
                   "line": 57,
-                  "col": 46
+                  "col": 46,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "operator",
                   "value": "+",
                   "offset": 1771,
                   "line": 57,
-                  "col": 47
+                  "col": 47,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "whitespace",
                   "value": " ",
                   "offset": 1772,
                   "line": 57,
-                  "col": 48
+                  "col": 48,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -2460,14 +2779,16 @@
                     "value": "'",
                     "offset": 1773,
                     "line": 57,
-                    "col": 49
+                    "col": 49,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 1790,
                     "line": 57,
-                    "col": 66
+                    "col": 66,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -2475,7 +2796,8 @@
                       "value": ",!=0.4.0,!=0.4.1",
                       "offset": 1774,
                       "line": 57,
-                      "col": 50
+                      "col": 50,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -2484,21 +2806,24 @@
                   "value": ",",
                   "offset": 1791,
                   "line": 57,
-                  "col": 67
+                  "col": 67,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1792,
                   "line": 57,
-                  "col": 68
+                  "col": 68,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "        ",
                   "offset": 1793,
                   "line": 58,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2507,21 +2832,24 @@
               "value": ",",
               "offset": 1802,
               "line": 58,
-              "col": 10
+              "col": 10,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 1803,
               "line": 58,
-              "col": 11
+              "col": 11,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "    ",
               "offset": 1804,
               "line": 59,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             }
           ]
         },
@@ -2530,77 +2858,88 @@
           "value": ",",
           "offset": 1809,
           "line": 59,
-          "col": 6
+          "col": 6,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 1810,
           "line": 59,
-          "col": 7
+          "col": 7,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 1811,
           "line": 60,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "include_package_data",
           "offset": 1815,
           "line": 60,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 1835,
           "line": 60,
-          "col": 25
+          "col": 25,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "True",
           "offset": 1836,
           "line": 60,
-          "col": 26
+          "col": 26,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": ",",
           "offset": 1840,
           "line": 60,
-          "col": 30
+          "col": 30,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 1841,
           "line": 60,
-          "col": 31
+          "col": 31,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 1842,
           "line": 61,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "install_requires",
           "offset": 1846,
           "line": 61,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 1862,
           "line": 61,
-          "col": 21
+          "col": 21,
+          "lineBreaks": 0
         },
         {
           "type": "wrapped-tree",
@@ -2609,14 +2948,16 @@
             "value": "[",
             "offset": 1863,
             "line": 61,
-            "col": 22
+            "col": 22,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "bracket-right",
             "value": "]",
             "offset": 2029,
             "line": 61,
-            "col": 188
+            "col": 188,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -2626,14 +2967,16 @@
                 "value": "'",
                 "offset": 1864,
                 "line": 61,
-                "col": 23
+                "col": 23,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 1887,
                 "line": 61,
-                "col": 46
+                "col": 46,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2641,7 +2984,8 @@
                   "value": "gunicorn>=19.7.0,<20.0",
                   "offset": 1865,
                   "line": 61,
-                  "col": 24
+                  "col": 24,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2650,14 +2994,16 @@
               "value": ",",
               "offset": 1888,
               "line": 61,
-              "col": 47
+              "col": 47,
+              "lineBreaks": 0
             },
             {
               "type": "whitespace",
               "value": " ",
               "offset": 1889,
               "line": 61,
-              "col": 48
+              "col": 48,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -2666,14 +3012,16 @@
                 "value": "'",
                 "offset": 1890,
                 "line": 61,
-                "col": 49
+                "col": 49,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 1913,
                 "line": 61,
-                "col": 72
+                "col": 72,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2681,7 +3029,8 @@
                   "value": "Werkzeug>=0.15.3,<0.16",
                   "offset": 1891,
                   "line": 61,
-                  "col": 50
+                  "col": 50,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2690,14 +3039,16 @@
               "value": ",",
               "offset": 1914,
               "line": 61,
-              "col": 73
+              "col": 73,
+              "lineBreaks": 0
             },
             {
               "type": "whitespace",
               "value": " ",
               "offset": 1915,
               "line": 61,
-              "col": 74
+              "col": 74,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -2706,14 +3057,16 @@
                 "value": "'",
                 "offset": 1916,
                 "line": 61,
-                "col": 75
+                "col": 75,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 1936,
                 "line": 61,
-                "col": 95
+                "col": 95,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2721,7 +3074,8 @@
                   "value": "pycryptodome==3.7.3",
                   "offset": 1917,
                   "line": 61,
-                  "col": 76
+                  "col": 76,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2730,7 +3084,8 @@
               "value": ",",
               "offset": 1937,
               "line": 61,
-              "col": 96
+              "col": 96,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -2739,14 +3094,16 @@
                 "value": "'",
                 "offset": 1938,
                 "line": 61,
-                "col": 97
+                "col": 97,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 1957,
                 "line": 61,
-                "col": 116
+                "col": 116,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2754,7 +3111,8 @@
                   "value": "statsd>=3.2.1,<4.0",
                   "offset": 1939,
                   "line": 61,
-                  "col": 98
+                  "col": 98,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2763,14 +3121,16 @@
               "value": ",",
               "offset": 1958,
               "line": 61,
-              "col": 117
+              "col": 117,
+              "lineBreaks": 0
             },
             {
               "type": "whitespace",
               "value": " ",
               "offset": 1959,
               "line": 61,
-              "col": 118
+              "col": 118,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -2779,14 +3139,16 @@
                 "value": "'",
                 "offset": 1960,
                 "line": 61,
-                "col": 119
+                "col": 119,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 1982,
                 "line": 61,
-                "col": 141
+                "col": 141,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2794,7 +3156,8 @@
                   "value": "requests>=2.10.0,<3.0",
                   "offset": 1961,
                   "line": 61,
-                  "col": 120
+                  "col": 120,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2803,14 +3166,16 @@
               "value": ",",
               "offset": 1983,
               "line": 61,
-              "col": 142
+              "col": 142,
+              "lineBreaks": 0
             },
             {
               "type": "whitespace",
               "value": " ",
               "offset": 1984,
               "line": 61,
-              "col": 143
+              "col": 143,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -2819,14 +3184,16 @@
                 "value": "'",
                 "offset": 1985,
                 "line": 61,
-                "col": 144
+                "col": 144,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 2004,
                 "line": 61,
-                "col": 163
+                "col": 163,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2834,7 +3201,8 @@
                   "value": "raven>=5.27.1,<7.0",
                   "offset": 1986,
                   "line": 61,
-                  "col": 145
+                  "col": 145,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2843,7 +3211,8 @@
               "value": ",",
               "offset": 2005,
               "line": 61,
-              "col": 164
+              "col": 164,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -2852,14 +3221,16 @@
                 "value": "'",
                 "offset": 2006,
                 "line": 61,
-                "col": 165
+                "col": 165,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 2027,
                 "line": 61,
-                "col": 186
+                "col": 186,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2867,7 +3238,8 @@
                   "value": "future>=0.15.2,<0.17",
                   "offset": 2007,
                   "line": 61,
-                  "col": 166
+                  "col": 166,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2876,7 +3248,8 @@
               "value": ",",
               "offset": 2028,
               "line": 61,
-              "col": 187
+              "col": 187,
+              "lineBreaks": 0
             }
           ]
         },
@@ -2885,35 +3258,40 @@
           "value": ",",
           "offset": 2030,
           "line": 61,
-          "col": 189
+          "col": 189,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 2031,
           "line": 61,
-          "col": 190
+          "col": 190,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 2032,
           "line": 62,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "keywords",
           "offset": 2036,
           "line": 62,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 2044,
           "line": 62,
-          "col": 13
+          "col": 13,
+          "lineBreaks": 0
         },
         {
           "type": "wrapped-tree",
@@ -2922,14 +3300,16 @@
             "value": "[",
             "offset": 2045,
             "line": 62,
-            "col": 14
+            "col": 14,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "bracket-right",
             "value": "]",
             "offset": 2071,
             "line": 64,
-            "col": 5
+            "col": 5,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -2937,14 +3317,16 @@
               "value": "\n",
               "offset": 2046,
               "line": 62,
-              "col": 15
+              "col": 15,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 2047,
               "line": 63,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -2953,14 +3335,16 @@
                 "value": "'",
                 "offset": 2055,
                 "line": 63,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 2064,
                 "line": 63,
-                "col": 18
+                "col": 18,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -2968,7 +3352,8 @@
                   "value": "talisker",
                   "offset": 2056,
                   "line": 63,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2977,21 +3362,24 @@
               "value": ",",
               "offset": 2065,
               "line": 63,
-              "col": 19
+              "col": 19,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 2066,
               "line": 63,
-              "col": 20
+              "col": 20,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "    ",
               "offset": 2067,
               "line": 64,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             }
           ]
         },
@@ -3000,35 +3388,40 @@
           "value": ",",
           "offset": 2072,
           "line": 64,
-          "col": 6
+          "col": 6,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 2073,
           "line": 64,
-          "col": 7
+          "col": 7,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 2074,
           "line": 65,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "name",
           "offset": 2078,
           "line": 65,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 2082,
           "line": 65,
-          "col": 9
+          "col": 9,
+          "lineBreaks": 0
         },
         {
           "type": "string-tree",
@@ -3037,14 +3430,16 @@
             "value": "'",
             "offset": 2083,
             "line": 65,
-            "col": 10
+            "col": 10,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "string-end",
             "value": "'",
             "offset": 2092,
             "line": 65,
-            "col": 19
+            "col": 19,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -3052,7 +3447,8 @@
               "value": "talisker",
               "offset": 2084,
               "line": 65,
-              "col": 11
+              "col": 11,
+              "lineBreaks": 0
             }
           ]
         },
@@ -3061,42 +3457,48 @@
           "value": ",",
           "offset": 2093,
           "line": 65,
-          "col": 20
+          "col": 20,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 2094,
           "line": 65,
-          "col": 21
+          "col": 21,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 2095,
           "line": 66,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "package_data",
           "offset": 2099,
           "line": 66,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 2111,
           "line": 66,
-          "col": 17
+          "col": 17,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "dict",
           "offset": 2112,
           "line": 66,
-          "col": 18
+          "col": 18,
+          "lineBreaks": 0
         },
         {
           "type": "wrapped-tree",
@@ -3105,14 +3507,16 @@
             "value": "(",
             "offset": 2116,
             "line": 66,
-            "col": 22
+            "col": 22,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "bracket-right",
             "value": ")",
             "offset": 2178,
             "line": 70,
-            "col": 5
+            "col": 5,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -3120,28 +3524,32 @@
               "value": "\n",
               "offset": 2117,
               "line": 66,
-              "col": 23
+              "col": 23,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 2118,
               "line": 67,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "symbol",
               "value": "talisker",
               "offset": 2126,
               "line": 67,
-              "col": 9
+              "col": 9,
+              "lineBreaks": 0
             },
             {
               "type": "operator",
               "value": "=",
               "offset": 2134,
               "line": 67,
-              "col": 17
+              "col": 17,
+              "lineBreaks": 0
             },
             {
               "type": "wrapped-tree",
@@ -3150,14 +3558,16 @@
                 "value": "[",
                 "offset": 2135,
                 "line": 67,
-                "col": 18
+                "col": 18,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "bracket-right",
                 "value": "]",
                 "offset": 2171,
                 "line": 69,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -3165,14 +3575,16 @@
                   "value": "\n",
                   "offset": 2136,
                   "line": 67,
-                  "col": 19
+                  "col": 19,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "            ",
                   "offset": 2137,
                   "line": 68,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "string-tree",
@@ -3181,14 +3593,16 @@
                     "value": "'",
                     "offset": 2149,
                     "line": 68,
-                    "col": 13
+                    "col": 13,
+                    "lineBreaks": 0
                   },
                   "endsWith": {
                     "type": "string-end",
                     "value": "'",
                     "offset": 2160,
                     "line": 68,
-                    "col": 24
+                    "col": 24,
+                    "lineBreaks": 0
                   },
                   "children": [
                     {
@@ -3196,7 +3610,8 @@
                       "value": "logstash/*",
                       "offset": 2150,
                       "line": 68,
-                      "col": 14
+                      "col": 14,
+                      "lineBreaks": 0
                     }
                   ]
                 },
@@ -3205,21 +3620,24 @@
                   "value": ",",
                   "offset": 2161,
                   "line": 68,
-                  "col": 25
+                  "col": 25,
+                  "lineBreaks": 0
                 },
                 {
                   "type": "newline",
                   "value": "\n",
                   "offset": 2162,
                   "line": 68,
-                  "col": 26
+                  "col": 26,
+                  "lineBreaks": 1
                 },
                 {
                   "type": "whitespace",
                   "value": "        ",
                   "offset": 2163,
                   "line": 69,
-                  "col": 1
+                  "col": 1,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -3228,21 +3646,24 @@
               "value": ",",
               "offset": 2172,
               "line": 69,
-              "col": 10
+              "col": 10,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 2173,
               "line": 69,
-              "col": 11
+              "col": 11,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "    ",
               "offset": 2174,
               "line": 70,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             }
           ]
         },
@@ -3251,42 +3672,48 @@
           "value": ",",
           "offset": 2179,
           "line": 70,
-          "col": 6
+          "col": 6,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 2180,
           "line": 70,
-          "col": 7
+          "col": 7,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 2181,
           "line": 71,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "package_dir",
           "offset": 2185,
           "line": 71,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 2196,
           "line": 71,
-          "col": 16
+          "col": 16,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "dict",
           "offset": 2197,
           "line": 71,
-          "col": 17
+          "col": 17,
+          "lineBreaks": 0
         },
         {
           "type": "wrapped-tree",
@@ -3295,14 +3722,16 @@
             "value": "(",
             "offset": 2201,
             "line": 71,
-            "col": 21
+            "col": 21,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "bracket-right",
             "value": ")",
             "offset": 2236,
             "line": 73,
-            "col": 5
+            "col": 5,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -3310,28 +3739,32 @@
               "value": "\n",
               "offset": 2202,
               "line": 71,
-              "col": 22
+              "col": 22,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 2203,
               "line": 72,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "symbol",
               "value": "talisker",
               "offset": 2211,
               "line": 72,
-              "col": 9
+              "col": 9,
+              "lineBreaks": 0
             },
             {
               "type": "operator",
               "value": "=",
               "offset": 2219,
               "line": 72,
-              "col": 17
+              "col": 17,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -3340,14 +3773,16 @@
                 "value": "'",
                 "offset": 2220,
                 "line": 72,
-                "col": 18
+                "col": 18,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 2229,
                 "line": 72,
-                "col": 27
+                "col": 27,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -3355,7 +3790,8 @@
                   "value": "talisker",
                   "offset": 2221,
                   "line": 72,
-                  "col": 19
+                  "col": 19,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -3364,21 +3800,24 @@
               "value": ",",
               "offset": 2230,
               "line": 72,
-              "col": 28
+              "col": 28,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 2231,
               "line": 72,
-              "col": 29
+              "col": 29,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "    ",
               "offset": 2232,
               "line": 73,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             }
           ]
         },
@@ -3387,35 +3826,40 @@
           "value": ",",
           "offset": 2237,
           "line": 73,
-          "col": 6
+          "col": 6,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 2238,
           "line": 73,
-          "col": 7
+          "col": 7,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 2239,
           "line": 74,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "packages",
           "offset": 2243,
           "line": 74,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 2251,
           "line": 74,
-          "col": 13
+          "col": 13,
+          "lineBreaks": 0
         },
         {
           "type": "wrapped-tree",
@@ -3424,14 +3868,16 @@
             "value": "[",
             "offset": 2252,
             "line": 74,
-            "col": 14
+            "col": 14,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "bracket-right",
             "value": "]",
             "offset": 2278,
             "line": 76,
-            "col": 5
+            "col": 5,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -3439,14 +3885,16 @@
               "value": "\n",
               "offset": 2253,
               "line": 74,
-              "col": 15
+              "col": 15,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "        ",
               "offset": 2254,
               "line": 75,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             },
             {
               "type": "string-tree",
@@ -3455,14 +3903,16 @@
                 "value": "'",
                 "offset": 2262,
                 "line": 75,
-                "col": 9
+                "col": 9,
+                "lineBreaks": 0
               },
               "endsWith": {
                 "type": "string-end",
                 "value": "'",
                 "offset": 2271,
                 "line": 75,
-                "col": 18
+                "col": 18,
+                "lineBreaks": 0
               },
               "children": [
                 {
@@ -3470,7 +3920,8 @@
                   "value": "talisker",
                   "offset": 2263,
                   "line": 75,
-                  "col": 10
+                  "col": 10,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -3479,21 +3930,24 @@
               "value": ",",
               "offset": 2272,
               "line": 75,
-              "col": 19
+              "col": 19,
+              "lineBreaks": 0
             },
             {
               "type": "newline",
               "value": "\n",
               "offset": 2273,
               "line": 75,
-              "col": 20
+              "col": 20,
+              "lineBreaks": 1
             },
             {
               "type": "whitespace",
               "value": "    ",
               "offset": 2274,
               "line": 76,
-              "col": 1
+              "col": 1,
+              "lineBreaks": 0
             }
           ]
         },
@@ -3502,35 +3956,40 @@
           "value": ",",
           "offset": 2279,
           "line": 76,
-          "col": 6
+          "col": 6,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 2280,
           "line": 76,
-          "col": 7
+          "col": 7,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 2281,
           "line": 77,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "test_suite",
           "offset": 2285,
           "line": 77,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 2295,
           "line": 77,
-          "col": 15
+          "col": 15,
+          "lineBreaks": 0
         },
         {
           "type": "string-tree",
@@ -3539,14 +3998,16 @@
             "value": "'",
             "offset": 2296,
             "line": 77,
-            "col": 16
+            "col": 16,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "string-end",
             "value": "'",
             "offset": 2302,
             "line": 77,
-            "col": 22
+            "col": 22,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -3554,7 +4015,8 @@
               "value": "tests",
               "offset": 2297,
               "line": 77,
-              "col": 17
+              "col": 17,
+              "lineBreaks": 0
             }
           ]
         },
@@ -3563,35 +4025,40 @@
           "value": ",",
           "offset": 2303,
           "line": 77,
-          "col": 23
+          "col": 23,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 2304,
           "line": 77,
-          "col": 24
+          "col": 24,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 2305,
           "line": 78,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "url",
           "offset": 2309,
           "line": 78,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 2312,
           "line": 78,
-          "col": 8
+          "col": 8,
+          "lineBreaks": 0
         },
         {
           "type": "string-tree",
@@ -3600,14 +4067,16 @@
             "value": "'",
             "offset": 2313,
             "line": 78,
-            "col": 9
+            "col": 9,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "string-end",
             "value": "'",
             "offset": 2355,
             "line": 78,
-            "col": 51
+            "col": 51,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -3615,7 +4084,8 @@
               "value": "https://github.com/canonical-ols/talisker",
               "offset": 2314,
               "line": 78,
-              "col": 10
+              "col": 10,
+              "lineBreaks": 0
             }
           ]
         },
@@ -3624,35 +4094,40 @@
           "value": ",",
           "offset": 2356,
           "line": 78,
-          "col": 52
+          "col": 52,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 2357,
           "line": 78,
-          "col": 53
+          "col": 53,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 2358,
           "line": 79,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "version",
           "offset": 2362,
           "line": 79,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 2369,
           "line": 79,
-          "col": 12
+          "col": 12,
+          "lineBreaks": 0
         },
         {
           "type": "string-tree",
@@ -3661,14 +4136,16 @@
             "value": "'",
             "offset": 2370,
             "line": 79,
-            "col": 13
+            "col": 13,
+            "lineBreaks": 0
           },
           "endsWith": {
             "type": "string-end",
             "value": "'",
             "offset": 2377,
             "line": 79,
-            "col": 20
+            "col": 20,
+            "lineBreaks": 0
           },
           "children": [
             {
@@ -3676,7 +4153,8 @@
               "value": "0.9.16",
               "offset": 2371,
               "line": 79,
-              "col": 14
+              "col": 14,
+              "lineBreaks": 0
             }
           ]
         },
@@ -3685,56 +4163,64 @@
           "value": ",",
           "offset": 2378,
           "line": 79,
-          "col": 21
+          "col": 21,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 2379,
           "line": 79,
-          "col": 22
+          "col": 22,
+          "lineBreaks": 1
         },
         {
           "type": "whitespace",
           "value": "    ",
           "offset": 2380,
           "line": 80,
-          "col": 1
+          "col": 1,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "zip_safe",
           "offset": 2384,
           "line": 80,
-          "col": 5
+          "col": 5,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": "=",
           "offset": 2392,
           "line": 80,
-          "col": 13
+          "col": 13,
+          "lineBreaks": 0
         },
         {
           "type": "symbol",
           "value": "False",
           "offset": 2393,
           "line": 80,
-          "col": 14
+          "col": 14,
+          "lineBreaks": 0
         },
         {
           "type": "operator",
           "value": ",",
           "offset": 2398,
           "line": 80,
-          "col": 19
+          "col": 19,
+          "lineBreaks": 0
         },
         {
           "type": "newline",
           "value": "\n",
           "offset": 2399,
           "line": 80,
-          "col": 20
+          "col": 20,
+          "lineBreaks": 1
         }
       ]
     },
@@ -3743,7 +4229,8 @@
       "value": "\n",
       "offset": 2401,
       "line": 81,
-      "col": 2
+      "col": 2,
+      "lineBreaks": 1
     }
   ]
 }

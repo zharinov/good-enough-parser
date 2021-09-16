@@ -4,118 +4,135 @@
     "value": "\"",
     "offset": 0,
     "line": 1,
-    "col": 1
+    "col": 1,
+    "lineBreaks": 0
   },
   {
     "type": "string-value",
     "value": "a",
     "offset": 1,
     "line": 1,
-    "col": 2
+    "col": 2,
+    "lineBreaks": 0
   },
   {
     "type": "template-start",
     "value": "{{{",
     "offset": 2,
     "line": 1,
-    "col": 3
+    "col": 3,
+    "lineBreaks": 0
   },
   {
     "type": "string-start",
     "value": "\"",
     "offset": 5,
     "line": 1,
-    "col": 6
+    "col": 6,
+    "lineBreaks": 0
   },
   {
     "type": "string-value",
     "value": "b",
     "offset": 6,
     "line": 1,
-    "col": 7
+    "col": 7,
+    "lineBreaks": 0
   },
   {
     "type": "string-end",
     "value": "\"",
     "offset": 7,
     "line": 1,
-    "col": 8
+    "col": 8,
+    "lineBreaks": 0
   },
   {
     "type": "bracket-left",
     "value": "{",
     "offset": 8,
     "line": 1,
-    "col": 9
+    "col": 9,
+    "lineBreaks": 0
   },
   {
     "type": "string-start",
     "value": "\"",
     "offset": 9,
     "line": 1,
-    "col": 10
+    "col": 10,
+    "lineBreaks": 0
   },
   {
     "type": "string-value",
     "value": "c",
     "offset": 10,
     "line": 1,
-    "col": 11
+    "col": 11,
+    "lineBreaks": 0
   },
   {
     "type": "string-end",
     "value": "\"",
     "offset": 11,
     "line": 1,
-    "col": 12
+    "col": 12,
+    "lineBreaks": 0
   },
   {
     "type": "bracket-right",
     "value": "}",
     "offset": 12,
     "line": 1,
-    "col": 13
+    "col": 13,
+    "lineBreaks": 0
   },
   {
     "type": "string-start",
     "value": "\"",
     "offset": 13,
     "line": 1,
-    "col": 14
+    "col": 14,
+    "lineBreaks": 0
   },
   {
     "type": "string-value",
     "value": "d",
     "offset": 14,
     "line": 1,
-    "col": 15
+    "col": 15,
+    "lineBreaks": 0
   },
   {
     "type": "string-end",
     "value": "\"",
     "offset": 15,
     "line": 1,
-    "col": 16
+    "col": 16,
+    "lineBreaks": 0
   },
   {
     "type": "template-end",
     "value": "}}}",
     "offset": 16,
     "line": 1,
-    "col": 17
+    "col": 17,
+    "lineBreaks": 0
   },
   {
     "type": "string-value",
     "value": "e",
     "offset": 19,
     "line": 1,
-    "col": 20
+    "col": 20,
+    "lineBreaks": 0
   },
   {
     "type": "string-end",
     "value": "\"",
     "offset": 20,
     "line": 1,
-    "col": 21
+    "col": 21,
+    "lineBreaks": 0
   }
 ]

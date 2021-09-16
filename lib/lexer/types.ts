@@ -86,6 +86,7 @@ export interface TokenBase {
   offset: number;
   line: number;
   col: number;
+  lineBreaks: number;
 }
 
 export interface NewlineToken extends TokenBase {

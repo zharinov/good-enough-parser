@@ -4,34 +4,39 @@
     "value": "a",
     "offset": 0,
     "line": 1,
-    "col": 1
+    "col": 1,
+    "lineBreaks": 0
   },
   {
     "type": "string-start",
     "value": "'",
     "offset": 1,
     "line": 1,
-    "col": 2
+    "col": 2,
+    "lineBreaks": 0
   },
   {
     "type": "string-value",
     "value": "b",
     "offset": 2,
     "line": 1,
-    "col": 3
+    "col": 3,
+    "lineBreaks": 0
   },
   {
     "type": "string-end",
     "value": "'",
     "offset": 3,
     "line": 1,
-    "col": 4
+    "col": 4,
+    "lineBreaks": 0
   },
   {
     "type": "_",
     "value": "c",
     "offset": 4,
     "line": 1,
-    "col": 5
+    "col": 5,
+    "lineBreaks": 0
   }
 ]

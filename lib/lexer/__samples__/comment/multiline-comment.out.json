@@ -4,20 +4,23 @@
     "value": "foo ",
     "offset": 0,
     "line": 1,
-    "col": 1
+    "col": 1,
+    "lineBreaks": 0
   },
   {
     "type": "comment",
     "value": "/* bar\nbaz */",
     "offset": 4,
     "line": 1,
-    "col": 5
+    "col": 5,
+    "lineBreaks": 1
   },
   {
     "type": "_",
     "value": " qux",
     "offset": 17,
     "line": 2,
-    "col": 7
+    "col": 7,
+    "lineBreaks": 0
   }
 ]
