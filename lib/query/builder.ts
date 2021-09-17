@@ -100,29 +100,21 @@ abstract class AbstractBuilder<Ctx> implements QueryBuilder<Ctx> {
     return new SeqBuilder<Ctx>(this, builder);
   }
 
-  many(builder: AbstractBuilder<Ctx>): SeqBuilder<Ctx>;
-  many(
-    builder: AbstractBuilder<Ctx>,
-    min: number,
-    max: number
-  ): SeqBuilder<Ctx>;
-  many(
-    arg1: AbstractBuilder<Ctx>,
-    arg2?: number,
-    arg3?: number
-  ): SeqBuilder<Ctx> {
+  many(builder: QueryBuilder<Ctx>): SeqBuilder<Ctx>;
+  many(builder: QueryBuilder<Ctx>, min: number, max: number): SeqBuilder<Ctx>;
+  many(arg1: QueryBuilder<Ctx>, arg2?: number, arg3?: number): SeqBuilder<Ctx> {
     const opts = coerceManyOptions<Ctx>(arg1, arg2, arg3);
     const builder = new ManyBuilder<Ctx>(opts);
     return new SeqBuilder<Ctx>(this, builder);
   }
 
-  opt(innerBuilder: AbstractBuilder<Ctx>): SeqBuilder<Ctx> {
+  opt(innerBuilder: QueryBuilder<Ctx>): SeqBuilder<Ctx> {
     const opts = coerceManyOptions<Ctx>(innerBuilder, 0, 1);
     const builder = new ManyBuilder<Ctx>(opts);
     return new SeqBuilder<Ctx>(this, builder);
   }
 
-  alt(...alts: AbstractBuilder<Ctx>[]): SeqBuilder<Ctx> {
+  alt(...alts: QueryBuilder<Ctx>[]): SeqBuilder<Ctx> {
     const builder = new AltBuilder<Ctx>(alts);
     return new SeqBuilder<Ctx>(this, builder);
   }
@@ -161,11 +153,14 @@ abstract class AbstractBuilder<Ctx> implements QueryBuilder<Ctx> {
 // Sequence
 
 class SeqBuilder<Ctx> extends AbstractBuilder<Ctx> {
-  private readonly builders: AbstractBuilder<Ctx>[];
+  private readonly builders: QueryBuilder<Ctx>[];
 
-  constructor(prev: AbstractBuilder<Ctx>, next: AbstractBuilder<Ctx>) {
+  constructor(prev: QueryBuilder<Ctx>, next: QueryBuilder<Ctx>) {
     super();
-    const prevSeq = prev instanceof SeqBuilder ? prev.builders : [prev];
+    const prevSeq =
+      prev instanceof SeqBuilder
+        ? (prev.builders as QueryBuilder<Ctx>[])
+        : [prev];
     this.builders = [...prevSeq, next];
   }
 
@@ -400,7 +395,7 @@ export function num<Ctx>(
 // Repetitive patterns
 
 export interface ManyBuilderOpts<Ctx> {
-  builder: AbstractBuilder<Ctx>;
+  builder: QueryBuilder<Ctx>;
   min: number;
   max: number | null;
 }
@@ -417,7 +412,7 @@ class ManyBuilder<Ctx> extends AbstractBuilder<Ctx> {
 }
 
 function coerceManyOptions<Ctx>(
-  builder: AbstractBuilder<Ctx>,
+  builder: QueryBuilder<Ctx>,
   arg2?: number,
   arg3?: number
 ): ManyBuilderOpts<Ctx> {
@@ -427,14 +422,14 @@ function coerceManyOptions<Ctx>(
   return { builder, min: 1, max: null };
 }
 
-export function many<Ctx>(builder: AbstractBuilder<Ctx>): ManyBuilder<Ctx>;
+export function many<Ctx>(builder: QueryBuilder<Ctx>): ManyBuilder<Ctx>;
 export function many<Ctx>(
-  builder: AbstractBuilder<Ctx>,
+  builder: QueryBuilder<Ctx>,
   min: number,
   max: number
 ): ManyBuilder<Ctx>;
 export function many<Ctx>(
-  arg1: AbstractBuilder<Ctx>,
+  arg1: QueryBuilder<Ctx>,
   arg2?: number,
   arg3?: number
 ): ManyBuilder<Ctx> {
@@ -442,7 +437,7 @@ export function many<Ctx>(
   return new ManyBuilder<Ctx>(opts);
 }
 
-export function opt<Ctx>(builder: AbstractBuilder<Ctx>): ManyBuilder<Ctx> {
+export function opt<Ctx>(builder: QueryBuilder<Ctx>): ManyBuilder<Ctx> {
   const opts = coerceManyOptions<Ctx>(builder, 0, 1);
   return new ManyBuilder<Ctx>(opts);
 }
@@ -450,7 +445,7 @@ export function opt<Ctx>(builder: AbstractBuilder<Ctx>): ManyBuilder<Ctx> {
 // Alternatives
 
 class AltBuilder<Ctx> extends AbstractBuilder<Ctx> {
-  constructor(private builders: AbstractBuilder<Ctx>[]) {
+  constructor(private builders: QueryBuilder<Ctx>[]) {
     super();
   }
 
@@ -460,14 +455,14 @@ class AltBuilder<Ctx> extends AbstractBuilder<Ctx> {
   }
 }
 
-export function alt<Ctx>(...builders: AbstractBuilder<Ctx>[]): AltBuilder<Ctx> {
+export function alt<Ctx>(...builders: QueryBuilder<Ctx>[]): AltBuilder<Ctx> {
   return new AltBuilder<Ctx>(builders);
 }
 
 // Trees
 
 export interface TreeBuilderOptions<Ctx> extends TreeOptionsBase<Ctx> {
-  search?: AbstractBuilder<Ctx> | null;
+  search?: QueryBuilder<Ctx> | null;
 }
 
 class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
@@ -512,7 +507,7 @@ export interface StrContentBuilderOptionsBase<Ctx> {
   handler?: StrContentMatcherHandler<Ctx> | null;
 }
 export interface StrTreeBuilderOptionsBase<Ctx> {
-  match?: (string | RegExp | AbstractBuilder<Ctx>)[] | null;
+  match?: (string | RegExp | QueryBuilder<Ctx>)[] | null;
   preHandler?: NodeHandler<Ctx, StringTree> | null;
   postHandler?: NodeHandler<Ctx, StringTree> | null;
 }
