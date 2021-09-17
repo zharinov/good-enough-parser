@@ -17,7 +17,6 @@ import type {
 export interface Checkpoint<Ctx> {
   cursor: Cursor;
   context: Ctx;
-  endOfLevel?: true;
 }
 
 export type NodeHandler<Ctx, T = Node> = (ctx: Ctx, tree: T) => Ctx;
@@ -67,7 +66,7 @@ export interface TreeOptionsBase<Ctx> {
 export interface Matcher<Ctx> {
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null;
   nextMatch(): Checkpoint<Ctx> | null;
-  readonly minorToken?: MinorToken['type'];
+  readonly preventSkipping?: MinorToken['type'];
 }
 
 export interface ManyMatcherOptions<Ctx> {

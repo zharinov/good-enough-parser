@@ -1,11 +1,50 @@
-import type { Lexer, WhitespaceToken } from '../lexer/types';
+import type {
+  EndToken,
+  Lexer,
+  StartToken,
+  Token,
+  WhitespaceToken,
+} from '../lexer/types';
 import type { Node, ParserConfig, RootTree, Tree } from './types';
 
 type IndentMode = 'on' | 'off';
 
+function specialToken(
+  type: '_start' | '_end',
+  prevToken?: Token,
+  nextToken?: Token
+): StartToken | EndToken {
+  const lineBreaks = 0;
+
+  if (nextToken) {
+    return {
+      type,
+      value: '',
+      offset: nextToken.offset,
+      line: nextToken.line,
+      col: nextToken.col,
+      lineBreaks,
+    };
+  }
+
+  if (prevToken) {
+    return {
+      type,
+      value: '',
+      offset: prevToken.offset + prevToken.value.length,
+      line: prevToken.line + prevToken.lineBreaks,
+      col: prevToken.value.length - prevToken.value.lastIndexOf('\n'),
+      lineBreaks,
+    };
+  }
+
+  return { type, value: '', offset: 0, line: 1, col: 1, lineBreaks };
+}
+
 export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
   const stack: Tree[] = [];
-  let currentTree: Tree = { type: 'root-tree', children: [] };
+  let prevToken: Token = specialToken('_start');
+  let currentTree: Tree = { type: 'root-tree', children: [prevToken] };
 
   const { useIndentBlocks } = config;
   let indentMode: IndentMode = 'on';
@@ -16,6 +55,10 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
   let nestingCounter = 0;
 
   for (const token of lexer) {
+    if (!currentTree.children.length) {
+      currentTree.children.push(specialToken('_start', prevToken, token));
+    }
+
     if (useIndentBlocks && nestingCounter === 0) {
       if (token.type === 'newline') {
         currIndent = '';
@@ -24,6 +67,7 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
         if (token.type === 'whitespace') {
           currIndent += token.value;
           indentSpaces.push(token);
+          prevToken = token;
           continue;
         } else {
           let prevIndent = indents.pop();
@@ -37,7 +81,13 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
             }
             indents.push(currIndent);
             stack.push(currentTree);
-            currentTree = { type: 'block-tree', children: [...indentSpaces] };
+            currentTree = {
+              type: 'block-tree',
+              children: [
+                specialToken('_start', prevToken, token),
+                ...indentSpaces,
+              ],
+            };
           } else if (currentTree.type === 'block-tree') {
             while (
               prevIndent &&
@@ -46,6 +96,9 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
             ) {
               const prevTree = stack.pop();
               if (prevTree) {
+                currentTree.children.push(
+                  specialToken('_end', prevToken, token)
+                );
                 prevTree.children.push(currentTree);
                 currentTree = prevTree;
               }
@@ -74,6 +127,7 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
       token.type === 'bracket-right' &&
       currentTree.type === 'wrapped-tree'
     ) {
+      currentTree.children.push(specialToken('_end', prevToken, token));
       currentTree.endsWith = token;
       const prevTree = stack.pop();
       if (prevTree) {
@@ -94,6 +148,7 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
       token.type === 'string-end' &&
       currentTree.type === 'string-tree'
     ) {
+      currentTree.children.push(specialToken('_end', prevToken, token));
       currentTree.endsWith = token;
       const prevTree = stack.pop();
       if (prevTree) {
@@ -114,6 +169,7 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
       token.type === 'template-end' &&
       currentTree.type === 'template-tree'
     ) {
+      currentTree.children.push(specialToken('_end', prevToken, token));
       currentTree.endsWith = token;
       const prevTree = stack.pop();
       if (prevTree) {
@@ -124,9 +180,13 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
     } else {
       currentTree.children.push(token);
     }
+
+    prevToken = token;
   }
 
+  const closingToken = specialToken('_end', prevToken);
   while (currentTree.type !== 'root-tree') {
+    currentTree.children.push({ ...closingToken });
     const prevTree = stack.pop();
     if (prevTree) {
       prevTree.children.push(currentTree);
@@ -135,6 +195,7 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
       throw new Error('Parsing error');
     }
   }
+  currentTree.children.push({ ...closingToken });
 
   return currentTree;
 }

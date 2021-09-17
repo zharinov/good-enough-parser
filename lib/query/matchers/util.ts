@@ -1,29 +1,42 @@
-import { MinorToken } from '../../lexer/types';
-import { isMinorToken } from '../../parser';
-import type { Cursor } from '../../parser/types';
+import type { MinorToken } from '../../lexer/types';
+import type { Cursor, Node } from '../../parser/types';
 
-export function skipMinorTokens(
-  input: Cursor | undefined,
+const skippableTypes = new Set<string>([
+  '_start',
+  'newline',
+  'whitespace',
+  'comment',
+]);
+
+export function isSkippableNode(node: Node): boolean {
+  return skippableTypes.has(node.type);
+}
+
+export function seekToNextSignificantToken(
+  cursor: Cursor,
   except?: MinorToken['type']
-): Cursor | undefined {
-  if (!input) {
-    return input;
-  }
-
-  let cursor = input;
+): Cursor {
   let node = cursor.node;
-  while (isMinorToken(node)) {
+  while (isSkippableNode(node)) {
     if (node.type === except) {
       break;
     }
 
-    const nextCursor = cursor.right;
-    if (!nextCursor) {
-      return nextCursor;
+    if (!cursor.right) {
+      return cursor;
     }
-    node = nextCursor.node;
-    cursor = nextCursor;
+
+    cursor = cursor.right;
+    node = cursor.node;
   }
 
   return cursor;
+}
+
+export function seekRight(cursor: Cursor): Cursor {
+  const result = cursor.right;
+  if (result) {
+    return result;
+  }
+  throw new Error('Cursor error: move right');
 }

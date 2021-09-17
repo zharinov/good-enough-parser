@@ -16,17 +16,14 @@ baz
 
 describe('query/matchers/comment-matcher', () => {
   it('handles explicit comments', () => {
-    const res = lang.query(
-      input,
-      q.sym(handler).comment(handler).sym(handler),
-      []
-    );
-
+    const query = q.sym(handler).comment(handler).sym(handler);
+    const res = lang.query(input, query, []);
     expect(res).toEqual(['foo', '# bar', 'baz']);
   });
 
   it('skips comments by default', () => {
-    const res = lang.query(input, q.sym(handler).sym(handler), []);
+    const query = q.sym(handler).sym(handler);
+    const res = lang.query(input, query, []);
     expect(res).toEqual(['foo', 'baz']);
   });
 });

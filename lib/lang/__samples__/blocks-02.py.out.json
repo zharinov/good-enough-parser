@@ -2,6 +2,14 @@
   "type": "root-tree",
   "children": [
     {
+      "type": "_start",
+      "value": "",
+      "offset": 0,
+      "line": 1,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
       "type": "symbol",
       "value": "if",
       "offset": 0,
@@ -44,6 +52,14 @@
     {
       "type": "block-tree",
       "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 11,
+          "line": 2,
+          "col": 3,
+          "lineBreaks": 0
+        },
         {
           "type": "whitespace",
           "value": "  ",
@@ -96,6 +112,14 @@
           "type": "block-tree",
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 24,
+              "line": 3,
+              "col": 5,
+              "lineBreaks": 0
+            },
+            {
               "type": "whitespace",
               "value": "    ",
               "offset": 20,
@@ -146,6 +170,14 @@
             {
               "type": "block-tree",
               "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 39,
+                  "line": 4,
+                  "col": 7,
+                  "lineBreaks": 0
+                },
                 {
                   "type": "whitespace",
                   "value": "      ",
@@ -198,6 +230,14 @@
                   "type": "block-tree",
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 56,
+                      "line": 5,
+                      "col": 9,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "whitespace",
                       "value": "        ",
                       "offset": 48,
@@ -220,12 +260,44 @@
                       "line": 5,
                       "col": 10,
                       "lineBreaks": 1
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 58,
+                      "line": 6,
+                      "col": 1,
+                      "lineBreaks": 0
                     }
                   ]
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 58,
+                  "line": 6,
+                  "col": 1,
+                  "lineBreaks": 0
                 }
               ]
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 58,
+              "line": 6,
+              "col": 1,
+              "lineBreaks": 0
             }
           ]
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 58,
+          "line": 6,
+          "col": 1,
+          "lineBreaks": 0
         }
       ]
     },
@@ -235,6 +307,14 @@
       "offset": 58,
       "line": 6,
       "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "_end",
+      "value": "",
+      "offset": 59,
+      "line": 6,
+      "col": 2,
       "lineBreaks": 0
     }
   ]

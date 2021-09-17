@@ -2,6 +2,14 @@
   "type": "root-tree",
   "children": [
     {
+      "type": "_start",
+      "value": "",
+      "offset": 0,
+      "line": 1,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
       "type": "newline",
       "value": "\n",
       "offset": 0,
@@ -36,6 +44,14 @@
     {
       "type": "block-tree",
       "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 10,
+          "line": 3,
+          "col": 5,
+          "lineBreaks": 0
+        },
         {
           "type": "whitespace",
           "value": "    ",
@@ -107,6 +123,14 @@
           "line": 3,
           "col": 33,
           "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 39,
+          "line": 4,
+          "col": 1,
+          "lineBreaks": 0
         }
       ]
     },
@@ -153,6 +177,14 @@
     {
       "type": "block-tree",
       "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 63,
+          "line": 5,
+          "col": 5,
+          "lineBreaks": 0
+        },
         {
           "type": "whitespace",
           "value": "    ",
@@ -248,6 +280,14 @@
           "line": 6,
           "col": 1,
           "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 97,
+          "line": 7,
+          "col": 1,
+          "lineBreaks": 0
         }
       ]
     },
@@ -278,6 +318,14 @@
         "lineBreaks": 0
       },
       "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 103,
+          "line": 7,
+          "col": 7,
+          "lineBreaks": 0
+        },
         {
           "type": "newline",
           "value": "\n",
@@ -330,11 +378,27 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 116,
+              "line": 8,
+              "col": 13,
+              "lineBreaks": 0
+            },
+            {
               "type": "string-value",
               "value": "Simon Davy",
               "offset": 116,
               "line": 8,
               "col": 13,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 126,
+              "line": 8,
+              "col": 23,
               "lineBreaks": 0
             }
           ]
@@ -399,11 +463,27 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 147,
+              "line": 9,
+              "col": 19,
+              "lineBreaks": 0
+            },
+            {
               "type": "string-value",
               "value": "simon.davy@canonical.com",
               "offset": 147,
               "line": 9,
               "col": 19,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 171,
+              "line": 9,
+              "col": 43,
               "lineBreaks": 0
             }
           ]
@@ -468,6 +548,14 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 191,
+              "line": 10,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
               "type": "newline",
               "value": "\n",
               "offset": 191,
@@ -503,11 +591,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 201,
+                  "line": 11,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "License :: OSI Approved :: Apache Software License",
                   "offset": 201,
                   "line": 11,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 251,
+                  "line": 11,
+                  "col": 60,
                   "lineBreaks": 0
                 }
               ]
@@ -556,11 +660,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 263,
+                  "line": 12,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Development Status :: 4 - Beta",
                   "offset": 263,
                   "line": 12,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 293,
+                  "line": 12,
+                  "col": 40,
                   "lineBreaks": 0
                 }
               ]
@@ -609,11 +729,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 305,
+                  "line": 13,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Intended Audience :: Developers",
                   "offset": 305,
                   "line": 13,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 336,
+                  "line": 13,
+                  "col": 41,
                   "lineBreaks": 0
                 }
               ]
@@ -662,11 +798,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 348,
+                  "line": 14,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Natural Language :: English",
                   "offset": 348,
                   "line": 14,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 375,
+                  "line": 14,
+                  "col": 37,
                   "lineBreaks": 0
                 }
               ]
@@ -715,11 +867,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 387,
+                  "line": 15,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Topic :: Internet :: WWW/HTTP :: WSGI",
                   "offset": 387,
                   "line": 15,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 424,
+                  "line": 15,
+                  "col": 47,
                   "lineBreaks": 0
                 }
               ]
@@ -768,11 +936,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 436,
+                  "line": 16,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware",
                   "offset": 436,
                   "line": 16,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 487,
+                  "line": 16,
+                  "col": 61,
                   "lineBreaks": 0
                 }
               ]
@@ -821,11 +1005,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 499,
+                  "line": 17,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Topic :: System :: Logging",
                   "offset": 499,
                   "line": 17,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 525,
+                  "line": 17,
+                  "col": 36,
                   "lineBreaks": 0
                 }
               ]
@@ -874,11 +1074,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 537,
+                  "line": 18,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Programming Language :: Python :: 2.7",
                   "offset": 537,
                   "line": 18,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 574,
+                  "line": 18,
+                  "col": 47,
                   "lineBreaks": 0
                 }
               ]
@@ -927,11 +1143,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 586,
+                  "line": 19,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Programming Language :: Python :: 3.4",
                   "offset": 586,
                   "line": 19,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 623,
+                  "line": 19,
+                  "col": 47,
                   "lineBreaks": 0
                 }
               ]
@@ -980,11 +1212,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 635,
+                  "line": 20,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Programming Language :: Python :: 3.5",
                   "offset": 635,
                   "line": 20,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 672,
+                  "line": 20,
+                  "col": 47,
                   "lineBreaks": 0
                 }
               ]
@@ -1033,11 +1281,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 684,
+                  "line": 21,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Programming Language :: Python :: 3.6",
                   "offset": 684,
                   "line": 21,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 721,
+                  "line": 21,
+                  "col": 47,
                   "lineBreaks": 0
                 }
               ]
@@ -1086,11 +1350,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 733,
+                  "line": 22,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Programming Language :: Python :: Implementation :: CPython",
                   "offset": 733,
                   "line": 22,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 792,
+                  "line": 22,
+                  "col": 69,
                   "lineBreaks": 0
                 }
               ]
@@ -1117,6 +1397,14 @@
               "offset": 795,
               "line": 23,
               "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 799,
+              "line": 23,
+              "col": 5,
               "lineBreaks": 0
             }
           ]
@@ -1181,11 +1469,27 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 819,
+              "line": 24,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
               "type": "string-value",
               "value": "A common WSGI stack",
               "offset": 819,
               "line": 24,
               "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 838,
+              "line": 24,
+              "col": 37,
               "lineBreaks": 0
             }
           ]
@@ -1258,6 +1562,14 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 863,
+              "line": 25,
+              "col": 23,
+              "lineBreaks": 0
+            },
+            {
               "type": "newline",
               "value": "\n",
               "offset": 863,
@@ -1309,6 +1621,14 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 889,
+                  "line": 26,
+                  "col": 26,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "newline",
                   "value": "\n",
                   "offset": 889,
@@ -1344,11 +1664,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 903,
+                      "line": 27,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "talisker=talisker:run_gunicorn",
                       "offset": 903,
                       "line": 27,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 933,
+                      "line": 27,
+                      "col": 44,
                       "lineBreaks": 0
                     }
                   ]
@@ -1397,11 +1733,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 949,
+                      "line": 28,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "talisker.run=talisker:run",
                       "offset": 949,
                       "line": 28,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 974,
+                      "line": 28,
+                      "col": 39,
                       "lineBreaks": 0
                     }
                   ]
@@ -1450,11 +1802,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 990,
+                      "line": 29,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "talisker.gunicorn=talisker:run_gunicorn",
                       "offset": 990,
                       "line": 29,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1029,
+                      "line": 29,
+                      "col": 53,
                       "lineBreaks": 0
                     }
                   ]
@@ -1503,11 +1871,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1045,
+                      "line": 30,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "talisker.gunicorn.eventlet=talisker:run_gunicorn_eventlet",
                       "offset": 1045,
                       "line": 30,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1102,
+                      "line": 30,
+                      "col": 71,
                       "lineBreaks": 0
                     }
                   ]
@@ -1556,11 +1940,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1118,
+                      "line": 31,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "talisker.gunicorn.gevent=talisker:run_gunicorn_gevent",
                       "offset": 1118,
                       "line": 31,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1171,
+                      "line": 31,
+                      "col": 67,
                       "lineBreaks": 0
                     }
                   ]
@@ -1609,11 +2009,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1187,
+                      "line": 32,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "talisker.celery=talisker:run_celery",
                       "offset": 1187,
                       "line": 32,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1222,
+                      "line": 32,
+                      "col": 49,
                       "lineBreaks": 0
                     }
                   ]
@@ -1641,6 +2057,14 @@
                   "line": 33,
                   "col": 1,
                   "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1233,
+                  "line": 33,
+                  "col": 9,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -1666,6 +2090,14 @@
               "offset": 1236,
               "line": 34,
               "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1240,
+              "line": 34,
+              "col": 5,
               "lineBreaks": 0
             }
           ]
@@ -1738,6 +2170,14 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 1267,
+              "line": 35,
+              "col": 25,
+              "lineBreaks": 0
+            },
+            {
               "type": "newline",
               "value": "\n",
               "offset": 1267,
@@ -1789,6 +2229,14 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1284,
+                  "line": 36,
+                  "col": 17,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1284,
@@ -1824,11 +2272,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1298,
+                      "line": 37,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "celery>=3.1.13.0,<5.0",
                       "offset": 1298,
                       "line": 37,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1319,
+                      "line": 37,
+                      "col": 35,
                       "lineBreaks": 0
                     }
                   ]
@@ -1855,6 +2319,14 @@
                   "offset": 1322,
                   "line": 38,
                   "col": 1,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1330,
+                  "line": 38,
+                  "col": 9,
                   "lineBreaks": 0
                 }
               ]
@@ -1919,6 +2391,14 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1346,
+                  "line": 39,
+                  "col": 14,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1346,
@@ -1954,11 +2434,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1360,
+                      "line": 40,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "logging_tree>=1.7",
                       "offset": 1360,
                       "line": 40,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1377,
+                      "line": 40,
+                      "col": 31,
                       "lineBreaks": 0
                     }
                   ]
@@ -2007,11 +2503,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1393,
+                      "line": 41,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "pygments>=2.2",
                       "offset": 1393,
                       "line": 41,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1406,
+                      "line": 41,
+                      "col": 27,
                       "lineBreaks": 0
                     }
                   ]
@@ -2060,11 +2572,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1422,
+                      "line": 42,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "psutil>=5.0",
                       "offset": 1422,
                       "line": 42,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1433,
+                      "line": 42,
+                      "col": 25,
                       "lineBreaks": 0
                     }
                   ]
@@ -2113,11 +2641,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1449,
+                      "line": 43,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "objgraph>=3.0",
                       "offset": 1449,
                       "line": 43,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1462,
+                      "line": 43,
+                      "col": 27,
                       "lineBreaks": 0
                     }
                   ]
@@ -2144,6 +2688,14 @@
                   "offset": 1465,
                   "line": 44,
                   "col": 1,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1473,
+                  "line": 44,
+                  "col": 9,
                   "lineBreaks": 0
                 }
               ]
@@ -2208,6 +2760,14 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1492,
+                  "line": 45,
+                  "col": 17,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1492,
@@ -2243,11 +2803,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1506,
+                      "line": 46,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "django>=1.11.23,<2.0",
                       "offset": 1506,
                       "line": 46,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1526,
+                      "line": 46,
+                      "col": 34,
                       "lineBreaks": 0
                     }
                   ]
@@ -2274,6 +2850,14 @@
                   "offset": 1529,
                   "line": 47,
                   "col": 1,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1537,
+                  "line": 47,
+                  "col": 9,
                   "lineBreaks": 0
                 }
               ]
@@ -2338,6 +2922,14 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1555,
+                  "line": 48,
+                  "col": 16,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1555,
@@ -2373,11 +2965,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1569,
+                      "line": 49,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "flask>=0.11,<2.0",
                       "offset": 1569,
                       "line": 49,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1585,
+                      "line": 49,
+                      "col": 30,
                       "lineBreaks": 0
                     }
                   ]
@@ -2426,11 +3034,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1601,
+                      "line": 50,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "blinker>=1.4,<2.0",
                       "offset": 1601,
                       "line": 50,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1618,
+                      "line": 50,
+                      "col": 31,
                       "lineBreaks": 0
                     }
                   ]
@@ -2457,6 +3081,14 @@
                   "offset": 1621,
                   "line": 51,
                   "col": 1,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1629,
+                  "line": 51,
+                  "col": 9,
                   "lineBreaks": 0
                 }
               ]
@@ -2521,6 +3153,14 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1644,
+                  "line": 52,
+                  "col": 13,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1644,
@@ -2556,11 +3196,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1658,
+                      "line": 53,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "sqlparse",
                       "offset": 1658,
                       "line": 53,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1666,
+                      "line": 53,
+                      "col": 22,
                       "lineBreaks": 0
                     }
                   ]
@@ -2609,11 +3265,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1682,
+                      "line": 54,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "psycopg2",
                       "offset": 1682,
                       "line": 54,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1690,
+                      "line": 54,
+                      "col": 22,
                       "lineBreaks": 0
                     }
                   ]
@@ -2640,6 +3312,14 @@
                   "offset": 1693,
                   "line": 55,
                   "col": 1,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1701,
+                  "line": 55,
+                  "col": 9,
                   "lineBreaks": 0
                 }
               ]
@@ -2704,6 +3384,14 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1724,
+                  "line": 56,
+                  "col": 21,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "newline",
                   "value": "\n",
                   "offset": 1724,
@@ -2739,11 +3427,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1738,
+                      "line": 57,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "prometheus-client>=0.2.0,<0.5.0",
                       "offset": 1738,
                       "line": 57,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1769,
+                      "line": 57,
+                      "col": 45,
                       "lineBreaks": 0
                     }
                   ]
@@ -2792,11 +3496,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1774,
+                      "line": 57,
+                      "col": 50,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": ",!=0.4.0,!=0.4.1",
                       "offset": 1774,
                       "line": 57,
                       "col": 50,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1790,
+                      "line": 57,
+                      "col": 66,
                       "lineBreaks": 0
                     }
                   ]
@@ -2824,6 +3544,14 @@
                   "line": 58,
                   "col": 1,
                   "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1801,
+                  "line": 58,
+                  "col": 9,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -2849,6 +3577,14 @@
               "offset": 1804,
               "line": 59,
               "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1808,
+              "line": 59,
+              "col": 5,
               "lineBreaks": 0
             }
           ]
@@ -2961,6 +3697,14 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 1864,
+              "line": 61,
+              "col": 23,
+              "lineBreaks": 0
+            },
+            {
               "type": "string-tree",
               "startsWith": {
                 "type": "string-start",
@@ -2980,11 +3724,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1865,
+                  "line": 61,
+                  "col": 24,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "gunicorn>=19.7.0,<20.0",
                   "offset": 1865,
                   "line": 61,
                   "col": 24,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1887,
+                  "line": 61,
+                  "col": 46,
                   "lineBreaks": 0
                 }
               ]
@@ -3025,11 +3785,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1891,
+                  "line": 61,
+                  "col": 50,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "Werkzeug>=0.15.3,<0.16",
                   "offset": 1891,
                   "line": 61,
                   "col": 50,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1913,
+                  "line": 61,
+                  "col": 72,
                   "lineBreaks": 0
                 }
               ]
@@ -3070,11 +3846,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1917,
+                  "line": 61,
+                  "col": 76,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "pycryptodome==3.7.3",
                   "offset": 1917,
                   "line": 61,
                   "col": 76,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1936,
+                  "line": 61,
+                  "col": 95,
                   "lineBreaks": 0
                 }
               ]
@@ -3107,11 +3899,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1939,
+                  "line": 61,
+                  "col": 98,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "statsd>=3.2.1,<4.0",
                   "offset": 1939,
                   "line": 61,
                   "col": 98,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1957,
+                  "line": 61,
+                  "col": 116,
                   "lineBreaks": 0
                 }
               ]
@@ -3152,11 +3960,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1961,
+                  "line": 61,
+                  "col": 120,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "requests>=2.10.0,<3.0",
                   "offset": 1961,
                   "line": 61,
                   "col": 120,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1982,
+                  "line": 61,
+                  "col": 141,
                   "lineBreaks": 0
                 }
               ]
@@ -3197,11 +4021,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1986,
+                  "line": 61,
+                  "col": 145,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "raven>=5.27.1,<7.0",
                   "offset": 1986,
                   "line": 61,
                   "col": 145,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 2004,
+                  "line": 61,
+                  "col": 163,
                   "lineBreaks": 0
                 }
               ]
@@ -3234,11 +4074,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 2007,
+                  "line": 61,
+                  "col": 166,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "future>=0.15.2,<0.17",
                   "offset": 2007,
                   "line": 61,
                   "col": 166,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 2027,
+                  "line": 61,
+                  "col": 186,
                   "lineBreaks": 0
                 }
               ]
@@ -3249,6 +4105,14 @@
               "offset": 2028,
               "line": 61,
               "col": 187,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2029,
+              "line": 61,
+              "col": 188,
               "lineBreaks": 0
             }
           ]
@@ -3313,6 +4177,14 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 2046,
+              "line": 62,
+              "col": 15,
+              "lineBreaks": 0
+            },
+            {
               "type": "newline",
               "value": "\n",
               "offset": 2046,
@@ -3348,11 +4220,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 2056,
+                  "line": 63,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "talisker",
                   "offset": 2056,
                   "line": 63,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 2064,
+                  "line": 63,
+                  "col": 18,
                   "lineBreaks": 0
                 }
               ]
@@ -3379,6 +4267,14 @@
               "offset": 2067,
               "line": 64,
               "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2071,
+              "line": 64,
+              "col": 5,
               "lineBreaks": 0
             }
           ]
@@ -3443,11 +4339,27 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 2084,
+              "line": 65,
+              "col": 11,
+              "lineBreaks": 0
+            },
+            {
               "type": "string-value",
               "value": "talisker",
               "offset": 2084,
               "line": 65,
               "col": 11,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2092,
+              "line": 65,
+              "col": 19,
               "lineBreaks": 0
             }
           ]
@@ -3520,6 +4432,14 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 2117,
+              "line": 66,
+              "col": 23,
+              "lineBreaks": 0
+            },
+            {
               "type": "newline",
               "value": "\n",
               "offset": 2117,
@@ -3571,6 +4491,14 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 2136,
+                  "line": 67,
+                  "col": 19,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "newline",
                   "value": "\n",
                   "offset": 2136,
@@ -3606,11 +4534,27 @@
                   },
                   "children": [
                     {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 2150,
+                      "line": 68,
+                      "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
                       "type": "string-value",
                       "value": "logstash/*",
                       "offset": 2150,
                       "line": 68,
                       "col": 14,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 2160,
+                      "line": 68,
+                      "col": 24,
                       "lineBreaks": 0
                     }
                   ]
@@ -3638,6 +4582,14 @@
                   "line": 69,
                   "col": 1,
                   "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 2171,
+                  "line": 69,
+                  "col": 9,
+                  "lineBreaks": 0
                 }
               ]
             },
@@ -3663,6 +4615,14 @@
               "offset": 2174,
               "line": 70,
               "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2178,
+              "line": 70,
+              "col": 5,
               "lineBreaks": 0
             }
           ]
@@ -3735,6 +4695,14 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 2202,
+              "line": 71,
+              "col": 22,
+              "lineBreaks": 0
+            },
+            {
               "type": "newline",
               "value": "\n",
               "offset": 2202,
@@ -3786,11 +4754,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 2221,
+                  "line": 72,
+                  "col": 19,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "talisker",
                   "offset": 2221,
                   "line": 72,
                   "col": 19,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 2229,
+                  "line": 72,
+                  "col": 27,
                   "lineBreaks": 0
                 }
               ]
@@ -3817,6 +4801,14 @@
               "offset": 2232,
               "line": 73,
               "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2236,
+              "line": 73,
+              "col": 5,
               "lineBreaks": 0
             }
           ]
@@ -3881,6 +4873,14 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 2253,
+              "line": 74,
+              "col": 15,
+              "lineBreaks": 0
+            },
+            {
               "type": "newline",
               "value": "\n",
               "offset": 2253,
@@ -3916,11 +4916,27 @@
               },
               "children": [
                 {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 2263,
+                  "line": 75,
+                  "col": 10,
+                  "lineBreaks": 0
+                },
+                {
                   "type": "string-value",
                   "value": "talisker",
                   "offset": 2263,
                   "line": 75,
                   "col": 10,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 2271,
+                  "line": 75,
+                  "col": 18,
                   "lineBreaks": 0
                 }
               ]
@@ -3947,6 +4963,14 @@
               "offset": 2274,
               "line": 76,
               "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2278,
+              "line": 76,
+              "col": 5,
               "lineBreaks": 0
             }
           ]
@@ -4011,11 +5035,27 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 2297,
+              "line": 77,
+              "col": 17,
+              "lineBreaks": 0
+            },
+            {
               "type": "string-value",
               "value": "tests",
               "offset": 2297,
               "line": 77,
               "col": 17,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2302,
+              "line": 77,
+              "col": 22,
               "lineBreaks": 0
             }
           ]
@@ -4080,11 +5120,27 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 2314,
+              "line": 78,
+              "col": 10,
+              "lineBreaks": 0
+            },
+            {
               "type": "string-value",
               "value": "https://github.com/canonical-ols/talisker",
               "offset": 2314,
               "line": 78,
               "col": 10,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2355,
+              "line": 78,
+              "col": 51,
               "lineBreaks": 0
             }
           ]
@@ -4149,11 +5205,27 @@
           },
           "children": [
             {
+              "type": "_start",
+              "value": "",
+              "offset": 2371,
+              "line": 79,
+              "col": 14,
+              "lineBreaks": 0
+            },
+            {
               "type": "string-value",
               "value": "0.9.16",
               "offset": 2371,
               "line": 79,
               "col": 14,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2377,
+              "line": 79,
+              "col": 20,
               "lineBreaks": 0
             }
           ]
@@ -4221,6 +5293,14 @@
           "line": 80,
           "col": 20,
           "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 2400,
+          "line": 81,
+          "col": 1,
+          "lineBreaks": 0
         }
       ]
     },
@@ -4231,6 +5311,14 @@
       "line": 81,
       "col": 2,
       "lineBreaks": 1
+    },
+    {
+      "type": "_end",
+      "value": "",
+      "offset": 2402,
+      "line": 82,
+      "col": 1,
+      "lineBreaks": 0
     }
   ]
 }

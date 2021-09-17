@@ -9,7 +9,7 @@ import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 
 export class CommentMatcher<Ctx> extends AbstractMatcher<Ctx> {
-  override readonly minorToken = 'comment';
+  override readonly preventSkipping = 'comment';
 
   readonly comment: CommentMatcherValue;
   readonly handler: CommentMatcherHandler<Ctx>;
@@ -32,10 +32,8 @@ export class CommentMatcher<Ctx> extends AbstractMatcher<Ctx> {
       }
       if (isMatched) {
         const nextContext = this.handler(context, node);
-        const nextCursor = cursor.right;
-        return nextCursor
-          ? { context: nextContext, cursor: nextCursor }
-          : { context: nextContext, cursor, endOfLevel: true };
+        const nextCursor = cursor.right ?? cursor;
+        return { context: nextContext, cursor: nextCursor };
       }
     }
 

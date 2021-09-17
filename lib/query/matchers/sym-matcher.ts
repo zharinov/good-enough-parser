@@ -7,6 +7,7 @@ import type {
 } from '../types';
 import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
+import { seekRight } from './util';
 
 export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly sym: SymMatcherValue;
@@ -19,7 +20,7 @@ export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
-    const { cursor, context } = checkpoint;
+    let { cursor, context } = checkpoint;
     const node = cursor.node;
     if (node?.type === 'symbol') {
       let isMatched = true;
@@ -29,11 +30,9 @@ export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
         isMatched = this.sym.test(node.value);
       }
       if (isMatched) {
-        const nextContext = this.handler(context, node);
-        const nextCursor = cursor.right;
-        return nextCursor
-          ? { context: nextContext, cursor: nextCursor }
-          : { context: nextContext, cursor, endOfLevel: true };
+        context = this.handler(context, node);
+        cursor = seekRight(cursor);
+        return { cursor, context };
       }
     }
 

@@ -1,6 +1,6 @@
 import type { Checkpoint, ManyMatcherOptions, Matcher } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
-import { skipMinorTokens } from './util';
+import { seekToNextSignificantToken } from './util';
 
 export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly manyOf: Matcher<Ctx>;
@@ -28,18 +28,13 @@ export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
   private nextRound(checkpoints: Checkpoint<Ctx>[]): Checkpoint<Ctx>[] {
     const results: Checkpoint<Ctx>[] = [];
-    for (const checkpoint of checkpoints) {
-      if (checkpoint.endOfLevel) {
-        continue;
-      }
+    for (const oldCheckpoint of checkpoints) {
+      const cursor = seekToNextSignificantToken(
+        oldCheckpoint.cursor,
+        this.manyOf.preventSkipping
+      );
 
-      const cursor = skipMinorTokens(checkpoint.cursor, this.manyOf.minorToken);
-      const oldCheckpoint = cursor ? { ...checkpoint, cursor } : null;
-      if (!oldCheckpoint) {
-        continue;
-      }
-
-      const newCheckpoint = this.manyOf.match(oldCheckpoint);
+      const newCheckpoint = this.manyOf.match({ ...oldCheckpoint, cursor });
       if (!newCheckpoint) {
         continue;
       }

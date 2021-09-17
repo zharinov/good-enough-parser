@@ -10,7 +10,7 @@ import type {
 } from '../types';
 import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
-import { skipMinorTokens } from './util';
+import { seekRight, seekToNextSignificantToken } from './util';
 
 export type StrContentMatcherValue = string | RegExp | null;
 export type StrContentMatcherHandler<Ctx> = (
@@ -33,7 +33,7 @@ export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
-    const { cursor, context } = checkpoint;
+    let { cursor, context } = checkpoint;
     const node = cursor.node;
     if (node?.type === 'string-value') {
       let isMatched = true;
@@ -44,11 +44,9 @@ export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
       }
 
       if (isMatched) {
-        const nextContext = this.handler(context, node);
-        const nextCursor = cursor.right;
-        return nextCursor
-          ? { context: nextContext, cursor: nextCursor }
-          : { context: nextContext, cursor, endOfLevel: true };
+        context = this.handler(context, node);
+        cursor = seekRight(cursor);
+        return { cursor, context };
       }
     }
 
@@ -72,50 +70,29 @@ export class StrTplMatcher<Ctx> extends AbstractMatcher<Ctx> {
     this.postHandler = coerceHandler<Ctx, TemplateTree>(config.postHandler);
   }
 
-  seekNextChild(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
-    const cursor = skipMinorTokens(checkpoint.cursor, this.matcher.minorToken);
-    let nextCheckpoint = cursor ? { ...checkpoint, cursor } : null;
-    while (nextCheckpoint) {
-      const checkpoint = this.matcher.match(nextCheckpoint);
-      if (checkpoint) {
-        return checkpoint;
-      }
-
-      const nextCursor = skipMinorTokens(
-        nextCheckpoint?.cursor?.right,
-        this.matcher.minorToken
-      );
-      nextCheckpoint = nextCursor
-        ? {
-            cursor: nextCursor,
-            context: nextCheckpoint.context,
-          }
-        : null;
-    }
-
-    return null;
-  }
-
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
-    const { cursor: rootCursor, context: rootContext } = checkpoint;
-    const rootNode = rootCursor.node;
+    const { cursor: tplCursor, context: tplContext } = checkpoint;
+    const rootNode = tplCursor.node;
     if (rootNode?.type === 'template-tree') {
-      const cursor = checkpoint.cursor.down;
+      let cursor = checkpoint.cursor.down;
       if (cursor && cursor.node) {
-        const childMatch = this.seekNextChild({
-          context: this.preHandler(rootContext, rootNode),
+        let context = this.preHandler(tplContext, rootNode);
+        cursor = seekToNextSignificantToken(
           cursor,
-        });
-
-        if (
-          childMatch &&
-          !skipMinorTokens(childMatch.cursor, this.matcher.minorToken)
-        ) {
-          const cursor = rootCursor.right;
-          const context = this.postHandler(childMatch.context, rootNode);
-          return cursor
-            ? { context, cursor }
-            : { context, cursor: rootCursor, endOfLevel: true };
+          this.matcher.preventSkipping
+        );
+        const match = this.matcher.match({ context, cursor });
+        if (match) {
+          ({ cursor, context } = match);
+          cursor = seekToNextSignificantToken(
+            cursor,
+            this.matcher.preventSkipping
+          );
+          if (cursor.node?.type === '_end') {
+            context = this.postHandler(context, rootNode);
+            cursor = seekRight(tplCursor);
+            return { context, cursor };
+          }
         }
       }
     }
@@ -144,40 +121,34 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
-    const node = checkpoint.cursor.node;
-    if (node?.type === 'string-tree') {
-      let context = this.preHandler(checkpoint.context, node);
+    const rootNode = checkpoint.cursor.node;
+    if (rootNode?.type === 'string-tree') {
+      let context = this.preHandler(checkpoint.context, rootNode);
+      let cursor = checkpoint.cursor;
 
       if (this.matchers) {
-        let cursor = checkpoint.cursor.down;
-        if (cursor?.node || this.matchers.length !== 0) {
-          for (const matcher of this.matchers) {
-            if (!cursor) {
-              return null;
-            }
+        const tokensCount = cursor.children.length - 2;
+        if (tokensCount !== this.matchers.length) {
+          return null;
+        }
 
+        if (tokensCount > 0) {
+          cursor = seekRight(cursor.down as never);
+          for (const matcher of this.matchers) {
             const match = matcher.match({ context, cursor });
             if (!match) {
               return null;
             }
-
-            context = match.context;
-            cursor = match.endOfLevel ? undefined : match.cursor;
-          }
-
-          if (cursor) {
-            return null;
+            ({ cursor, context } = match);
           }
         }
       }
 
-      context = this.postHandler(context, node);
-
-      const nextCursor = checkpoint.cursor.right;
-      return nextCursor
-        ? { context, cursor: nextCursor }
-        : { context, cursor: checkpoint.cursor, endOfLevel: true };
+      context = this.postHandler(context, rootNode);
+      cursor = seekRight(checkpoint.cursor);
+      return { context, cursor };
     }
+
     return null;
   }
 }

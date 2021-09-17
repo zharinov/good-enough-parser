@@ -15,7 +15,7 @@ import {
   StrNodeMatcher,
   StrTplMatcher,
 } from './matchers/str-matcher';
-import { TreeMatcher } from './matchers/tree-macher';
+import { TreeMatcher } from './matchers/tree-matcher';
 import type {
   CommentMatcherHandler,
   CommentMatcherOptions,

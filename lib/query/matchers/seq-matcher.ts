@@ -1,12 +1,12 @@
 import type { Checkpoint, Matcher, SeqMatcherOptions } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
-import { skipMinorTokens } from './util';
+import { seekToNextSignificantToken } from './util';
 
 export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly seq: Matcher<Ctx>[];
   readonly length: number;
 
-  private currentCheckpoint: Checkpoint<Ctx> | null = null;
+  private checkpoint: Checkpoint<Ctx> | null = null;
   private idx = 0;
 
   constructor({ matchers }: SeqMatcherOptions<Ctx>) {
@@ -20,36 +20,29 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 
   private matchForward(): Checkpoint<Ctx> | null {
-    if (this.currentCheckpoint) {
+    if (this.checkpoint) {
       while (this.idx < this.length) {
-        if (this.currentCheckpoint.endOfLevel) {
-          break;
-        }
-
         const matcher = this.seq[this.idx] as Matcher<Ctx>;
 
-        const cursor = skipMinorTokens(
-          this.currentCheckpoint.cursor,
-          matcher.minorToken
+        const cursor = seekToNextSignificantToken(
+          this.checkpoint.cursor,
+          matcher.preventSkipping
         );
-        const oldCheckpoint = cursor
-          ? { ...this.currentCheckpoint, cursor }
-          : null;
-        if (!oldCheckpoint) {
+
+        const checkpoint = matcher.match({
+          ...this.checkpoint,
+          cursor,
+        });
+        if (!checkpoint) {
           break;
         }
 
-        const newCheckpoint = matcher.match(oldCheckpoint);
-        if (!newCheckpoint) {
-          break;
-        }
-
-        this.currentCheckpoint = newCheckpoint;
+        this.checkpoint = checkpoint;
         this.idx += 1;
       }
 
       if (this.isMatchingComplete()) {
-        return this.currentCheckpoint;
+        return this.checkpoint;
       }
     }
 
@@ -62,7 +55,7 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
       const matcher = this.seq[this.idx] as Matcher<Ctx>;
       const match = matcher.nextMatch();
       if (match) {
-        this.currentCheckpoint = match;
+        this.checkpoint = match;
         this.idx += 1;
         return match;
       }
@@ -73,7 +66,7 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     this.idx = 0;
-    this.currentCheckpoint = checkpoint;
+    this.checkpoint = checkpoint;
     while (!this.isMatchingComplete()) {
       const forwardMatch = this.matchForward();
       if (!forwardMatch) {
@@ -84,7 +77,7 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
       }
     }
 
-    return this.currentCheckpoint;
+    return this.checkpoint;
   }
 
   override nextMatch(): Checkpoint<Ctx> | null {
@@ -102,6 +95,6 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
       }
     }
 
-    return this.currentCheckpoint;
+    return this.checkpoint;
   }
 }

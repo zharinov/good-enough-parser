@@ -145,6 +145,14 @@ export interface UnknownToken extends TokenBase {
   type: '_';
 }
 
+export interface StartToken extends TokenBase {
+  type: '_start';
+}
+
+export interface EndToken extends TokenBase {
+  type: '_end';
+}
+
 export type Token =
   | NewlineToken
   | WhitespaceToken
@@ -159,7 +167,9 @@ export type Token =
   | TemplateEndToken
   | SymbolToken
   | NumberToken
-  | UnknownToken;
+  | UnknownToken
+  | StartToken
+  | EndToken;
 
 export type MinorToken = NewlineToken | WhitespaceToken | CommentToken;
 
