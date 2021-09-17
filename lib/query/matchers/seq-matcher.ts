@@ -1,6 +1,5 @@
 import type { Checkpoint, Matcher, SeqMatcherOptions } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
-import { seekToNextSignificantToken } from './util';
 
 export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly seq: Matcher<Ctx>[];
@@ -24,15 +23,7 @@ export class SeqMatcher<Ctx> extends AbstractMatcher<Ctx> {
       while (this.idx < this.length) {
         const matcher = this.seq[this.idx] as Matcher<Ctx>;
 
-        const cursor = seekToNextSignificantToken(
-          this.checkpoint.cursor,
-          matcher.preventSkipping
-        );
-
-        const checkpoint = matcher.match({
-          ...this.checkpoint,
-          cursor,
-        });
+        const checkpoint = matcher.match(this.checkpoint);
         if (!checkpoint) {
           break;
         }

@@ -64,6 +64,7 @@ export interface TreeOptionsBase<Ctx> {
 }
 
 export interface Matcher<Ctx> {
+  seek(cursor: Cursor): Cursor;
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null;
   nextMatch(): Checkpoint<Ctx> | null;
   readonly preventSkipping?: MinorToken['type'];

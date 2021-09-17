@@ -1,4 +1,5 @@
 import { CommentToken } from '../../lexer/types';
+import { Node } from '../../parser';
 import type {
   Checkpoint,
   CommentMatcherHandler,
@@ -8,9 +9,9 @@ import type {
 import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 
-export class CommentMatcher<Ctx> extends AbstractMatcher<Ctx> {
-  override readonly preventSkipping = 'comment';
+const skipBeforeComment: Node['type'][] = ['whitespace', '_start', 'newline'];
 
+export class CommentMatcher<Ctx> extends AbstractMatcher<Ctx> {
   readonly comment: CommentMatcherValue;
   readonly handler: CommentMatcherHandler<Ctx>;
 
@@ -20,8 +21,13 @@ export class CommentMatcher<Ctx> extends AbstractMatcher<Ctx> {
     this.handler = coerceHandler<Ctx, CommentToken>(handler);
   }
 
+  override canSkip(node: Node): boolean {
+    return skipBeforeComment.includes(node.type);
+  }
+
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
-    const { cursor, context } = checkpoint;
+    const context = checkpoint.context;
+    const cursor = this.seek(checkpoint.cursor);
     const node = cursor.node;
     if (node?.type === 'comment') {
       let isMatched = true;

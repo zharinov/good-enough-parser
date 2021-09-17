@@ -9,7 +9,6 @@ import type {
 } from '../types';
 import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
-import { seekRight, seekToNextSignificantToken } from './util';
 
 interface TreeMatcherOptions<Ctx> extends TreeOptionsBase<Ctx> {
   matcher: Matcher<Ctx> | null;
@@ -51,10 +50,9 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
     let rightCursor = cursor.right;
     if (rightCursor) {
-      rightCursor = seekToNextSignificantToken(
-        rightCursor,
-        this.matcher?.preventSkipping
-      );
+      rightCursor = this.matcher
+        ? this.matcher.seek(rightCursor)
+        : this.seek(rightCursor);
       if (rightCursor) {
         return rightCursor;
       }
@@ -65,10 +63,9 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
     while (upperCursor && this.walkDepth > 0) {
       rightCursor = upperCursor.right;
       if (rightCursor) {
-        rightCursor = seekToNextSignificantToken(
-          rightCursor,
-          this.matcher?.preventSkipping
-        );
+        rightCursor = this.matcher
+          ? this.matcher.seek(rightCursor)
+          : this.seek(rightCursor);
         if (rightCursor) {
           upperCursor = rightCursor;
           break;
@@ -138,7 +135,7 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       const cursor =
         rootNode.type === 'root-tree'
           ? checkpoint.cursor
-          : seekRight(checkpoint.cursor);
+          : this.seekRight(checkpoint.cursor);
       return { context, cursor };
     }
 

@@ -1,11 +1,7 @@
-import { MinorToken } from '../../lexer/types';
 import type { Checkpoint, ManyMatcherOptions, Matcher } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
-import { seekToNextSignificantToken } from './util';
 
 export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
-  override readonly preventSkipping: MinorToken['type'] | undefined = undefined;
-
   readonly manyOf: Matcher<Ctx>;
   readonly min: number;
   readonly max: number | null;
@@ -27,18 +23,12 @@ export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
     this.manyOf = matcher;
     this.min = min;
     this.max = max;
-    this.preventSkipping = this.manyOf.preventSkipping;
   }
 
   private nextRound(checkpoints: Checkpoint<Ctx>[]): Checkpoint<Ctx>[] {
     const results: Checkpoint<Ctx>[] = [];
     for (const oldCheckpoint of checkpoints) {
-      const cursor = seekToNextSignificantToken(
-        oldCheckpoint.cursor,
-        this.preventSkipping
-      );
-
-      const newCheckpoint = this.manyOf.match({ ...oldCheckpoint, cursor });
+      const newCheckpoint = this.manyOf.match(oldCheckpoint);
       if (!newCheckpoint) {
         continue;
       }
@@ -58,7 +48,7 @@ export class ManyMatcher<Ctx> extends AbstractMatcher<Ctx> {
     this.idx = 0;
 
     let roundResults = [checkpoint];
-    this.matches = this.max === 0 ? [checkpoint] : [];
+    this.matches = this.min === 0 ? [checkpoint] : [];
 
     let round = 1;
     while (this.max !== null ? round <= this.max : true) {

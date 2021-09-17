@@ -10,7 +10,6 @@ import type {
 } from '../types';
 import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
-import { seekRight, seekToNextSignificantToken } from './util';
 
 export type StrContentMatcherValue = string | RegExp | null;
 export type StrContentMatcherHandler<Ctx> = (
@@ -45,7 +44,7 @@ export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
       if (isMatched) {
         context = this.handler(context, node);
-        cursor = seekRight(cursor);
+        cursor = this.seekRight(cursor);
         return { cursor, context };
       }
     }
@@ -77,20 +76,14 @@ export class StrTplMatcher<Ctx> extends AbstractMatcher<Ctx> {
       let cursor = checkpoint.cursor.down;
       if (cursor && cursor.node) {
         let context = this.preHandler(tplContext, rootNode);
-        cursor = seekToNextSignificantToken(
-          cursor,
-          this.matcher.preventSkipping
-        );
+        cursor = this.matcher.seek(cursor);
         const match = this.matcher.match({ context, cursor });
         if (match) {
           ({ cursor, context } = match);
-          cursor = seekToNextSignificantToken(
-            cursor,
-            this.matcher.preventSkipping
-          );
+          cursor = this.seek(cursor);
           if (cursor.node?.type === '_end') {
             context = this.postHandler(context, rootNode);
-            cursor = seekRight(tplCursor);
+            cursor = this.seekRight(tplCursor);
             return { context, cursor };
           }
         }
@@ -133,7 +126,7 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
         }
 
         if (tokensCount > 0) {
-          cursor = seekRight(cursor.down as never);
+          cursor = this.seekRight(cursor.down as never);
           for (const matcher of this.matchers) {
             const match = matcher.match({ context, cursor });
             if (!match) {
@@ -145,7 +138,7 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       }
 
       context = this.postHandler(context, rootNode);
-      cursor = seekRight(checkpoint.cursor);
+      cursor = this.seekRight(checkpoint.cursor);
       return { context, cursor };
     }
 

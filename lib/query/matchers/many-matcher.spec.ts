@@ -31,26 +31,67 @@ describe('query/matchers/many-matcher', () => {
       const res = lang.query(input, query, []);
       expect(res).toEqual(['-', '-']);
     });
+  });
 
-    it('supports optionals', () => {
+  describe('Optionals', () => {
+    it('handles simple optionals', () => {
       const input = 'foobar';
       const query = q.opt(q.sym(handler));
       const res = lang.query(input, query, []);
       expect(res).toEqual(['foobar']);
     });
 
-    it('supports sequential optional repetitions', () => {
+    it('handles greedy behavior', () => {
+      const input = 'foo bar';
+      const query = q.sym('foo').opt(q.sym(handler));
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['bar']);
+    });
+
+    it('handles sequential optionals', () => {
+      const input = '+-*/';
+      const query = q
+        .opt(q.op('+', handler))
+        .opt(q.op('-', handler))
+        .opt(q.op('*', handler))
+        .opt(q.op('/', handler));
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['+', '-', '*', '/']);
+    });
+
+    it('supports optional repetitions', () => {
       const input = 'foo, bar';
       const query = q.sym(handler).opt(q.op(',')).opt(q.sym(handler));
       const res = lang.query(input, query, []);
       expect(res).toEqual(['foo', 'bar']);
     });
 
-    it('supports heterogeneous sequential optionals', () => {
-      const input = 'foo, # bar';
-      const query = q.sym(handler).opt(q.op(',')).opt(q.comment(handler));
+    it('supports optional comments', () => {
+      const input = 'foo # bar';
+      const query = q.sym(handler).opt(q.comment(handler));
       const res = lang.query(input, query, []);
       expect(res).toEqual(['foo', '# bar']);
+    });
+
+    it('handles optionals inside mandatory sequence', () => {
+      const input = `foo bar`;
+      const query = q.sym(handler).opt(q.op(',')).sym(handler);
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['foo', 'bar']);
+    });
+
+    it('supports heterogeneous sequential optionals', () => {
+      const input = 'foo # bar';
+      const query = q.sym(handler).opt(q.op(',')).comment(handler);
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['foo', '# bar']);
+    });
+
+    it('handles nested optionals', () => {
+      const input = 'foobar';
+      const query = q.opt(q.opt(q.opt(q.opt(q.sym(handler)))));
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['foobar']);
     });
   });
 });
