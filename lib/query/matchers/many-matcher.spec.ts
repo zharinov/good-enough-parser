@@ -31,5 +31,26 @@ describe('query/matchers/many-matcher', () => {
       const res = lang.query(input, query, []);
       expect(res).toEqual(['-', '-']);
     });
+
+    it('supports optionals', () => {
+      const input = 'foobar';
+      const query = q.opt(q.sym(handler));
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['foobar']);
+    });
+
+    it('supports sequential optional repetitions', () => {
+      const input = 'foo, bar';
+      const query = q.sym(handler).opt(q.op(',')).opt(q.sym(handler));
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['foo', 'bar']);
+    });
+
+    it('supports heterogeneous sequential optionals', () => {
+      const input = 'foo, # bar';
+      const query = q.sym(handler).opt(q.op(',')).opt(q.comment(handler));
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['foo', '# bar']);
+    });
   });
 });
