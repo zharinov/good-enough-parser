@@ -4,6 +4,7 @@ import { createCursor, createTree } from '../parser';
 import type { Cursor } from '../parser/types';
 import { buildRoot } from '../query';
 import { QueryBuilder } from '../query/types';
+import { clone } from '../query/util';
 import { lang as python } from './python';
 import type { LanguageConfig } from './types';
 
@@ -28,7 +29,8 @@ export class Language {
     const matcher = buildRoot(q);
     const cursor = typeof input === 'string' ? this.parse(input) : input;
     const checkpoint = matcher.match({ cursor, context });
-    return checkpoint?.context;
+    const result = checkpoint?.context;
+    return result && clone(result);
   }
 }
 

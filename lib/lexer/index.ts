@@ -7,18 +7,22 @@ import { fallbackRule } from './rules';
 import { configStrings } from './string';
 import { configSymbols } from './symbol';
 import { coerceToken } from './token';
-import type { Lexer, LexerConfig, StatesMap, Token } from './types';
+import type { Lexer, LexerConfig, RegexRule, StatesMap, Token } from './types';
 
 export * from './token';
 
 export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
-  const whitespaceMatch = lexerConfig.joinLines
-    ? new RegExp(`(?:${lexerConfig.joinLines}\\r?\\n|[ \\t\\r])+`)
-    : /[ \t\r]+/;
+  const whitespace: RegexRule = lexerConfig.joinLines
+    ? {
+        t: 'regex',
+        match: new RegExp(`(?:${lexerConfig.joinLines}\\r?\\n|[ \\t\\r])+`),
+        lineBreaks: true,
+      }
+    : { t: 'regex', match: /[ \t\r]+/ };
 
   let result: StatesMap = {
     $: {
-      whitespace: { t: 'regex', match: whitespaceMatch },
+      whitespace,
       newline: { t: 'regex', match: /\r?\n/, lineBreaks: true },
       _: fallbackRule,
     },

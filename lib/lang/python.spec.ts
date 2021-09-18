@@ -40,9 +40,9 @@ describe('lang/python', () => {
     expect(res).toMatchObject({
       children: [
         { type: '_start' },
-        { type: 'symbol' },
-        { type: 'whitespace' },
-        { type: 'symbol' },
+        { type: 'symbol', value: 'foo', offset: 0, line: 1, col: 1 },
+        { type: 'whitespace', lineBreaks: 1 },
+        { type: 'symbol', value: 'bar', offset: 5, line: 2, col: 1 },
         { type: '_end' },
       ],
     });
