@@ -1,7 +1,7 @@
 {
   "name": "@renovatebot/parser-utils",
   "description": "Parse and query computer programs source code",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "git@github.com:renovatebot/parser-utils.git",
   "author": "Sergei Zharinov",
   "contributors": [
