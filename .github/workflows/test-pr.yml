@@ -1,9 +1,6 @@
-name: pr
+name: Run tests for Pull Request
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main

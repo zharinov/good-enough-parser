@@ -1,0 +1,55 @@
+name: Release package
+
+on:
+  workflow_run:
+    workflows: ['Run tests for main branch']
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  release:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check if version has been updated
+        id: check
+        uses: EndBug/version-check@v1
+        with:
+          diff-search: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v2.4.0
+        if: steps.check.outputs.changed == 'true'
+        with:
+          node-version: 14
+          cache: 'yarn'
+
+      - name: Install Dependencies
+        if: steps.check.outputs.changed == 'true'
+        run: yarn --frozen-lockfile
+
+      - name: Build package
+        if: steps.check.outputs.changed == 'true'
+        run: yarn -s build
+
+      # - name: Publish package to NPM
+      #   if: steps.check.outputs.changed == 'true'
+      #   run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Setup Node.js for GPR
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/setup-node@v2.4.0
+        with:
+          registry-url: 'https://npm.pkg.github.com/'
+          scope: '@renovatebot'
+
+      - name: Publish package to GPR
+        if: steps.check.outputs.changed == 'true'
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
