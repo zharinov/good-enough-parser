@@ -2,6 +2,8 @@
 
 One line summary of the program goes here.
 
+[![Trunk](https://github.com/renovatebot/parser-utils/actions/workflows/trunk.yml/badge.svg)](https://github.com/renovatebot/parser-utils/actions/workflows/trunk.yml)
+
 ## License
 
 [license](https://github.com/renovatebot/parser-utils/blob/main/LICENSE).
