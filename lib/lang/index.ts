@@ -8,6 +8,8 @@ import { clone } from '../query/util';
 import { lang as python } from './python';
 import type { LanguageConfig } from './types';
 
+export * from './types';
+
 export class Language {
   private lexer: Lexer;
 

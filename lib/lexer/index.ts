@@ -10,6 +10,7 @@ import { coerceToken } from './token';
 import type { Lexer, LexerConfig, RegexRule, StatesMap, Token } from './types';
 
 export * from './token';
+export * from './types';
 
 export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
   const whitespace: RegexRule = lexerConfig.joinLines
