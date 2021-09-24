@@ -51,11 +51,11 @@ jobs:
         if: steps.check.outputs.changed == 'true'
         run: yarn -s build
 
-      # - name: Publish package to NPM
-      #   if: steps.check.outputs.changed == 'true'
-      #   run: npm publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish package to NPM
+        if: steps.check.outputs.changed == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Setup Node.js for GPR
         if: steps.check.outputs.changed == 'true'
