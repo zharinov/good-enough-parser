@@ -28,7 +28,7 @@ The `parser-utils` library is an attempt to fill the gap between the approaches 
 We leverage the [moo](https://github.com/no-context/moo) library to produce tokens, which we group into the tree available for your queries.
 The query API is inspired by [parsimmon](https://github.com/jneen/parsimmon), though it operates on the token level instead of the raw character sequence.
 
-## Goals
+### Goals
 
 - _Be good enough for source code written well enough._
 - Go much further than is possible with regular expressions.
@@ -37,7 +37,7 @@ The query API is inspired by [parsimmon](https://github.com/jneen/parsimmon), th
 - Expressive API which helps you focus on syntactic structure, not the space or quote variations.
 - Allow to define a language of interest quickly. Provide definitions for popular languages out-of-the-box.
 
-## Non-goals
+### Non-goals
 
 - Catch all syntactic edge-cases
 - Compete with parsing tools with strict grammar definitions
