@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import * as builder from '../../lib/query/builder';
 import { SeqMatcher, SymMatcher } from '../../lib/query/matchers';

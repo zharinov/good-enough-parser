@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { fallbackRule } from '../../lib/lexer/rules';
 import { configStrings } from '../../lib/lexer/string';
 import type { StatesMap, StringOption } from '../../lib/lexer/types';

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { loadInputTxt, loadOutputJson } from '../../test/test-utils';
 import { lang as pythonLang } from './python';
 import { createLang } from '.';
@@ -27,7 +28,6 @@ describe('lang/python', () => {
 
     const res = lang.parse(input).node;
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const expected = loadOutputJson(name, res);
     expect(res).toEqual(expected);
   });
