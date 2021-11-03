@@ -42,17 +42,74 @@ The query API is inspired by [parsimmon](https://github.com/jneen/parsimmon), th
 - Catch all syntactic edge-cases
 - Compete with parsing tools with strict grammar definitions
 
-## Installation
+## Install
 
-Explain here how to install the package/library.
+```sh
+npm install @renovatebot/parser-utils
+```
 
-## Configuration
+or
 
-Explain here how to configure the package/libary.
+```sh
+yarn add @renovatebot/parser-utils
+```
 
-## Usage
+## Details
 
-Explain here how to use the package/library.
+The library is divided into multiple levels of abstraction, from the lowest to the highest one:
+
+### [`lib/lexer`](https://github.com/renovatebot/parser-utils/tree/main/lib/lexer)
+
+Configures the [moo](https://github.com/no-context/moo) tokenizer for specific language features such as:
+
+- Brackets: `()`, `{}`, `[]`, etc
+- Strings: `'foo'`, `"bar"`, `"""baz"""`, etc
+- Templates: `${foo}`, `{{bar}}`, `$(baz)`, etc
+- Single-line comments: `#...`, `//...`, etc
+- Multi-line comments: `/*...*/`, `(*...*)`, etc
+- Identifiers: `foo`, `Bar`, `_baz123`, etc
+- Line joins: if the line ends with `\`, the next one will be treated as its continuation
+
+Refer to the `LexerConfig` interface for more details.
+Also check out [our usage example for Python](https://github.com/renovatebot/parser-utils/blob/main/lib/lang/python.ts).
+
+### [`lib/parser`](https://github.com/renovatebot/parser-utils/tree/main/lib/tree)
+
+This layer is responsible for transforming the token sequence to the nested tree with the tokens as leafs.
+Internally, we're using functional [zipper](<https://en.wikipedia.org/wiki/Zipper_(data_structure)>) data structure to perform queries on the tree.
+
+### [`lib/query`](https://github.com/renovatebot/parser-utils/tree/main/lib/query)
+
+To understand `parser-utils` queries, it's useful to keep in mind the principle of how regular expressions work.
+Each query represents sequence of adjacent tokens and tree elements.
+
+For example, consider following query:
+
+```ts
+q.num('2').op('+').num('2').op('=').num('4');
+```
+
+It will match on the following fragments `2 + 2 = 4` or `2+2=4`, but won't match on `2+2==4` nor `4=2+2`.
+
+Once brackets are defined, their inner contents will be wrapped into a tree node.
+It's possible to query tree nodes:
+
+```ts
+q.tree({
+  search: q.num('2').op('+').num('2'),
+})
+  .op('=')
+  .num('4');
+```
+
+The above query will match these strings:
+
+- `(2 + 2) = 4`
+- `[2 + 2] = 4`
+- `(1 + 2 + 2 - 1) = 4`
+- `(1 + (2 + 2) - 1) = 4`
+
+It won't match `2 + 2 = 4` because there is no any nesting.
 
 ## Contributing
 
