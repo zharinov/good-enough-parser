@@ -44,7 +44,7 @@
     "@homer0/prettier-plugin-jsdoc": "4.0.6",
     "@renovate/eslint-plugin": "https://github.com/renovatebot/eslint-plugin#v0.0.4",
     "@types/jest": "27.0.2",
-    "@types/node": "16.11.6",
+    "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "5.4.0",
     "@typescript-eslint/parser": "5.4.0",
     "eslint": "8.2.0",
