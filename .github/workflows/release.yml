@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.release.target_commitish }}
+
+      - uses: actions/setup-node@v2.4.1
+        with:
+          node-version: 14
+          cache: 'yarn'
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile --no-progress
+      - name: Build
+        run: yarn -s build
+      - name: Test
+      - run: yarn -s test
+      - name: Publish
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
