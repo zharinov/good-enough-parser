@@ -24,4 +24,4 @@ jobs:
       - name: Build
         run: yarn -s build
       - name: Test
-      - run: yarn -s test
+        run: yarn -s test
