@@ -9,11 +9,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
         with:
           ref: ${{ github.event.release.target_commitish }}
 
-      - uses: actions/setup-node@v2.4.1
+      - name: Obtain package and tag versions
+        uses: geritol/match-tag-to-package-version@0.2.0
+        id: versions
+
+      - name: Check package and tag versions match
+        if: steps.versions.outputs.PACKAGE_VERSION != steps.versions.outputs.TAG_VERSION
+        run: exit 1
+
+      - name: Using Node.js v14
+        uses: actions/setup-node@v2.5.0
         with:
           node-version: 14
           cache: 'yarn'
