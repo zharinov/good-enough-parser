@@ -21,7 +21,8 @@ export type OperatorOption = string;
 
 export interface VariableTemplateOption extends OptionBase {
   type: 'var';
-  allowedTokens: string[];
+  symbols?: RegExp;
+  operators?: string[];
 }
 
 export interface ExpressionTemplateOption extends OptionBase {

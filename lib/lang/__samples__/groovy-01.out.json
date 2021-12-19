@@ -1,0 +1,6069 @@
+{
+  "type": "root-tree",
+  "children": [
+    {
+      "type": "_start",
+      "value": "",
+      "offset": 0,
+      "line": 1,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "symbol",
+      "value": "buildscript",
+      "offset": 0,
+      "line": 1,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 11,
+      "line": 1,
+      "col": 12,
+      "lineBreaks": 0
+    },
+    {
+      "type": "wrapped-tree",
+      "startsWith": {
+        "type": "bracket-left",
+        "value": "{",
+        "offset": 12,
+        "line": 1,
+        "col": 13,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "bracket-right",
+        "value": "}",
+        "offset": 702,
+        "line": 21,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 13,
+          "line": 1,
+          "col": 14,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 13,
+          "line": 1,
+          "col": 14,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 14,
+          "line": 2,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "ext",
+          "offset": 18,
+          "line": 2,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 21,
+          "line": 2,
+          "col": 8,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "{",
+            "offset": 22,
+            "line": 2,
+            "col": 9,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": "}",
+            "offset": 72,
+            "line": 4,
+            "col": 5,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 23,
+              "line": 2,
+              "col": 10,
+              "lineBreaks": 0
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 23,
+              "line": 2,
+              "col": 10,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 24,
+              "line": 3,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "springBootVersion",
+              "offset": 32,
+              "line": 3,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 49,
+              "line": 3,
+              "col": 26,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": "=",
+              "offset": 50,
+              "line": 3,
+              "col": 27,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 51,
+              "line": 3,
+              "col": 28,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "'",
+                "offset": 52,
+                "line": 3,
+                "col": 29,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "'",
+                "offset": 66,
+                "line": 3,
+                "col": 43,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 53,
+                  "line": 3,
+                  "col": 30,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "1.5.2.RELEASE",
+                  "offset": 53,
+                  "line": 3,
+                  "col": 30,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 66,
+                  "line": 3,
+                  "col": 43,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 67,
+              "line": 3,
+              "col": 44,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "    ",
+              "offset": 68,
+              "line": 4,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 72,
+              "line": 4,
+              "col": 5,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 73,
+          "line": 4,
+          "col": 6,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 74,
+          "line": 5,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "repositories",
+          "offset": 78,
+          "line": 5,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 90,
+          "line": 5,
+          "col": 17,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "{",
+            "offset": 91,
+            "line": 5,
+            "col": 18,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": "}",
+            "offset": 241,
+            "line": 12,
+            "col": 5,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 92,
+              "line": 5,
+              "col": 19,
+              "lineBreaks": 0
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 92,
+              "line": 5,
+              "col": 19,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 93,
+              "line": 6,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "maven",
+              "offset": 101,
+              "line": 6,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 106,
+              "line": 6,
+              "col": 14,
+              "lineBreaks": 0
+            },
+            {
+              "type": "wrapped-tree",
+              "startsWith": {
+                "type": "bracket-left",
+                "value": "{",
+                "offset": 107,
+                "line": 6,
+                "col": 15,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "bracket-right",
+                "value": "}",
+                "offset": 165,
+                "line": 8,
+                "col": 9,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 108,
+                  "line": 6,
+                  "col": 16,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "newline",
+                  "value": "\n",
+                  "offset": 108,
+                  "line": 6,
+                  "col": 16,
+                  "lineBreaks": 1
+                },
+                {
+                  "type": "whitespace",
+                  "value": "           ",
+                  "offset": 109,
+                  "line": 7,
+                  "col": 1,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "symbol",
+                  "value": "url",
+                  "offset": 120,
+                  "line": 7,
+                  "col": 12,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "whitespace",
+                  "value": " ",
+                  "offset": 123,
+                  "line": 7,
+                  "col": 15,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-tree",
+                  "startsWith": {
+                    "type": "string-start",
+                    "value": "\"",
+                    "offset": 124,
+                    "line": 7,
+                    "col": 16,
+                    "lineBreaks": 0
+                  },
+                  "endsWith": {
+                    "type": "string-end",
+                    "value": "\"",
+                    "offset": 155,
+                    "line": 7,
+                    "col": 47,
+                    "lineBreaks": 0
+                  },
+                  "children": [
+                    {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 125,
+                      "line": 7,
+                      "col": 17,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "string-value",
+                      "value": "https://plugins.gradle.org/m2/",
+                      "offset": 125,
+                      "line": 7,
+                      "col": 17,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 155,
+                      "line": 7,
+                      "col": 47,
+                      "lineBreaks": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "newline",
+                  "value": "\n",
+                  "offset": 156,
+                  "line": 7,
+                  "col": 48,
+                  "lineBreaks": 1
+                },
+                {
+                  "type": "whitespace",
+                  "value": "        ",
+                  "offset": 157,
+                  "line": 8,
+                  "col": 1,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 165,
+                  "line": 8,
+                  "col": 9,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 166,
+              "line": 8,
+              "col": 10,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 167,
+              "line": 9,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "mavenCentral",
+              "offset": 175,
+              "line": 9,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "wrapped-tree",
+              "startsWith": {
+                "type": "bracket-left",
+                "value": "(",
+                "offset": 187,
+                "line": 9,
+                "col": 21,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "bracket-right",
+                "value": ")",
+                "offset": 188,
+                "line": 9,
+                "col": 22,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 188,
+                  "line": 9,
+                  "col": 22,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 188,
+                  "line": 9,
+                  "col": 22,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 189,
+              "line": 9,
+              "col": 23,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 190,
+              "line": 10,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "jcenter",
+              "offset": 198,
+              "line": 10,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "wrapped-tree",
+              "startsWith": {
+                "type": "bracket-left",
+                "value": "(",
+                "offset": 205,
+                "line": 10,
+                "col": 16,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "bracket-right",
+                "value": ")",
+                "offset": 206,
+                "line": 10,
+                "col": 17,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 206,
+                  "line": 10,
+                  "col": 17,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 206,
+                  "line": 10,
+                  "col": 17,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 207,
+              "line": 10,
+              "col": 18,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 208,
+              "line": 11,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "gradlePluginPortal",
+              "offset": 216,
+              "line": 11,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "wrapped-tree",
+              "startsWith": {
+                "type": "bracket-left",
+                "value": "(",
+                "offset": 234,
+                "line": 11,
+                "col": 27,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "bracket-right",
+                "value": ")",
+                "offset": 235,
+                "line": 11,
+                "col": 28,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 235,
+                  "line": 11,
+                  "col": 28,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 235,
+                  "line": 11,
+                  "col": 28,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 236,
+              "line": 11,
+              "col": 29,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "    ",
+              "offset": 237,
+              "line": 12,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 241,
+              "line": 12,
+              "col": 5,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 242,
+          "line": 12,
+          "col": 6,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 243,
+          "line": 13,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "dependencies",
+          "offset": 247,
+          "line": 13,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 259,
+          "line": 13,
+          "col": 17,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "{",
+            "offset": 260,
+            "line": 13,
+            "col": 18,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": "}",
+            "offset": 700,
+            "line": 20,
+            "col": 5,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 261,
+              "line": 13,
+              "col": 19,
+              "lineBreaks": 0
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 261,
+              "line": 13,
+              "col": 19,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 262,
+              "line": 14,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "classpath",
+              "offset": 270,
+              "line": 14,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "wrapped-tree",
+              "startsWith": {
+                "type": "bracket-left",
+                "value": "(",
+                "offset": 279,
+                "line": 14,
+                "col": 18,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "bracket-right",
+                "value": ")",
+                "offset": 353,
+                "line": 14,
+                "col": 92,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 280,
+                  "line": 14,
+                  "col": 19,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-tree",
+                  "startsWith": {
+                    "type": "string-start",
+                    "value": "\"",
+                    "offset": 280,
+                    "line": 14,
+                    "col": 19,
+                    "lineBreaks": 0
+                  },
+                  "endsWith": {
+                    "type": "string-end",
+                    "value": "\"",
+                    "offset": 352,
+                    "line": 14,
+                    "col": 91,
+                    "lineBreaks": 0
+                  },
+                  "children": [
+                    {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 281,
+                      "line": 14,
+                      "col": 20,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "string-value",
+                      "value": "org.springframework.boot:spring-boot-gradle-plugin:",
+                      "offset": 281,
+                      "line": 14,
+                      "col": 20,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "template-tree",
+                      "startsWith": {
+                        "type": "template-start",
+                        "value": "${",
+                        "offset": 332,
+                        "line": 14,
+                        "col": 71,
+                        "lineBreaks": 0
+                      },
+                      "endsWith": {
+                        "type": "template-end",
+                        "value": "}",
+                        "offset": 351,
+                        "line": 14,
+                        "col": 90,
+                        "lineBreaks": 0
+                      },
+                      "children": [
+                        {
+                          "type": "_start",
+                          "value": "",
+                          "offset": 334,
+                          "line": 14,
+                          "col": 73,
+                          "lineBreaks": 0
+                        },
+                        {
+                          "type": "symbol",
+                          "value": "springBootVersion",
+                          "offset": 334,
+                          "line": 14,
+                          "col": 73,
+                          "lineBreaks": 0
+                        },
+                        {
+                          "type": "_end",
+                          "value": "",
+                          "offset": 351,
+                          "line": 14,
+                          "col": 90,
+                          "lineBreaks": 0
+                        }
+                      ]
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 352,
+                      "line": 14,
+                      "col": 91,
+                      "lineBreaks": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 353,
+                  "line": 14,
+                  "col": 92,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 354,
+              "line": 14,
+              "col": 93,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 355,
+              "line": 15,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "classpath",
+              "offset": 363,
+              "line": 15,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 372,
+              "line": 15,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "'",
+                "offset": 373,
+                "line": 15,
+                "col": 19,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "'",
+                "offset": 422,
+                "line": 15,
+                "col": 68,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 374,
+                  "line": 15,
+                  "col": 20,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "com.github.jengelman.gradle.plugins:shadow:1.2.3",
+                  "offset": 374,
+                  "line": 15,
+                  "col": 20,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 422,
+                  "line": 15,
+                  "col": 68,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 423,
+              "line": 15,
+              "col": 69,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 424,
+              "line": 16,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "classpath",
+              "offset": 432,
+              "line": 16,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 441,
+              "line": 16,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "'",
+                "offset": 442,
+                "line": 16,
+                "col": 19,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "'",
+                "offset": 484,
+                "line": 16,
+                "col": 61,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 443,
+                  "line": 16,
+                  "col": 20,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "com.fkorotkov:gradle-libraries-plugin:0.1",
+                  "offset": 443,
+                  "line": 16,
+                  "col": 20,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 484,
+                  "line": 16,
+                  "col": 61,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 485,
+              "line": 16,
+              "col": 62,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 486,
+              "line": 17,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "classpath",
+              "offset": 494,
+              "line": 17,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 503,
+              "line": 17,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "\"",
+                "offset": 504,
+                "line": 17,
+                "col": 19,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "\"",
+                "offset": 573,
+                "line": 17,
+                "col": 88,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 505,
+                  "line": 17,
+                  "col": 20,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "gradle.plugin.se.patrikerdes:gradle-use-latest-versions-plugin:0.2.3",
+                  "offset": 505,
+                  "line": 17,
+                  "col": 20,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 573,
+                  "line": 17,
+                  "col": 88,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 574,
+              "line": 17,
+              "col": 89,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 575,
+              "line": 18,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "classpath",
+              "offset": 583,
+              "line": 18,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 592,
+              "line": 18,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "'",
+                "offset": 593,
+                "line": 18,
+                "col": 19,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "'",
+                "offset": 626,
+                "line": 18,
+                "col": 52,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 594,
+                  "line": 18,
+                  "col": 20,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "org.apache.openjpa:openjpa:3.1.1",
+                  "offset": 594,
+                  "line": 18,
+                  "col": 20,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 626,
+                  "line": 18,
+                  "col": 52,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 627,
+              "line": 18,
+              "col": 53,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 628,
+              "line": 19,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "classpath",
+              "offset": 636,
+              "line": 19,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 645,
+              "line": 19,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "'",
+                "offset": 646,
+                "line": 19,
+                "col": 19,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "'",
+                "offset": 694,
+                "line": 19,
+                "col": 67,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 647,
+                  "line": 19,
+                  "col": 20,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "com.gradle.publish:plugin-publish-plugin:0.13.0",
+                  "offset": 647,
+                  "line": 19,
+                  "col": 20,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 694,
+                  "line": 19,
+                  "col": 67,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 695,
+              "line": 19,
+              "col": 68,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "    ",
+              "offset": 696,
+              "line": 20,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 700,
+              "line": 20,
+              "col": 5,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 701,
+          "line": 20,
+          "col": 6,
+          "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 702,
+          "line": 21,
+          "col": 1,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 703,
+      "line": 21,
+      "col": 2,
+      "lineBreaks": 1
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 704,
+      "line": 22,
+      "col": 1,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "configurations",
+      "offset": 705,
+      "line": 23,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 719,
+      "line": 23,
+      "col": 15,
+      "lineBreaks": 0
+    },
+    {
+      "type": "wrapped-tree",
+      "startsWith": {
+        "type": "bracket-left",
+        "value": "{",
+        "offset": 720,
+        "line": 23,
+        "col": 16,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "bracket-right",
+        "value": "}",
+        "offset": 832,
+        "line": 27,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 721,
+          "line": 23,
+          "col": 17,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 721,
+          "line": 23,
+          "col": 17,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 722,
+          "line": 24,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "integration",
+          "offset": 726,
+          "line": 24,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 737,
+          "line": 24,
+          "col": 16,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 738,
+          "line": 25,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "integrationCompile",
+          "offset": 742,
+          "line": 25,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": ".",
+          "offset": 760,
+          "line": 25,
+          "col": 23,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "extendsFrom",
+          "offset": 761,
+          "line": 25,
+          "col": 24,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 772,
+          "line": 25,
+          "col": 35,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "testCompile",
+          "offset": 773,
+          "line": 25,
+          "col": 36,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 784,
+          "line": 25,
+          "col": 47,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 785,
+          "line": 26,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "integrationRuntime",
+          "offset": 789,
+          "line": 26,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": ".",
+          "offset": 807,
+          "line": 26,
+          "col": 23,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "extendsFrom",
+          "offset": 808,
+          "line": 26,
+          "col": 24,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 819,
+          "line": 26,
+          "col": 35,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "testRuntime",
+          "offset": 820,
+          "line": 26,
+          "col": 36,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 831,
+          "line": 26,
+          "col": 47,
+          "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 832,
+          "line": 27,
+          "col": 1,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 833,
+      "line": 27,
+      "col": 2,
+      "lineBreaks": 1
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 834,
+      "line": 28,
+      "col": 1,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "apply",
+      "offset": 835,
+      "line": 29,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 840,
+      "line": 29,
+      "col": 6,
+      "lineBreaks": 0
+    },
+    {
+      "type": "symbol",
+      "value": "plugin",
+      "offset": 841,
+      "line": 29,
+      "col": 7,
+      "lineBreaks": 0
+    },
+    {
+      "type": "operator",
+      "value": ":",
+      "offset": 847,
+      "line": 29,
+      "col": 13,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 848,
+      "line": 29,
+      "col": 14,
+      "lineBreaks": 0
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "'",
+        "offset": 849,
+        "line": 29,
+        "col": 15,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "'",
+        "offset": 856,
+        "line": 29,
+        "col": 22,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 850,
+          "line": 29,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "groovy",
+          "offset": 850,
+          "line": 29,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 856,
+          "line": 29,
+          "col": 22,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 857,
+      "line": 29,
+      "col": 23,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "apply",
+      "offset": 858,
+      "line": 30,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 863,
+      "line": 30,
+      "col": 6,
+      "lineBreaks": 0
+    },
+    {
+      "type": "symbol",
+      "value": "plugin",
+      "offset": 864,
+      "line": 30,
+      "col": 7,
+      "lineBreaks": 0
+    },
+    {
+      "type": "operator",
+      "value": ":",
+      "offset": 870,
+      "line": 30,
+      "col": 13,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 871,
+      "line": 30,
+      "col": 14,
+      "lineBreaks": 0
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "'",
+        "offset": 872,
+        "line": 30,
+        "col": 15,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "'",
+        "offset": 877,
+        "line": 30,
+        "col": 20,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 873,
+          "line": 30,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "idea",
+          "offset": 873,
+          "line": 30,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 877,
+          "line": 30,
+          "col": 20,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 878,
+      "line": 30,
+      "col": 21,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "apply",
+      "offset": 879,
+      "line": 31,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 884,
+      "line": 31,
+      "col": 6,
+      "lineBreaks": 0
+    },
+    {
+      "type": "symbol",
+      "value": "plugin",
+      "offset": 885,
+      "line": 31,
+      "col": 7,
+      "lineBreaks": 0
+    },
+    {
+      "type": "operator",
+      "value": ":",
+      "offset": 891,
+      "line": 31,
+      "col": 13,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 892,
+      "line": 31,
+      "col": 14,
+      "lineBreaks": 0
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "'",
+        "offset": 893,
+        "line": 31,
+        "col": 15,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "'",
+        "offset": 901,
+        "line": 31,
+        "col": 23,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 894,
+          "line": 31,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "eclipse",
+          "offset": 894,
+          "line": 31,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 901,
+          "line": 31,
+          "col": 23,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 902,
+      "line": 31,
+      "col": 24,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "apply",
+      "offset": 903,
+      "line": 32,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 908,
+      "line": 32,
+      "col": 6,
+      "lineBreaks": 0
+    },
+    {
+      "type": "symbol",
+      "value": "plugin",
+      "offset": 909,
+      "line": 32,
+      "col": 7,
+      "lineBreaks": 0
+    },
+    {
+      "type": "operator",
+      "value": ":",
+      "offset": 915,
+      "line": 32,
+      "col": 13,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 916,
+      "line": 32,
+      "col": 14,
+      "lineBreaks": 0
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "'",
+        "offset": 917,
+        "line": 32,
+        "col": 15,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "'",
+        "offset": 942,
+        "line": 32,
+        "col": 40,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 918,
+          "line": 32,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "org.springframework.boot",
+          "offset": 918,
+          "line": 32,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 942,
+          "line": 32,
+          "col": 40,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 943,
+      "line": 32,
+      "col": 41,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "apply",
+      "offset": 944,
+      "line": 33,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 949,
+      "line": 33,
+      "col": 6,
+      "lineBreaks": 0
+    },
+    {
+      "type": "symbol",
+      "value": "plugin",
+      "offset": 950,
+      "line": 33,
+      "col": 7,
+      "lineBreaks": 0
+    },
+    {
+      "type": "operator",
+      "value": ":",
+      "offset": 956,
+      "line": 33,
+      "col": 13,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 957,
+      "line": 33,
+      "col": 14,
+      "lineBreaks": 0
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "\"",
+        "offset": 958,
+        "line": 33,
+        "col": 15,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "\"",
+        "offset": 988,
+        "line": 33,
+        "col": 45,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 959,
+          "line": 33,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "com.github.ben-manes.versions",
+          "offset": 959,
+          "line": 33,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 988,
+          "line": 33,
+          "col": 45,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 989,
+      "line": 33,
+      "col": 46,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "apply",
+      "offset": 990,
+      "line": 34,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 995,
+      "line": 34,
+      "col": 6,
+      "lineBreaks": 0
+    },
+    {
+      "type": "symbol",
+      "value": "plugin",
+      "offset": 996,
+      "line": 34,
+      "col": 7,
+      "lineBreaks": 0
+    },
+    {
+      "type": "operator",
+      "value": ":",
+      "offset": 1002,
+      "line": 34,
+      "col": 13,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 1003,
+      "line": 34,
+      "col": 14,
+      "lineBreaks": 0
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "'",
+        "offset": 1004,
+        "line": 34,
+        "col": 15,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "'",
+        "offset": 1028,
+        "line": 34,
+        "col": 39,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 1005,
+          "line": 34,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "com.fkorotkov.libraries",
+          "offset": 1005,
+          "line": 34,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 1028,
+          "line": 34,
+          "col": 39,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1029,
+      "line": 34,
+      "col": 40,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "apply",
+      "offset": 1030,
+      "line": 35,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 1035,
+      "line": 35,
+      "col": 6,
+      "lineBreaks": 0
+    },
+    {
+      "type": "symbol",
+      "value": "plugin",
+      "offset": 1036,
+      "line": 35,
+      "col": 7,
+      "lineBreaks": 0
+    },
+    {
+      "type": "operator",
+      "value": ":",
+      "offset": 1042,
+      "line": 35,
+      "col": 13,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 1043,
+      "line": 35,
+      "col": 14,
+      "lineBreaks": 0
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "'",
+        "offset": 1044,
+        "line": 35,
+        "col": 15,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "'",
+        "offset": 1079,
+        "line": 35,
+        "col": 50,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 1045,
+          "line": 35,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "se.patrikerdes.use-latest-versions",
+          "offset": 1045,
+          "line": 35,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 1079,
+          "line": 35,
+          "col": 50,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1080,
+      "line": 35,
+      "col": 51,
+      "lineBreaks": 1
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1081,
+      "line": 36,
+      "col": 1,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "jar",
+      "offset": 1082,
+      "line": 37,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 1085,
+      "line": 37,
+      "col": 4,
+      "lineBreaks": 0
+    },
+    {
+      "type": "wrapped-tree",
+      "startsWith": {
+        "type": "bracket-left",
+        "value": "{",
+        "offset": 1086,
+        "line": 37,
+        "col": 5,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "bracket-right",
+        "value": "}",
+        "offset": 1141,
+        "line": 40,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 1087,
+          "line": 37,
+          "col": 6,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1087,
+          "line": 37,
+          "col": 6,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1088,
+          "line": 38,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "baseName",
+          "offset": 1092,
+          "line": 38,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 1100,
+          "line": 38,
+          "col": 13,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "=",
+          "offset": 1101,
+          "line": 38,
+          "col": 14,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 1102,
+          "line": 38,
+          "col": 15,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-tree",
+          "startsWith": {
+            "type": "string-start",
+            "value": "'",
+            "offset": 1103,
+            "line": 38,
+            "col": 16,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "string-end",
+            "value": "'",
+            "offset": 1108,
+            "line": 38,
+            "col": 21,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1104,
+              "line": 38,
+              "col": 17,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-value",
+              "value": "base",
+              "offset": 1104,
+              "line": 38,
+              "col": 17,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1108,
+              "line": 38,
+              "col": 21,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1109,
+          "line": 38,
+          "col": 22,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1110,
+          "line": 39,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "version",
+          "offset": 1114,
+          "line": 39,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 1121,
+          "line": 39,
+          "col": 12,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "=",
+          "offset": 1122,
+          "line": 39,
+          "col": 13,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 1123,
+          "line": 39,
+          "col": 14,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-tree",
+          "startsWith": {
+            "type": "string-start",
+            "value": "'",
+            "offset": 1124,
+            "line": 39,
+            "col": 15,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "string-end",
+            "value": "'",
+            "offset": 1139,
+            "line": 39,
+            "col": 30,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1125,
+              "line": 39,
+              "col": 16,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-value",
+              "value": "0.0.1-SNAPSHOT",
+              "offset": 1125,
+              "line": 39,
+              "col": 16,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1139,
+              "line": 39,
+              "col": 30,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1140,
+          "line": 39,
+          "col": 31,
+          "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 1141,
+          "line": 40,
+          "col": 1,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1142,
+      "line": 40,
+      "col": 2,
+      "lineBreaks": 1
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1143,
+      "line": 41,
+      "col": 1,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "sourceCompatibility",
+      "offset": 1144,
+      "line": 42,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 1163,
+      "line": 42,
+      "col": 20,
+      "lineBreaks": 0
+    },
+    {
+      "type": "operator",
+      "value": "=",
+      "offset": 1164,
+      "line": 42,
+      "col": 21,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 1165,
+      "line": 42,
+      "col": 22,
+      "lineBreaks": 0
+    },
+    {
+      "type": "number",
+      "value": "1",
+      "offset": 1166,
+      "line": 42,
+      "col": 23,
+      "lineBreaks": 0
+    },
+    {
+      "type": "number",
+      "value": ".8",
+      "offset": 1167,
+      "line": 42,
+      "col": 24,
+      "lineBreaks": 0
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1169,
+      "line": 42,
+      "col": 26,
+      "lineBreaks": 1
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1170,
+      "line": 43,
+      "col": 1,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "sourceSets",
+      "offset": 1171,
+      "line": 44,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 1181,
+      "line": 44,
+      "col": 11,
+      "lineBreaks": 0
+    },
+    {
+      "type": "wrapped-tree",
+      "startsWith": {
+        "type": "bracket-left",
+        "value": "{",
+        "offset": 1182,
+        "line": 44,
+        "col": 12,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "bracket-right",
+        "value": "}",
+        "offset": 1375,
+        "line": 51,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 1183,
+          "line": 44,
+          "col": 13,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1183,
+          "line": 44,
+          "col": 13,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1184,
+          "line": 45,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "integration",
+          "offset": 1188,
+          "line": 45,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 1199,
+          "line": 45,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "{",
+            "offset": 1200,
+            "line": 45,
+            "col": 17,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": "}",
+            "offset": 1373,
+            "line": 50,
+            "col": 5,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1201,
+              "line": 45,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 1201,
+              "line": 45,
+              "col": 18,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 1202,
+              "line": 46,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "compileClasspath",
+              "offset": 1210,
+              "line": 46,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1226,
+              "line": 46,
+              "col": 25,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": "+=",
+              "offset": 1227,
+              "line": 46,
+              "col": 26,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1229,
+              "line": 46,
+              "col": 28,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "main",
+              "offset": 1230,
+              "line": 46,
+              "col": 29,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": ".",
+              "offset": 1234,
+              "line": 46,
+              "col": 33,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "output",
+              "offset": 1235,
+              "line": 46,
+              "col": 34,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1241,
+              "line": 46,
+              "col": 40,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": "+",
+              "offset": 1242,
+              "line": 46,
+              "col": 41,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1243,
+              "line": 46,
+              "col": 42,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "test",
+              "offset": 1244,
+              "line": 46,
+              "col": 43,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": ".",
+              "offset": 1248,
+              "line": 46,
+              "col": 47,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "output",
+              "offset": 1249,
+              "line": 46,
+              "col": 48,
+              "lineBreaks": 0
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 1255,
+              "line": 46,
+              "col": 54,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 1256,
+              "line": 47,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "runtimeClasspath",
+              "offset": 1264,
+              "line": 47,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1280,
+              "line": 47,
+              "col": 25,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": "+=",
+              "offset": 1281,
+              "line": 47,
+              "col": 26,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1283,
+              "line": 47,
+              "col": 28,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "main",
+              "offset": 1284,
+              "line": 47,
+              "col": 29,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": ".",
+              "offset": 1288,
+              "line": 47,
+              "col": 33,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "output",
+              "offset": 1289,
+              "line": 47,
+              "col": 34,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1295,
+              "line": 47,
+              "col": 40,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": "+",
+              "offset": 1296,
+              "line": 47,
+              "col": 41,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1297,
+              "line": 47,
+              "col": 42,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "test",
+              "offset": 1298,
+              "line": 47,
+              "col": 43,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": ".",
+              "offset": 1302,
+              "line": 47,
+              "col": 47,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "output",
+              "offset": 1303,
+              "line": 47,
+              "col": 48,
+              "lineBreaks": 0
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 1309,
+              "line": 47,
+              "col": 54,
+              "lineBreaks": 1
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 1310,
+              "line": 48,
+              "col": 1,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 1311,
+              "line": 49,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "groovy",
+              "offset": 1319,
+              "line": 49,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": ".",
+              "offset": 1325,
+              "line": 49,
+              "col": 15,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "srcDir",
+              "offset": 1326,
+              "line": 49,
+              "col": 16,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1332,
+              "line": 49,
+              "col": 22,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "file",
+              "offset": 1333,
+              "line": 49,
+              "col": 23,
+              "lineBreaks": 0
+            },
+            {
+              "type": "wrapped-tree",
+              "startsWith": {
+                "type": "bracket-left",
+                "value": "(",
+                "offset": 1337,
+                "line": 49,
+                "col": 27,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "bracket-right",
+                "value": ")",
+                "offset": 1367,
+                "line": 49,
+                "col": 57,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1338,
+                  "line": 49,
+                  "col": 28,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-tree",
+                  "startsWith": {
+                    "type": "string-start",
+                    "value": "'",
+                    "offset": 1338,
+                    "line": 49,
+                    "col": 28,
+                    "lineBreaks": 0
+                  },
+                  "endsWith": {
+                    "type": "string-end",
+                    "value": "'",
+                    "offset": 1366,
+                    "line": 49,
+                    "col": 56,
+                    "lineBreaks": 0
+                  },
+                  "children": [
+                    {
+                      "type": "_start",
+                      "value": "",
+                      "offset": 1339,
+                      "line": 49,
+                      "col": 29,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "string-value",
+                      "value": "src/test/integration/groovy",
+                      "offset": 1339,
+                      "line": 49,
+                      "col": 29,
+                      "lineBreaks": 0
+                    },
+                    {
+                      "type": "_end",
+                      "value": "",
+                      "offset": 1366,
+                      "line": 49,
+                      "col": 56,
+                      "lineBreaks": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1367,
+                  "line": 49,
+                  "col": 57,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 1368,
+              "line": 49,
+              "col": 58,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "    ",
+              "offset": 1369,
+              "line": 50,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1373,
+              "line": 50,
+              "col": 5,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1374,
+          "line": 50,
+          "col": 6,
+          "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 1375,
+          "line": 51,
+          "col": 1,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1376,
+      "line": 51,
+      "col": 2,
+      "lineBreaks": 1
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1377,
+      "line": 52,
+      "col": 1,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "idea",
+      "offset": 1378,
+      "line": 53,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 1382,
+      "line": 53,
+      "col": 5,
+      "lineBreaks": 0
+    },
+    {
+      "type": "wrapped-tree",
+      "startsWith": {
+        "type": "bracket-left",
+        "value": "{",
+        "offset": 1383,
+        "line": 53,
+        "col": 6,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "bracket-right",
+        "value": "}",
+        "offset": 1460,
+        "line": 57,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 1384,
+          "line": 53,
+          "col": 7,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1384,
+          "line": 53,
+          "col": 7,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1385,
+          "line": 54,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "module",
+          "offset": 1389,
+          "line": 54,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 1395,
+          "line": 54,
+          "col": 11,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "{",
+            "offset": 1396,
+            "line": 54,
+            "col": 12,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": "}",
+            "offset": 1458,
+            "line": 56,
+            "col": 5,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1397,
+              "line": 54,
+              "col": 13,
+              "lineBreaks": 0
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 1397,
+              "line": 54,
+              "col": 13,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 1398,
+              "line": 55,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "scopes",
+              "offset": 1406,
+              "line": 55,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": ".",
+              "offset": 1412,
+              "line": 55,
+              "col": 15,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "TEST",
+              "offset": 1413,
+              "line": 55,
+              "col": 16,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": ".",
+              "offset": 1417,
+              "line": 55,
+              "col": 20,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "plus",
+              "offset": 1418,
+              "line": 55,
+              "col": 21,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1422,
+              "line": 55,
+              "col": 25,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": "=",
+              "offset": 1423,
+              "line": 55,
+              "col": 26,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1424,
+              "line": 55,
+              "col": 27,
+              "lineBreaks": 0
+            },
+            {
+              "type": "wrapped-tree",
+              "startsWith": {
+                "type": "bracket-left",
+                "value": "[",
+                "offset": 1425,
+                "line": 55,
+                "col": 28,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "bracket-right",
+                "value": "]",
+                "offset": 1452,
+                "line": 55,
+                "col": 55,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1426,
+                  "line": 55,
+                  "col": 29,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "symbol",
+                  "value": "configurations",
+                  "offset": 1426,
+                  "line": 55,
+                  "col": 29,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "operator",
+                  "value": ".",
+                  "offset": 1440,
+                  "line": 55,
+                  "col": 43,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "symbol",
+                  "value": "integration",
+                  "offset": 1441,
+                  "line": 55,
+                  "col": 44,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1452,
+                  "line": 55,
+                  "col": 55,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 1453,
+              "line": 55,
+              "col": 56,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "    ",
+              "offset": 1454,
+              "line": 56,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1458,
+              "line": 56,
+              "col": 5,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1459,
+          "line": 56,
+          "col": 6,
+          "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 1460,
+          "line": 57,
+          "col": 1,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1461,
+      "line": 57,
+      "col": 2,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "repositories",
+      "offset": 1462,
+      "line": 58,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 1474,
+      "line": 58,
+      "col": 13,
+      "lineBreaks": 0
+    },
+    {
+      "type": "wrapped-tree",
+      "startsWith": {
+        "type": "bracket-left",
+        "value": "{",
+        "offset": 1475,
+        "line": 58,
+        "col": 14,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "bracket-right",
+        "value": "}",
+        "offset": 1496,
+        "line": 60,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 1476,
+          "line": 58,
+          "col": 15,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1476,
+          "line": 58,
+          "col": 15,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1477,
+          "line": 59,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "mavenCentral",
+          "offset": 1481,
+          "line": 59,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "(",
+            "offset": 1493,
+            "line": 59,
+            "col": 17,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": ")",
+            "offset": 1494,
+            "line": 59,
+            "col": 18,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1494,
+              "line": 59,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1494,
+              "line": 59,
+              "col": 18,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1495,
+          "line": 59,
+          "col": 19,
+          "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 1496,
+          "line": 60,
+          "col": 1,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1497,
+      "line": 60,
+      "col": 2,
+      "lineBreaks": 1
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1498,
+      "line": 61,
+      "col": 1,
+      "lineBreaks": 1
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 1499,
+      "line": 62,
+      "col": 1,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "dependencies",
+      "offset": 1500,
+      "line": 63,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 1512,
+      "line": 63,
+      "col": 13,
+      "lineBreaks": 0
+    },
+    {
+      "type": "wrapped-tree",
+      "startsWith": {
+        "type": "bracket-left",
+        "value": "{",
+        "offset": 1513,
+        "line": 63,
+        "col": 14,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "bracket-right",
+        "value": "}",
+        "offset": 2302,
+        "line": 81,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 1514,
+          "line": 63,
+          "col": 15,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1514,
+          "line": 63,
+          "col": 15,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1515,
+          "line": 64,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "compile",
+          "offset": 1519,
+          "line": 64,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "(",
+            "offset": 1526,
+            "line": 64,
+            "col": 12,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": ")",
+            "offset": 1580,
+            "line": 64,
+            "col": 66,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1527,
+              "line": 64,
+              "col": 13,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "'",
+                "offset": 1527,
+                "line": 64,
+                "col": 13,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "'",
+                "offset": 1579,
+                "line": 64,
+                "col": 65,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1528,
+                  "line": 64,
+                  "col": 14,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "org.springframework.boot:spring-boot-starter-jersey",
+                  "offset": 1528,
+                  "line": 64,
+                  "col": 14,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1579,
+                  "line": 64,
+                  "col": 65,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1580,
+              "line": 64,
+              "col": 66,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 1581,
+          "line": 64,
+          "col": 67,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "{",
+            "offset": 1582,
+            "line": 64,
+            "col": 68,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": "}",
+            "offset": 1641,
+            "line": 66,
+            "col": 5,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1583,
+              "line": 64,
+              "col": 69,
+              "lineBreaks": 0
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 1583,
+              "line": 64,
+              "col": 69,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 1584,
+              "line": 65,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "exclude",
+              "offset": 1592,
+              "line": 65,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1599,
+              "line": 65,
+              "col": 16,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "module",
+              "offset": 1600,
+              "line": 65,
+              "col": 17,
+              "lineBreaks": 0
+            },
+            {
+              "type": "operator",
+              "value": ":",
+              "offset": 1606,
+              "line": 65,
+              "col": 23,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 1607,
+              "line": 65,
+              "col": 24,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "\"",
+                "offset": 1608,
+                "line": 65,
+                "col": 25,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "\"",
+                "offset": 1635,
+                "line": 65,
+                "col": 52,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1609,
+                  "line": 65,
+                  "col": 26,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "spring-boot-starter-tomcat",
+                  "offset": 1609,
+                  "line": 65,
+                  "col": 26,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1635,
+                  "line": 65,
+                  "col": 52,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 1636,
+              "line": 65,
+              "col": 53,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "    ",
+              "offset": 1637,
+              "line": 66,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1641,
+              "line": 66,
+              "col": 5,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1642,
+          "line": 66,
+          "col": 6,
+          "lineBreaks": 1
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1643,
+          "line": 67,
+          "col": 1,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1644,
+          "line": 68,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "compile",
+          "offset": 1648,
+          "line": 68,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "(",
+            "offset": 1655,
+            "line": 68,
+            "col": 12,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": ")",
+            "offset": 1708,
+            "line": 68,
+            "col": 65,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1656,
+              "line": 68,
+              "col": 13,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "\"",
+                "offset": 1656,
+                "line": 68,
+                "col": 13,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "\"",
+                "offset": 1707,
+                "line": 68,
+                "col": 64,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1657,
+                  "line": 68,
+                  "col": 14,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "org.springframework.boot:spring-boot-starter-jetty",
+                  "offset": 1657,
+                  "line": 68,
+                  "col": 14,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1707,
+                  "line": 68,
+                  "col": 64,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1708,
+              "line": 68,
+              "col": 65,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1709,
+          "line": 68,
+          "col": 66,
+          "lineBreaks": 1
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1710,
+          "line": 69,
+          "col": 1,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1711,
+          "line": 70,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "/",
+          "offset": 1715,
+          "line": 70,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "/",
+          "offset": 1716,
+          "line": 70,
+          "col": 6,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "compile",
+          "offset": 1717,
+          "line": 70,
+          "col": 7,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "(",
+            "offset": 1724,
+            "line": 70,
+            "col": 14,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": ")",
+            "offset": 1759,
+            "line": 70,
+            "col": 49,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1725,
+              "line": 70,
+              "col": 15,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "'",
+                "offset": 1725,
+                "line": 70,
+                "col": 15,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "'",
+                "offset": 1758,
+                "line": 70,
+                "col": 48,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1726,
+                  "line": 70,
+                  "col": 16,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "org.codehaus.groovy:groovy:2.4.9",
+                  "offset": 1726,
+                  "line": 70,
+                  "col": 16,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1758,
+                  "line": 70,
+                  "col": 48,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1759,
+              "line": 70,
+              "col": 49,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1760,
+          "line": 70,
+          "col": 50,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1761,
+          "line": 71,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "testCompile",
+          "offset": 1765,
+          "line": 71,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "(",
+            "offset": 1776,
+            "line": 71,
+            "col": 16,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": ")",
+            "offset": 1828,
+            "line": 71,
+            "col": 68,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1777,
+              "line": 71,
+              "col": 17,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "'",
+                "offset": 1777,
+                "line": 71,
+                "col": 17,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "'",
+                "offset": 1827,
+                "line": 71,
+                "col": 67,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1778,
+                  "line": 71,
+                  "col": 18,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "org.springframework.boot:spring-boot-starter-test",
+                  "offset": 1778,
+                  "line": 71,
+                  "col": 18,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1827,
+                  "line": 71,
+                  "col": 67,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1828,
+              "line": 71,
+              "col": 68,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1829,
+          "line": 71,
+          "col": 69,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1830,
+          "line": 72,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "compile",
+          "offset": 1834,
+          "line": 72,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "(",
+            "offset": 1841,
+            "line": 72,
+            "col": 12,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": ")",
+            "offset": 1896,
+            "line": 72,
+            "col": 67,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1842,
+              "line": 72,
+              "col": 13,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "\"",
+                "offset": 1842,
+                "line": 72,
+                "col": 13,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "\"",
+                "offset": 1895,
+                "line": 72,
+                "col": 66,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1843,
+                  "line": 72,
+                  "col": 14,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "org.grails:gorm-hibernate5-spring-boot:6.0.9.RELEASE",
+                  "offset": 1843,
+                  "line": 72,
+                  "col": 14,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1895,
+                  "line": 72,
+                  "col": 66,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1896,
+              "line": 72,
+              "col": 67,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1897,
+          "line": 72,
+          "col": 68,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1898,
+          "line": 73,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "runtime",
+          "offset": 1902,
+          "line": 73,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "(",
+            "offset": 1909,
+            "line": 73,
+            "col": 12,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": ")",
+            "offset": 1944,
+            "line": 73,
+            "col": 47,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1910,
+              "line": 73,
+              "col": 13,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "'",
+                "offset": 1910,
+                "line": 73,
+                "col": 13,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "'",
+                "offset": 1943,
+                "line": 73,
+                "col": 46,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 1911,
+                  "line": 73,
+                  "col": 14,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "mysql:mysql-connector-java:6.0.5",
+                  "offset": 1911,
+                  "line": 73,
+                  "col": 14,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 1943,
+                  "line": 73,
+                  "col": 46,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 1944,
+              "line": 73,
+              "col": 47,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1945,
+          "line": 73,
+          "col": 48,
+          "lineBreaks": 1
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 1946,
+          "line": 74,
+          "col": 1,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 1947,
+          "line": 75,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "testCompile",
+          "offset": 1951,
+          "line": 75,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 1962,
+          "line": 75,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-tree",
+          "startsWith": {
+            "type": "string-start",
+            "value": "'",
+            "offset": 1963,
+            "line": 75,
+            "col": 17,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "string-end",
+            "value": "'",
+            "offset": 2010,
+            "line": 75,
+            "col": 64,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 1964,
+              "line": 75,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-value",
+              "value": "org.spockframework:spock-spring:1.0-groovy-2.4",
+              "offset": 1964,
+              "line": 75,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2010,
+              "line": 75,
+              "col": 64,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2011,
+          "line": 75,
+          "col": 65,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 2012,
+          "line": 76,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "/",
+          "offset": 2016,
+          "line": 76,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "/",
+          "offset": 2017,
+          "line": 76,
+          "col": 6,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2018,
+          "line": 76,
+          "col": 7,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "optional",
+          "offset": 2019,
+          "line": 76,
+          "col": 8,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2027,
+          "line": 76,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "dependencies",
+          "offset": 2028,
+          "line": 76,
+          "col": 17,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2040,
+          "line": 76,
+          "col": 29,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "for",
+          "offset": 2041,
+          "line": 76,
+          "col": 30,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2044,
+          "line": 76,
+          "col": 33,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "using",
+          "offset": 2045,
+          "line": 76,
+          "col": 34,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2050,
+          "line": 76,
+          "col": 39,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "Spock",
+          "offset": 2051,
+          "line": 76,
+          "col": 40,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2056,
+          "line": 76,
+          "col": 45,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 2057,
+          "line": 77,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "testCompile",
+          "offset": 2061,
+          "line": 77,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2072,
+          "line": 77,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-tree",
+          "startsWith": {
+            "type": "string-start",
+            "value": "\"",
+            "offset": 2073,
+            "line": 77,
+            "col": 17,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "string-end",
+            "value": "\"",
+            "offset": 2104,
+            "line": 77,
+            "col": 48,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 2074,
+              "line": 77,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-value",
+              "value": "org.hamcrest:hamcrest-core:1.3",
+              "offset": 2074,
+              "line": 77,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2104,
+              "line": 77,
+              "col": 48,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2105,
+          "line": 77,
+          "col": 49,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "/",
+          "offset": 2106,
+          "line": 77,
+          "col": 50,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "/",
+          "offset": 2107,
+          "line": 77,
+          "col": 51,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2108,
+          "line": 77,
+          "col": 52,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "only",
+          "offset": 2109,
+          "line": 77,
+          "col": 53,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2113,
+          "line": 77,
+          "col": 57,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "necessary",
+          "offset": 2114,
+          "line": 77,
+          "col": 58,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2123,
+          "line": 77,
+          "col": 67,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "if",
+          "offset": 2124,
+          "line": 77,
+          "col": 68,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2126,
+          "line": 77,
+          "col": 70,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "Hamcrest",
+          "offset": 2127,
+          "line": 77,
+          "col": 71,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2135,
+          "line": 77,
+          "col": 79,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "matchers",
+          "offset": 2136,
+          "line": 77,
+          "col": 80,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2144,
+          "line": 77,
+          "col": 88,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "are",
+          "offset": 2145,
+          "line": 77,
+          "col": 89,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2148,
+          "line": 77,
+          "col": 92,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "used",
+          "offset": 2149,
+          "line": 77,
+          "col": 93,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2153,
+          "line": 77,
+          "col": 97,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 2154,
+          "line": 78,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "testRuntime",
+          "offset": 2158,
+          "line": 78,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2169,
+          "line": 78,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-tree",
+          "startsWith": {
+            "type": "string-start",
+            "value": "\"",
+            "offset": 2170,
+            "line": 78,
+            "col": 17,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "string-end",
+            "value": "\"",
+            "offset": 2192,
+            "line": 78,
+            "col": 39,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 2171,
+              "line": 78,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-value",
+              "value": "cglib:cglib-nodep:3.1",
+              "offset": 2171,
+              "line": 78,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2192,
+              "line": 78,
+              "col": 39,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2193,
+          "line": 78,
+          "col": 40,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "/",
+          "offset": 2194,
+          "line": 78,
+          "col": 41,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "/",
+          "offset": 2195,
+          "line": 78,
+          "col": 42,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2196,
+          "line": 78,
+          "col": 43,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "allows",
+          "offset": 2197,
+          "line": 78,
+          "col": 44,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2203,
+          "line": 78,
+          "col": 50,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "mocking",
+          "offset": 2204,
+          "line": 78,
+          "col": 51,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2211,
+          "line": 78,
+          "col": 58,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "of",
+          "offset": 2212,
+          "line": 78,
+          "col": 59,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2214,
+          "line": 78,
+          "col": 61,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "classes",
+          "offset": 2215,
+          "line": 78,
+          "col": 62,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2222,
+          "line": 78,
+          "col": 69,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "(",
+            "offset": 2223,
+            "line": 78,
+            "col": 70,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": ")",
+            "offset": 2249,
+            "line": 78,
+            "col": 96,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 2224,
+              "line": 78,
+              "col": 71,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "in",
+              "offset": 2224,
+              "line": 78,
+              "col": 71,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 2226,
+              "line": 78,
+              "col": 73,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "addition",
+              "offset": 2227,
+              "line": 78,
+              "col": 74,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 2235,
+              "line": 78,
+              "col": 82,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "to",
+              "offset": 2236,
+              "line": 78,
+              "col": 83,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 2238,
+              "line": 78,
+              "col": 85,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "interfaces",
+              "offset": 2239,
+              "line": 78,
+              "col": 86,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2249,
+              "line": 78,
+              "col": 96,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2250,
+          "line": 78,
+          "col": 97,
+          "lineBreaks": 1
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2251,
+          "line": 79,
+          "col": 1,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 2252,
+          "line": 80,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "dependency",
+          "offset": 2256,
+          "line": 80,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2266,
+          "line": 80,
+          "col": 15,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-tree",
+          "startsWith": {
+            "type": "string-start",
+            "value": "'",
+            "offset": 2267,
+            "line": 80,
+            "col": 16,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "string-end",
+            "value": "'",
+            "offset": 2300,
+            "line": 80,
+            "col": 49,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 2268,
+              "line": 80,
+              "col": 17,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-value",
+              "value": "org.apache.openjpa:openjpa:3.1.1",
+              "offset": 2268,
+              "line": 80,
+              "col": 17,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2300,
+              "line": 80,
+              "col": 49,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2301,
+          "line": 80,
+          "col": 50,
+          "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 2302,
+          "line": 81,
+          "col": 1,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 2303,
+      "line": 81,
+      "col": 2,
+      "lineBreaks": 1
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 2304,
+      "line": 82,
+      "col": 1,
+      "lineBreaks": 1
+    },
+    {
+      "type": "symbol",
+      "value": "task",
+      "offset": 2305,
+      "line": 83,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 2309,
+      "line": 83,
+      "col": 5,
+      "lineBreaks": 0
+    },
+    {
+      "type": "symbol",
+      "value": "integration",
+      "offset": 2310,
+      "line": 83,
+      "col": 6,
+      "lineBreaks": 0
+    },
+    {
+      "type": "wrapped-tree",
+      "startsWith": {
+        "type": "bracket-left",
+        "value": "(",
+        "offset": 2321,
+        "line": 83,
+        "col": 17,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "bracket-right",
+        "value": ")",
+        "offset": 2332,
+        "line": 83,
+        "col": 28,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 2322,
+          "line": 83,
+          "col": 18,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "type",
+          "offset": 2322,
+          "line": 83,
+          "col": 18,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": ":",
+          "offset": 2326,
+          "line": 83,
+          "col": 22,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2327,
+          "line": 83,
+          "col": 23,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "Test",
+          "offset": 2328,
+          "line": 83,
+          "col": 24,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 2332,
+          "line": 83,
+          "col": 28,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "whitespace",
+      "value": " ",
+      "offset": 2333,
+      "line": 83,
+      "col": 29,
+      "lineBreaks": 0
+    },
+    {
+      "type": "wrapped-tree",
+      "startsWith": {
+        "type": "bracket-left",
+        "value": "{",
+        "offset": 2334,
+        "line": 83,
+        "col": 30,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "bracket-right",
+        "value": "}",
+        "offset": 2590,
+        "line": 91,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 2335,
+          "line": 83,
+          "col": 31,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2335,
+          "line": 83,
+          "col": 31,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 2336,
+          "line": 84,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "testClassesDir",
+          "offset": 2340,
+          "line": 84,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2354,
+          "line": 84,
+          "col": 19,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "=",
+          "offset": 2355,
+          "line": 84,
+          "col": 20,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2356,
+          "line": 84,
+          "col": 21,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "sourceSets",
+          "offset": 2357,
+          "line": 84,
+          "col": 22,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": ".",
+          "offset": 2367,
+          "line": 84,
+          "col": 32,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "integration",
+          "offset": 2368,
+          "line": 84,
+          "col": 33,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": ".",
+          "offset": 2379,
+          "line": 84,
+          "col": 44,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "output",
+          "offset": 2380,
+          "line": 84,
+          "col": 45,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": ".",
+          "offset": 2386,
+          "line": 84,
+          "col": 51,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "classesDir",
+          "offset": 2387,
+          "line": 84,
+          "col": 52,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2397,
+          "line": 84,
+          "col": 62,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 2398,
+          "line": 85,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "classpath",
+          "offset": 2402,
+          "line": 85,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2411,
+          "line": 85,
+          "col": 14,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "=",
+          "offset": 2412,
+          "line": 85,
+          "col": 15,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2413,
+          "line": 85,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "sourceSets",
+          "offset": 2414,
+          "line": 85,
+          "col": 17,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": ".",
+          "offset": 2424,
+          "line": 85,
+          "col": 27,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "integration",
+          "offset": 2425,
+          "line": 85,
+          "col": 28,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": ".",
+          "offset": 2436,
+          "line": 85,
+          "col": 39,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "runtimeClasspath",
+          "offset": 2437,
+          "line": 85,
+          "col": 40,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2453,
+          "line": 85,
+          "col": 56,
+          "lineBreaks": 1
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2454,
+          "line": 86,
+          "col": 1,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 2455,
+          "line": 87,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "/",
+          "offset": 2459,
+          "line": 87,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "operator",
+          "value": "/",
+          "offset": 2460,
+          "line": 87,
+          "col": 6,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2461,
+          "line": 87,
+          "col": 7,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "This",
+          "offset": 2462,
+          "line": 87,
+          "col": 8,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2466,
+          "line": 87,
+          "col": 12,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "is",
+          "offset": 2467,
+          "line": 87,
+          "col": 13,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2469,
+          "line": 87,
+          "col": 15,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "not",
+          "offset": 2470,
+          "line": 87,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2473,
+          "line": 87,
+          "col": 19,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "needed",
+          "offset": 2474,
+          "line": 87,
+          "col": 20,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_",
+          "value": ",",
+          "offset": 2480,
+          "line": 87,
+          "col": 26,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2481,
+          "line": 87,
+          "col": 27,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "but",
+          "offset": 2482,
+          "line": 87,
+          "col": 28,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2485,
+          "line": 87,
+          "col": 31,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_",
+          "value": "I",
+          "offset": 2486,
+          "line": 87,
+          "col": 32,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2487,
+          "line": 87,
+          "col": 33,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "like",
+          "offset": 2488,
+          "line": 87,
+          "col": 34,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2492,
+          "line": 87,
+          "col": 38,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "to",
+          "offset": 2493,
+          "line": 87,
+          "col": 39,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2495,
+          "line": 87,
+          "col": 41,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "see",
+          "offset": 2496,
+          "line": 87,
+          "col": 42,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2499,
+          "line": 87,
+          "col": 45,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "which",
+          "offset": 2500,
+          "line": 87,
+          "col": 46,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2505,
+          "line": 87,
+          "col": 51,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "tests",
+          "offset": 2506,
+          "line": 87,
+          "col": 52,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2511,
+          "line": 87,
+          "col": 57,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "have",
+          "offset": 2512,
+          "line": 87,
+          "col": 58,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2516,
+          "line": 87,
+          "col": 62,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "run",
+          "offset": 2517,
+          "line": 87,
+          "col": 63,
+          "lineBreaks": 0
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2520,
+          "line": 87,
+          "col": 66,
+          "lineBreaks": 1
+        },
+        {
+          "type": "whitespace",
+          "value": "    ",
+          "offset": 2521,
+          "line": 88,
+          "col": 1,
+          "lineBreaks": 0
+        },
+        {
+          "type": "symbol",
+          "value": "testLogging",
+          "offset": 2525,
+          "line": 88,
+          "col": 5,
+          "lineBreaks": 0
+        },
+        {
+          "type": "whitespace",
+          "value": " ",
+          "offset": 2536,
+          "line": 88,
+          "col": 16,
+          "lineBreaks": 0
+        },
+        {
+          "type": "wrapped-tree",
+          "startsWith": {
+            "type": "bracket-left",
+            "value": "{",
+            "offset": 2537,
+            "line": 88,
+            "col": 17,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "bracket-right",
+            "value": "}",
+            "offset": 2588,
+            "line": 90,
+            "col": 5,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 2538,
+              "line": 88,
+              "col": 18,
+              "lineBreaks": 0
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 2538,
+              "line": 88,
+              "col": 18,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "        ",
+              "offset": 2539,
+              "line": 89,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "events",
+              "offset": 2547,
+              "line": 89,
+              "col": 9,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 2553,
+              "line": 89,
+              "col": 15,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "\"",
+                "offset": 2554,
+                "line": 89,
+                "col": 16,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "\"",
+                "offset": 2561,
+                "line": 89,
+                "col": 23,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 2555,
+                  "line": 89,
+                  "col": 17,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "passed",
+                  "offset": 2555,
+                  "line": 89,
+                  "col": 17,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 2561,
+                  "line": 89,
+                  "col": 23,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "_",
+              "value": ",",
+              "offset": 2562,
+              "line": 89,
+              "col": 24,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 2563,
+              "line": 89,
+              "col": 25,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "\"",
+                "offset": 2564,
+                "line": 89,
+                "col": 26,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "\"",
+                "offset": 2572,
+                "line": 89,
+                "col": 34,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 2565,
+                  "line": 89,
+                  "col": 27,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "skipped",
+                  "offset": 2565,
+                  "line": 89,
+                  "col": 27,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 2572,
+                  "line": 89,
+                  "col": 34,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "_",
+              "value": ",",
+              "offset": 2573,
+              "line": 89,
+              "col": 35,
+              "lineBreaks": 0
+            },
+            {
+              "type": "whitespace",
+              "value": " ",
+              "offset": 2574,
+              "line": 89,
+              "col": 36,
+              "lineBreaks": 0
+            },
+            {
+              "type": "string-tree",
+              "startsWith": {
+                "type": "string-start",
+                "value": "\"",
+                "offset": 2575,
+                "line": 89,
+                "col": 37,
+                "lineBreaks": 0
+              },
+              "endsWith": {
+                "type": "string-end",
+                "value": "\"",
+                "offset": 2582,
+                "line": 89,
+                "col": 44,
+                "lineBreaks": 0
+              },
+              "children": [
+                {
+                  "type": "_start",
+                  "value": "",
+                  "offset": 2576,
+                  "line": 89,
+                  "col": 38,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "string-value",
+                  "value": "failed",
+                  "offset": 2576,
+                  "line": 89,
+                  "col": 38,
+                  "lineBreaks": 0
+                },
+                {
+                  "type": "_end",
+                  "value": "",
+                  "offset": 2582,
+                  "line": 89,
+                  "col": 44,
+                  "lineBreaks": 0
+                }
+              ]
+            },
+            {
+              "type": "newline",
+              "value": "\n",
+              "offset": 2583,
+              "line": 89,
+              "col": 45,
+              "lineBreaks": 1
+            },
+            {
+              "type": "whitespace",
+              "value": "    ",
+              "offset": 2584,
+              "line": 90,
+              "col": 1,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 2588,
+              "line": 90,
+              "col": 5,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "newline",
+          "value": "\n",
+          "offset": 2589,
+          "line": 90,
+          "col": 6,
+          "lineBreaks": 1
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 2590,
+          "line": 91,
+          "col": 1,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 2591,
+      "line": 91,
+      "col": 2,
+      "lineBreaks": 1
+    },
+    {
+      "type": "_end",
+      "value": "",
+      "offset": 2592,
+      "line": 92,
+      "col": 1,
+      "lineBreaks": 0
+    }
+  ]
+}

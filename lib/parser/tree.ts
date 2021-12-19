@@ -5,7 +5,7 @@ import type {
   Token,
   WhitespaceToken,
 } from '../lexer/types';
-import type { Node, ParserConfig, RootTree, Tree } from './types';
+import type { Node, ParserConfig, RootTree, TemplateTree, Tree } from './types';
 
 type IndentMode = 'on' | 'off';
 
@@ -54,7 +54,8 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
 
   let nestingCounter = 0;
 
-  for (const token of lexer) {
+  const lex = [...lexer];
+  for (const token of lex) {
     if (!currentTree.children.length) {
       currentTree.children.push(specialToken('_start', prevToken, token));
     }
@@ -156,7 +157,10 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
         currentTree = prevTree;
       }
       nestingCounter -= 1;
-    } else if (token.type === 'template-start') {
+    } else if (
+      token.type === 'template-start' &&
+      currentTree.type === 'string-tree'
+    ) {
       stack.push(currentTree);
       currentTree = {
         type: 'template-tree',
@@ -177,6 +181,72 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
         currentTree = prevTree;
       }
       nestingCounter -= 1;
+    } else if (
+      token.type === 'string-value' &&
+      currentTree.type === 'template-tree'
+    ) {
+      const tplTree: TemplateTree = currentTree;
+
+      const tplEndToken = specialToken('_end', prevToken, token);
+      tplTree.children.push(tplEndToken);
+      tplTree.endsWith = { ...tplEndToken, type: 'template-end' };
+
+      const upperTree = stack.pop();
+      if (upperTree) {
+        upperTree.children.push(tplTree);
+        upperTree.children.push(token);
+        currentTree = upperTree;
+        nestingCounter -= 1;
+      }
+    } else if (
+      token.type === 'string-end' &&
+      currentTree.type === 'template-tree'
+    ) {
+      const tplTree: TemplateTree = currentTree;
+
+      const tplEndToken = specialToken('_end', prevToken, token);
+      tplTree.children.push(tplEndToken);
+      tplTree.endsWith = { ...tplEndToken, type: 'template-end' };
+
+      const strTree = stack.pop();
+      if (strTree?.type === 'string-tree') {
+        strTree.children.push(tplTree);
+
+        const strEndToken = specialToken('_end', prevToken, token);
+        strTree.children.push(strEndToken);
+        strTree.endsWith = token;
+
+        currentTree = strTree;
+        nestingCounter -= 1;
+
+        const upperTree = stack.pop();
+        if (upperTree) {
+          upperTree.children.push(strTree);
+          currentTree = upperTree;
+          nestingCounter -= 1;
+        }
+      }
+    } else if (
+      token.type === 'template-start' &&
+      currentTree.type === 'template-tree'
+    ) {
+      const tplTree: TemplateTree = currentTree;
+
+      const tplEndToken = specialToken('_end', prevToken, token);
+      tplTree.children.push(tplEndToken);
+      tplTree.endsWith = { ...tplEndToken, type: 'template-end' };
+
+      const strTree = stack.pop();
+      if (strTree?.type === 'string-tree') {
+        strTree.children.push(tplTree);
+        stack.push(strTree);
+        currentTree = {
+          type: 'template-tree',
+          startsWith: token,
+          endsWith: { ...token, type: 'template-end' },
+          children: [],
+        };
+      }
     } else {
       currentTree.children.push(token);
     }
