@@ -5,6 +5,7 @@ import type { Cursor } from '../parser/types';
 import { buildRoot } from '../query';
 import { QueryBuilder } from '../query/types';
 import { clone } from '../query/util';
+import { lang as groovy } from './groovy';
 import { lang as python } from './python';
 import type { LanguageConfig } from './types';
 
@@ -36,9 +37,12 @@ export class Language {
   }
 }
 
-type LanguagePreset = 'python';
+type LanguagePreset = 'groovy' | 'python';
 
-const languagePresets: Record<LanguagePreset, LanguageConfig> = { python };
+const languagePresets: Record<LanguagePreset, LanguageConfig> = {
+  groovy,
+  python,
+};
 
 export function createLang(key: LanguagePreset): Language;
 export function createLang(config: LanguageConfig): Language;

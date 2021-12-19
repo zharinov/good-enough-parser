@@ -130,59 +130,54 @@ describe('lexer/string', () => {
   it('supports variable templates', () => {
     const states: StatesMap = {
       $: {
-        foo: { t: 'string', match: 'foo' },
-        bar: { t: 'string', match: 'bar' },
+        symbol: { t: 'regex', match: /[a-z]+/ },
+        op$0: { t: 'string', match: '.' },
+        op$1: { t: 'string', match: '+' },
+        op$2: { t: 'string', match: '-' },
       },
     };
 
     const opts: StringOption[] = [
       {
         startsWith: '"',
-        templates: [{ startsWith: '$', type: 'var', allowedTokens: ['foo'] }],
+        templates: [
+          { type: 'var', startsWith: '$', operators: ['.'] },
+          { type: 'expr', startsWith: '${', endsWith: '}' },
+        ],
       },
     ];
 
-    expect(configStrings(states, opts)).toMatchObject({
+    const res = configStrings(states, opts);
+
+    expect(res).toMatchObject({
       $: {
-        bar: {
-          match: 'bar',
-        },
-        foo: {
-          match: 'foo',
-        },
-        str$0$start: {
-          match: '"',
-          push: 'str$0$state',
-        },
+        op$0: { match: '.' },
+        op$1: { match: '+' },
+        op$2: { match: '-' },
+        str$0$start: { match: '"', push: 'str$0$state' },
+        symbol: { t: 'regex' },
       },
       str$0$state: {
-        str$0$end: {
-          match: '"',
-          pop: 1,
-        },
-        str$0$tpl$0$start: {
-          match: '$',
-          push: 'str$0$tpl$0$state',
-        },
-        str$0$value: {
-          fallback: true,
-        },
+        str$0$tpl$1$start: { match: '${', push: 'str$0$tpl$1$state' },
+        str$0$tpl$0$start: { match: '$', push: 'str$0$tpl$0$state' },
+        str$0$end: { match: '"', pop: 1 },
+        str$0$value: { t: 'fallback' },
       },
       str$0$tpl$0$state: {
-        foo: {
-          match: 'foo',
-        },
-        str$0$end: {
-          match: '"',
-          pop: 1,
-        },
-        str$0$tpl$0$start: {
-          match: '$',
-          push: 'str$0$tpl$0$state',
-        },
-        str$0$value: {
-          fallback: true,
-        },
+        str$0$tpl$1$start: { match: '${', next: 'str$0$tpl$1$state' },
+        str$0$tpl$0$start: { match: '$', next: 'str$0$tpl$0$state' },
+        op$0: { match: '.' },
+        str$0$end: { match: '"', pop: 1 },
+        str$0$value: { t: 'fallback' },
+        symbol: { t: 'regex' },
+      },
+      str$0$tpl$1$state: {
+        op$0: { match: '.' },
+        op$1: { match: '+' },
+        op$2: { match: '-' },
+        str$0$start: { match: '"', push: 'str$0$state' },
+        symbol: { t: 'regex' },
+        str$0$tpl$1$end: { match: '}', pop: 1 },
       },
     });
   });

@@ -1,6 +1,7 @@
 import { getCounterpartBracketKey, isBracketKey, isRightKey } from './bracket';
 import { copyStateDefinition, fallbackRule, sortStatesMap } from './rules';
 import type {
+  LexerRule,
   StateDefinition,
   StatesMap,
   StringOption,
@@ -57,7 +58,8 @@ function exprTplStatesMap(
 }
 
 interface VarTplStateInput {
-  allowedTokens: string[];
+  symbols?: RegExp;
+  operators: string[];
   tplStart: string;
   tplStateName: string;
   strEnd: string;
@@ -67,30 +69,40 @@ interface VarTplStateInput {
 function varTplState(
   $: StateDefinition,
   strState: StateDefinition,
-  { allowedTokens = [], tplStateName }: VarTplStateInput
+  { operators = [], symbols }: VarTplStateInput
 ): StateDefinition {
   const result: StateDefinition = { ...strState };
   Object.entries(result).forEach(([key, val]) => {
     if (val.t !== 'fallback') {
-      const { push, pop, next } = val;
-      if ([push, pop, next].every((x) => x === undefined)) {
-        result[key] = { ...val, next: tplStateName };
-      } else {
-        result[key] = { ...val };
+      const rule = { ...val };
+      if (rule.push) {
+        rule.next = rule.push;
+        delete rule.push;
       }
+      result[key] = rule;
     } else {
       result[key] = { ...val };
     }
   });
 
-  for (const tokenName of allowedTokens) {
-    const rule = $[tokenName];
-    if (rule) {
-      if (rule.t !== 'fallback') {
-        result[tokenName] = { ...rule };
-      }
+  const symbolRule: LexerRule | undefined = symbols
+    ? { t: 'regex', match: symbols }
+    : $.symbol;
+  if (!symbolRule) {
+    throw new Error(`String definition isn't found for template definition`);
+  }
+  result.symbol = symbolRule;
+
+  for (const op of operators) {
+    const opEntry = Object.entries($).find(
+      ([key, rule]) =>
+        key.startsWith('op$') && rule.t === 'string' && rule.match === op
+    );
+    if (opEntry) {
+      const [opKey, opRule] = opEntry;
+      result[opKey] = { ...opRule };
     } else {
-      throw new Error(`Wrong element for allowedRules: ${tokenName}`);
+      throw new Error(`Operator is not found: ${op}`);
     }
   }
 
@@ -152,9 +164,10 @@ export function configStrings(
           match: tplStart,
           push: tplStateName,
         };
-        const { allowedTokens } = tplOpt;
+        const { operators = [], symbols } = tplOpt;
         varTplPreStates.push({
-          allowedTokens,
+          symbols,
+          operators,
           tplStateName,
           tplStart,
           strEnd,

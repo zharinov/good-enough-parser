@@ -1,0 +1,156 @@
+{
+  "type": "root-tree",
+  "children": [
+    {
+      "type": "_start",
+      "value": "",
+      "offset": 0,
+      "line": 1,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "\"",
+        "offset": 0,
+        "line": 1,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "\"",
+        "offset": 10,
+        "line": 1,
+        "col": 11,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 1,
+          "line": 1,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "template-tree",
+          "startsWith": {
+            "type": "template-start",
+            "value": "$",
+            "offset": 1,
+            "line": 1,
+            "col": 2,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "template-end",
+            "value": "",
+            "offset": 5,
+            "line": 1,
+            "col": 6,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 2,
+              "line": 1,
+              "col": 3,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "foo",
+              "offset": 2,
+              "line": 1,
+              "col": 3,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 5,
+              "line": 1,
+              "col": 6,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "string-value",
+          "value": ":",
+          "offset": 5,
+          "line": 1,
+          "col": 6,
+          "lineBreaks": 0
+        },
+        {
+          "type": "template-tree",
+          "startsWith": {
+            "type": "template-start",
+            "value": "$",
+            "offset": 6,
+            "line": 1,
+            "col": 7,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "template-end",
+            "value": "",
+            "offset": 10,
+            "line": 1,
+            "col": 11,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 7,
+              "line": 1,
+              "col": 8,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "bar",
+              "offset": 7,
+              "line": 1,
+              "col": 8,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 10,
+              "line": 1,
+              "col": 11,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 10,
+          "line": 1,
+          "col": 11,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "_end",
+      "value": "",
+      "offset": 11,
+      "line": 1,
+      "col": 2,
+      "lineBreaks": 0
+    }
+  ]
+}
