@@ -32,11 +32,27 @@ jobs:
 
       - name: Install dependencies
         run: yarn --frozen-lockfile --no-progress
+
+      - name: Set git author name
+        run: git config --global user.name "Sergei Zharinov"
+      - name: Set git author email
+        run: git config --global user.email "sergio.zharinov@gmail.com"
+
+      - name: Bump version
+        run: npm version ${{ github.event.release.tag_name }}
+
       - name: Build
         run: yarn -s build
+
       - name: Test
         run: yarn -s test
+
       - name: Publish
         run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Push bumped version
+        run: git push
+        env:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
