@@ -1,21 +1,19 @@
-import { clone, freeze } from './util';
+import { coerceHandler } from './util';
 
 describe('query/util', () => {
-  const input = { foo: { bar: 0 } };
+  it('wraps handler', () => {
+    const ctx = [1, 2, 3];
 
-  it('freezes objects', () => {
-    const frozen = freeze(input);
-    expect(() => {
-      frozen.foo.bar = 1;
-    }).toThrow();
-    expect(frozen).toEqual({ foo: { bar: 0 } });
-  });
+    const handler = (ctx: number[]) => {
+      ctx.push(4);
+      return ctx;
+    };
 
-  it('unfreezes when cloning', () => {
-    const cloned = clone(freeze(input));
-    expect(() => {
-      cloned.foo.bar = 1;
-    }).not.toThrow();
-    expect(cloned).toEqual({ foo: { bar: 1 } });
+    const wrappedHandler = coerceHandler(handler);
+
+    const res = wrappedHandler(ctx, null as never);
+
+    expect(ctx).toEqual([1, 2, 3]);
+    expect(res).toEqual([1, 2, 3, 4]);
   });
 });

@@ -36,7 +36,6 @@
   "dependencies": {
     "@thi.ng/zipper": "1.0.3",
     "@types/moo": "0.5.5",
-    "deep-freeze-es6": "1.4.1",
     "klona": "2.0.5",
     "moo": "0.5.1"
   },
