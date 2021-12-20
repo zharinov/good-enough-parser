@@ -13,7 +13,7 @@ export abstract class AbstractMatcher<Ctx> implements Matcher<Ctx> {
     return skipByDefault.includes(node.type);
   }
 
-  seek(cursor: Cursor): Cursor {
+  seekNext(cursor: Cursor): Cursor {
     let node = cursor.node;
     while (this.canSkip(node)) {
       if (!cursor.right) {
@@ -27,7 +27,7 @@ export abstract class AbstractMatcher<Ctx> implements Matcher<Ctx> {
     return cursor;
   }
 
-  seekRight(cursor: Cursor): Cursor {
+  moveRight(cursor: Cursor): Cursor {
     const result = cursor.right;
     if (result) {
       return result;

@@ -27,7 +27,7 @@ export class CommentMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const context = checkpoint.context;
-    const cursor = this.seek(checkpoint.cursor);
+    const cursor = this.seekNext(checkpoint.cursor);
     const node = cursor.node;
     if (node?.type === 'comment') {
       let isMatched = true;
