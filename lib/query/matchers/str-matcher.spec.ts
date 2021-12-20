@@ -10,13 +10,31 @@ type Ctx = string[];
 describe('query/matchers/str-matcher', () => {
   const handler = (ctx: Ctx, node: Token) => [...ctx, node.value];
 
-  it('handles exact match', () => {
+  it('handles any string match', () => {
+    const input = '"foobar"';
+    const query = q.str<Ctx>(handler);
+
+    const res = lang.query(input, query, []);
+
+    expect(res).toEqual(['foobar']);
+  });
+
+  it('handles exact string match', () => {
     const input = '"foobar"';
     const query = q.str<Ctx>('foobar', handler);
 
     const res = lang.query(input, query, []);
 
     expect(res).toEqual(['foobar']);
+  });
+
+  it('handles string sequence match', () => {
+    const input = '"foo" "bar" "baz"';
+    const query = q.str<Ctx>(handler).str(handler).str(handler);
+
+    const res = lang.query(input, query, []);
+
+    expect(res).toEqual(['foo', 'bar', 'baz']);
   });
 
   it('handles regex match', () => {

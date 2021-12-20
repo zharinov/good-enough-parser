@@ -114,10 +114,11 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
-    const rootNode = checkpoint.cursor.node;
+    const rootCursor = this.seek(checkpoint.cursor);
+    const rootNode = rootCursor.node;
     if (rootNode?.type === 'string-tree') {
       let context = this.preHandler(checkpoint.context, rootNode);
-      let cursor = checkpoint.cursor;
+      let cursor = rootCursor;
 
       if (this.matchers) {
         const tokensCount = cursor.children.length - 2;
@@ -138,7 +139,7 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       }
 
       context = this.postHandler(context, rootNode);
-      cursor = this.seekRight(checkpoint.cursor);
+      cursor = this.seekRight(rootCursor);
       return { context, cursor };
     }
 
