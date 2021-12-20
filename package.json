@@ -1,7 +1,7 @@
 {
   "name": "good-enough-parser",
   "description": "Parse and query computer programs source code",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "repository": "git@github.com:zharinov/good-enough-parser.git",
   "author": "Sergei Zharinov",
   "contributors": [
