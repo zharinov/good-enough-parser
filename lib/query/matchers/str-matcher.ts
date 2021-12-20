@@ -44,7 +44,7 @@ export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
       if (isMatched) {
         context = this.handler(context, node);
-        cursor = this.seekRight(cursor);
+        cursor = this.moveRight(cursor);
         return { cursor, context };
       }
     }
@@ -76,14 +76,14 @@ export class StrTplMatcher<Ctx> extends AbstractMatcher<Ctx> {
       let cursor = checkpoint.cursor.down;
       if (cursor && cursor.node) {
         let context = this.preHandler(tplContext, rootNode);
-        cursor = this.matcher.seek(cursor);
+        cursor = this.matcher.seekNext(cursor);
         const match = this.matcher.match({ context, cursor });
         if (match) {
           ({ cursor, context } = match);
-          cursor = this.seek(cursor);
+          cursor = this.seekNext(cursor);
           if (cursor.node?.type === '_end') {
             context = this.postHandler(context, rootNode);
-            cursor = this.seekRight(tplCursor);
+            cursor = this.moveRight(tplCursor);
             return { context, cursor };
           }
         }
@@ -114,7 +114,7 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
-    const rootCursor = this.seek(checkpoint.cursor);
+    const rootCursor = this.seekNext(checkpoint.cursor);
     const rootNode = rootCursor.node;
     if (rootNode?.type === 'string-tree') {
       let context = this.preHandler(checkpoint.context, rootNode);
@@ -127,7 +127,7 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
         }
 
         if (tokensCount > 0) {
-          cursor = this.seekRight(cursor.down as never);
+          cursor = this.moveRight(cursor.down as never);
           for (const matcher of this.matchers) {
             const match = matcher.match({ context, cursor });
             if (!match) {
@@ -139,7 +139,7 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       }
 
       context = this.postHandler(context, rootNode);
-      cursor = this.seekRight(rootCursor);
+      cursor = this.moveRight(rootCursor);
       return { context, cursor };
     }
 

@@ -20,7 +20,7 @@ export class OpMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     let context = checkpoint.context;
-    let cursor = this.seek(checkpoint.cursor);
+    let cursor = this.seekNext(checkpoint.cursor);
     const node = cursor.node;
     if (node?.type === 'operator') {
       let isMatched = true;
@@ -31,7 +31,7 @@ export class OpMatcher<Ctx> extends AbstractMatcher<Ctx> {
       }
       if (isMatched) {
         context = this.handler(context, node);
-        cursor = this.seekRight(cursor);
+        cursor = this.moveRight(cursor);
         return { cursor, context };
       }
     }

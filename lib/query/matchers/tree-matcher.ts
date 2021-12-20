@@ -51,8 +51,8 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
     let rightCursor = cursor.right;
     if (rightCursor) {
       rightCursor = this.matcher
-        ? this.matcher.seek(rightCursor)
-        : this.seek(rightCursor);
+        ? this.matcher.seekNext(rightCursor)
+        : this.seekNext(rightCursor);
       if (rightCursor) {
         return rightCursor;
       }
@@ -64,8 +64,8 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       rightCursor = upperCursor.right;
       if (rightCursor) {
         rightCursor = this.matcher
-          ? this.matcher.seek(rightCursor)
-          : this.seek(rightCursor);
+          ? this.matcher.seekNext(rightCursor)
+          : this.seekNext(rightCursor);
         if (rightCursor) {
           upperCursor = rightCursor;
           break;
@@ -135,7 +135,7 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       const cursor =
         rootNode.type === 'root-tree'
           ? checkpoint.cursor
-          : this.seekRight(checkpoint.cursor);
+          : this.moveRight(checkpoint.cursor);
       return { context, cursor };
     }
 
