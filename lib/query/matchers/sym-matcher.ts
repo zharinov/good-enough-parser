@@ -1,11 +1,12 @@
 import { SymbolToken } from '../../lexer/types';
+import { safeHandler } from '../handler';
+import { isRegex } from '../regex';
 import type {
   Checkpoint,
   SymMatcherHandler,
   SymMatcherOptions,
   SymMatcherValue,
 } from '../types';
-import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 
 export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
@@ -15,7 +16,7 @@ export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor({ value, handler }: SymMatcherOptions<Ctx>) {
     super();
     this.sym = value;
-    this.handler = coerceHandler<Ctx, SymbolToken>(handler);
+    this.handler = safeHandler<Ctx, SymbolToken>(handler);
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
@@ -26,7 +27,7 @@ export class SymMatcher<Ctx> extends AbstractMatcher<Ctx> {
       let isMatched = true;
       if (typeof this.sym === 'string') {
         isMatched = this.sym === node.value;
-      } else if (this.sym instanceof RegExp) {
+      } else if (isRegex(this.sym)) {
         isMatched = this.sym.test(node.value);
       }
       if (isMatched) {

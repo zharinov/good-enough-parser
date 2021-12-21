@@ -1,12 +1,13 @@
 import { CommentToken } from '../../lexer/types';
 import { Node } from '../../parser';
+import { safeHandler } from '../handler';
+import { isRegex } from '../regex';
 import type {
   Checkpoint,
   CommentMatcherHandler,
   CommentMatcherOptions,
   CommentMatcherValue,
 } from '../types';
-import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 
 const skipBeforeComment: Node['type'][] = ['whitespace', '_start', 'newline'];
@@ -18,7 +19,7 @@ export class CommentMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor({ value, handler }: CommentMatcherOptions<Ctx>) {
     super();
     this.comment = value;
-    this.handler = coerceHandler<Ctx, CommentToken>(handler);
+    this.handler = safeHandler<Ctx, CommentToken>(handler);
   }
 
   override canSkip(node: Node): boolean {
@@ -33,7 +34,7 @@ export class CommentMatcher<Ctx> extends AbstractMatcher<Ctx> {
       let isMatched = true;
       if (typeof this.comment === 'string') {
         isMatched = this.comment === node.value;
-      } else if (this.comment instanceof RegExp) {
+      } else if (isRegex(this.comment)) {
         isMatched = this.comment.test(node.value);
       }
       if (isMatched) {

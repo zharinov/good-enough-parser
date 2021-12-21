@@ -1,5 +1,7 @@
 import { StringValueToken } from '../../lexer/types';
 import { StringTree, TemplateTree } from '../../parser/types';
+import { safeHandler } from '../handler';
+import { isRegex } from '../regex';
 import type {
   Checkpoint,
   Matcher,
@@ -8,7 +10,6 @@ import type {
   StrTreeHandler,
   StrTreeOptionsBase,
 } from '../types';
-import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 
 export type StrContentMatcherValue = string | RegExp | null;
@@ -28,7 +29,7 @@ export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor({ value, handler }: StrContentMatcherOptions<Ctx>) {
     super();
     this.content = value ?? null;
-    this.handler = coerceHandler<Ctx, StringValueToken>(handler);
+    this.handler = safeHandler<Ctx, StringValueToken>(handler);
   }
 
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
@@ -38,7 +39,7 @@ export class StrContentMatcher<Ctx> extends AbstractMatcher<Ctx> {
       let isMatched = true;
       if (typeof this.content === 'string') {
         isMatched = this.content === node.value;
-      } else if (this.content instanceof RegExp) {
+      } else if (isRegex(this.content)) {
         isMatched = this.content.test(node.value);
       }
 
@@ -65,8 +66,8 @@ export class StrTplMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor(config: StrTplMatcherOptions<Ctx>) {
     super();
     this.matcher = config.matcher;
-    this.preHandler = coerceHandler<Ctx, TemplateTree>(config.preHandler);
-    this.postHandler = coerceHandler<Ctx, TemplateTree>(config.postHandler);
+    this.preHandler = safeHandler<Ctx, TemplateTree>(config.preHandler);
+    this.postHandler = safeHandler<Ctx, TemplateTree>(config.postHandler);
   }
 
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
@@ -109,8 +110,8 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor(opts: StrMatcherOptions<Ctx>) {
     super();
     this.matchers = opts.matchers ?? null;
-    this.preHandler = coerceHandler<Ctx, StringTree>(opts.preHandler);
-    this.postHandler = coerceHandler<Ctx, StringTree>(opts.postHandler);
+    this.preHandler = safeHandler<Ctx, StringTree>(opts.preHandler);
+    this.postHandler = safeHandler<Ctx, StringTree>(opts.postHandler);
   }
 
   override match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {

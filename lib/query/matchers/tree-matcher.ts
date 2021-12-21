@@ -1,5 +1,6 @@
 import { isTree } from '../../parser';
 import type { Cursor, Tree } from '../../parser/types';
+import { safeHandler } from '../handler';
 import type {
   Checkpoint,
   Matcher,
@@ -7,7 +8,6 @@ import type {
   TreeMatcherType,
   TreeOptionsBase,
 } from '../types';
-import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 
 interface TreeMatcherOptions<Ctx> extends TreeOptionsBase<Ctx> {
@@ -37,8 +37,8 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       typeof config.maxMatches === 'number' && config.maxMatches > 0
         ? config.maxMatches
         : 1024 * 1024;
-    this.preHandler = coerceHandler<Ctx, Tree>(config.preHandler);
-    this.postHandler = coerceHandler<Ctx, Tree>(config.postHandler);
+    this.preHandler = safeHandler<Ctx, Tree>(config.preHandler);
+    this.postHandler = safeHandler<Ctx, Tree>(config.postHandler);
   }
 
   walkToNextSignificantNode(cursor: Cursor): Cursor | undefined {

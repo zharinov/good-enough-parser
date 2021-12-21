@@ -2,13 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import * as builder from '../../lib/query/builder';
 import { SeqMatcher, SymMatcher } from '../../lib/query/matchers';
-import * as _util from './util';
+import * as _h from './handler';
 
-jest.mock('./util');
-const util = _util as jest.Mocked<typeof _util>;
+jest.mock('./handler');
+const h = _h as jest.Mocked<typeof _h>;
 const defaultHandler = (x: unknown) => x;
 const someHandler = (x: unknown) => (x ? x : x);
-util.coerceHandler.mockImplementation((fn) => (fn ? fn : defaultHandler));
+h.safeHandler.mockImplementation((fn) => (fn ? fn : defaultHandler));
 
 describe('query/builder', () => {
   describe('Symbol builder', () => {
