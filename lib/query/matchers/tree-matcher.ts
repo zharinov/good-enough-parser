@@ -107,7 +107,8 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
     this.walkDepth = 0;
     this.matchCount = 0;
 
-    const rootNode = checkpoint.cursor.node;
+    const rootCursor = this.seekNext(checkpoint.cursor);
+    const rootNode = rootCursor.node;
     if (isTree(rootNode)) {
       if (this.type && this.type !== rootNode.type) {
         return null;
@@ -117,7 +118,7 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
 
       context = this.preHandler(context, rootNode);
       if (this.matcher) {
-        let nextMatch = this.walkToNextMatch(context, checkpoint.cursor);
+        let nextMatch = this.walkToNextMatch(context, rootCursor);
         while (nextMatch) {
           context = nextMatch.context;
           if (this.matchCount === this.maxMatches) {
@@ -133,9 +134,7 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       context = this.postHandler(context, rootNode);
 
       const cursor =
-        rootNode.type === 'root-tree'
-          ? checkpoint.cursor
-          : this.moveRight(checkpoint.cursor);
+        rootNode.type === 'root-tree' ? rootCursor : this.moveRight(rootCursor);
       return { context, cursor };
     }
 
