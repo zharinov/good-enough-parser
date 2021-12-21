@@ -1,6 +1,6 @@
-import { coerceHandler } from './util';
+import { safeHandler } from './handler';
 
-describe('query/util', () => {
+describe('query/handler', () => {
   it('wraps handler', () => {
     const ctx = [1, 2, 3];
 
@@ -9,7 +9,7 @@ describe('query/util', () => {
       return ctx;
     };
 
-    const wrappedHandler = coerceHandler(handler);
+    const wrappedHandler = safeHandler(handler);
 
     const res = wrappedHandler(ctx, null as never);
 

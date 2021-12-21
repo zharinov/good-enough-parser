@@ -1,9 +1,7 @@
-import { klona as clone } from 'klona/json';
 import { Node } from '../parser/types';
+import { clone } from '../util/clone';
 
-export { klona as clone } from 'klona/json';
-
-export function coerceHandler<Ctx, T extends Node = Node>(
+export function safeHandler<Ctx, T extends Node = Node>(
   handler: ((ctx: Ctx, token: T) => Ctx) | null | undefined
 ): (ctx: Ctx, token: T) => Ctx {
   return handler

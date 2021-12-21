@@ -1,11 +1,12 @@
 import { OperatorToken } from '../../lexer/types';
+import { safeHandler } from '../handler';
+import { isRegex } from '../regex';
 import type {
   Checkpoint,
   OpMatcherHandler,
   OpMatcherOptions,
   OpMatcherValue,
 } from '../types';
-import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 
 export class OpMatcher<Ctx> extends AbstractMatcher<Ctx> {
@@ -15,7 +16,7 @@ export class OpMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor({ value, handler }: OpMatcherOptions<Ctx>) {
     super();
     this.op = value;
-    this.handler = coerceHandler<Ctx, OperatorToken>(handler);
+    this.handler = safeHandler<Ctx, OperatorToken>(handler);
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
@@ -26,7 +27,7 @@ export class OpMatcher<Ctx> extends AbstractMatcher<Ctx> {
       let isMatched = true;
       if (typeof this.op === 'string') {
         isMatched = this.op === node.value;
-      } else if (this.op instanceof RegExp) {
+      } else if (isRegex(this.op)) {
         isMatched = this.op.test(node.value);
       }
       if (isMatched) {

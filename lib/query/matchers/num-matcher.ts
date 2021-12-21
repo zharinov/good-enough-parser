@@ -1,11 +1,12 @@
 import { NumberToken } from '../../lexer/types';
+import { safeHandler } from '../handler';
+import { isRegex } from '../regex';
 import type {
   Checkpoint,
   NumMatcherHandler,
   NumMatcherOptions,
   NumMatcherValue,
 } from '../types';
-import { coerceHandler } from '../util';
 import { AbstractMatcher } from './abstract-matcher';
 
 export class NumMatcher<Ctx> extends AbstractMatcher<Ctx> {
@@ -15,7 +16,7 @@ export class NumMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor({ value, handler }: NumMatcherOptions<Ctx>) {
     super();
     this.num = value;
-    this.handler = coerceHandler<Ctx, NumberToken>(handler);
+    this.handler = safeHandler<Ctx, NumberToken>(handler);
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
@@ -26,7 +27,7 @@ export class NumMatcher<Ctx> extends AbstractMatcher<Ctx> {
       let isMatched = true;
       if (typeof this.num === 'string') {
         isMatched = this.num === node.value;
-      } else if (this.num instanceof RegExp) {
+      } else if (isRegex(this.num)) {
         isMatched = this.num.test(node.value);
       }
       if (isMatched) {

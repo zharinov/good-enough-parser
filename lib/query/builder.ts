@@ -16,6 +16,7 @@ import {
   StrTplMatcher,
 } from './matchers/str-matcher';
 import { TreeMatcher } from './matchers/tree-matcher';
+import { isRegex } from './regex';
 import type {
   CommentMatcherHandler,
   CommentMatcherOptions,
@@ -186,7 +187,7 @@ function coerceSymOptions<Ctx>(
   arg1?: SymMatcherValue | SymMatcherOptions<Ctx> | SymMatcherHandler<Ctx>,
   arg2?: SymMatcherHandler<Ctx>
 ): SymMatcherOptions<Ctx> {
-  if (typeof arg1 === 'string' || arg1 instanceof RegExp) {
+  if (typeof arg1 === 'string' || isRegex(arg1)) {
     return {
       value: arg1,
       handler: arg2 ?? null,
@@ -239,7 +240,7 @@ function coerceOpOptions<Ctx>(
   arg1?: OpMatcherValue | OpMatcherOptions<Ctx> | OpMatcherHandler<Ctx>,
   arg2?: OpMatcherHandler<Ctx>
 ): OpMatcherOptions<Ctx> {
-  if (typeof arg1 === 'string' || arg1 instanceof RegExp) {
+  if (typeof arg1 === 'string' || isRegex(arg1)) {
     return {
       value: arg1,
       handler: arg2 ?? null,
@@ -295,7 +296,7 @@ function coerceCommentOptions<Ctx>(
     | CommentMatcherHandler<Ctx>,
   arg2?: CommentMatcherHandler<Ctx>
 ): CommentMatcherOptions<Ctx> {
-  if (typeof arg1 === 'string' || arg1 instanceof RegExp) {
+  if (typeof arg1 === 'string' || isRegex(arg1)) {
     return {
       value: arg1,
       handler: arg2 ?? null,
@@ -355,7 +356,7 @@ function coerceNumOptions<Ctx>(
   arg1?: NumMatcherValue | NumMatcherOptions<Ctx> | NumMatcherHandler<Ctx>,
   arg2?: NumMatcherHandler<Ctx>
 ): NumMatcherOptions<Ctx> {
-  if (typeof arg1 === 'string' || arg1 instanceof RegExp) {
+  if (typeof arg1 === 'string' || isRegex(arg1)) {
     return {
       value: arg1,
       handler: arg2 ?? null,
@@ -549,7 +550,7 @@ class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
     if (this.opts.match) {
       const matchers: StrNodeChildMatcher<Ctx>[] = [];
       this.opts.match.forEach((m) => {
-        if (typeof m === 'string' || m instanceof RegExp) {
+        if (typeof m === 'string' || isRegex(m)) {
           const contentMatcher = new StrContentMatcher<Ctx>({
             value: m,
             handler: null,
@@ -596,7 +597,7 @@ function coerceStrOptions<Ctx>(
     | undefined,
   arg2: StrContentMatcherHandler<Ctx> | undefined
 ): StrBuilderOptions<Ctx> {
-  if (typeof arg1 === 'string' || arg1 instanceof RegExp) {
+  if (typeof arg1 === 'string' || isRegex(arg1)) {
     if (arg1 === '') {
       return {
         type: 'str-tree',
@@ -627,7 +628,7 @@ function coerceStrOptions<Ctx>(
     if (
       (arg1 as never)['handler'] ||
       typeof arg1.match === 'string' ||
-      arg1.match instanceof RegExp
+      isRegex(arg1.match)
     ) {
       return {
         type: 'str-content',
