@@ -30,13 +30,15 @@ describe('lang/groovy', () => {
   });
 
   test.each`
-    source           | query                         | result
-    ${'foo'}         | ${q.sym(h)}                   | ${['foo']}
-    ${'foo "bar"'}   | ${q.sym(h).str(h)}            | ${['foo', 'bar']}
-    ${'"bar"'}       | ${q.str(h)}                   | ${['bar']}
-    ${'"foo" "bar"'} | ${q.str(h).str(h)}            | ${['foo', 'bar']}
-    ${'foo ='}       | ${q.sym(h).op('=', h)}        | ${['foo', '=']}
-    ${'foo = "bar"'} | ${q.sym(h).op('=', h).str(h)} | ${['foo', '=', 'bar']}
+    source           | query                                  | result
+    ${'foo'}         | ${q.sym(h)}                            | ${['foo']}
+    ${'foo "bar"'}   | ${q.sym(h).str(h)}                     | ${['foo', 'bar']}
+    ${'"bar"'}       | ${q.str(h)}                            | ${['bar']}
+    ${'"foo" "bar"'} | ${q.str(h).str(h)}                     | ${['foo', 'bar']}
+    ${'foo ='}       | ${q.sym(h).op('=', h)}                 | ${['foo', '=']}
+    ${'foo = "bar"'} | ${q.sym(h).op('=', h).str(h)}          | ${['foo', '=', 'bar']}
+    ${'foo("bar")'}  | ${q.sym(h).tree({ search: q.str(h) })} | ${['foo', 'bar']}
+    ${'foo ("bar")'} | ${q.sym(h).tree({ search: q.str(h) })} | ${['foo', 'bar']}
   `('$source -> $result', ({ source, query, result }) => {
     const res = lang.query(source, query, []);
     expect(res).toEqual(result);
