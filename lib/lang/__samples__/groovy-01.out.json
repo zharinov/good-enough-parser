@@ -5596,7 +5596,7 @@
           "lineBreaks": 0
         },
         {
-          "type": "_",
+          "type": "operator",
           "value": ",",
           "offset": 2480,
           "line": 87,
@@ -5884,7 +5884,7 @@
               ]
             },
             {
-              "type": "_",
+              "type": "operator",
               "value": ",",
               "offset": 2562,
               "line": 89,
@@ -5945,7 +5945,7 @@
               ]
             },
             {
-              "type": "_",
+              "type": "operator",
               "value": ",",
               "offset": 2573,
               "line": 89,
