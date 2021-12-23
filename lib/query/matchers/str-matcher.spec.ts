@@ -70,8 +70,8 @@ describe('query/matchers/str-matcher', () => {
 
   it('handles template strings', () => {
     const input = 'f"foo{ bar }baz"';
-    const query = q.str({
-      match: [q.str<Ctx>(handler), q.sym<Ctx>(handler), q.str<Ctx>(handler)],
+    const query = q.str<Ctx>({
+      match: [q.str(handler), q.sym(handler), q.str(handler)],
     });
     const res = lang.query(input, query, []);
     expect(res).toEqual(['foo', 'bar', 'baz']);
