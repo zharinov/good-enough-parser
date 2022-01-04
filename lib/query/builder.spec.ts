@@ -304,4 +304,13 @@ describe('query/builder', () => {
       });
     });
   });
+
+  describe('Anchor builders', () => {
+    it('Supports begin/end anchors', () => {
+      const matcher = builder.begin().sym().end().build();
+      expect(matcher).toMatchObject({
+        seq: [{}, { sym: null }, {}],
+      });
+    });
+  });
 });
