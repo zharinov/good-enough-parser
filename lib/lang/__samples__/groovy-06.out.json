@@ -1,0 +1,119 @@
+{
+  "type": "root-tree",
+  "children": [
+    {
+      "type": "_start",
+      "value": "",
+      "offset": 0,
+      "line": 1,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "\"",
+        "offset": 0,
+        "line": 1,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "\"",
+        "offset": 17,
+        "line": 1,
+        "col": 18,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 1,
+          "line": 1,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "foo:bar:",
+          "offset": 1,
+          "line": 1,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "template-tree",
+          "startsWith": {
+            "type": "template-start",
+            "value": "$",
+            "offset": 9,
+            "line": 1,
+            "col": 10,
+            "lineBreaks": 0
+          },
+          "endsWith": {
+            "type": "template-end",
+            "value": "",
+            "offset": 13,
+            "line": 1,
+            "col": 14,
+            "lineBreaks": 0
+          },
+          "children": [
+            {
+              "type": "_start",
+              "value": "",
+              "offset": 10,
+              "line": 1,
+              "col": 11,
+              "lineBreaks": 0
+            },
+            {
+              "type": "symbol",
+              "value": "baz",
+              "offset": 10,
+              "line": 1,
+              "col": 11,
+              "lineBreaks": 0
+            },
+            {
+              "type": "_end",
+              "value": "",
+              "offset": 13,
+              "line": 1,
+              "col": 14,
+              "lineBreaks": 0
+            }
+          ]
+        },
+        {
+          "type": "string-value",
+          "value": "@zip",
+          "offset": 13,
+          "line": 1,
+          "col": 14,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 17,
+          "line": 1,
+          "col": 18,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "_end",
+      "value": "",
+      "offset": 18,
+      "line": 1,
+      "col": 2,
+      "lineBreaks": 0
+    }
+  ]
+}

@@ -72,6 +72,8 @@ function varTplState(
   { operators = [], symbols }: VarTplStateInput
 ): StateDefinition {
   const result: StateDefinition = { ...strState };
+
+  let strStateName: string | null = null;
   Object.entries(result).forEach(([key, val]) => {
     if (val.t !== 'fallback') {
       const rule = { ...val };
@@ -81,7 +83,8 @@ function varTplState(
       }
       result[key] = rule;
     } else {
-      result[key] = { ...val };
+      delete result[key];
+      strStateName = key;
     }
   });
 
@@ -104,6 +107,12 @@ function varTplState(
     } else {
       throw new Error(`Operator is not found: ${op}`);
     }
+  }
+
+  if (strStateName) {
+    result[strStateName] = { t: 'regex', match: /./, lineBreaks: true, pop: 1 };
+  } else {
+    throw new Error(`Fallback value is missing for variable-style template`);
   }
 
   return result;

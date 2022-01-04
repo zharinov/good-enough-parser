@@ -168,7 +168,7 @@ describe('lexer/string', () => {
         str$0$tpl$0$start: { match: '$', next: 'str$0$tpl$0$state' },
         op$0: { match: '.' },
         str$0$end: { match: '"', pop: 1 },
-        str$0$value: { t: 'fallback' },
+        str$0$value: { t: 'regex', pop: 1 },
         symbol: { t: 'regex' },
       },
       str$0$tpl$1$state: {
