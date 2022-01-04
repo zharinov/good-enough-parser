@@ -115,6 +115,12 @@ export function createTree(lexer: Lexer, config: ParserConfig): RootTree {
       }
     }
 
+    if (token.type === 'string-value' && prevToken.type === 'string-value') {
+      prevToken.value += token.value;
+      prevToken.lineBreaks += token.lineBreaks;
+      continue;
+    }
+
     if (token.type === 'bracket-left') {
       stack.push(currentTree);
       currentTree = {
