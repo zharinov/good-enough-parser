@@ -6,6 +6,7 @@ import {
   SeqMatcher,
   SymMatcher,
 } from './matchers';
+import { AnchorMatcher } from './matchers/anchor-matcher';
 import { CommentMatcher } from './matchers/comment-matcher';
 import { NumMatcher } from './matchers/num-matcher';
 import {
@@ -36,9 +37,11 @@ import type {
   TreeOptionsBase,
 } from './types';
 
-abstract class AbstractBuilder<Ctx> implements QueryBuilder<Ctx> {
+abstract class TerminalBuilder<Ctx> implements QueryBuilder<Ctx> {
   abstract build(): Matcher<Ctx>;
+}
 
+abstract class AbstractBuilder<Ctx> extends TerminalBuilder<Ctx> {
   sym(): SeqBuilder<Ctx>;
   sym(value: SymMatcherValue): SeqBuilder<Ctx>;
   sym(handler: SymMatcherHandler<Ctx>): SeqBuilder<Ctx>;
@@ -149,6 +152,35 @@ abstract class AbstractBuilder<Ctx> implements QueryBuilder<Ctx> {
     const builder = new StrBuilder<Ctx>(opts);
     return new SeqBuilder<Ctx>(this, builder);
   }
+
+  end(): EndBuilder<Ctx> {
+    return new EndBuilder(this);
+  }
+}
+
+// Anchors
+
+class BeginBuilder<Ctx> extends AbstractBuilder<Ctx> {
+  build(): AnchorMatcher<Ctx> {
+    return new AnchorMatcher<Ctx>();
+  }
+}
+
+class EndBuilder<Ctx> extends TerminalBuilder<Ctx> {
+  constructor(private readonly builder: QueryBuilder<Ctx>) {
+    super();
+  }
+
+  build(): SeqMatcher<Ctx> {
+    const matcher = this.builder.build();
+    const matchers = matcher instanceof SeqMatcher ? matcher.seq : [matcher];
+    matchers.push(new AnchorMatcher());
+    return new SeqMatcher<Ctx>({ matchers });
+  }
+}
+
+export function begin<Ctx>(): BeginBuilder<Ctx> {
+  return new BeginBuilder<Ctx>();
 }
 
 // Sequence
