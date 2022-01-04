@@ -1,4 +1,3 @@
-import { isRegex } from '../regex';
 import type { Checkpoint } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
 
