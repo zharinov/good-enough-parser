@@ -52,7 +52,7 @@
     "eslint-plugin-only-warn": "1.0.3",
     "http-server": "14.0.0",
     "husky": "7.0.4",
-    "jest": "27.4.6",
+    "jest": "27.4.7",
     "jest-watch-select-projects": "2.0.0",
     "jest-watch-suspend": "1.1.2",
     "jest-watch-typeahead": "1.0.0",
