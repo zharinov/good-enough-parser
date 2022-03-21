@@ -42,7 +42,7 @@
   "devDependencies": {
     "@homer0/prettier-plugin-jsdoc": "4.0.6",
     "@renovate/eslint-plugin": "https://github.com/renovatebot/eslint-plugin#v0.0.4",
-    "@types/jest": "27.4.0",
+    "@types/jest": "27.4.1",
     "@types/node": "16.11.22",
     "@typescript-eslint/eslint-plugin": "5.15.0",
     "@typescript-eslint/parser": "5.15.0",
@@ -52,7 +52,7 @@
     "eslint-plugin-only-warn": "1.0.3",
     "http-server": "14.1.0",
     "husky": "7.0.4",
-    "jest": "27.4.7",
+    "jest": "27.5.1",
     "jest-watch-select-projects": "2.0.0",
     "jest-watch-suspend": "1.1.2",
     "jest-watch-typeahead": "1.0.0",
