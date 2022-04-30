@@ -1,4 +1,4 @@
-import type { StringTree, TreeType } from '../parser/types';
+import type { TreeType } from '../parser/types';
 import {
   AltMatcher,
   ManyMatcher,
@@ -17,13 +17,22 @@ import {
   StrTplMatcher,
 } from './matchers/str-matcher';
 import { TreeMatcher } from './matchers/tree-matcher';
+import {
+  coerceCommentOptions,
+  coerceManyOptions,
+  coerceNumOptions,
+  coerceOpOptions,
+  coerceStrOptions,
+  coerceSymOptions,
+  coerceTreeOptions,
+} from './options';
 import { isRegex } from './regex';
 import type {
   CommentMatcherHandler,
   CommentMatcherOptions,
   CommentMatcherValue,
+  ManyBuilderOpts,
   Matcher,
-  NodeHandler,
   NumMatcherHandler,
   NumMatcherOptions,
   NumMatcherValue,
@@ -31,10 +40,13 @@ import type {
   OpMatcherOptions,
   OpMatcherValue,
   QueryBuilder,
+  StrBuilderOptions,
+  StrTreeBuilderOptions,
+  StrTreeBuilderOptionsBase,
   SymMatcherHandler,
   SymMatcherOptions,
   SymMatcherValue,
-  TreeOptionsBase,
+  TreeBuilderOptions,
 } from './types';
 
 abstract class TerminalBuilder<Ctx> implements QueryBuilder<Ctx> {
@@ -215,31 +227,6 @@ class SymBuilder<Ctx> extends AbstractBuilder<Ctx> {
   }
 }
 
-function coerceSymOptions<Ctx>(
-  arg1?: SymMatcherValue | SymMatcherOptions<Ctx> | SymMatcherHandler<Ctx>,
-  arg2?: SymMatcherHandler<Ctx>
-): SymMatcherOptions<Ctx> {
-  if (typeof arg1 === 'string' || isRegex(arg1)) {
-    return {
-      value: arg1,
-      handler: arg2 ?? null,
-    };
-  }
-
-  if (typeof arg1 === 'function') {
-    return {
-      value: null,
-      handler: arg1,
-    };
-  }
-
-  if (arg1 !== null && typeof arg1 === 'object') {
-    return arg1;
-  }
-
-  return { value: null, handler: null };
-}
-
 export function sym<Ctx>(): SymBuilder<Ctx>;
 export function sym<Ctx>(value: SymMatcherValue): SymBuilder<Ctx>;
 export function sym<Ctx>(handler: SymMatcherHandler<Ctx>): SymBuilder<Ctx>;
@@ -268,31 +255,6 @@ class OpBuilder<Ctx> extends AbstractBuilder<Ctx> {
   }
 }
 
-function coerceOpOptions<Ctx>(
-  arg1?: OpMatcherValue | OpMatcherOptions<Ctx> | OpMatcherHandler<Ctx>,
-  arg2?: OpMatcherHandler<Ctx>
-): OpMatcherOptions<Ctx> {
-  if (typeof arg1 === 'string' || isRegex(arg1)) {
-    return {
-      value: arg1,
-      handler: arg2 ?? null,
-    };
-  }
-
-  if (typeof arg1 === 'function') {
-    return {
-      value: null,
-      handler: arg1,
-    };
-  }
-
-  if (arg1 !== null && typeof arg1 === 'object') {
-    return arg1;
-  }
-
-  return { value: null, handler: null };
-}
-
 export function op<Ctx>(): OpBuilder<Ctx>;
 export function op<Ctx>(value: OpMatcherValue): OpBuilder<Ctx>;
 export function op<Ctx>(handler: OpMatcherHandler<Ctx>): OpBuilder<Ctx>;
@@ -319,34 +281,6 @@ class CommentBuilder<Ctx> extends AbstractBuilder<Ctx> {
   build(): CommentMatcher<Ctx> {
     return new CommentMatcher<Ctx>(this.opts);
   }
-}
-
-function coerceCommentOptions<Ctx>(
-  arg1?:
-    | CommentMatcherValue
-    | CommentMatcherOptions<Ctx>
-    | CommentMatcherHandler<Ctx>,
-  arg2?: CommentMatcherHandler<Ctx>
-): CommentMatcherOptions<Ctx> {
-  if (typeof arg1 === 'string' || isRegex(arg1)) {
-    return {
-      value: arg1,
-      handler: arg2 ?? null,
-    };
-  }
-
-  if (typeof arg1 === 'function') {
-    return {
-      value: null,
-      handler: arg1,
-    };
-  }
-
-  if (arg1 !== null && typeof arg1 === 'object') {
-    return arg1;
-  }
-
-  return { value: null, handler: null };
 }
 
 export function comment<Ctx>(): CommentBuilder<Ctx>;
@@ -384,31 +318,6 @@ class NumBuilder<Ctx> extends AbstractBuilder<Ctx> {
   }
 }
 
-function coerceNumOptions<Ctx>(
-  arg1?: NumMatcherValue | NumMatcherOptions<Ctx> | NumMatcherHandler<Ctx>,
-  arg2?: NumMatcherHandler<Ctx>
-): NumMatcherOptions<Ctx> {
-  if (typeof arg1 === 'string' || isRegex(arg1)) {
-    return {
-      value: arg1,
-      handler: arg2 ?? null,
-    };
-  }
-
-  if (typeof arg1 === 'function') {
-    return {
-      value: null,
-      handler: arg1,
-    };
-  }
-
-  if (arg1 !== null && typeof arg1 === 'object') {
-    return arg1;
-  }
-
-  return { value: null, handler: null };
-}
-
 export function num<Ctx>(): NumBuilder<Ctx>;
 export function num<Ctx>(value: NumMatcherValue): NumBuilder<Ctx>;
 export function num<Ctx>(handler: NumMatcherHandler<Ctx>): NumBuilder<Ctx>;
@@ -427,12 +336,6 @@ export function num<Ctx>(
 
 // Repetitive patterns
 
-export interface ManyBuilderOpts<Ctx> {
-  builder: QueryBuilder<Ctx>;
-  min: number;
-  max: number | null;
-}
-
 class ManyBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: ManyBuilderOpts<Ctx>) {
     super();
@@ -442,17 +345,6 @@ class ManyBuilder<Ctx> extends AbstractBuilder<Ctx> {
     const matcher = this.opts.builder.build();
     return new ManyMatcher<Ctx>({ ...this.opts, matcher });
   }
-}
-
-function coerceManyOptions<Ctx>(
-  builder: QueryBuilder<Ctx>,
-  arg2?: number,
-  arg3?: number
-): ManyBuilderOpts<Ctx> {
-  if (typeof arg2 === 'number' && typeof arg3 === 'number') {
-    return { builder, min: arg2, max: arg3 };
-  }
-  return { builder, min: 1, max: null };
 }
 
 export function many<Ctx>(builder: QueryBuilder<Ctx>): ManyBuilder<Ctx>;
@@ -494,10 +386,6 @@ export function alt<Ctx>(...builders: QueryBuilder<Ctx>[]): AltBuilder<Ctx> {
 
 // Trees
 
-export interface TreeBuilderOptions<Ctx> extends TreeOptionsBase<Ctx> {
-  search?: QueryBuilder<Ctx> | null;
-}
-
 class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: TreeBuilderOptions<Ctx>) {
     super();
@@ -508,18 +396,6 @@ class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
     const matcher = builderOpts.search ? builderOpts.search.build() : null;
     const matcherOpts = { ...builderOpts, matcher } as never;
     return new TreeMatcher<Ctx>(matcherOpts);
-  }
-}
-
-function coerceTreeOptions<Ctx>(
-  arg1: TreeBuilderOptions<Ctx> | TreeType | undefined
-): TreeBuilderOptions<Ctx> {
-  if (typeof arg1 === 'string') {
-    return { type: arg1 };
-  } else if (!arg1) {
-    return { type: null };
-  } else {
-    return arg1;
   }
 }
 
@@ -534,31 +410,6 @@ export function tree<Ctx>(
 }
 
 // Strings
-
-export interface StrContentBuilderOptionsBase<Ctx> {
-  match?: string | RegExp | null;
-  handler?: StrContentMatcherHandler<Ctx> | null;
-}
-export interface StrTreeBuilderOptionsBase<Ctx> {
-  match?: (string | RegExp | QueryBuilder<Ctx>)[] | null;
-  preHandler?: NodeHandler<Ctx, StringTree> | null;
-  postHandler?: NodeHandler<Ctx, StringTree> | null;
-}
-export type StrBuilderOptionsBase<Ctx> =
-  | StrContentBuilderOptionsBase<Ctx>
-  | StrTreeBuilderOptionsBase<Ctx>;
-
-export interface StrContentBuilderOptions<Ctx>
-  extends StrContentBuilderOptionsBase<Ctx> {
-  type: 'str-content';
-}
-export interface StrTreeBuilderOptions<Ctx>
-  extends StrTreeBuilderOptionsBase<Ctx> {
-  type: 'str-tree';
-}
-export type StrBuilderOptions<Ctx> =
-  | StrContentBuilderOptions<Ctx>
-  | StrTreeBuilderOptions<Ctx>;
 
 class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: StrBuilderOptions<Ctx>) {
@@ -618,68 +469,6 @@ class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
       postHandler: this.opts.postHandler ?? null,
     });
   }
-}
-
-function coerceStrOptions<Ctx>(
-  arg1:
-    | string
-    | RegExp
-    | StrContentMatcherHandler<Ctx>
-    | StrBuilderOptionsBase<Ctx>
-    | undefined,
-  arg2: StrContentMatcherHandler<Ctx> | undefined
-): StrBuilderOptions<Ctx> {
-  if (typeof arg1 === 'string' || isRegex(arg1)) {
-    if (arg1 === '') {
-      return {
-        type: 'str-tree',
-        match: [],
-        postHandler: arg2
-          ? (ctx: Ctx, tree: StringTree) =>
-              arg2(ctx, {
-                ...tree.startsWith,
-                type: 'string-value',
-                value: arg1,
-              })
-          : null,
-      };
-    }
-
-    return {
-      type: 'str-content',
-      match: arg1,
-      handler: arg2 ?? null,
-    };
-  } else if (typeof arg1 === 'function') {
-    return {
-      type: 'str-content',
-      match: null,
-      handler: arg1,
-    };
-  } else if (arg1) {
-    if (
-      (arg1 as never)['handler'] ||
-      typeof arg1.match === 'string' ||
-      isRegex(arg1.match)
-    ) {
-      return {
-        type: 'str-content',
-        ...arg1,
-      } as StrContentBuilderOptions<Ctx>;
-    }
-
-    return {
-      type: 'str-tree',
-      ...arg1,
-    } as StrTreeBuilderOptions<Ctx>;
-  }
-
-  return {
-    type: 'str-tree',
-    match: null,
-    preHandler: null,
-    postHandler: null,
-  };
 }
 
 export function str<Ctx>(): StrBuilder<Ctx>;

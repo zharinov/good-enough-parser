@@ -13,6 +13,7 @@ import type {
   Tree,
   TreeType,
 } from '../parser/types';
+import type { StrContentMatcherHandler } from './matchers/str-matcher';
 
 export interface Checkpoint<Ctx> {
   cursor: Cursor;
@@ -70,10 +71,20 @@ export interface Matcher<Ctx> {
   readonly preventSkipping?: MinorToken['type'];
 }
 
+export interface ManyBuilderOpts<Ctx> {
+  builder: QueryBuilder<Ctx>;
+  min: number;
+  max: number | null;
+}
+
 export interface ManyMatcherOptions<Ctx> {
   matcher: Matcher<Ctx>;
   min: number;
   max: number | null;
+}
+
+export interface TreeBuilderOptions<Ctx> extends TreeOptionsBase<Ctx> {
+  search?: QueryBuilder<Ctx> | null;
 }
 
 export interface AltMatcherOptions<Ctx> {
@@ -91,6 +102,35 @@ export interface StrTplOptionsBase<Ctx> {
   preHandler?: StrTplHandler<Ctx> | null;
   postHandler?: StrTplHandler<Ctx> | null;
 }
+
+export interface StrContentBuilderOptionsBase<Ctx> {
+  match?: string | RegExp | null;
+  handler?: StrContentMatcherHandler<Ctx> | null;
+}
+
+export interface StrTreeBuilderOptionsBase<Ctx> {
+  match?: (string | RegExp | QueryBuilder<Ctx>)[] | null;
+  preHandler?: NodeHandler<Ctx, StringTree> | null;
+  postHandler?: NodeHandler<Ctx, StringTree> | null;
+}
+
+export type StrBuilderOptionsBase<Ctx> =
+  | StrContentBuilderOptionsBase<Ctx>
+  | StrTreeBuilderOptionsBase<Ctx>;
+
+export interface StrContentBuilderOptions<Ctx>
+  extends StrContentBuilderOptionsBase<Ctx> {
+  type: 'str-content';
+}
+
+export interface StrTreeBuilderOptions<Ctx>
+  extends StrTreeBuilderOptionsBase<Ctx> {
+  type: 'str-tree';
+}
+
+export type StrBuilderOptions<Ctx> =
+  | StrContentBuilderOptions<Ctx>
+  | StrTreeBuilderOptions<Ctx>;
 
 export interface QueryBuilder<Ctx> {
   build(): Matcher<Ctx>;
