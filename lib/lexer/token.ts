@@ -1,5 +1,5 @@
 import type { Token as MooToken } from 'moo';
-import { Token, TokenBase } from './types';
+import type { Token, TokenBase } from './types';
 
 export function coerceToken({
   type,

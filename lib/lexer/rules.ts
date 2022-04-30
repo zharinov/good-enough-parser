@@ -1,5 +1,10 @@
 import { fallback as mooFallback } from 'moo';
-import { FallbackRule, LexerRule, StateDefinition, StatesMap } from './types';
+import type {
+  FallbackRule,
+  LexerRule,
+  StateDefinition,
+  StatesMap,
+} from './types';
 
 export const fallbackRule: FallbackRule = { t: 'fallback', ...mooFallback };
 

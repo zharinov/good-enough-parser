@@ -1,6 +1,6 @@
 import { createLang } from '../../lang';
 import { lang as pythonLang } from '../../lang/python';
-import { Token } from '../../lexer/types';
+import type { Token } from '../../lexer/types';
 import * as q from '../builder';
 
 const lang = createLang(pythonLang);

@@ -3,7 +3,7 @@ import type { Lexer } from '../lexer/types';
 import { createCursor, createTree } from '../parser';
 import type { Cursor } from '../parser/types';
 import { buildRoot } from '../query';
-import { QueryBuilder } from '../query/types';
+import type { QueryBuilder } from '../query/types';
 import { clone } from '../util/clone';
 import { lang as groovy } from './groovy';
 import { lang as python } from './python';

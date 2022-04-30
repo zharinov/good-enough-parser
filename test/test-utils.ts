@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import * as moo from 'moo';
 import { dirname, join } from 'upath';
 import { coerceToken } from '../lib/lexer/token';
-import { StatesMap, Token } from '../lib/lexer/types';
+import type { StatesMap, Token } from '../lib/lexer/types';
 
 function getCallerFileName(): string {
   let result = null;

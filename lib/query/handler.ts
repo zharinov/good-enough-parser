@@ -1,4 +1,4 @@
-import { Node } from '../parser/types';
+import type { Node } from '../parser/types';
 import { clone } from '../util/clone';
 
 export function safeHandler<Ctx, T extends Node = Node>(

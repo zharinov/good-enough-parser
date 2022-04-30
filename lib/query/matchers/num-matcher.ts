@@ -1,4 +1,4 @@
-import { NumberToken } from '../../lexer/types';
+import type { NumberToken } from '../../lexer/types';
 import { safeHandler } from '../handler';
 import { isRegex } from '../regex';
 import type {

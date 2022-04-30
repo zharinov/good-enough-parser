@@ -1,5 +1,5 @@
-import { StringValueToken } from '../../lexer/types';
-import { StringTree, TemplateTree } from '../../parser/types';
+import type { StringValueToken } from '../../lexer/types';
+import type { StringTree, TemplateTree } from '../../parser/types';
 import { safeHandler } from '../handler';
 import { isRegex } from '../regex';
 import type {

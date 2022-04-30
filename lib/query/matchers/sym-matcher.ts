@@ -1,4 +1,4 @@
-import { SymbolToken } from '../../lexer/types';
+import type { SymbolToken } from '../../lexer/types';
 import { safeHandler } from '../handler';
 import { isRegex } from '../regex';
 import type {

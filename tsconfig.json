@@ -20,7 +20,8 @@
     // DX
     "incremental": true,
     "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo",
-    "noErrorTruncation": true
+    "noErrorTruncation": true,
+    "importsNotUsedAsValues": "error"
   },
   "include": ["lib", "test"],
   // Prevent unwanted things like auto-import from built modules

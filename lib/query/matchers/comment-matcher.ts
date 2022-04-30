@@ -1,5 +1,5 @@
-import { CommentToken } from '../../lexer/types';
-import { Node } from '../../parser';
+import type { CommentToken } from '../../lexer/types';
+import type { Node } from '../../parser';
 import { safeHandler } from '../handler';
 import { isRegex } from '../regex';
 import type {
