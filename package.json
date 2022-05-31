@@ -50,7 +50,7 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-only-warn": "1.0.3",
-    "http-server": "14.1.0",
+    "http-server": "14.1.1",
     "husky": "7.0.4",
     "jest": "28.1.0",
     "jest-watch-select-projects": "2.0.0",
