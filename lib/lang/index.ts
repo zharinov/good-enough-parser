@@ -7,6 +7,7 @@ import type { QueryBuilder } from '../query/types';
 import { clone } from '../util/clone';
 import { lang as groovy } from './groovy';
 import { lang as python } from './python';
+import { lang as starlark } from './starlark';
 import type { LanguageConfig } from './types';
 
 export * from './types';
@@ -37,12 +38,13 @@ export class Language {
   }
 }
 
-type LanguagePreset = 'groovy' | 'python';
-
-const languagePresets: Record<LanguagePreset, LanguageConfig> = {
+const languagePresets = {
   groovy,
   python,
+  starlark,
 };
+
+type LanguagePreset = keyof typeof languagePresets;
 
 export function createLang(key: LanguagePreset): Language;
 export function createLang(config: LanguageConfig): Language;
