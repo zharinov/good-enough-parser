@@ -7,8 +7,8 @@
     "semanticCommitScope": ""
   },
   "semanticCommits": "enabled",
-  "prConcurrentLimit": 5,
+  "prConcurrentLimit": 1,
   "prHourlyLimit": 0,
-  "branchConcurrentLimit": 5,
+  "branchConcurrentLimit": 1,
   "automerge": true
 }
