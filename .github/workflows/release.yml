@@ -15,6 +15,10 @@ jobs:
         with:
           ref: ${{ github.event.release.target_commitish }}
 
+      - name: Check if version has been bumped
+        id: check
+        uses: EndBug/version-check@v2.1.0
+
       - name: Using Node.js v14
         uses: actions/setup-node@v3.4.1
         with:
@@ -30,9 +34,6 @@ jobs:
       - name: Set git author email
         run: git config --global user.email "sergio.zharinov@gmail.com"
 
-      - name: Bump version
-        run: npm version ${{ github.event.release.tag_name }}
-
       - name: Build
         run: yarn -s build
 
@@ -43,8 +44,3 @@ jobs:
         run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Push bumped version
-        run: git push
-        env:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
