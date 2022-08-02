@@ -58,9 +58,9 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       }
     }
 
-    let upperCursor: Cursor | undefined =
-      this.walkDepth > 1 ? cursor.up : undefined;
-    while (upperCursor && this.walkDepth > 0) {
+    const canMoveUp = this.walkDepth > 1;
+    let upperCursor: Cursor | undefined = canMoveUp ? cursor.up : undefined;
+    while (upperCursor && canMoveUp) {
       rightCursor = upperCursor.right;
       if (rightCursor) {
         rightCursor = this.matcher
