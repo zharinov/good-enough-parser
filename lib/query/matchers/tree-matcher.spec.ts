@@ -22,10 +22,15 @@ describe('query/matchers/tree-matcher', () => {
     });
 
     it('matches single child', () => {
-      const input = '(foobar)';
-      const query = q.tree({ search: q.sym<Ctx>(handler) });
+      const input = '(foo) bar';
+      const query = q
+        .tree({
+          type: 'wrapped-tree',
+          search: q.sym<Ctx>(handler),
+        })
+        .sym('bar');
       const res = lang.query(input, query, []);
-      expect(res).toEqual(['foobar']);
+      expect(res).toEqual(['foo']);
     });
 
     it('matches deeply nested child', () => {
