@@ -11,7 +11,7 @@ const handler = (ctx: Ctx, token: Token) => [...ctx, token.value];
 
 describe('query/matchers/anchor-matcher', () => {
   it('handles exact sequence match', () => {
-    const input = 'foo.bar';
+    const input = ' foo . bar ';
     const query = q.begin<Ctx>().sym(handler).op(handler).sym(handler).end();
     const res = lang.query(input, query, []);
     expect(res).toEqual(['foo', '.', 'bar']);

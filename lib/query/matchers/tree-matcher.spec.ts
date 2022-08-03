@@ -33,6 +33,26 @@ describe('query/matchers/tree-matcher', () => {
       expect(res).toEqual(['foo']);
     });
 
+    it('matches anchors', () => {
+      const input = '([{ \n foo bar baz qux \n }])';
+      const query = q.tree({
+        type: 'wrapped-tree',
+        search: q.begin<Ctx>().sym('foo').many(q.sym(handler)).sym('qux').end(),
+      });
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['bar', 'baz']);
+    });
+
+    it('handles function-like scenario', () => {
+      const input = ' foo ( bar ) ';
+      const query = q.sym(handler).tree({
+        type: 'wrapped-tree',
+        search: q.begin<Ctx>().sym(handler).end(),
+      });
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['foo', 'bar']);
+    });
+
     it('matches deeply nested child', () => {
       const input = '[({foobar})]';
       const query = q.tree({ search: q.sym<Ctx>(handler) });
