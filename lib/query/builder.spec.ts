@@ -313,4 +313,26 @@ describe('query/builder', () => {
       });
     });
   });
+
+  describe('Queries concatenation', () => {
+    const q1 = builder.sym('foo');
+    const q2 = builder.sym('bar');
+    const q3 = builder.sym('baz');
+
+    test.each`
+      query
+      ${q1.join(q2).join(q3)}
+      ${builder.join(q1, q2, q3)}
+      ${builder.join(q1.join(q2), q3)}
+      ${builder.join(q1, q2).join(q3)}
+    `('Case $#', ({ query }) => {
+      expect(query).toMatchObject({
+        builders: [
+          { opts: { value: 'foo' } },
+          { opts: { value: 'bar' } },
+          { opts: { value: 'baz' } },
+        ],
+      });
+    });
+  });
 });
