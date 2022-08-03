@@ -1,17 +1,25 @@
 import type { Checkpoint } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
 
-export class AnchorMatcher<Ctx> extends AbstractMatcher<Ctx> {
+export class BeginMatcher<Ctx> extends AbstractMatcher<Ctx> {
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     let { cursor } = checkpoint;
-    const { node } = cursor;
 
-    if (node?.type === '_start') {
+    if (cursor.node?.type === '_start') {
       cursor = this.moveRight(cursor);
       return { ...checkpoint, cursor };
     }
 
-    if (node?.type === '_end') {
+    return null;
+  }
+}
+
+export class EndMatcher<Ctx> extends AbstractMatcher<Ctx> {
+  match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
+    let { cursor } = checkpoint;
+
+    cursor = this.seekNext(cursor);
+    if (cursor.node?.type === '_end') {
       return checkpoint;
     }
 

@@ -6,7 +6,7 @@ import {
   SeqMatcher,
   SymMatcher,
 } from './matchers';
-import { AnchorMatcher } from './matchers/anchor-matcher';
+import { BeginMatcher, EndMatcher } from './matchers/anchor-matcher';
 import { CommentMatcher } from './matchers/comment-matcher';
 import { NumMatcher } from './matchers/num-matcher';
 import {
@@ -173,8 +173,8 @@ abstract class AbstractBuilder<Ctx> extends TerminalBuilder<Ctx> {
 // Anchors
 
 class BeginBuilder<Ctx> extends AbstractBuilder<Ctx> {
-  build(): AnchorMatcher<Ctx> {
-    return new AnchorMatcher<Ctx>();
+  build(): BeginMatcher<Ctx> {
+    return new BeginMatcher<Ctx>();
   }
 }
 
@@ -186,7 +186,7 @@ class EndBuilder<Ctx> extends TerminalBuilder<Ctx> {
   build(): SeqMatcher<Ctx> {
     const matcher = this.builder.build();
     const matchers = matcher instanceof SeqMatcher ? matcher.seq : [matcher];
-    matchers.push(new AnchorMatcher());
+    matchers.push(new EndMatcher());
     return new SeqMatcher<Ctx>({ matchers });
   }
 }
