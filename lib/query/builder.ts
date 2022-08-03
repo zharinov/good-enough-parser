@@ -168,6 +168,11 @@ abstract class AbstractBuilder<Ctx> extends TerminalBuilder<Ctx> {
   end(): EndBuilder<Ctx> {
     return new EndBuilder(this);
   }
+
+  join(other: QueryBuilder<Ctx>): SeqBuilder<Ctx> {
+    const builder = new SeqBuilder(this, other);
+    return builder;
+  }
 }
 
 // Anchors
@@ -206,13 +211,33 @@ class SeqBuilder<Ctx> extends AbstractBuilder<Ctx> {
       prev instanceof SeqBuilder
         ? (prev.builders as QueryBuilder<Ctx>[])
         : [prev];
-    this.builders = [...prevSeq, next];
+    const nextSeq =
+      next instanceof SeqBuilder
+        ? (next.builders as QueryBuilder<Ctx>[])
+        : [next];
+    this.builders = [...prevSeq, ...nextSeq];
   }
 
   build(): SeqMatcher<Ctx> {
     const matchers = this.builders.map((builder) => builder.build());
     return new SeqMatcher<Ctx>({ matchers });
   }
+}
+
+export function join<Ctx>(
+  first: QueryBuilder<Ctx>,
+  second: QueryBuilder<Ctx>,
+  ...others: QueryBuilder<Ctx>[]
+): SeqBuilder<Ctx> {
+  const seq = new SeqBuilder(first, second);
+
+  if (!others.length) {
+    return seq;
+  }
+
+  return others.reduce((res, query) => {
+    return res.join(query);
+  }, seq);
 }
 
 // Symbols
