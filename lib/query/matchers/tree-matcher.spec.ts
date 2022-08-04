@@ -104,6 +104,17 @@ describe('query/matchers/tree-matcher', () => {
           expect(res).toEqual(found);
         }
       );
+
+      it('counts moving up correctly', () => {
+        const input = '(foo) + (bar) + (baz) + (qux)';
+        const query = q.tree<string[]>({
+          type: 'root-tree',
+          search: q.sym(handler),
+          maxDepth: 2,
+        });
+        const res = lang.query(input, query, []);
+        expect(res).toEqual(['foo', 'bar', 'baz', 'qux']);
+      });
     });
 
     it('handles empty input', () => {
