@@ -72,9 +72,9 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
         }
       }
       upperCursor = upperCursor.up;
-      this.walkDepth -= 1;
     }
     if (upperCursor) {
+      this.walkDepth -= 1;
       return upperCursor;
     }
 
