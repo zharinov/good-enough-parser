@@ -7,6 +7,7 @@ import type { QueryBuilder } from '../query/types';
 import { clone } from '../util/clone';
 import { lang as groovy } from './groovy';
 import { lang as python } from './python';
+import { lang as scala } from './scala';
 import { lang as starlark } from './starlark';
 import type { LanguageConfig } from './types';
 
@@ -41,6 +42,7 @@ export class Language {
 const languagePresets = {
   groovy,
   python,
+  scala,
   starlark,
 };
 
