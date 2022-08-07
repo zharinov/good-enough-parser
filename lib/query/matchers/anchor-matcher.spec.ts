@@ -30,4 +30,14 @@ describe('query/matchers/anchor-matcher', () => {
     const res = lang.query(input, query, []);
     expect(res).toBeUndefined();
   });
+
+  it('supports handler builder', () => {
+    const input = 'baz';
+    const query = q
+      .handler<Ctx>((ctx) => [...ctx, 'bar'])
+      .sym(handler)
+      .handler((ctx) => ctx.map((x) => x.toUpperCase()));
+    const res = lang.query(input, query, ['foo']);
+    expect(res).toEqual(['FOO', 'BAR', 'BAZ']);
+  });
 });
