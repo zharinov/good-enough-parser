@@ -6,7 +6,11 @@ import {
   SeqMatcher,
   SymMatcher,
 } from './matchers';
-import { BeginMatcher, EndMatcher } from './matchers/anchor-matcher';
+import {
+  BeginMatcher,
+  EndMatcher,
+  VoidMatcher,
+} from './matchers/anchor-matcher';
 import { CommentMatcher } from './matchers/comment-matcher';
 import { NumMatcher } from './matchers/num-matcher';
 import {
@@ -173,6 +177,12 @@ abstract class AbstractBuilder<Ctx> extends TerminalBuilder<Ctx> {
     const builder = new SeqBuilder(this, other);
     return builder;
   }
+
+  handler(fn: (context: Ctx) => Ctx): SeqBuilder<Ctx> {
+    const voidMatcher = new VoidBuilder(fn);
+    const builder = new SeqBuilder(this, voidMatcher);
+    return builder;
+  }
 }
 
 // Anchors
@@ -198,6 +208,20 @@ class EndBuilder<Ctx> extends TerminalBuilder<Ctx> {
 
 export function begin<Ctx>(): BeginBuilder<Ctx> {
   return new BeginBuilder<Ctx>();
+}
+
+class VoidBuilder<Ctx> extends AbstractBuilder<Ctx> {
+  constructor(private readonly fn: (context: Ctx) => Ctx) {
+    super();
+  }
+
+  build(): VoidMatcher<Ctx> {
+    return new VoidMatcher<Ctx>(this.fn);
+  }
+}
+
+export function handler<Ctx>(fn: (context: Ctx) => Ctx): VoidBuilder<Ctx> {
+  return new VoidBuilder(fn);
 }
 
 // Sequence
