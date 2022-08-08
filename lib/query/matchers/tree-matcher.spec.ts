@@ -124,7 +124,7 @@ describe('query/matchers/tree-matcher', () => {
         search: q.sym(handler),
       });
       const res = lang.query(input, query, []);
-      expect(res).toBeUndefined();
+      expect(res).toBeNull();
     });
 
     it('handles failed search', () => {
@@ -134,7 +134,7 @@ describe('query/matchers/tree-matcher', () => {
         search: q.sym(handler),
       });
       const res = lang.query(input, query, []);
-      expect(res).toBeUndefined();
+      expect(res).toBeNull();
     });
   });
 });

@@ -43,7 +43,7 @@ describe('query/matchers/seq-matcher', () => {
 
       const res = lang.query(input, query, []);
 
-      expect(res).toBeUndefined();
+      expect(res).toBeNull();
     });
 
     it('traverses correctly', () => {

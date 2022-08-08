@@ -30,12 +30,12 @@ export class Language {
     input: string | Cursor,
     q: QueryBuilder<Ctx>,
     context: Ctx
-  ): Ctx | undefined {
+  ): Ctx | null {
     const matcher = buildRoot(q);
     const cursor = typeof input === 'string' ? this.parse(input) : input;
     const checkpoint = matcher.match({ cursor, context });
     const result = checkpoint?.context;
-    return result && clone(result);
+    return result ? clone(result) : null;
   }
 }
 
