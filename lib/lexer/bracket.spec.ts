@@ -5,7 +5,9 @@ import type { BracketOption, StatesMap } from './types';
 
 describe('lexer/bracket', () => {
   it('works', () => {
-    const states: StatesMap = { $: { unknown: fallbackRule } };
+    const states: StatesMap = {
+      $: { unknown: { ...fallbackRule, type: 'unknown' } },
+    };
     const bracketOptions: BracketOption[] = [
       { startsWith: '{', endsWith: '}' },
       { startsWith: '[', endsWith: ']' },

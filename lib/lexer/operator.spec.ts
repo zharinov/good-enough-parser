@@ -5,7 +5,9 @@ import { tokenize } from '../../test/test-utils';
 
 describe('lexer/operator', () => {
   it('works', () => {
-    const states: StatesMap = { $: { unknown: fallbackRule } };
+    const states: StatesMap = {
+      $: { unknown: { ...fallbackRule, type: 'unknown' } },
+    };
     const bracketOptions: OperatorOption[] = ['+'];
     const rules = configOperators(states, bracketOptions);
     const input = '2+2';

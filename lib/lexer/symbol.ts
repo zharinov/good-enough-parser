@@ -1,4 +1,3 @@
-import { sortStateRules } from './rules';
 import type { StatesMap, SymbolOption } from './types';
 
 export function configSymbols(
@@ -7,9 +6,14 @@ export function configSymbols(
 ): StatesMap {
   return {
     ...states,
-    $: sortStateRules({
+    $: {
       ...states.$,
-      symbol: { t: 'regex', match },
-    }),
+      symbol: {
+        t: 'regex',
+        type: 'symbol',
+        match,
+        chunk: null,
+      },
+    },
   };
 }

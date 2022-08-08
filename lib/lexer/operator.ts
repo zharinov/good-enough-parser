@@ -1,4 +1,3 @@
-import { sortStateRules } from './rules';
 import type {
   OperatorOption,
   StateDefinition,
@@ -13,15 +12,20 @@ export function configOperators(
   const operatorRules: StateDefinition = {};
   operators.map((op, idx) => {
     const tokenName = `op$${idx}`;
-    const tokenRule: StringRule = { t: 'string', match: op };
+    const tokenRule: StringRule = {
+      t: 'string',
+      type: tokenName,
+      match: op,
+      chunk: op,
+    };
     operatorRules[tokenName] = tokenRule;
   });
 
   return {
     ...states,
-    $: sortStateRules({
+    $: {
       ...states.$,
       ...operatorRules,
-    }),
+    },
   };
 }

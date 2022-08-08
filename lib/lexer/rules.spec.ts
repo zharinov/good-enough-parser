@@ -1,85 +1,87 @@
-import { fallbackRule, sortStateRules } from '../../lib/lexer/rules';
-import type { LexerRule, StateDefinition } from '../../lib/lexer/types';
+import { fallbackRule, sortLexerRules } from '../../lib/lexer/rules';
+import type { LexerRule } from '../../lib/lexer/types';
 
-function strRule(match: string): LexerRule {
-  return { t: 'string', match };
+function strRule(name: string, match: string): LexerRule {
+  return { t: 'string', type: name, match, chunk: match };
 }
 
-function regexRule(match: RegExp): LexerRule {
-  return { t: 'regex', match };
+function regexRule(name: string, match: RegExp): LexerRule {
+  return { t: 'regex', type: name, match, chunk: null };
 }
 
 describe('lexer/rules', () => {
-  describe('sortStateRules', () => {
+  describe('sortRules', () => {
     it('returns same array for empty rule set', () => {
-      expect(sortStateRules({})).toEqual({});
+      expect(sortLexerRules([])).toEqual([]);
     });
 
     it('returns same array for single rule', () => {
-      const state: StateDefinition = { foo: { t: 'string', match: 'a' } };
-      expect(sortStateRules(state)).toEqual(state);
+      const rule: LexerRule = {
+        t: 'string',
+        type: 'foo',
+        match: 'a',
+        chunk: 'a',
+      };
+      expect(sortLexerRules([rule])).toEqual([rule]);
     });
 
     it('reorders rules to avoid tokenizer ambiguity', () => {
-      const state: StateDefinition = {
-        x: fallbackRule,
-        '01': strRule('a'),
-        '02': strRule('[['),
-        '03': strRule('b'),
-        '04': strRule('[[['),
-        '05': strRule('c'),
-        y: fallbackRule,
-        '06': strRule('['),
-        '07': strRule('d'),
-        '08': strRule('aa'),
-        '09': strRule('bb'),
-        '10': strRule('cc'),
-        '11': strRule('dd'),
-        '12': strRule('aaa'),
-        z: fallbackRule,
-      };
-
-      const vectorize = (x: StateDefinition): (string | null)[] =>
-        Object.values(x).map((rule) =>
-          rule.t !== 'fallback' ? rule.match.toString() : null
-        );
-
-      const res1 = sortStateRules(state);
-      const res2 = sortStateRules(res1);
-
-      const expected = [
-        'cc',
-        'dd',
-        'aaa',
-        'd',
-        'c',
-        'bb',
-        'b',
-        'aa',
-        'a',
-        '[[[',
-        '[[',
-        '[',
-        null,
-        null,
-        null,
+      const rules: LexerRule[] = [
+        { ...fallbackRule, type: 'x', chunk: null },
+        strRule('01', 'a'),
+        strRule('02', '[['),
+        strRule('03', 'b'),
+        strRule('04', '[[['),
+        strRule('05', 'c'),
+        { ...fallbackRule, type: 'y', chunk: null },
+        strRule('06', '['),
+        strRule('07', 'd'),
+        strRule('08', 'aa'),
+        strRule('09', 'bb'),
+        strRule('10', 'cc'),
+        strRule('11', 'dd'),
+        strRule('12', 'aaa'),
+        { ...fallbackRule, type: 'z', chunk: null },
       ];
 
-      expect(vectorize(res1)).toEqual(expected);
-      expect(vectorize(res2)).toEqual(expected);
+      const chunks = (rules: LexerRule[]): (string | null)[] =>
+        rules.map(({ chunk }) => chunk);
+
+      const res = sortLexerRules(rules);
+
+      expect(chunks(res)).toMatchInlineSnapshot(`
+        Array [
+          "[[[",
+          "[[",
+          "[",
+          "aaa",
+          "aa",
+          "a",
+          "bb",
+          "b",
+          "cc",
+          "c",
+          "dd",
+          "d",
+          null,
+          null,
+          null,
+        ]
+      `);
+      expect(chunks(sortLexerRules(res))).toEqual(chunks(res));
     });
 
-    it('sorts regex', () => {
-      const state: StateDefinition = {
-        '01': fallbackRule,
-        '02': strRule('a'),
-        '03': regexRule(/[a-z]/),
-        '04': strRule('aa'),
-        '05': regexRule(/[0-9]/),
-        '06': fallbackRule,
-      };
-      const res = sortStateRules(state);
-      expect(Object.values(res)).toMatchObject([
+    it('sorts regexes and fallbacks', () => {
+      const state: LexerRule[] = [
+        { ...fallbackRule, type: '01', chunk: null },
+        strRule('02', 'a'),
+        regexRule('03', /[a-z]/),
+        strRule('04', 'aa'),
+        regexRule('05', /[0-9]/),
+        { ...fallbackRule, type: '06', chunk: null },
+      ];
+      const res = sortLexerRules(state);
+      expect(res).toMatchObject([
         { t: 'string' },
         { t: 'string' },
         { t: 'regex' },

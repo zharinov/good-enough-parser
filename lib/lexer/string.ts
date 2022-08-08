@@ -1,5 +1,5 @@
 import { getCounterpartBracketKey, isBracketKey, isRightKey } from './bracket';
-import { copyStateDefinition, fallbackRule, sortStatesMap } from './rules';
+import { fallbackRule } from './rules';
 import type {
   LexerRule,
   StateDefinition,
@@ -17,6 +17,14 @@ interface ExprTplStateInput {
 interface ExprTplStateOutput {
   $: StateDefinition;
   tplState: StateDefinition;
+}
+
+function copyStateDefinition(state: StateDefinition): StateDefinition {
+  const result = { ...state };
+  Object.entries(result).forEach(([key, val]) => {
+    result[key] = { ...val };
+  });
+  return result;
 }
 
 function exprTplStatesMap(
@@ -51,7 +59,13 @@ function exprTplStatesMap(
     }
   }
 
-  const tplEndRule: StringRule = { t: 'string', match: tplEnd, pop: 1 };
+  const tplEndRule: StringRule = {
+    t: 'string',
+    type: tplEndToken,
+    match: tplEnd,
+    chunk: tplEnd,
+    pop: 1,
+  };
   tplState[tplEndToken] = tplEndRule;
 
   return { $: rootState, tplState };
@@ -89,7 +103,7 @@ function varTplState(
   });
 
   const symbolRule: LexerRule | undefined = symbols
-    ? { t: 'regex', match: symbols }
+    ? { t: 'regex', type: 'symbol', match: symbols, chunk: null }
     : $.symbol;
   if (!symbolRule) {
     throw new Error(`String definition isn't found for template definition`);
@@ -110,7 +124,14 @@ function varTplState(
   }
 
   if (strStateName) {
-    result[strStateName] = { t: 'regex', match: /./, lineBreaks: true, pop: 1 };
+    result[strStateName] = {
+      t: 'regex',
+      type: strStateName,
+      match: /./,
+      chunk: null,
+      lineBreaks: true,
+      pop: 1,
+    };
   } else {
     throw new Error(`Fallback value is missing for variable-style template`);
   }
@@ -146,8 +167,14 @@ export function configStrings(
     const strStateName = `${strToken}$state`;
 
     const strState: StateDefinition = {
-      [strEndToken]: { t: 'string', match: strEnd, pop: 1 },
-      [strValueToken]: fallbackRule,
+      [strEndToken]: {
+        t: 'string',
+        type: strEndToken,
+        match: strEnd,
+        chunk: strEnd,
+        pop: 1,
+      },
+      [strValueToken]: { ...fallbackRule, type: strValueToken },
     };
 
     tplOpts?.forEach((tplOpt, tplIdx) => {
@@ -160,7 +187,9 @@ export function configStrings(
       if (tplOpt.type === 'expr') {
         strState[tplStartToken] = {
           t: 'string',
+          type: tplStartToken,
           match: tplStart,
+          chunk: tplStart,
           push: tplStateName,
         };
         const { endsWith: tplEnd } = tplOpt;
@@ -170,7 +199,9 @@ export function configStrings(
       if (tplOpt.type === 'var') {
         strState[tplStartToken] = {
           t: 'string',
+          type: tplStartToken,
           match: tplStart,
+          chunk: tplStart,
           push: tplStateName,
         };
         const { operators = [], symbols } = tplOpt;
@@ -186,7 +217,13 @@ export function configStrings(
     });
 
     strStates[strStateName] = strState;
-    $[strStartToken] = { t: 'string', match: strStart, push: strStateName };
+    $[strStartToken] = {
+      t: 'string',
+      type: strStartToken,
+      match: strStart,
+      chunk: strStart,
+      push: strStateName,
+    };
   });
 
   const tplStates: Record<string, StateDefinition> = {};
@@ -204,6 +241,5 @@ export function configStrings(
     }
   }
 
-  const result = { $, ...strStates, ...tplStates };
-  return sortStatesMap(result);
+  return { $, ...strStates, ...tplStates };
 }

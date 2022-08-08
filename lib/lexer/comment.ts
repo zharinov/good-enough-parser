@@ -1,4 +1,3 @@
-import { sortStateRules } from './rules';
 import type {
   CommentOption,
   RegexRule,
@@ -22,7 +21,9 @@ export function configComments(
       const anyChars = '.*?';
       const rule: RegexRule = {
         t: 'regex',
+        type: tokenName,
         match: new RegExp(`${start}${anyChars}$`),
+        chunk: option.startsWith,
       };
       commentRules[tokenName] = rule;
     } else if (option.type === 'multiline-comment') {
@@ -30,8 +31,10 @@ export function configComments(
       const end = esc(option.endsWith);
       const rule: RegexRule = {
         t: 'regex',
+        type: tokenName,
         match: new RegExp(`${start}${anyChars}${end}`),
         lineBreaks: true,
+        chunk: option.startsWith,
       };
       commentRules[tokenName] = rule;
     }
@@ -39,9 +42,9 @@ export function configComments(
 
   return {
     ...states,
-    $: sortStateRules({
+    $: {
       ...states.$,
       ...commentRules,
-    }),
+    },
   };
 }

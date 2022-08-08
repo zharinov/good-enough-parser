@@ -3,29 +3,51 @@ import { configBrackets } from './bracket';
 import { configComments } from './comment';
 import { configNumbers } from './number';
 import { configOperators } from './operator';
-import { fallbackRule } from './rules';
+import { createOrderedStateMap, fallbackRule } from './rules';
 import { configStrings } from './string';
 import { configSymbols } from './symbol';
 import { coerceToken } from './token';
-import type { Lexer, LexerConfig, RegexRule, StatesMap, Token } from './types';
+import type {
+  Lexer,
+  LexerConfig,
+  OrderedStatesMap,
+  RegexRule,
+  StatesMap,
+  Token,
+} from './types';
 
 export * from './token';
 export * from './types';
 
-export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
+export function configureLexerRules(
+  lexerConfig: LexerConfig
+): OrderedStatesMap {
   const whitespace: RegexRule = lexerConfig.joinLines
     ? {
         t: 'regex',
+        type: 'whitespace',
         match: new RegExp(`(?:${lexerConfig.joinLines}\\r?\\n|[ \\t\\r])+`),
         lineBreaks: true,
+        chunk: null,
       }
-    : { t: 'regex', match: /[ \t\r]+/ };
+    : {
+        t: 'regex',
+        type: 'whitespace',
+        match: /[ \t\r]+/,
+        chunk: null,
+      };
 
   let result: StatesMap = {
     $: {
       whitespace,
-      newline: { t: 'regex', match: /\r?\n/, lineBreaks: true },
-      _: fallbackRule,
+      newline: {
+        t: 'regex',
+        type: 'newline',
+        match: /\r?\n/,
+        chunk: null,
+        lineBreaks: true,
+      },
+      _: { ...fallbackRule, type: '_' },
     },
   };
 
@@ -37,12 +59,14 @@ export function configureLexerRules(lexerConfig: LexerConfig): StatesMap {
   result = configBrackets(result, brackets);
   result = configStrings(result, strings);
   result = configNumbers(result, { match: numbers });
-  return result;
+
+  const orderedResult = createOrderedStateMap(result);
+  return orderedResult;
 }
 
 export function createLexer(options: LexerConfig): Lexer {
   const rules = configureLexerRules(options);
-  const mooLexer = mooStates(rules);
+  const mooLexer = mooStates(rules as never);
 
   const result: Lexer = {
     reset(input?: string) {

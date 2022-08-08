@@ -6,9 +6,7 @@ import type { CommentOption, StatesMap } from './types';
 
 describe('lexer/comment', () => {
   const states: StatesMap = {
-    $: {
-      unknown: fallbackRule,
-    },
+    $: { unknown: { ...fallbackRule, type: 'unknown' } },
   };
 
   const opts: CommentOption[] = [
