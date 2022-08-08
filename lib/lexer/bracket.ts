@@ -1,4 +1,3 @@
-import { sortStateRules } from './rules';
 import type {
   BracketOption,
   StateDefinition,
@@ -41,13 +40,17 @@ export function configBrackets(
     const leftTokenKey = `${tokenKey}$left`;
     const leftTokenRule: StringRule = {
       t: 'string',
+      type: leftTokenKey,
       match: option.startsWith,
+      chunk: option.startsWith,
     };
 
     const rightTokenKey = `${tokenKey}$right`;
     const rightTokenRule: StringRule = {
       t: 'string',
+      type: rightTokenKey,
       match: option.endsWith,
+      chunk: option.endsWith,
     };
 
     bracketDefs[leftTokenKey] = leftTokenRule;
@@ -56,9 +59,9 @@ export function configBrackets(
 
   return {
     ...states,
-    $: sortStateRules({
+    $: {
       ...states.$,
       ...bracketDefs,
-    }),
+    },
   };
 }

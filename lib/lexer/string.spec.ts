@@ -7,7 +7,9 @@ import { loadInputTxt, loadOutputJson, tokenize } from '../../test/test-utils';
 describe('lexer/string', () => {
   describe('configuration', () => {
     it('handles empty options list', () => {
-      const states: StatesMap = { $: { foo: { t: 'string', match: 'bar' } } };
+      const states: StatesMap = {
+        $: { foo: { t: 'string', type: 'foo', match: 'bar', chunk: 'bar' } },
+      };
       const res = configStrings(states, []);
       expect(res).toBe(states);
     });
@@ -63,19 +65,29 @@ describe('lexer/string', () => {
         },
       });
 
-      expect(Object.keys(res.$)).toMatchObject([
-        'str$3$start',
-        'str$2$start',
-        'str$1$start',
-        'str$0$start',
-      ]);
+      expect(res.$).toMatchObject({
+        str$3$start: {},
+        str$2$start: {},
+        str$1$start: {},
+        str$0$start: {},
+      });
     });
 
     it('supports expression templates', () => {
       const states: StatesMap = {
         $: {
-          curly$left: { t: 'string', match: '{' },
-          curly$right: { t: 'string', match: '}' },
+          curly$left: {
+            t: 'string',
+            type: 'curly$left',
+            match: '{',
+            chunk: '{',
+          },
+          curly$right: {
+            t: 'string',
+            type: 'curly$right',
+            match: '}',
+            chunk: '}',
+          },
         },
       };
 
@@ -130,10 +142,10 @@ describe('lexer/string', () => {
   it('supports variable templates', () => {
     const states: StatesMap = {
       $: {
-        symbol: { t: 'regex', match: /[a-z]+/ },
-        op$0: { t: 'string', match: '.' },
-        op$1: { t: 'string', match: '+' },
-        op$2: { t: 'string', match: '-' },
+        symbol: { t: 'regex', type: 'symbol', match: /[a-z]+/, chunk: null },
+        op$0: { t: 'string', type: 'op$0', match: '.', chunk: '.' },
+        op$1: { t: 'string', type: 'op$1', match: '+', chunk: '+' },
+        op$2: { t: 'string', type: 'op$2', match: '-', chunk: '-' },
       },
     };
 
@@ -186,7 +198,7 @@ describe('lexer/string', () => {
     describe('simple strings', () => {
       const states: StatesMap = {
         $: {
-          unknown: fallbackRule,
+          unknown: { ...fallbackRule, type: 'unknown' },
         },
       };
       const opts: StringOption[] = [
@@ -214,10 +226,30 @@ describe('lexer/string', () => {
     describe('templates', () => {
       const states: StatesMap = {
         $: {
-          bracket$1$left: { t: 'string', match: '{{{' },
-          bracket$1$right: { t: 'string', match: '}}}' },
-          bracket$0$left: { t: 'string', match: '{' },
-          bracket$0$right: { t: 'string', match: '}' },
+          bracket$1$left: {
+            t: 'string',
+            type: 'bracket$1$left',
+            match: '{{{',
+            chunk: '{{{',
+          },
+          bracket$1$right: {
+            t: 'string',
+            type: 'bracket$1$right',
+            match: '}}}',
+            chunk: '}}}',
+          },
+          bracket$0$left: {
+            t: 'string',
+            type: 'bracket$0$left',
+            match: '{',
+            chunk: '{',
+          },
+          bracket$0$right: {
+            t: 'string',
+            type: 'bracket$0$right',
+            match: '}',
+            chunk: '}',
+          },
         },
       };
       const opts: StringOption[] = [

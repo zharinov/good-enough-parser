@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import * as moo from 'moo';
 import { dirname, join } from 'upath';
+import { createOrderedStateMap as orderStateMap } from '../lib/lexer/rules';
 import { coerceToken } from '../lib/lexer/token';
 import type { StatesMap, Token } from '../lib/lexer/types';
 
@@ -88,6 +89,6 @@ export function loadOutputJson<T>(
 }
 
 export function tokenize(states: StatesMap, input: string): Token[] {
-  const lexer = moo.states(states);
+  const lexer = moo.states(orderStateMap(states) as never);
   return [...lexer.reset(input)].map(coerceToken);
 }

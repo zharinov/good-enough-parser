@@ -7,8 +7,13 @@ export function configNumbers(
   return {
     ...states,
     $: {
-      number: { t: 'regex', match },
       ...states.$,
+      number: {
+        t: 'regex',
+        type: 'number',
+        match,
+        chunk: null,
+      },
     },
   };
 }

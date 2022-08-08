@@ -5,7 +5,9 @@ import type { NumberOption, StatesMap } from './types';
 
 describe('lexer/number', () => {
   it('works', () => {
-    const states: StatesMap = { $: { unknown: fallbackRule } };
+    const states: StatesMap = {
+      $: { unknown: { ...fallbackRule, type: 'unknown' } },
+    };
     const symbolOption: NumberOption = { match: /[0-9]+/ };
     const rules = configNumbers(states, symbolOption);
     const input = '40+2';

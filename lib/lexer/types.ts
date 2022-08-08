@@ -47,24 +47,30 @@ export interface NumberOption {
 
 export interface StringRule {
   t: 'string';
+  type: string;
   match: string;
   push?: string;
   pop?: number;
   next?: string;
+  chunk: string | null;
 }
 
 export interface RegexRule {
   t: 'regex';
+  type: string;
   match: RegExp;
   push?: string;
   pop?: number;
   next?: string;
   lineBreaks?: true;
+  chunk: string | null;
 }
 
 export interface FallbackRule {
   t: 'fallback';
+  type: string;
   fallback: true;
+  chunk: null;
 }
 
 export type LexerRule = StringRule | RegexRule | FallbackRule;
@@ -75,6 +81,11 @@ export type StateDefinition = Record<TokenName, LexerRule>;
 export interface StatesMap {
   $: StateDefinition;
   [k: string]: StateDefinition;
+}
+
+export interface OrderedStatesMap {
+  $: LexerRule[];
+  [k: string]: LexerRule[];
 }
 
 export interface Lexer {

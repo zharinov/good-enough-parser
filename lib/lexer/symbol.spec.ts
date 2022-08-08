@@ -5,7 +5,9 @@ import { tokenize } from '../../test/test-utils';
 
 describe('lexer/symbol', () => {
   it('works', () => {
-    const states: StatesMap = { $: { unknown: fallbackRule } };
+    const states: StatesMap = {
+      $: { unknown: { ...fallbackRule, type: 'unknown' } },
+    };
     const symbolOption: SymbolOption = { match: /[a-z]+/ };
     const rules = configSymbols(states, symbolOption);
     const input = 'foo+bar';
