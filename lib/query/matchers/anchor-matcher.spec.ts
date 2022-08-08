@@ -21,14 +21,14 @@ describe('query/matchers/anchor-matcher', () => {
     const input = '.foo';
     const query = q.begin<Ctx>().sym();
     const res = lang.query(input, query, []);
-    expect(res).toBeUndefined();
+    expect(res).toBeNull();
   });
 
   it('handles mismatch at the end', () => {
     const input = '.foo';
     const query = q.op().end();
     const res = lang.query(input, query, []);
-    expect(res).toBeUndefined();
+    expect(res).toBeNull();
   });
 
   it('supports handler builder', () => {
