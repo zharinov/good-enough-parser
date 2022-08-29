@@ -1,0 +1,2 @@
+force "com.fasterxml.jackson.core:jackson-annotations:$Versions.jackson"
+something "else"

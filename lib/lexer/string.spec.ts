@@ -163,33 +163,30 @@ describe('lexer/string', () => {
 
     expect(res).toMatchObject({
       $: {
-        op$0: { match: '.' },
-        op$1: { match: '+' },
-        op$2: { match: '-' },
-        str$0$start: { match: '"', push: 'str$0$state' },
-        symbol: { t: 'regex' },
+        op$0: { chunk: '.', match: '.', t: 'string', type: 'op$0' },
+        op$1: { chunk: '+', match: '+', t: 'string', type: 'op$1' },
+        op$2: { chunk: '-', match: '-', t: 'string', type: 'op$2' },
+        str$0$start: { match: '"', push: 'str$0$state', t: 'string' },
+        symbol: { match: /\\[a-z\\]\\+/, t: 'regex', type: 'symbol' },
       },
       str$0$state: {
+        str$0$end: { match: '"', pop: 1, t: 'string', type: 'str$0$end' },
+        str$0$tpl$0$token: { chunk: '$', t: 'regex' },
         str$0$tpl$1$start: { match: '${', push: 'str$0$tpl$1$state' },
-        str$0$tpl$0$start: { match: '$', push: 'str$0$tpl$0$state' },
-        str$0$end: { match: '"', pop: 1 },
         str$0$value: { t: 'fallback' },
       },
-      str$0$tpl$0$state: {
-        str$0$tpl$1$start: { match: '${', next: 'str$0$tpl$1$state' },
-        str$0$tpl$0$start: { match: '$', next: 'str$0$tpl$0$state' },
-        op$0: { match: '.' },
-        str$0$end: { match: '"', pop: 1 },
-        str$0$value: { t: 'regex', pop: 1 },
-        symbol: { t: 'regex' },
+      str$0$tpl$0$token: {
+        op$0: { match: '.', t: 'string', type: 'op$0' },
+        str$0$tpl$0$start: { match: '$', t: 'string' },
+        symbol: { t: 'regex', type: 'symbol' },
       },
       str$0$tpl$1$state: {
-        op$0: { match: '.' },
-        op$1: { match: '+' },
-        op$2: { match: '-' },
+        op$0: { match: '.', t: 'string', type: 'op$0' },
+        op$1: { match: '+', t: 'string', type: 'op$1' },
+        op$2: { match: '-', t: 'string', type: 'op$2' },
         str$0$start: { match: '"', push: 'str$0$state' },
-        symbol: { t: 'regex' },
         str$0$tpl$1$end: { match: '}', pop: 1 },
+        symbol: { t: 'regex', type: 'symbol' },
       },
     });
   });
