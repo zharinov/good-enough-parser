@@ -1,7 +1,9 @@
+import { clone } from '../util/clone';
+import { escape } from '../util/regex';
 import { getCounterpartBracketKey, isBracketKey, isRightKey } from './bracket';
 import { fallbackRule } from './rules';
 import type {
-  LexerRule,
+  RegexRule,
   StateDefinition,
   StatesMap,
   StringOption,
@@ -20,9 +22,9 @@ interface ExprTplStateOutput {
 }
 
 function copyStateDefinition(state: StateDefinition): StateDefinition {
-  const result = { ...state };
+  const result = clone(state);
   Object.entries(result).forEach(([key, val]) => {
-    result[key] = { ...val };
+    result[key] = clone(val);
   });
   return result;
 }
@@ -54,7 +56,7 @@ function exprTplStatesMap(
 
       delete tplState[bracketKey];
       counterpartRule.push = '$';
-      rootState[counterpartKey] = { ...counterpartRule };
+      rootState[counterpartKey] = clone(counterpartRule);
       rootState[bracketKey] = { ...bracketRule, pop: 1 };
     }
   }
@@ -71,74 +73,6 @@ function exprTplStatesMap(
   return { $: rootState, tplState };
 }
 
-interface VarTplStateInput {
-  symbols?: RegExp;
-  operators: string[];
-  tplStart: string;
-  tplStateName: string;
-  strEnd: string;
-  strStateName: string;
-}
-
-function varTplState(
-  $: StateDefinition,
-  strState: StateDefinition,
-  { operators = [], symbols }: VarTplStateInput
-): StateDefinition {
-  const result: StateDefinition = { ...strState };
-
-  let strStateName: string | null = null;
-  Object.entries(result).forEach(([key, val]) => {
-    if (val.t !== 'fallback') {
-      const rule = { ...val };
-      if (rule.push) {
-        rule.next = rule.push;
-        delete rule.push;
-      }
-      result[key] = rule;
-    } else {
-      delete result[key];
-      strStateName = key;
-    }
-  });
-
-  const symbolRule: LexerRule | undefined = symbols
-    ? { t: 'regex', type: 'symbol', match: symbols, chunk: null }
-    : $.symbol;
-  if (!symbolRule) {
-    throw new Error(`String definition isn't found for template definition`);
-  }
-  result.symbol = symbolRule;
-
-  for (const op of operators) {
-    const opEntry = Object.entries($).find(
-      ([key, rule]) =>
-        key.startsWith('op$') && rule.t === 'string' && rule.match === op
-    );
-    if (opEntry) {
-      const [opKey, opRule] = opEntry;
-      result[opKey] = { ...opRule };
-    } else {
-      throw new Error(`Operator is not found: ${op}`);
-    }
-  }
-
-  if (strStateName) {
-    result[strStateName] = {
-      t: 'regex',
-      type: strStateName,
-      match: /./,
-      chunk: null,
-      lineBreaks: true,
-      pop: 1,
-    };
-  } else {
-    throw new Error(`Fallback value is missing for variable-style template`);
-  }
-
-  return result;
-}
-
 export function configStrings(
   states: StatesMap,
   opts: StringOption[]
@@ -152,7 +86,8 @@ export function configStrings(
   const strStates: Record<string, StateDefinition> = {};
 
   const exprTplPreStates: ExprTplStateInput[] = [];
-  const varTplPreStates: VarTplStateInput[] = [];
+
+  const tplStates: Record<string, StateDefinition> = {};
 
   opts.forEach((strOpt, strIdx) => {
     const {
@@ -179,12 +114,13 @@ export function configStrings(
 
     tplOpts?.forEach((tplOpt, tplIdx) => {
       const { startsWith: tplStart } = tplOpt;
-      const tplToken = `${strToken}$tpl$${tplIdx}`;
-      const tplStartToken = `${tplToken}$start`;
-      const tplEndToken = `${tplToken}$end`;
-      const tplStateName = `${tplToken}$state`;
 
       if (tplOpt.type === 'expr') {
+        const tplToken = `${strToken}$tpl$${tplIdx}`;
+        const tplStartToken = `${tplToken}$start`;
+        const tplEndToken = `${tplToken}$end`;
+        const tplStateName = `${tplToken}$state`;
+
         strState[tplStartToken] = {
           t: 'string',
           type: tplStartToken,
@@ -197,22 +133,65 @@ export function configStrings(
       }
 
       if (tplOpt.type === 'var') {
-        strState[tplStartToken] = {
+        const tplToken = `${strToken}$tpl$${tplIdx}`;
+        const tplStartToken = `${tplToken}$start`;
+        const tplTokenName = `${tplToken}$token`;
+
+        const { operators = [], symbols } = tplOpt;
+        let symRegex = symbols;
+        if (!symRegex && $.symbol?.t === 'regex') {
+          symRegex = $.symbol.match;
+        }
+        if (!symRegex) {
+          throw new Error(
+            `String definition isn't found for template definition`
+          );
+        }
+        const start = escape(tplStart);
+        const symSource = symRegex.source;
+        let varTplSource = `${start}${symSource}`;
+        const opRules: Record<string, StringRule> = {};
+        if (operators.length) {
+          const opSource = `(?:${operators.map(escape).join('|')})`;
+          varTplSource += `(?:${opSource}${symSource})*`;
+          operators.forEach((match, idx) => {
+            const type = `op$${idx}`;
+            opRules[type] = {
+              t: 'string',
+              type,
+              match,
+              chunk: match,
+            };
+          });
+        }
+        const match = new RegExp(varTplSource);
+
+        strState[tplTokenName] = {
+          t: 'regex',
+          type: tplTokenName,
+          match,
+          chunk: tplStart,
+        };
+
+        const tplStartRule: StringRule = {
           t: 'string',
           type: tplStartToken,
           match: tplStart,
           chunk: tplStart,
-          push: tplStateName,
         };
-        const { operators = [], symbols } = tplOpt;
-        varTplPreStates.push({
-          symbols,
-          operators,
-          tplStateName,
-          tplStart,
-          strEnd,
-          strStateName,
-        });
+
+        const symbolRule: RegexRule = {
+          t: 'regex',
+          type: 'symbol',
+          match: symRegex,
+          chunk: null,
+        };
+
+        tplStates[tplTokenName] = {
+          [tplStartToken]: tplStartRule,
+          symbol: symbolRule,
+          ...opRules,
+        };
       }
     });
 
@@ -226,19 +205,11 @@ export function configStrings(
     };
   });
 
-  const tplStates: Record<string, StateDefinition> = {};
   for (const exprTplStateInput of exprTplPreStates) {
     const { tplStateName } = exprTplStateInput;
     const exprTplStates = exprTplStatesMap($, exprTplStateInput);
     Object.assign($, exprTplStates.$);
     tplStates[tplStateName] = exprTplStates.tplState;
-  }
-  for (const varTplStateInput of varTplPreStates) {
-    const { tplStateName, strStateName } = varTplStateInput;
-    const strState = strStates[strStateName];
-    if (strState) {
-      tplStates[tplStateName] = varTplState($, strState, varTplStateInput);
-    }
   }
 
   return { $, ...strStates, ...tplStates };
