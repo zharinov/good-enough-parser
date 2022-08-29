@@ -13,23 +13,26 @@ function h(ctx: TestCtx, { value }: Token): TestCtx {
 }
 
 describe('lang/groovy', () => {
-  test.each`
-    name
-    ${'groovy-01'}
-    ${'groovy-02'}
-    ${'groovy-03'}
-    ${'groovy-04'}
-    ${'groovy-05'}
-    ${'groovy-06'}
-    ${'groovy-07'}
-    ${'groovy-08'}
-  `('$name', ({ name }) => {
-    const input = loadInputTxt(name);
+  describe('sample tests', () => {
+    test.each`
+      name
+      ${'groovy-01'}
+      ${'groovy-02'}
+      ${'groovy-03'}
+      ${'groovy-04'}
+      ${'groovy-05'}
+      ${'groovy-06'}
+      ${'groovy-07'}
+      ${'groovy-08'}
+      ${'groovy-09'}
+    `('$name', ({ name }) => {
+      const input = loadInputTxt(name);
 
-    const res = lang.parse(input).node;
+      const res = lang.parse(input).node;
 
-    const expected = loadOutputJson(name, res);
-    expect(res).toEqual(expected);
+      const expected = loadOutputJson(name, res);
+      expect(res).toEqual(expected);
+    });
   });
 
   test.each`

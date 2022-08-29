@@ -50,7 +50,7 @@ describe('lexer/rules', () => {
       const res = sortLexerRules(rules);
 
       expect(chunks(res)).toMatchInlineSnapshot(`
-        Array [
+        [
           "[[[",
           "[[",
           "[",
