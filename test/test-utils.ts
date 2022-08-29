@@ -90,5 +90,5 @@ export function loadOutputJson<T>(
 
 export function tokenize(states: StatesMap, input: string): Token[] {
   const lexer = moo.states(orderStateMap(states) as never);
-  return [...lexer.reset(input)].map(coerceToken);
+  return [...lexer.reset(input)].map((x) => coerceToken(x));
 }
