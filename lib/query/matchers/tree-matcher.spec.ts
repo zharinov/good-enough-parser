@@ -139,16 +139,11 @@ describe('query/matchers/tree-matcher', () => {
 
     describe('handles bracket constraints', () => {
       test.each`
-        input        | startsWith | endsWith | found
-        ${'foo()'}   | ${'('}     | ${')'}   | ${['foo']}
-        ${'foo({})'} | ${'('}     | ${')'}   | ${['foo']}
-        ${'foo(]'}   | ${null}    | ${']'}   | ${['foo']}
-        ${'foo {'}   | ${'{'}     | ${null}  | ${['foo']}
-        ${'foo()'}   | ${null}    | ${null}  | ${['foo']}
-        ${'foo(()'}  | ${null}    | ${null}  | ${['foo']}
-        ${'foo'}     | ${'('}     | ${''}    | ${null}
-        ${'foo(]'}   | ${'('}     | ${')'}   | ${null}
-        ${'foo(]'}   | ${'['}     | ${')'}   | ${null}
+        input      | startsWith | endsWith | found
+        ${'foo()'} | ${'('}     | ${')'}   | ${['foo']}
+        ${'foo()'} | ${'('}     | ${')'}   | ${['foo']}
+        ${'foo[]'} | ${'['}     | ${null}  | ${['foo']}
+        ${'foo'}   | ${null}    | ${']'}   | ${null}
       `(
         '$input',
         ({
