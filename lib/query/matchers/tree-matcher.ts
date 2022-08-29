@@ -30,8 +30,8 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor(config: TreeMatcherOptions<Ctx>) {
     super();
     this.type = config.type ?? null;
-    this.startsWithValue = config.startsWithValue ?? null;
-    this.endsWithValue = config.endsWithValue ?? null;
+    this.startsWithValue = config.startsWith ?? null;
+    this.endsWithValue = config.endsWith ?? null;
     this.matcher = config.matcher;
     this.maxDepth =
       typeof config.maxDepth === 'number' && config.maxDepth > 0

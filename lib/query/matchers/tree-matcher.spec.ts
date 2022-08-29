@@ -139,33 +139,33 @@ describe('query/matchers/tree-matcher', () => {
 
     describe('handles bracket constraints', () => {
       test.each`
-        input        | startsWithValue | endsWithValue | found
-        ${'foo()'}   | ${'('}          | ${')'}        | ${['foo']}
-        ${'foo({})'} | ${'('}          | ${')'}        | ${['foo']}
-        ${'foo(]'}   | ${null}         | ${']'}        | ${['foo']}
-        ${'foo {'}   | ${'{'}          | ${null}       | ${['foo']}
-        ${'foo()'}   | ${null}         | ${null}       | ${['foo']}
-        ${'foo(()'}  | ${null}         | ${null}       | ${['foo']}
-        ${'foo'}     | ${'('}          | ${''}         | ${null}
-        ${'foo(]'}   | ${'('}          | ${')'}        | ${null}
-        ${'foo(]'}   | ${'['}          | ${')'}        | ${null}
+        input        | startsWith | endsWith | found
+        ${'foo()'}   | ${'('}     | ${')'}   | ${['foo']}
+        ${'foo({})'} | ${'('}     | ${')'}   | ${['foo']}
+        ${'foo(]'}   | ${null}    | ${']'}   | ${['foo']}
+        ${'foo {'}   | ${'{'}     | ${null}  | ${['foo']}
+        ${'foo()'}   | ${null}    | ${null}  | ${['foo']}
+        ${'foo(()'}  | ${null}    | ${null}  | ${['foo']}
+        ${'foo'}     | ${'('}     | ${''}    | ${null}
+        ${'foo(]'}   | ${'('}     | ${')'}   | ${null}
+        ${'foo(]'}   | ${'['}     | ${')'}   | ${null}
       `(
         '$input',
         ({
           input,
-          startsWithValue,
-          endsWithValue,
+          startsWith,
+          endsWith,
           found,
         }: {
           input: string;
-          startsWithValue?: string;
-          endsWithValue?: string;
+          startsWith?: string;
+          endsWith?: string;
           found: string[];
         }) => {
           const query = q.sym<string[]>(handler).tree({
             type: 'wrapped-tree',
-            startsWithValue,
-            endsWithValue,
+            startsWith,
+            endsWith,
           });
           const res = lang.query(input, query, []);
           expect(res).toEqual(found);
