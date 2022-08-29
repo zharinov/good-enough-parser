@@ -58,6 +58,8 @@ export type TreeMatcherType = TreeType | null;
 export type TreeMatcherHandler<Ctx> = NodeHandler<Ctx, Tree>;
 export interface TreeOptionsBase<Ctx> {
   type?: TreeMatcherType;
+  startsWith?: string | null;
+  endsWith?: string | null;
   maxDepth?: number | null;
   maxMatches?: number | null;
   preHandler?: TreeMatcherHandler<Ctx>;

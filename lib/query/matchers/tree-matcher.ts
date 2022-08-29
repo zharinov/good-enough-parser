@@ -1,4 +1,4 @@
-import { isTree } from '../../parser';
+import { WrappedTree, isTree } from '../../parser';
 import type { Cursor, Tree } from '../../parser/types';
 import { safeHandler } from '../handler';
 import type {
@@ -16,6 +16,8 @@ interface TreeMatcherOptions<Ctx> extends TreeOptionsBase<Ctx> {
 
 export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   public readonly type: TreeMatcherType | null;
+  public readonly startsWithValue: string | null;
+  public readonly endsWithValue: string | null;
   public readonly matcher: Matcher<Ctx> | null;
   public readonly maxDepth: number;
   public readonly maxMatches: number;
@@ -28,6 +30,8 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
   constructor(config: TreeMatcherOptions<Ctx>) {
     super();
     this.type = config.type ?? null;
+    this.startsWithValue = config.startsWith ?? null;
+    this.endsWithValue = config.endsWith ?? null;
     this.matcher = config.matcher;
     this.maxDepth =
       typeof config.maxDepth === 'number' && config.maxDepth > 0
@@ -112,6 +116,23 @@ export class TreeMatcher<Ctx> extends AbstractMatcher<Ctx> {
     if (isTree(rootNode)) {
       if (this.type && this.type !== rootNode.type) {
         return null;
+      }
+
+      if (this.type === 'wrapped-tree') {
+        const currentTree = rootNode as WrappedTree;
+        if (
+          this.startsWithValue &&
+          currentTree.startsWith.value !== this.startsWithValue
+        ) {
+          return null;
+        }
+
+        if (
+          this.endsWithValue &&
+          currentTree.endsWith.value !== this.endsWithValue
+        ) {
+          return null;
+        }
       }
 
       let context = checkpoint.context;

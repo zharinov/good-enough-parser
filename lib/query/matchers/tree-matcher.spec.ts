@@ -136,5 +136,36 @@ describe('query/matchers/tree-matcher', () => {
       const res = lang.query(input, query, []);
       expect(res).toBeNull();
     });
+
+    describe('handles bracket constraints', () => {
+      test.each`
+        input      | startsWith | endsWith | found
+        ${'foo()'} | ${'('}     | ${')'}   | ${['foo']}
+        ${'foo()'} | ${'('}     | ${')'}   | ${['foo']}
+        ${'foo[]'} | ${'['}     | ${null}  | ${['foo']}
+        ${'foo'}   | ${null}    | ${']'}   | ${null}
+      `(
+        '$input',
+        ({
+          input,
+          startsWith,
+          endsWith,
+          found,
+        }: {
+          input: string;
+          startsWith?: string;
+          endsWith?: string;
+          found: string[];
+        }) => {
+          const query = q.sym<string[]>(handler).tree({
+            type: 'wrapped-tree',
+            startsWith,
+            endsWith,
+          });
+          const res = lang.query(input, query, []);
+          expect(res).toEqual(found);
+        }
+      );
+    });
   });
 });
