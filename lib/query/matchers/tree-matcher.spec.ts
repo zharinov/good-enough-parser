@@ -167,5 +167,14 @@ describe('query/matchers/tree-matcher', () => {
         }
       );
     });
+
+    it('matches string-values and symbols at arbitrary positions in a string-tree', () => {
+      const input = 'f"foo{bar}baz{qux}"';
+      const query = q.tree<Ctx>({
+        search: q.alt<Ctx>(q.str<Ctx>(handler), q.sym<Ctx>(handler)),
+      });
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['foo', 'bar', 'baz', 'qux']);
+    });
   });
 });

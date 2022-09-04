@@ -142,6 +142,9 @@ export class StrNodeMatcher<Ctx> extends AbstractMatcher<Ctx> {
       context = this.postHandler(context, rootNode);
       cursor = this.moveRight(rootCursor);
       return { context, cursor };
+    } else if (rootNode?.type === 'string-value' && this.matchers?.length) {
+      const matcher = this.matchers[0] as StrContentMatcher<Ctx>;
+      return matcher.match({ context: checkpoint.context, cursor: rootCursor });
     }
 
     return null;
