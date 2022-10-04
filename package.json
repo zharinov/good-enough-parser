@@ -37,7 +37,7 @@
     "@thi.ng/zipper": "1.0.3",
     "@types/moo": "0.5.5",
     "klona": "2.0.5",
-    "moo": "0.5.1"
+    "moo": "0.5.2"
   },
   "devDependencies": {
     "@homer0/prettier-plugin-jsdoc": "5.1.4",
