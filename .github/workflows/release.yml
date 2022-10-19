@@ -16,7 +16,7 @@ jobs:
           ref: ${{ github.event.release.target_commitish }}
 
       - name: Using Node.js v14
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v3.5.1
         with:
           node-version: 14
           cache: 'yarn'
