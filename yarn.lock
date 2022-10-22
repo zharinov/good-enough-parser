@@ -537,10 +537,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@homer0/prettier-plugin-jsdoc@5.1.4":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@homer0/prettier-plugin-jsdoc/-/prettier-plugin-jsdoc-5.1.4.tgz#92a7f4b50863ff95bbbfa5cd77e5ab7aceda5daa"
-  integrity sha512-J60cOKtMOARynCe/Sj7HtH9kn7gCTSKHJCJBRn01UJ283DU/xwSXBKpfNYTJ6m5srN4Yp6BzPwU94Gayq++qtA==
+"@homer0/prettier-plugin-jsdoc@5.1.5":
+  version "5.1.5"
+  resolved "https://registry.yarnpkg.com/@homer0/prettier-plugin-jsdoc/-/prettier-plugin-jsdoc-5.1.5.tgz#c6ff75da371fd650c2531eb27eef5bb6d6b9552e"
+  integrity sha512-4vIgI3VTuwVNMBZ6TlNauLZkM9YlLTfMxXcaLE7s06vUNtC72cb8XLbyqlt0lOiyzXnh+znaW3LfFNkLjPXdeQ==
   dependencies:
     comment-parser "^1.3.1"
     prettier "^2.7.1"

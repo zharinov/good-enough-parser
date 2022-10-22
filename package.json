@@ -40,7 +40,7 @@
     "moo": "0.5.2"
   },
   "devDependencies": {
-    "@homer0/prettier-plugin-jsdoc": "5.1.4",
+    "@homer0/prettier-plugin-jsdoc": "5.1.5",
     "@renovate/eslint-plugin": "https://github.com/renovatebot/eslint-plugin#v0.0.4",
     "@types/jest": "29.2.0",
     "@types/node": "16.11.68",
