@@ -56,7 +56,7 @@ const templates: TemplateOption[] = [
   {
     type: 'var',
     startsWith: '$',
-    symbols: /[a-zA-Z_][a-zA-Z0-9_]+/,
+    symbols: /[a-zA-Z_][a-zA-Z0-9_]*/,
     operators: ['.'],
   },
   { type: 'expr', startsWith: '${', endsWith: '}' },
@@ -69,7 +69,7 @@ export const lexer: LexerConfig = {
     { type: 'line-comment', startsWith: '//' },
     { type: 'multiline-comment', startsWith: '/*', endsWith: '*/' },
   ],
-  symbols: /[a-zA-Z$_][a-zA-Z0-9$_]+/,
+  symbols: /[a-zA-Z$_][a-zA-Z0-9$_]*/,
   numbers,
   operators,
   brackets: [
