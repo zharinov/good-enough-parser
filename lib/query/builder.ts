@@ -187,13 +187,13 @@ abstract class AbstractBuilder<Ctx> extends TerminalBuilder<Ctx> {
 
 // Anchors
 
-class BeginBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class BeginBuilder<Ctx> extends AbstractBuilder<Ctx> {
   build(): BeginMatcher<Ctx> {
     return new BeginMatcher<Ctx>();
   }
 }
 
-class EndBuilder<Ctx> extends TerminalBuilder<Ctx> {
+export class EndBuilder<Ctx> extends TerminalBuilder<Ctx> {
   constructor(private readonly builder: QueryBuilder<Ctx>) {
     super();
   }
@@ -210,7 +210,7 @@ export function begin<Ctx>(): BeginBuilder<Ctx> {
   return new BeginBuilder<Ctx>();
 }
 
-class VoidBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class VoidBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private readonly fn: (context: Ctx) => Ctx) {
     super();
   }
@@ -226,7 +226,7 @@ export function handler<Ctx>(fn: (context: Ctx) => Ctx): VoidBuilder<Ctx> {
 
 // Sequence
 
-class SeqBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class SeqBuilder<Ctx> extends AbstractBuilder<Ctx> {
   private readonly builders: QueryBuilder<Ctx>[];
 
   constructor(prev: QueryBuilder<Ctx>, next: QueryBuilder<Ctx>) {
@@ -266,7 +266,7 @@ export function join<Ctx>(
 
 // Symbols
 
-class SymBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class SymBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: SymMatcherOptions<Ctx>) {
     super();
   }
@@ -294,7 +294,7 @@ export function sym<Ctx>(
 
 // Operators
 
-class OpBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class OpBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: OpMatcherOptions<Ctx>) {
     super();
   }
@@ -322,7 +322,7 @@ export function op<Ctx>(
 
 // Comments
 
-class CommentBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class CommentBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: CommentMatcherOptions<Ctx>) {
     super();
   }
@@ -357,7 +357,7 @@ export function comment<Ctx>(
 
 // Numbers
 
-class NumBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class NumBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: NumMatcherOptions<Ctx>) {
     super();
   }
@@ -385,7 +385,7 @@ export function num<Ctx>(
 
 // Repetitive patterns
 
-class ManyBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class ManyBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: ManyBuilderOpts<Ctx>) {
     super();
   }
@@ -418,7 +418,7 @@ export function opt<Ctx>(builder: QueryBuilder<Ctx>): ManyBuilder<Ctx> {
 
 // Alternatives
 
-class AltBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class AltBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private builders: QueryBuilder<Ctx>[]) {
     super();
   }
@@ -435,7 +435,7 @@ export function alt<Ctx>(...builders: QueryBuilder<Ctx>[]): AltBuilder<Ctx> {
 
 // Trees
 
-class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class TreeBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: TreeBuilderOptions<Ctx>) {
     super();
   }
@@ -460,7 +460,7 @@ export function tree<Ctx>(
 
 // Strings
 
-class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
+export class StrBuilder<Ctx> extends AbstractBuilder<Ctx> {
   constructor(private opts: StrBuilderOptions<Ctx>) {
     super();
   }
