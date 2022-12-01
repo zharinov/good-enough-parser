@@ -20,7 +20,7 @@ export interface Checkpoint<Ctx> {
   context: Ctx;
 }
 
-export type NodeHandler<Ctx, T = Node> = (ctx: Ctx, tree: T) => Ctx;
+export type NodeHandler<Ctx, T extends Node> = (ctx: Ctx, tree: T) => Ctx;
 
 export type SymMatcherValue = string | RegExp | null;
 export type SymMatcherHandler<Ctx> = NodeHandler<Ctx, SymbolToken>;
@@ -74,7 +74,7 @@ export interface Matcher<Ctx> {
 }
 
 export interface ManyBuilderOpts<Ctx> {
-  builder: QueryBuilder<Ctx>;
+  builder: QueryBuilder<Ctx, Node>;
   min: number;
   max: number | null;
 }
@@ -86,7 +86,7 @@ export interface ManyMatcherOptions<Ctx> {
 }
 
 export interface TreeBuilderOptions<Ctx> extends TreeOptionsBase<Ctx> {
-  search?: QueryBuilder<Ctx> | null;
+  search?: QueryBuilder<Ctx, Node> | null;
 }
 
 export interface AltMatcherOptions<Ctx> {
@@ -111,7 +111,7 @@ export interface StrContentBuilderOptionsBase<Ctx> {
 }
 
 export interface StrTreeBuilderOptionsBase<Ctx> {
-  match?: (string | RegExp | QueryBuilder<Ctx>)[] | null;
+  match?: (string | RegExp | QueryBuilder<Ctx, Node>)[] | null;
   preHandler?: NodeHandler<Ctx, StringTree> | null;
   postHandler?: NodeHandler<Ctx, StringTree> | null;
 }
@@ -134,6 +134,7 @@ export type StrBuilderOptions<Ctx> =
   | StrContentBuilderOptions<Ctx>
   | StrTreeBuilderOptions<Ctx>;
 
-export interface QueryBuilder<Ctx> {
+export interface QueryBuilder<Ctx, T extends Node> {
+  handler(fn: (ctx: Ctx, t: T) => Ctx): QueryBuilder<Ctx, T>;
   build(): Matcher<Ctx>;
 }

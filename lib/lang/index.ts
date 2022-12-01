@@ -1,7 +1,7 @@
 import { createLexer } from '../lexer';
 import type { Lexer } from '../lexer/types';
 import { createCursor, createTree } from '../parser';
-import type { Cursor } from '../parser/types';
+import type { Cursor, Node } from '../parser/types';
 import { buildRoot } from '../query';
 import type { QueryBuilder } from '../query/types';
 import { clone } from '../util/clone';
@@ -26,9 +26,9 @@ export class Language {
     return createCursor(root);
   }
 
-  query<Ctx>(
+  query<Ctx, T extends Node>(
     input: string | Cursor,
-    q: QueryBuilder<Ctx>,
+    q: QueryBuilder<Ctx, T>,
     context: Ctx
   ): Ctx | null {
     const matcher = buildRoot(q);

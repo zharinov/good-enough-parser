@@ -1,4 +1,4 @@
-import type { StringTree, TreeType } from '../parser/types';
+import type { Node, StringTree, TreeType } from '../parser/types';
 import type { StrContentMatcherHandler } from './matchers/str-matcher';
 import { isRegex } from './regex';
 import type {
@@ -127,7 +127,7 @@ export function coerceNumOptions<Ctx>(
 }
 
 export function coerceManyOptions<Ctx>(
-  builder: QueryBuilder<Ctx>,
+  builder: QueryBuilder<Ctx, Node>,
   arg2?: number,
   arg3?: number
 ): ManyBuilderOpts<Ctx> {

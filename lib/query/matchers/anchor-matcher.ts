@@ -1,4 +1,5 @@
-import type { Cursor } from '../../parser';
+import type { Token } from '../../lexer/types';
+import type { Cursor, Tree } from '../../parser';
 import { clone } from '../../util/clone';
 import type { Checkpoint } from '../types';
 import { AbstractMatcher } from './abstract-matcher';
@@ -29,17 +30,22 @@ export class EndMatcher<Ctx> extends AbstractMatcher<Ctx> {
   }
 }
 
-export class VoidMatcher<Ctx> extends AbstractMatcher<Ctx> {
-  private handler: (context: Ctx) => Ctx;
+export class VoidMatcher<
+  Ctx,
+  T extends Tree | Token
+> extends AbstractMatcher<Ctx> {
+  private handler: (context: Ctx, t: T) => Ctx;
 
-  constructor(handler: (context: Ctx) => Ctx) {
+  constructor(handler: (context: Ctx, t: T) => Ctx) {
     super();
-    this.handler = (context: Ctx) => handler(clone(context));
+    this.handler = (context: Ctx, t: T) => handler(clone(context), t);
   }
 
   match(checkpoint: Checkpoint<Ctx>): Checkpoint<Ctx> | null {
     const { cursor, context } = checkpoint;
-    const newContext = this.handler(context);
+    const prevCursor = cursor.left ?? cursor;
+    const node = prevCursor.node as T;
+    const newContext = this.handler(context, node);
     return { cursor, context: newContext };
   }
 
