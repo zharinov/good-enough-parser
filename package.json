@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@homer0/prettier-plugin-jsdoc": "5.1.6",
-    "@renovate/eslint-plugin": "https://github.com/renovatebot/eslint-plugin#v0.0.4",
+    "@renovate/eslint-plugin": "https://github.com/renovatebot/eslint-plugin#v0.0.5",
     "@types/jest": "29.2.5",
     "@types/node": "18.11.10",
     "@typescript-eslint/eslint-plugin": "5.45.0",
