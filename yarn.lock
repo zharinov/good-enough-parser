@@ -1291,10 +1291,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.13.tgz#7dfd9c14661edc65cccd43a29eb454174642370d"
   integrity sha512-bLL69sKtd25w7p1nvg9pigE4gtKVpGTPojBFLMkGHXuUgap2sLqQt2qUnqmVCDfzGUL0DRNZP+1prIZJbMeAXg==
 
-"@types/node@18.11.10":
-  version "18.11.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.10.tgz#4c64759f3c2343b7e6c4b9caf761c7a3a05cee34"
-  integrity sha512-juG3RWMBOqcOuXC643OAdSA525V44cVgGV6dUDuiFtss+8Fk5x1hI93Rsld43VeJVIeqlP9I7Fn9/qaVqoEAuQ==
+"@types/node@18.11.18":
+  version "18.11.18"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.18.tgz#8dfb97f0da23c2293e554c5a50d61ef134d7697f"
+  integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
 
 "@types/prettier@^2.1.5":
   version "2.3.2"
