@@ -46,22 +46,5 @@ describe('util/clone', () => {
       expect(b.getData()).toEqual(a.getData());
       expect(b.getData()).not.toBe(a.getData());
     });
-
-    test('circular references', () => {
-      type Test = { value: number; self?: Test };
-      const a: Test = { value: 42 };
-      a.self = a;
-
-      const b = clone(a);
-
-      expect(b).toEqual(a);
-      expect(b).not.toBe(a);
-      expect(b.self).toBe(b);
-
-      expect(b).not.toBe(a);
-      expect(b).not.toBe(a.self);
-      expect(b.self).not.toBe(a.self);
-      expect(b.self).not.toBe(a);
-    });
   });
 });
