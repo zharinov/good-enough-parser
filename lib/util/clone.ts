@@ -1,1 +1,1 @@
-export { klona as clone } from 'klona/json';
+export { klona as clone } from 'klona/lite';
