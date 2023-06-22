@@ -6,7 +6,7 @@ import { coerceToken } from '../lib/lexer/token';
 import type { StatesMap, Token } from '../lib/lexer/types';
 
 function getCallerFileName(): string {
-  let result = null;
+  let result: string | null = null;
 
   const prepareStackTrace = Error.prepareStackTrace;
   const stackTraceLimit = Error.stackTraceLimit;
@@ -18,9 +18,13 @@ function getCallerFileName(): string {
 
   const stack = err.stack as unknown as NodeJS.CallSite[];
 
-  let currentFile = null;
+  let currentFile: string | null = null;
   for (const frame of stack) {
     const fileName = frame.getFileName();
+    if (!fileName) {
+      continue;
+    }
+
     if (!currentFile) {
       currentFile = fileName;
     } else if (currentFile !== fileName) {
