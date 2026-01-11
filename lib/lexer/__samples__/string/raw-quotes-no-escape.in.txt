@@ -1,0 +1,5 @@
+r"hello \"
+r"hello2 \\"
+r"world\"
+r'hello \'
+r'world\'

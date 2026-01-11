@@ -26,6 +26,7 @@ describe('lang/groovy', () => {
       ${'groovy-08'}
       ${'groovy-09'}
       ${'groovy-10'}
+      ${'groovy-11'}
     `('$name', ({ name }) => {
       const input = loadInputTxt(name);
 

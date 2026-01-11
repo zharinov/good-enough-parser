@@ -273,5 +273,33 @@ describe('lexer/string', () => {
         expect(res).toEqual(expectedRes);
       });
     });
+
+    describe('escape characters', () => {
+      const states: StatesMap = {
+        $: {
+          unknown: { ...fallbackRule, type: 'unknown' },
+        },
+      };
+      const opts: StringOption[] = [
+        { startsWith: '"', escapeChar: '\\' },
+        { startsWith: "'", escapeChar: '\\' },
+        { startsWith: '"""', escapeChar: '\\' },
+        { startsWith: "'''", escapeChar: '\\' },
+        { startsWith: 'r"', endsWith: '"' },
+        { startsWith: "r'", endsWith: "'" },
+      ];
+      const rules = configStrings(states, opts);
+
+      test.each`
+        sampleName
+        ${'string/escape-quotes'}
+        ${'string/raw-quotes-no-escape'}
+      `('$sampleName', ({ sampleName }) => {
+        const input = loadInputTxt(sampleName);
+        const res = tokenize(rules, input);
+        const expectedRes = loadOutputJson(sampleName, res);
+        expect(res).toEqual(expectedRes);
+      });
+    });
   });
 });

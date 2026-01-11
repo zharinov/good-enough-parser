@@ -76,4 +76,41 @@ describe('query/matchers/str-matcher', () => {
     const res = lang.query(input, query, []);
     expect(res).toEqual(['foo', 'bar', 'baz']);
   });
+
+  describe('escaping', () => {
+    it('handles escaped quotes in strings', () => {
+      const input = '"hello \\"world\\""';
+      const query = q.str<Ctx>(handler);
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['hello \\"world\\"']);
+    });
+
+    it('handles escaped backslashes in strings', () => {
+      const input = '"path\\\\to\\\\file"';
+      const query = q.str<Ctx>(handler);
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['path\\\\to\\\\file']);
+    });
+
+    it('handles escape sequences in strings', () => {
+      const input = '"hello\\nworld"';
+      const query = q.str<Ctx>(handler);
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['hello\\nworld']);
+    });
+
+    it('handles raw strings', () => {
+      const input = 'r"hello \\" + "world"';
+      const query = q.str<Ctx>(handler);
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['hello \\', 'world']);
+    });
+
+    it('handles unicode escapes', () => {
+      const input = '"\\u0041\\u0042"';
+      const query = q.str<Ctx>(handler);
+      const res = lang.query(input, query, []);
+      expect(res).toEqual(['\\u0041\\u0042']);
+    });
+  });
 });

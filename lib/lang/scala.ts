@@ -66,10 +66,10 @@ export const lexer: LexerConfig = {
     { startsWith: '(', endsWith: ')' },
   ],
   strings: [
-    { startsWith: '"' },
+    { startsWith: '"', escapeChar: '\\' },
     { startsWith: 'raw"', endsWith: '"' },
-    { startsWith: 's"', templates, endsWith: '"' },
-    { startsWith: 'f"', templates, endsWith: '"' },
+    { startsWith: 's"', templates, endsWith: '"', escapeChar: '\\' },
+    { startsWith: 'f"', templates, endsWith: '"', escapeChar: '\\' },
   ],
 };
 

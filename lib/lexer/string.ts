@@ -93,6 +93,7 @@ export function configStrings(
     const {
       startsWith: strStart,
       endsWith: strEnd = strStart,
+      escapeChar,
       templates: tplOpts,
     } = strOpt;
     const strToken = `str$${strIdx}`;
@@ -102,6 +103,24 @@ export function configStrings(
     const strStateName = `${strToken}$state`;
 
     const strState: StateDefinition = {
+      ...(escapeChar && strEnd[0]
+        ? {
+            // 1. Escape the escape character (e.g. \\) to prevent it from escaping the delimiter
+            [`${strToken}$escape_bs`]: {
+              t: 'string',
+              type: strValueToken,
+              match: `${escapeChar}${escapeChar}`,
+              chunk: `${escapeChar}${escapeChar}`,
+            },
+            // 2. Escape the delimiter (e.g. \")
+            [`${strToken}$escape`]: {
+              t: 'string',
+              type: strValueToken,
+              match: `${escapeChar}${strEnd[0]}`,
+              chunk: `${escapeChar}${strEnd[0]}`,
+            },
+          }
+        : {}),
       [strEndToken]: {
         t: 'string',
         type: strEndToken,
