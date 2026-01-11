@@ -25,7 +25,7 @@
   },
   {
     "type": "_",
-    "value": "\r\n",
+    "value": "\n",
     "offset": 10,
     "line": 1,
     "col": 11,
@@ -34,7 +34,7 @@
   {
     "type": "string-start",
     "value": "r\"",
-    "offset": 12,
+    "offset": 11,
     "line": 2,
     "col": 1,
     "lineBreaks": 0
@@ -42,7 +42,7 @@
   {
     "type": "string-value",
     "value": "hello2 \\\\",
-    "offset": 14,
+    "offset": 13,
     "line": 2,
     "col": 3,
     "lineBreaks": 0
@@ -50,15 +50,15 @@
   {
     "type": "string-end",
     "value": "\"",
-    "offset": 23,
+    "offset": 22,
     "line": 2,
     "col": 12,
     "lineBreaks": 0
   },
   {
     "type": "_",
-    "value": "\r\n",
-    "offset": 24,
+    "value": "\n",
+    "offset": 23,
     "line": 2,
     "col": 13,
     "lineBreaks": 1
@@ -66,7 +66,7 @@
   {
     "type": "string-start",
     "value": "r\"",
-    "offset": 26,
+    "offset": 24,
     "line": 3,
     "col": 1,
     "lineBreaks": 0
@@ -74,7 +74,7 @@
   {
     "type": "string-value",
     "value": "world\\",
-    "offset": 28,
+    "offset": 26,
     "line": 3,
     "col": 3,
     "lineBreaks": 0
@@ -82,15 +82,15 @@
   {
     "type": "string-end",
     "value": "\"",
-    "offset": 34,
+    "offset": 32,
     "line": 3,
     "col": 9,
     "lineBreaks": 0
   },
   {
     "type": "_",
-    "value": "\r\n",
-    "offset": 35,
+    "value": "\n",
+    "offset": 33,
     "line": 3,
     "col": 10,
     "lineBreaks": 1
@@ -98,7 +98,7 @@
   {
     "type": "string-start",
     "value": "r'",
-    "offset": 37,
+    "offset": 34,
     "line": 4,
     "col": 1,
     "lineBreaks": 0
@@ -106,7 +106,7 @@
   {
     "type": "string-value",
     "value": "hello \\",
-    "offset": 39,
+    "offset": 36,
     "line": 4,
     "col": 3,
     "lineBreaks": 0
@@ -114,15 +114,15 @@
   {
     "type": "string-end",
     "value": "'",
-    "offset": 46,
+    "offset": 43,
     "line": 4,
     "col": 10,
     "lineBreaks": 0
   },
   {
     "type": "_",
-    "value": "\r\n",
-    "offset": 47,
+    "value": "\n",
+    "offset": 44,
     "line": 4,
     "col": 11,
     "lineBreaks": 1
@@ -130,7 +130,7 @@
   {
     "type": "string-start",
     "value": "r'",
-    "offset": 49,
+    "offset": 45,
     "line": 5,
     "col": 1,
     "lineBreaks": 0
@@ -138,7 +138,7 @@
   {
     "type": "string-value",
     "value": "world\\",
-    "offset": 51,
+    "offset": 47,
     "line": 5,
     "col": 3,
     "lineBreaks": 0
@@ -146,7 +146,7 @@
   {
     "type": "string-end",
     "value": "'",
-    "offset": 57,
+    "offset": 53,
     "line": 5,
     "col": 9,
     "lineBreaks": 0
