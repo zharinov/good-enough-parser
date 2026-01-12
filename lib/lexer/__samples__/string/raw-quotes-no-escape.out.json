@@ -1,0 +1,154 @@
+[
+  {
+    "type": "string-start",
+    "value": "r\"",
+    "offset": 0,
+    "line": 1,
+    "col": 1,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "hello \\",
+    "offset": 2,
+    "line": 1,
+    "col": 3,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-end",
+    "value": "\"",
+    "offset": 9,
+    "line": 1,
+    "col": 10,
+    "lineBreaks": 0
+  },
+  {
+    "type": "_",
+    "value": "\n",
+    "offset": 10,
+    "line": 1,
+    "col": 11,
+    "lineBreaks": 1
+  },
+  {
+    "type": "string-start",
+    "value": "r\"",
+    "offset": 11,
+    "line": 2,
+    "col": 1,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "hello2 \\\\",
+    "offset": 13,
+    "line": 2,
+    "col": 3,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-end",
+    "value": "\"",
+    "offset": 22,
+    "line": 2,
+    "col": 12,
+    "lineBreaks": 0
+  },
+  {
+    "type": "_",
+    "value": "\n",
+    "offset": 23,
+    "line": 2,
+    "col": 13,
+    "lineBreaks": 1
+  },
+  {
+    "type": "string-start",
+    "value": "r\"",
+    "offset": 24,
+    "line": 3,
+    "col": 1,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "world\\",
+    "offset": 26,
+    "line": 3,
+    "col": 3,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-end",
+    "value": "\"",
+    "offset": 32,
+    "line": 3,
+    "col": 9,
+    "lineBreaks": 0
+  },
+  {
+    "type": "_",
+    "value": "\n",
+    "offset": 33,
+    "line": 3,
+    "col": 10,
+    "lineBreaks": 1
+  },
+  {
+    "type": "string-start",
+    "value": "r'",
+    "offset": 34,
+    "line": 4,
+    "col": 1,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "hello \\",
+    "offset": 36,
+    "line": 4,
+    "col": 3,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-end",
+    "value": "'",
+    "offset": 43,
+    "line": 4,
+    "col": 10,
+    "lineBreaks": 0
+  },
+  {
+    "type": "_",
+    "value": "\n",
+    "offset": 44,
+    "line": 4,
+    "col": 11,
+    "lineBreaks": 1
+  },
+  {
+    "type": "string-start",
+    "value": "r'",
+    "offset": 45,
+    "line": 5,
+    "col": 1,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "world\\",
+    "offset": 47,
+    "line": 5,
+    "col": 3,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-end",
+    "value": "'",
+    "offset": 53,
+    "line": 5,
+    "col": 9,
+    "lineBreaks": 0
+  }
+]

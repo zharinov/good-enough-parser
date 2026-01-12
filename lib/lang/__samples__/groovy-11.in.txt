@@ -1,0 +1,4 @@
+"1\\.2.3"
+"asdf\"qwer\"ty"
+"https:\/\/some\.url\.com\/repo\/"
+"foo\\bar\""

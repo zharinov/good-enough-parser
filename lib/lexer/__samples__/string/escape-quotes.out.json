@@ -1,0 +1,146 @@
+[
+  {
+    "type": "string-start",
+    "value": "\"",
+    "offset": 0,
+    "line": 1,
+    "col": 1,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "hello ",
+    "offset": 1,
+    "line": 1,
+    "col": 2,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "\\\"",
+    "offset": 7,
+    "line": 1,
+    "col": 8,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "world",
+    "offset": 9,
+    "line": 1,
+    "col": 10,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "\\\"",
+    "offset": 14,
+    "line": 1,
+    "col": 15,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-end",
+    "value": "\"",
+    "offset": 16,
+    "line": 1,
+    "col": 17,
+    "lineBreaks": 0
+  },
+  {
+    "type": "_",
+    "value": "\n",
+    "offset": 17,
+    "line": 1,
+    "col": 18,
+    "lineBreaks": 1
+  },
+  {
+    "type": "string-start",
+    "value": "\"",
+    "offset": 18,
+    "line": 2,
+    "col": 1,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "test",
+    "offset": 19,
+    "line": 2,
+    "col": 2,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "\\\\",
+    "offset": 23,
+    "line": 2,
+    "col": 6,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-end",
+    "value": "\"",
+    "offset": 25,
+    "line": 2,
+    "col": 8,
+    "lineBreaks": 0
+  },
+  {
+    "type": "_",
+    "value": "\n",
+    "offset": 26,
+    "line": 2,
+    "col": 9,
+    "lineBreaks": 1
+  },
+  {
+    "type": "string-start",
+    "value": "\"",
+    "offset": 27,
+    "line": 3,
+    "col": 1,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "a",
+    "offset": 28,
+    "line": 3,
+    "col": 2,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "\\\\",
+    "offset": 29,
+    "line": 3,
+    "col": 3,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "\\\"",
+    "offset": 31,
+    "line": 3,
+    "col": 5,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-value",
+    "value": "b",
+    "offset": 33,
+    "line": 3,
+    "col": 7,
+    "lineBreaks": 0
+  },
+  {
+    "type": "string-end",
+    "value": "\"",
+    "offset": 34,
+    "line": 3,
+    "col": 8,
+    "lineBreaks": 0
+  }
+]

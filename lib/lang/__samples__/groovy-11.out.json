@@ -1,0 +1,225 @@
+{
+  "type": "root-tree",
+  "children": [
+    {
+      "type": "_start",
+      "value": "",
+      "offset": 0,
+      "line": 1,
+      "col": 1,
+      "lineBreaks": 0
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "\"",
+        "offset": 0,
+        "line": 1,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "\"",
+        "offset": 8,
+        "line": 1,
+        "col": 9,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 1,
+          "line": 1,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "1\\\\.2.3",
+          "offset": 1,
+          "line": 1,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 8,
+          "line": 1,
+          "col": 9,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 9,
+      "line": 1,
+      "col": 10,
+      "lineBreaks": 1
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "\"",
+        "offset": 10,
+        "line": 2,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "\"",
+        "offset": 25,
+        "line": 2,
+        "col": 16,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 11,
+          "line": 2,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "asdf\\\"qwer\\\"ty",
+          "offset": 11,
+          "line": 2,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 25,
+          "line": 2,
+          "col": 16,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 26,
+      "line": 2,
+      "col": 17,
+      "lineBreaks": 1
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "\"",
+        "offset": 27,
+        "line": 3,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "\"",
+        "offset": 60,
+        "line": 3,
+        "col": 34,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 28,
+          "line": 3,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "https:\\/\\/some\\.url\\.com\\/repo\\/",
+          "offset": 28,
+          "line": 3,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 60,
+          "line": 3,
+          "col": 34,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "newline",
+      "value": "\n",
+      "offset": 61,
+      "line": 3,
+      "col": 35,
+      "lineBreaks": 1
+    },
+    {
+      "type": "string-tree",
+      "startsWith": {
+        "type": "string-start",
+        "value": "\"",
+        "offset": 62,
+        "line": 4,
+        "col": 1,
+        "lineBreaks": 0
+      },
+      "endsWith": {
+        "type": "string-end",
+        "value": "\"",
+        "offset": 73,
+        "line": 4,
+        "col": 12,
+        "lineBreaks": 0
+      },
+      "children": [
+        {
+          "type": "_start",
+          "value": "",
+          "offset": 63,
+          "line": 4,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "string-value",
+          "value": "foo\\\\bar\\\"",
+          "offset": 63,
+          "line": 4,
+          "col": 2,
+          "lineBreaks": 0
+        },
+        {
+          "type": "_end",
+          "value": "",
+          "offset": 73,
+          "line": 4,
+          "col": 12,
+          "lineBreaks": 0
+        }
+      ]
+    },
+    {
+      "type": "_end",
+      "value": "",
+      "offset": 74,
+      "line": 4,
+      "col": 2,
+      "lineBreaks": 0
+    }
+  ]
+}

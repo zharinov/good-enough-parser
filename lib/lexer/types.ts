@@ -34,6 +34,7 @@ export type TemplateOption = VariableTemplateOption | ExpressionTemplateOption;
 
 export interface StringOption extends OptionBase {
   endsWith?: string;
+  escapeChar?: string;
   templates?: TemplateOption[];
 }
 
