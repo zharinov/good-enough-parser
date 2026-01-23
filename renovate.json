@@ -1,14 +1,26 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:js-lib"],
+  "extends": ["github>renovatebot/.github", ":pinDevDependencies"],
+  "prCreation": "immediate",
+  "automergeType": "pr",
+  "baseBranchPatterns": ["main", "/^maint/.+/"],
   "labels": ["type/deps"],
-  "major": {
-    "semanticCommitType": "deps",
-    "semanticCommitScope": ""
-  },
-  "semanticCommits": "enabled",
-  "prConcurrentLimit": 1,
-  "prHourlyLimit": 0,
-  "branchConcurrentLimit": 1,
-  "automerge": true
+  "packageRules": [
+    {
+      "matchDepTypes": ["dependencies"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "description": "Use `ci` semantic commit scope for ci deps",
+      "matchFileNames": [".github/{actions/**,workflows}/*.yml"],
+      "semanticCommitType": "ci",
+      "additionalBranchPrefix": "ci-"
+    },
+    {
+      "description": "Require approval for major updates for `maint` branches",
+      "matchBaseBranches": ["/^maint/.+/"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    }
+  ]
 }
