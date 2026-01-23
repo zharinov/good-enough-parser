@@ -1,8 +1,8 @@
 {
-  "name": "@jrnv/good-enough-parser",
+  "name": "@renovatebot/good-enough-parser",
   "description": "Parse and query computer programs source code",
   "version": "1.1.24",
-  "repository": "https://github.com/zharinov/good-enough-parser.git",
+  "repository": "https://github.com/renovatebot/good-enough-parser.git",
   "author": "Sergei Zharinov",
   "contributors": [
     "Jason Kuhrt"
