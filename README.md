@@ -2,8 +2,8 @@
 
 TypeScript library aiming to fill the gap between usage of ad-hoc regular expressions and generation of complete grammar descriptions.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/zharinov/good-enough-parser/blob/main/LICENSE)
-[![Trunk](https://github.com/zharinov/good-enough-parser/actions/workflows/trunk.yml/badge.svg)](https://github.com/zharinov/good-enough-parser/actions/workflows/trunk.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/renovatebot/good-enough-parser/blob/main/LICENSE)
+[![Trunk](https://github.com/renovatebot/good-enough-parser/actions/workflows/trunk.yml/badge.svg)](https://github.com/renovatebot/good-enough-parser/actions/workflows/trunk.yml)
 
 ## Motivation
 
@@ -27,7 +27,7 @@ While most programming languages provide parser tooling for the language they're
 
 The library is divided into multiple levels of abstraction, from the lowest to the highest one:
 
-### [`lib/lexer`](https://github.com/zharinov/good-enough-parser/tree/main/lib/lexer)
+### [`lib/lexer`](https://github.com/renovatebot/good-enough-parser/tree/main/lib/lexer)
 
 Configures the [moo](https://github.com/no-context/moo) tokenizer for specific language features such as:
 
@@ -40,14 +40,14 @@ Configures the [moo](https://github.com/no-context/moo) tokenizer for specific l
 - Line joins: if the line ends with `\`, the next one will be treated as its continuation
 
 Refer to the `LexerConfig` interface for more details.
-Also check out [our usage example for Python](https://github.com/zharinov/good-enough-parser/blob/main/lib/lang/python.ts).
+Also check out [our usage example for Python](https://github.com/renovatebot/good-enough-parser/blob/main/lib/lang/python.ts).
 
-### [`lib/parser`](https://github.com/zharinov/good-enough-parser/tree/main/lib/tree)
+### [`lib/parser`](https://github.com/renovatebot/good-enough-parser/tree/main/lib/tree)
 
 This layer is responsible for transforming the token sequence to the nested tree with the tokens as leafs.
 Internally, we're using functional [zipper](<https://en.wikipedia.org/wiki/Zipper_(data_structure)>) data structure to perform queries on the tree.
 
-### [`lib/query`](https://github.com/zharinov/good-enough-parser/tree/main/lib/query)
+### [`lib/query`](https://github.com/renovatebot/good-enough-parser/tree/main/lib/query)
 
 To understand `parser-utils` queries, it's useful to keep in mind the principle of how regular expressions work.
 Each query represents sequence of adjacent tokens and tree elements.
