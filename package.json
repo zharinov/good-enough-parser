@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@thi.ng/zipper": "1.0.3",
-    "@types/moo": "0.5.5",
+    "@types/moo": "0.5.10",
     "klona": "2.0.6",
     "moo": "0.5.2"
   },
