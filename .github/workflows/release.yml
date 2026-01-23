@@ -8,27 +8,25 @@ jobs:
   release:
     environment: release
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.release.target_commitish }}
 
-      - name: Using Node.js v14
-        uses: actions/setup-node@v3.6.0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'yarn'
           registry-url: https://registry.npmjs.org/
 
       - name: Install dependencies
         run: yarn --frozen-lockfile --no-progress
-
-      - name: Set git author name
-        run: git config --global user.name "Sergei Zharinov"
-      - name: Set git author email
-        run: git config --global user.email "sergio.zharinov@gmail.com"
 
       - name: Build
         run: yarn -s build
@@ -37,6 +35,4 @@ jobs:
         run: yarn -s test
 
       - name: Publish
-        run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
