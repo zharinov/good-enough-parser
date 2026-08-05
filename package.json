@@ -71,5 +71,5 @@
     "typescript": "5.9.3",
     "upath": "3.0.8"
   },
-  "packageManager": "pnpm@11.17.0"
+  "packageManager": "pnpm@11.18.0"
 }
