@@ -545,7 +545,7 @@ packages:
     engines: {node: '>=12'}
 
   '@renovatebot/eslint-plugin@https://codeload.github.com/renovatebot/eslint-plugin/tar.gz/1923e2e2776549cb25a2c6ea09915ee31bff6d05':
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/renovatebot/eslint-plugin/tar.gz/1923e2e2776549cb25a2c6ea09915ee31bff6d05}
+    resolution: {gitHosted: true, integrity: sha512-mdwuwcL7Jhm3eV55ds7pkDoOQZj51iDUE2XEBjbhiksaUXC1F2MKsi/qTnzs2o87c1GfAsSqqfg1AO4YVfoBng==, tarball: https://codeload.github.com/renovatebot/eslint-plugin/tar.gz/1923e2e2776549cb25a2c6ea09915ee31bff6d05}
     version: 0.0.5
 
   '@rtsao/scc@1.1.0':
