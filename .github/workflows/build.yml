@@ -23,7 +23,7 @@ jobs:
   lint:
     runs-on: ubuntu-24.04
     steps:
-      - uses: containerbase/internal-tools/setup@2df971648bb137b5e3d6628f0c3bed9f86479502 # v5.0.23
+      - uses: containerbase/internal-tools/setup@a63553af4ae5f9ff109048f6d7918b93a74107c8 # v5.0.24
         with:
           save-cache: true
 
@@ -35,7 +35,7 @@ jobs:
 
     steps:
       - name: ⚙️ Setup
-        uses: containerbase/internal-tools/setup@2df971648bb137b5e3d6628f0c3bed9f86479502 # v5.0.23
+        uses: containerbase/internal-tools/setup@a63553af4ae5f9ff109048f6d7918b93a74107c8 # v5.0.24
 
       - name: build
         run: pnpm build
@@ -76,7 +76,7 @@ jobs:
       id-token: write # required for codecov OIDC
 
     steps:
-      - uses: containerbase/internal-tools/setup@2df971648bb137b5e3d6628f0c3bed9f86479502 # v5.0.23
+      - uses: containerbase/internal-tools/setup@a63553af4ae5f9ff109048f6d7918b93a74107c8 # v5.0.24
         with:
           save-cache: true
           node-version: ${{ matrix.node }}
@@ -128,7 +128,7 @@ jobs:
           filter: blob:none # we don't need all blobs
 
       - name: ⚙️ Setup
-        uses: containerbase/internal-tools/setup@2df971648bb137b5e3d6628f0c3bed9f86479502 # v5.0.23
+        uses: containerbase/internal-tools/setup@a63553af4ae5f9ff109048f6d7918b93a74107c8 # v5.0.24
         with:
           checkout: false
 
