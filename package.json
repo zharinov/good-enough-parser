@@ -63,7 +63,7 @@
     "jest-watch-suspend": "1.1.2",
     "jest-watch-typeahead": "3.0.1",
     "npm-run-all2": "8.0.4",
-    "prettier": "3.8.5",
+    "prettier": "3.9.6",
     "pretty-quick": "4.2.2",
     "semantic-release": "25.0.9",
     "ts-jest": "29.4.12",
